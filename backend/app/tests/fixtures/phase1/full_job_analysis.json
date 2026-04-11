@@ -1,0 +1,247 @@
+{
+  "raw_job_text": "Acme Cloud is hiring a Senior Backend Platform Engineer to build resilient developer infrastructure for our fintech platform. You will design APIs, improve reliability, partner with product and security, mentor engineers, and drive delivery across multiple teams. Candidates should have 6+ years of experience, strong Python and PostgreSQL expertise, AWS and Kubernetes experience, and a bachelor's degree in Computer Science or related field. Experience in fintech and regulated systems is required. Hybrid in New York City three days per week.",
+  "job_title": "Senior Backend Platform Engineer",
+  "company_name": "Acme Cloud",
+  "functional_role_family": "platform",
+  "organizational_role_mode": "tech_lead",
+  "seniority_level": "senior",
+  "primary_responsibility_clusters": [
+    "Design backend APIs and platform services",
+    "Improve reliability and developer infrastructure",
+    "Coordinate delivery across product, security, and engineering"
+  ],
+  "must_have_skills": [
+    "Python",
+    "PostgreSQL",
+    "Distributed Systems"
+  ],
+  "nice_to_have_skills": [
+    "Terraform",
+    "Observability"
+  ],
+  "required_tools_platforms": [
+    "AWS",
+    "Kubernetes",
+    "GitHub Actions"
+  ],
+  "required_domains": [
+    "Fintech",
+    "Regulated Systems"
+  ],
+  "must_have_behaviors": [
+    "Ownership",
+    "Cross-functional collaboration",
+    "Mentoring"
+  ],
+  "business_goal_signals": [
+    "Improve developer productivity",
+    "Increase platform reliability"
+  ],
+  "impact_signals": [
+    "Production reliability",
+    "Delivery velocity",
+    "Platform scalability"
+  ],
+  "recruiter_intent": {
+    "likely_success_shape": "Shows architecture ownership that improves system reliability and delivery at team scale.",
+    "emphasis_profile": {
+      "architecture": 0.74,
+      "execution": 0.88,
+      "collaboration": 0.74,
+      "leadership": 0.74
+    },
+    "persuasive_evidence_types": [
+      "architecture_decisions",
+      "execution_delivery",
+      "cross_functional_leadership",
+      "domain_depth"
+    ],
+    "pace_environment_signals": [
+      "structured operating environment",
+      "hybrid coordination"
+    ],
+    "domain_specific_emphasis": [
+      "fintech",
+      "regulated systems"
+    ],
+    "breadth_preference": "balanced",
+    "confidence": 0.82,
+    "notes": [
+      "Signals point toward both execution strength and architecture ownership."
+    ]
+  },
+  "years_experience_requirement": 6,
+  "education_requirement": {
+    "minimum_level": "bachelors",
+    "preferred_level": "masters",
+    "fields_of_study": [
+      "Computer Science",
+      "Software Engineering"
+    ],
+    "certifications": [
+      "AWS Certification"
+    ],
+    "required": true,
+    "notes": [
+      "Related technical degrees are acceptable."
+    ]
+  },
+  "leadership_requirement": {
+    "scope": "technical_leadership",
+    "people_management_required": false,
+    "mentoring_expected": true,
+    "strategy_ownership_expected": true,
+    "notes": [
+      "Expected to mentor engineers without direct line management."
+    ]
+  },
+  "delivery_scope_requirement": {
+    "scope_level": "multi_team",
+    "cross_functional_coordination_required": true,
+    "roadmap_ownership_expected": true,
+    "notes": [
+      "Delivery spans platform, product, and security partners."
+    ]
+  },
+  "constraint_signals": [
+    "Must work in the United States",
+    "Experience with regulated systems is required"
+  ],
+  "work_model_signals": [
+    "Hybrid",
+    "New York City",
+    "Three days onsite per week"
+  ],
+  "industry_domain": "fintech",
+  "key_action_verbs": [
+    "design",
+    "build",
+    "improve",
+    "mentor",
+    "drive"
+  ],
+  "jd_quality_breakdown": {
+    "completeness_score": 0.9,
+    "specificity_score": 0.87,
+    "ambiguity_score": 0.14,
+    "consistency_score": 0.88,
+    "downstream_risk_score": 0.18,
+    "notes": [
+      "JD includes strong structural anchors, concrete tools, quantified experience, and explicit domain context."
+    ]
+  },
+  "jd_quality_score": 0.88,
+  "parser_confidence": 0.84,
+  "requirement_confidence_by_item": [
+    {
+      "item_type": "job_title",
+      "item_value": "Senior Backend Platform Engineer",
+      "confidence": 0.98
+    },
+    {
+      "item_type": "company_name",
+      "item_value": "Acme Cloud",
+      "confidence": 0.97
+    },
+    {
+      "item_type": "functional_role_family",
+      "item_value": "platform",
+      "confidence": 0.86
+    },
+    {
+      "item_type": "organizational_role_mode",
+      "item_value": "tech_lead",
+      "confidence": 0.72,
+      "notes": [
+        "Mentoring and cross-team delivery imply a tech-lead operating mode."
+      ]
+    },
+    {
+      "item_type": "seniority_level",
+      "item_value": "senior",
+      "confidence": 0.95
+    },
+    {
+      "item_type": "must_have_skill",
+      "item_value": "Python",
+      "confidence": 0.99
+    },
+    {
+      "item_type": "required_tool_platform",
+      "item_value": "AWS",
+      "confidence": 0.96
+    },
+    {
+      "item_type": "required_domain",
+      "item_value": "Fintech",
+      "confidence": 0.92
+    },
+    {
+      "item_type": "delivery_scope_requirement",
+      "item_value": "Drive delivery across multiple teams",
+      "confidence": 0.8
+    },
+    {
+      "item_type": "industry_domain",
+      "item_value": "fintech",
+      "confidence": 0.93
+    }
+  ],
+  "extraction_notes": [
+    "Tech-lead mode is inferred from mentoring plus delivery leadership rather than direct people management."
+  ],
+  "normalized_keywords": [
+    "senior backend platform engineer",
+    "python",
+    "postgresql",
+    "aws",
+    "kubernetes",
+    "fintech",
+    "reliability",
+    "developer infrastructure",
+    "cross-functional collaboration",
+    "mentoring"
+  ],
+  "prioritized_requirements": [
+    {
+      "requirement_text": "Python",
+      "requirement_type": "must_have_skill",
+      "priority_rank": 1,
+      "priority_tier": "critical",
+      "confidence": 0.99,
+      "rationale": "Explicitly required and central to the role."
+    },
+    {
+      "requirement_text": "AWS",
+      "requirement_type": "required_tool_platform",
+      "priority_rank": 2,
+      "priority_tier": "must_have",
+      "confidence": 0.96,
+      "rationale": "Named platform expectation."
+    },
+    {
+      "requirement_text": "Drive delivery across multiple teams",
+      "requirement_type": "delivery_scope_requirement",
+      "priority_rank": 3,
+      "priority_tier": "important",
+      "confidence": 0.8,
+      "rationale": "Cross-team delivery scope affects planning and bullet selection."
+    },
+    {
+      "requirement_text": "Fintech",
+      "requirement_type": "required_domain",
+      "priority_rank": 4,
+      "priority_tier": "important",
+      "confidence": 0.92,
+      "rationale": "Domain relevance is explicitly required."
+    },
+    {
+      "requirement_text": "Observability",
+      "requirement_type": "nice_to_have_skill",
+      "priority_rank": 5,
+      "priority_tier": "nice_to_have",
+      "confidence": 0.67,
+      "rationale": "Helpful but not blocking."
+    }
+  ]
+}

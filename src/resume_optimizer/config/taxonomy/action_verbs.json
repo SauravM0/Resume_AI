@@ -1,0 +1,12 @@
+{
+  "canonical_terms": {
+    "build": ["build", "built", "building", "develop", "developed", "create", "created", "implement", "implemented", "design", "designed"],
+    "lead": ["lead", "led", "leading", "drive", "drove", "driven", "spearhead", "spearheaded"],
+    "optimize": ["optimize", "optimized", "improve", "improved", "enhance", "enhanced", "streamline", "streamlined", "refactor", "refactored"],
+    "launch": ["launch", "launched", "ship", "shipped", "release", "released", "roll out", "rolled out"],
+    "manage": ["manage", "managed", "own", "owned", "operate", "operated", "oversee", "oversaw"],
+    "mentor": ["mentor", "mentored", "coach", "coached", "guide", "guided"],
+    "reduce": ["reduce", "reduced", "lower", "lowered", "decrease", "decreased"],
+    "increase": ["increase", "increased", "grow", "grew", "boost", "boosted", "lift", "lifted"]
+  }
+}

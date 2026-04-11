@@ -1,0 +1,1871 @@
+{
+  "cases": [
+    {
+      "case_id": "frontend_junior_react_startup",
+      "description": "Junior frontend startup role focused on React execution.",
+      "tags": [
+        "frontend",
+        "junior",
+        "startup"
+      ],
+      "raw_jd": "Junior Frontend Engineer\nJoin PixelSprout as one of the first engineers on our product team.\nYou will build React and TypeScript interfaces, ship customer-facing features quickly, and work closely with product and design.\nRequirements:\n- 1+ years of frontend development experience\n- Strong JavaScript, TypeScript, and React skills\n- Comfortable with CSS and responsive UI work\nNice to have:\n- Next.js\n- Figma\nRemote in the US.\n",
+      "gold": {
+        "job_title": "Junior Frontend Engineer",
+        "functional_role_family": "frontend",
+        "organizational_role_mode": "individual_contributor",
+        "seniority_level": "junior",
+        "must_have_skills": [
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "CSS"
+        ],
+        "nice_to_have_skills": [
+          "Next.js",
+          "Figma"
+        ],
+        "recruiter_intent_summary": "Shows fast execution building polished React product features in a startup environment.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.65,
+          "max_overall_score": 0.9,
+          "min_completeness_score": 0.65,
+          "max_completeness_score": 0.9,
+          "min_specificity_score": 0.55,
+          "max_ambiguity_score": 0.4,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Build React and TypeScript interfaces",
+          "Ship customer-facing frontend features quickly",
+          "Partner with product and design"
+        ]
+      }
+    },
+    {
+      "case_id": "frontend_senior_design_system_enterprise",
+      "description": "Senior frontend design-systems role in a structured enterprise environment.",
+      "tags": [
+        "frontend",
+        "senior",
+        "enterprise",
+        "highly_structured"
+      ],
+      "raw_jd": "Senior Frontend Engineer, Design Systems\nCompany: Northline Health\nResponsibilities:\n- Own the shared React component library used across multiple product teams\n- Drive accessibility, performance, and frontend architecture decisions\n- Partner with design, product, and platform engineering on standards\nBasic Qualifications:\n- 6+ years of frontend engineering experience\n- Deep experience with TypeScript, React, and design systems\n- Strong HTML, CSS, accessibility, and testing practices\nPreferred Qualifications:\n- Storybook\n- Design tokens\nHybrid in Chicago three days per week.\n",
+      "gold": {
+        "job_title": "Senior Frontend Engineer, Design Systems",
+        "functional_role_family": "frontend",
+        "organizational_role_mode": "senior_individual_contributor",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "TypeScript",
+          "React",
+          "HTML",
+          "CSS",
+          "Accessibility"
+        ],
+        "nice_to_have_skills": [
+          "Storybook",
+          "Design Tokens"
+        ],
+        "recruiter_intent_summary": "Proves senior architecture ownership over scalable frontend standards and design-system quality.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.8,
+          "max_overall_score": 1.0,
+          "min_completeness_score": 0.8,
+          "max_completeness_score": 1.0,
+          "min_specificity_score": 0.7,
+          "max_ambiguity_score": 0.25,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Own the shared React component library",
+          "Drive accessibility and frontend architecture decisions",
+          "Partner across design, product, and platform engineering"
+        ]
+      }
+    },
+    {
+      "case_id": "frontend_lead_web_platform",
+      "description": "Frontend tech-lead role for a web platform team.",
+      "tags": [
+        "frontend",
+        "lead",
+        "enterprise"
+      ],
+      "raw_jd": "Lead Frontend Platform Engineer\nAcme Travel is hiring a lead engineer to modernize our booking web platform.\nYou will mentor frontend engineers, define architecture for React and Next.js applications, and coordinate delivery with product and platform teams.\nRequirements:\n- 7+ years building frontend applications\n- Expert React, TypeScript, and Next.js experience\n- Experience leading code quality and frontend architecture\nBonus:\n- GraphQL\n- Design system ownership\nHybrid in New York City.\n",
+      "gold": {
+        "job_title": "Lead Frontend Platform Engineer",
+        "functional_role_family": "frontend",
+        "organizational_role_mode": "tech_lead",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "React",
+          "TypeScript",
+          "Next.js"
+        ],
+        "nice_to_have_skills": [
+          "GraphQL",
+          "Design System Ownership"
+        ],
+        "recruiter_intent_summary": "Demonstrates frontend technical leadership, architecture judgment, and cross-team delivery coordination.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.75,
+          "max_overall_score": 1.0,
+          "min_completeness_score": 0.75,
+          "max_completeness_score": 1.0,
+          "min_specificity_score": 0.65,
+          "max_ambiguity_score": 0.3,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Define architecture for React and Next.js applications",
+          "Mentor frontend engineers",
+          "Coordinate delivery with product and platform teams"
+        ]
+      }
+    },
+    {
+      "case_id": "backend_junior_api",
+      "description": "Junior backend API role with explicit stack requirements.",
+      "tags": [
+        "backend",
+        "junior",
+        "highly_structured"
+      ],
+      "raw_jd": "Junior Backend Engineer\nWe are hiring a junior backend engineer to build internal APIs for our operations platform.\nResponsibilities:\n- Implement Python services and REST APIs\n- Write SQL queries and maintain PostgreSQL data flows\n- Work with senior engineers on testing and deployment\nRequirements:\n- 2+ years of software engineering experience\n- Python, REST API, PostgreSQL, and Git fundamentals\nNice to have:\n- Docker\n- FastAPI\nOnsite in Austin.\n",
+      "gold": {
+        "job_title": "Junior Backend Engineer",
+        "functional_role_family": "backend",
+        "organizational_role_mode": "individual_contributor",
+        "seniority_level": "junior",
+        "must_have_skills": [
+          "Python",
+          "REST API",
+          "PostgreSQL",
+          "Git"
+        ],
+        "nice_to_have_skills": [
+          "Docker",
+          "FastAPI"
+        ],
+        "recruiter_intent_summary": "Shows reliable backend execution fundamentals and readiness to grow under senior guidance.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.72,
+          "max_overall_score": 0.95,
+          "min_completeness_score": 0.72,
+          "max_completeness_score": 0.95,
+          "min_specificity_score": 0.62,
+          "max_ambiguity_score": 0.3,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Implement Python services and REST APIs",
+          "Maintain PostgreSQL data flows",
+          "Work with senior engineers on testing and deployment"
+        ]
+      }
+    },
+    {
+      "case_id": "backend_senior_fintech",
+      "description": "Senior backend fintech role emphasizing reliability and regulated systems.",
+      "tags": [
+        "backend",
+        "senior",
+        "enterprise"
+      ],
+      "raw_jd": "Senior Backend Engineer\nBrightLedger builds payment infrastructure for regulated financial products.\nYou will design Java and Kotlin services, improve reliability for high-volume transaction systems, and partner with compliance and security.\nRequirements:\n- 6+ years building backend services\n- Java, Kotlin, SQL, and distributed systems experience\n- Experience in fintech or regulated systems\nPreferred:\n- Kafka\n- AWS\nHybrid in Boston.\n",
+      "gold": {
+        "job_title": "Senior Backend Engineer",
+        "functional_role_family": "backend",
+        "organizational_role_mode": "senior_individual_contributor",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "Java",
+          "Kotlin",
+          "SQL",
+          "Distributed Systems"
+        ],
+        "nice_to_have_skills": [
+          "Kafka",
+          "AWS"
+        ],
+        "recruiter_intent_summary": "Proves backend depth in reliable regulated systems with strong execution under operational constraints.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.78,
+          "max_overall_score": 1.0,
+          "min_completeness_score": 0.78,
+          "max_completeness_score": 1.0,
+          "min_specificity_score": 0.68,
+          "max_ambiguity_score": 0.28,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Design Java and Kotlin services",
+          "Improve reliability for transaction systems",
+          "Partner with compliance and security"
+        ]
+      }
+    },
+    {
+      "case_id": "backend_staff_platform",
+      "description": "Staff-like backend platform role with architecture emphasis.",
+      "tags": [
+        "backend",
+        "senior",
+        "platform"
+      ],
+      "raw_jd": "Staff Backend Platform Engineer\nYou will own service architecture for our internal developer platform, guide API design, and unblock teams migrating to event-driven systems.\nRequirements:\n- 8+ years of backend engineering experience\n- Expert Go, gRPC, PostgreSQL, and distributed systems knowledge\n- Experience driving architecture across multiple teams\nNice to have:\n- Kafka\n- Kubernetes\nRemote across North America.\n",
+      "gold": {
+        "job_title": "Staff Backend Platform Engineer",
+        "functional_role_family": "backend",
+        "organizational_role_mode": "senior_individual_contributor",
+        "seniority_level": "staff",
+        "must_have_skills": [
+          "Go",
+          "gRPC",
+          "PostgreSQL",
+          "Distributed Systems"
+        ],
+        "nice_to_have_skills": [
+          "Kafka",
+          "Kubernetes"
+        ],
+        "recruiter_intent_summary": "Shows staff-level backend architecture ownership that scales platform decisions across multiple teams.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.8,
+          "max_overall_score": 1.0,
+          "min_completeness_score": 0.78,
+          "max_completeness_score": 1.0,
+          "min_specificity_score": 0.7,
+          "max_ambiguity_score": 0.25,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Own service architecture for the developer platform",
+          "Guide API design",
+          "Unblock teams migrating to event-driven systems"
+        ]
+      }
+    },
+    {
+      "case_id": "backend_manager_payments",
+      "description": "Backend engineering manager role for payments systems.",
+      "tags": [
+        "backend",
+        "manager",
+        "enterprise",
+        "senior"
+      ],
+      "raw_jd": "Engineering Manager, Payments Backend\nFinCore is looking for a manager to lead a team building ledger and payout services.\nYou will coach backend engineers, set delivery plans, and partner with product, finance, and compliance.\nRequirements:\n- 8+ years in software engineering and 2+ years managing engineers\n- Strong backend fundamentals in Java or Kotlin and SQL\n- Experience with payment systems, reliability, and incident response\nPreferred:\n- AWS\n- Kafka\nHybrid in Seattle.\n",
+      "gold": {
+        "job_title": "Engineering Manager, Payments Backend",
+        "functional_role_family": "backend",
+        "organizational_role_mode": "people_manager",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "Java",
+          "Kotlin",
+          "SQL",
+          "Payment Systems"
+        ],
+        "nice_to_have_skills": [
+          "AWS",
+          "Kafka"
+        ],
+        "recruiter_intent_summary": "Demonstrates people leadership and dependable delivery for backend payment systems in a regulated environment.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.8,
+          "max_overall_score": 1.0,
+          "min_completeness_score": 0.78,
+          "max_completeness_score": 1.0,
+          "min_specificity_score": 0.68,
+          "max_ambiguity_score": 0.28,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Lead a team building ledger and payout services",
+          "Coach backend engineers and set delivery plans",
+          "Partner with product, finance, and compliance"
+        ]
+      }
+    },
+    {
+      "case_id": "fullstack_founding_engineer",
+      "description": "Founding fullstack role seeking broad startup ownership.",
+      "tags": [
+        "fullstack",
+        "startup",
+        "senior",
+        "lead"
+      ],
+      "raw_jd": "Founding Full-Stack Engineer\nJoin OrbitDeck as an early-stage founding engineer.\nYou will work across React, Node.js, PostgreSQL, and cloud infrastructure while partnering directly with the founders on product direction.\nRequirements:\n- 5+ years shipping product as a full-stack engineer\n- React, TypeScript, Node.js, and PostgreSQL\n- Comfortable owning infrastructure and customer issues when needed\nNice to have:\n- Terraform\n- Analytics instrumentation\nRemote in the US.\n",
+      "gold": {
+        "job_title": "Founding Full-Stack Engineer",
+        "functional_role_family": "fullstack",
+        "organizational_role_mode": "founder_or_generalist",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL"
+        ],
+        "nice_to_have_skills": [
+          "Terraform",
+          "Analytics Instrumentation"
+        ],
+        "recruiter_intent_summary": "Shows broad startup ownership across product, application code, and infrastructure execution.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.68,
+          "max_overall_score": 0.92,
+          "min_completeness_score": 0.65,
+          "max_completeness_score": 0.9,
+          "min_specificity_score": 0.58,
+          "max_ambiguity_score": 0.42,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Work across React, Node.js, PostgreSQL, and infrastructure",
+          "Partner with founders on product direction",
+          "Own customer and operational issues when needed"
+        ]
+      }
+    },
+    {
+      "case_id": "fullstack_mid_marketplace",
+      "description": "Mid-level fullstack marketplace role.",
+      "tags": [
+        "fullstack"
+      ],
+      "raw_jd": "Full-Stack Engineer\nOur marketplace team needs an engineer to build buyer and seller workflows.\nYou will implement React frontends, Python APIs, and PostgreSQL-backed features with product managers and designers.\nRequirements:\n- 4+ years of experience in full-stack development\n- React, Python, SQL, and REST APIs\nNice to have:\n- Redis\n- Celery\nHybrid in Toronto.\n",
+      "gold": {
+        "job_title": "Full-Stack Engineer",
+        "functional_role_family": "fullstack",
+        "organizational_role_mode": "individual_contributor",
+        "seniority_level": "mid",
+        "must_have_skills": [
+          "React",
+          "Python",
+          "SQL",
+          "REST APIs"
+        ],
+        "nice_to_have_skills": [
+          "Redis",
+          "Celery"
+        ],
+        "recruiter_intent_summary": "Shows balanced full-stack execution building customer workflows with solid product collaboration.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.7,
+          "max_overall_score": 0.94,
+          "min_completeness_score": 0.68,
+          "max_completeness_score": 0.92,
+          "min_specificity_score": 0.6,
+          "max_ambiguity_score": 0.34,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Implement React frontends and Python APIs",
+          "Build PostgreSQL-backed marketplace features",
+          "Collaborate with product managers and designers"
+        ]
+      }
+    },
+    {
+      "case_id": "fullstack_consulting_lead",
+      "description": "Lead fullstack consulting role with client delivery emphasis.",
+      "tags": [
+        "fullstack",
+        "lead"
+      ],
+      "raw_jd": "Lead Full-Stack Consultant\nYou will lead client delivery for modern web applications, shape technical direction, and coordinate engineers across frontend and backend workstreams.\nRequirements:\n- 7+ years in software consulting or agency delivery\n- React, TypeScript, Node.js, and cloud deployment experience\n- Strong client communication and technical leadership\nPreferred:\n- GraphQL\n- AWS\nTravel up to 20%.\n",
+      "gold": {
+        "job_title": "Lead Full-Stack Consultant",
+        "functional_role_family": "fullstack",
+        "organizational_role_mode": "consultant",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "React",
+          "TypeScript",
+          "Node.js"
+        ],
+        "nice_to_have_skills": [
+          "GraphQL",
+          "AWS"
+        ],
+        "recruiter_intent_summary": "Demonstrates client-facing technical leadership while delivering full-stack solutions end to end.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.72,
+          "max_overall_score": 0.95,
+          "min_completeness_score": 0.7,
+          "max_completeness_score": 0.92,
+          "min_specificity_score": 0.6,
+          "max_ambiguity_score": 0.35,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Lead client delivery for web applications",
+          "Shape technical direction",
+          "Coordinate frontend and backend workstreams"
+        ]
+      }
+    },
+    {
+      "case_id": "devops_sre_enterprise",
+      "description": "Enterprise SRE role with strong structure and reliability requirements.",
+      "tags": [
+        "platform",
+        "devops",
+        "senior",
+        "enterprise",
+        "highly_structured"
+      ],
+      "raw_jd": "Site Reliability Engineer\nCompany: Northstar Cloud\nResponsibilities:\n- Improve reliability, observability, and incident response for critical services\n- Automate infrastructure with Terraform and Kubernetes\n- Partner with backend teams on service-level objectives and production readiness\nBasic Qualifications:\n- 5+ years in SRE, DevOps, or platform engineering\n- Kubernetes, Terraform, AWS, and monitoring systems experience\nPreferred Qualifications:\n- Go\n- PagerDuty\nOnsite in Seattle four days per week.\n",
+      "gold": {
+        "job_title": "Site Reliability Engineer",
+        "functional_role_family": "devops",
+        "organizational_role_mode": "senior_individual_contributor",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "Kubernetes",
+          "Terraform",
+          "AWS",
+          "Monitoring Systems"
+        ],
+        "nice_to_have_skills": [
+          "Go",
+          "PagerDuty"
+        ],
+        "recruiter_intent_summary": "Proves production reliability depth, automation discipline, and operational partnership with service teams.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.82,
+          "max_overall_score": 1.0,
+          "min_completeness_score": 0.82,
+          "max_completeness_score": 1.0,
+          "min_specificity_score": 0.72,
+          "max_ambiguity_score": 0.22,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Improve reliability and incident response",
+          "Automate infrastructure with Terraform and Kubernetes",
+          "Partner on SLOs and production readiness"
+        ]
+      }
+    },
+    {
+      "case_id": "platform_developer_experience",
+      "description": "Platform role focused on developer experience and internal tooling.",
+      "tags": [
+        "platform",
+        "senior"
+      ],
+      "raw_jd": "Senior Platform Engineer, Developer Experience\nYou will build internal tooling, standard CI/CD workflows, and paved-road services that help product teams ship faster.\nRequirements:\n- 6+ years in platform or infrastructure engineering\n- Kubernetes, GitHub Actions, Terraform, and Python\n- Experience improving developer experience through tooling and documentation\nNice to have:\n- Backstage\n- Go\nRemote in the US.\n",
+      "gold": {
+        "job_title": "Senior Platform Engineer, Developer Experience",
+        "functional_role_family": "platform",
+        "organizational_role_mode": "senior_individual_contributor",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "Kubernetes",
+          "GitHub Actions",
+          "Terraform",
+          "Python"
+        ],
+        "nice_to_have_skills": [
+          "Backstage",
+          "Go"
+        ],
+        "recruiter_intent_summary": "Shows platform ownership that improves developer velocity through scalable internal tooling.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.78,
+          "max_overall_score": 0.98,
+          "min_completeness_score": 0.76,
+          "max_completeness_score": 0.98,
+          "min_specificity_score": 0.66,
+          "max_ambiguity_score": 0.28,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Build internal tooling and paved-road services",
+          "Standardize CI/CD workflows",
+          "Improve developer experience through tooling and documentation"
+        ]
+      }
+    },
+    {
+      "case_id": "devops_manager_cloud",
+      "description": "DevOps manager role leading cloud infrastructure teams.",
+      "tags": [
+        "devops",
+        "manager",
+        "enterprise",
+        "senior"
+      ],
+      "raw_jd": "Manager, Cloud Infrastructure\nLead the DevOps team responsible for cloud infrastructure, deployment automation, and platform reliability.\nYou will manage engineers, prioritize roadmap work, and partner with security and backend teams.\nRequirements:\n- 8+ years in infrastructure engineering and 2+ years of people management\n- AWS, Kubernetes, Terraform, and CI/CD systems\n- Experience leading operational excellence and incident response\nPreferred:\n- FinOps\n- Go\nHybrid in Denver.\n",
+      "gold": {
+        "job_title": "Manager, Cloud Infrastructure",
+        "functional_role_family": "devops",
+        "organizational_role_mode": "people_manager",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "AWS",
+          "Kubernetes",
+          "Terraform",
+          "CI/CD Systems"
+        ],
+        "nice_to_have_skills": [
+          "FinOps",
+          "Go"
+        ],
+        "recruiter_intent_summary": "Demonstrates people leadership for cloud reliability, automation, and cross-team operational execution.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.8,
+          "max_overall_score": 1.0,
+          "min_completeness_score": 0.78,
+          "max_completeness_score": 1.0,
+          "min_specificity_score": 0.68,
+          "max_ambiguity_score": 0.26,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Lead the DevOps team",
+          "Prioritize roadmap work",
+          "Partner with security and backend teams"
+        ]
+      }
+    },
+    {
+      "case_id": "data_analyst_junior",
+      "description": "Junior analytics role with dashboard and stakeholder support responsibilities.",
+      "tags": [
+        "data",
+        "analytics",
+        "junior"
+      ],
+      "raw_jd": "Junior Data Analyst\nYou will create dashboards, write SQL, and support business stakeholders with reporting and KPI tracking.\nRequirements:\n- 1+ years in analytics or business intelligence\n- SQL, Excel, and dashboarding experience\n- Strong communication with non-technical stakeholders\nNice to have:\n- Tableau\n- Python\nHybrid in Atlanta.\n",
+      "gold": {
+        "job_title": "Junior Data Analyst",
+        "functional_role_family": "analytics",
+        "organizational_role_mode": "individual_contributor",
+        "seniority_level": "junior",
+        "must_have_skills": [
+          "SQL",
+          "Excel",
+          "Dashboarding"
+        ],
+        "nice_to_have_skills": [
+          "Tableau",
+          "Python"
+        ],
+        "recruiter_intent_summary": "Shows dependable analytics execution with clear stakeholder-facing reporting and KPI support.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.7,
+          "max_overall_score": 0.92,
+          "min_completeness_score": 0.68,
+          "max_completeness_score": 0.9,
+          "min_specificity_score": 0.58,
+          "max_ambiguity_score": 0.34,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Create dashboards and write SQL",
+          "Support business stakeholders with reporting",
+          "Track KPIs and business metrics"
+        ]
+      }
+    },
+    {
+      "case_id": "data_engineer_senior",
+      "description": "Senior data engineering role for pipelines and data platform reliability.",
+      "tags": [
+        "data",
+        "senior",
+        "enterprise"
+      ],
+      "raw_jd": "Senior Data Engineer\nYou will design batch and streaming pipelines, own warehouse reliability, and partner with analytics and ML teams.\nRequirements:\n- 6+ years in data engineering\n- Python, SQL, Spark, and Airflow\n- Experience with data modeling and warehouse performance\nPreferred:\n- dbt\n- Kafka\nRemote in Canada.\n",
+      "gold": {
+        "job_title": "Senior Data Engineer",
+        "functional_role_family": "data",
+        "organizational_role_mode": "senior_individual_contributor",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "Python",
+          "SQL",
+          "Spark",
+          "Airflow"
+        ],
+        "nice_to_have_skills": [
+          "dbt",
+          "Kafka"
+        ],
+        "recruiter_intent_summary": "Proves data platform execution depth with strong pipeline reliability and cross-functional partnership.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.78,
+          "max_overall_score": 0.98,
+          "min_completeness_score": 0.76,
+          "max_completeness_score": 0.98,
+          "min_specificity_score": 0.66,
+          "max_ambiguity_score": 0.28,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Design batch and streaming pipelines",
+          "Own warehouse reliability",
+          "Partner with analytics and ML teams"
+        ]
+      }
+    },
+    {
+      "case_id": "analytics_manager_bi",
+      "description": "BI and analytics manager role focused on insight delivery.",
+      "tags": [
+        "analytics",
+        "manager",
+        "enterprise"
+      ],
+      "raw_jd": "Analytics Manager\nLead the BI and analytics team responsible for executive reporting, experimentation readouts, and planning insights.\nYou will manage analysts, prioritize stakeholder requests, and raise data quality standards.\nRequirements:\n- 7+ years in analytics and 2+ years managing analysts\n- SQL, Looker, experimentation, and KPI framework design\nPreferred:\n- Python\n- Data governance experience\nHybrid in London.\n",
+      "gold": {
+        "job_title": "Analytics Manager",
+        "functional_role_family": "analytics",
+        "organizational_role_mode": "people_manager",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "SQL",
+          "Looker",
+          "Experimentation",
+          "KPI Framework Design"
+        ],
+        "nice_to_have_skills": [
+          "Python",
+          "Data Governance"
+        ],
+        "recruiter_intent_summary": "Demonstrates people leadership that turns analytics into trusted business decision support.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.76,
+          "max_overall_score": 0.98,
+          "min_completeness_score": 0.74,
+          "max_completeness_score": 0.98,
+          "min_specificity_score": 0.64,
+          "max_ambiguity_score": 0.3,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Lead the BI and analytics team",
+          "Prioritize stakeholder requests",
+          "Raise data quality standards"
+        ]
+      }
+    },
+    {
+      "case_id": "ml_engineer_startup",
+      "description": "Startup ML engineer role mixing modeling and product delivery.",
+      "tags": [
+        "ml",
+        "startup",
+        "senior"
+      ],
+      "raw_jd": "Machine Learning Engineer\nJoin NovaSearch to build ranking and recommendation systems for our product.\nYou will train and deploy models, build Python services around inference, and collaborate directly with product on experimentation.\nRequirements:\n- 4+ years in ML engineering\n- Python, PyTorch, feature engineering, and model serving\n- Comfortable moving quickly from prototype to production\nNice to have:\n- Vector databases\n- Airflow\nRemote.\n",
+      "gold": {
+        "job_title": "Machine Learning Engineer",
+        "functional_role_family": "ml",
+        "organizational_role_mode": "senior_individual_contributor",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "Python",
+          "PyTorch",
+          "Feature Engineering",
+          "Model Serving"
+        ],
+        "nice_to_have_skills": [
+          "Vector Databases",
+          "Airflow"
+        ],
+        "recruiter_intent_summary": "Shows practical ML delivery from experimentation through production model deployment in a startup setting.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.7,
+          "max_overall_score": 0.94,
+          "min_completeness_score": 0.68,
+          "max_completeness_score": 0.92,
+          "min_specificity_score": 0.62,
+          "max_ambiguity_score": 0.38,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Train and deploy models",
+          "Build Python services around inference",
+          "Collaborate with product on experimentation"
+        ]
+      }
+    },
+    {
+      "case_id": "research_scientist_nlp",
+      "description": "Research scientist role with explicit researcher mode.",
+      "tags": [
+        "ml",
+        "researcher",
+        "senior"
+      ],
+      "raw_jd": "Research Scientist, NLP\nYou will develop novel language modeling approaches, publish externally when appropriate, and translate research into product prototypes.\nRequirements:\n- PhD or equivalent research experience in machine learning or NLP\n- Python, PyTorch, and experimental design\n- Strong publication or applied research track record\nPreferred:\n- Distributed training\n- RLHF\nHybrid in San Francisco.\n",
+      "gold": {
+        "job_title": "Research Scientist, NLP",
+        "functional_role_family": "ml",
+        "organizational_role_mode": "researcher",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "Python",
+          "PyTorch",
+          "Experimental Design"
+        ],
+        "nice_to_have_skills": [
+          "Distributed Training",
+          "RLHF"
+        ],
+        "recruiter_intent_summary": "Proves deep ML research credibility while still translating ideas into product-relevant prototypes.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.78,
+          "max_overall_score": 0.98,
+          "min_completeness_score": 0.76,
+          "max_completeness_score": 0.98,
+          "min_specificity_score": 0.68,
+          "max_ambiguity_score": 0.28,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Develop novel language modeling approaches",
+          "Publish externally when appropriate",
+          "Translate research into product prototypes"
+        ]
+      }
+    },
+    {
+      "case_id": "ml_platform_lead",
+      "description": "Lead role for ML platform infrastructure.",
+      "tags": [
+        "ml",
+        "platform",
+        "lead",
+        "enterprise"
+      ],
+      "raw_jd": "Lead ML Platform Engineer\nOwn the infrastructure used by our ML teams for training, feature pipelines, and model deployment.\nYou will mentor platform engineers, define platform architecture, and partner with applied scientists.\nRequirements:\n- 7+ years in software or platform engineering\n- Python, Kubernetes, Terraform, and ML workflow tooling\n- Experience leading technical direction across teams\nNice to have:\n- Kubeflow\n- Spark\nRemote in Europe.\n",
+      "gold": {
+        "job_title": "Lead ML Platform Engineer",
+        "functional_role_family": "ml",
+        "organizational_role_mode": "tech_lead",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "Python",
+          "Kubernetes",
+          "Terraform",
+          "ML Workflow Tooling"
+        ],
+        "nice_to_have_skills": [
+          "Kubeflow",
+          "Spark"
+        ],
+        "recruiter_intent_summary": "Demonstrates technical leadership for reliable ML platform architecture and cross-team enablement.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.78,
+          "max_overall_score": 0.98,
+          "min_completeness_score": 0.76,
+          "max_completeness_score": 0.98,
+          "min_specificity_score": 0.66,
+          "max_ambiguity_score": 0.28,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Own ML training and deployment infrastructure",
+          "Mentor platform engineers",
+          "Define platform architecture with applied scientists"
+        ]
+      }
+    },
+    {
+      "case_id": "product_manager_growth",
+      "description": "Growth PM role in a startup environment.",
+      "tags": [
+        "product",
+        "startup"
+      ],
+      "raw_jd": "Product Manager, Growth\nYou will own activation and retention experiments, define hypotheses, and work closely with engineering, design, and analytics.\nRequirements:\n- 4+ years in product management\n- Experience with experimentation, funnels, metrics, and roadmap prioritization\n- Strong written communication and stakeholder management\nNice to have:\n- B2C growth experience\n- SQL\nRemote in the US.\n",
+      "gold": {
+        "job_title": "Product Manager, Growth",
+        "functional_role_family": "product",
+        "organizational_role_mode": "individual_contributor",
+        "seniority_level": "mid",
+        "must_have_skills": [
+          "Experimentation",
+          "Funnels",
+          "Metrics",
+          "Roadmap Prioritization"
+        ],
+        "nice_to_have_skills": [
+          "B2C Growth Experience",
+          "SQL"
+        ],
+        "recruiter_intent_summary": "Shows product judgment backed by experimentation rigor and fast cross-functional execution.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.7,
+          "max_overall_score": 0.94,
+          "min_completeness_score": 0.68,
+          "max_completeness_score": 0.92,
+          "min_specificity_score": 0.58,
+          "max_ambiguity_score": 0.38,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Own activation and retention experiments",
+          "Define product hypotheses",
+          "Work closely with engineering, design, and analytics"
+        ]
+      }
+    },
+    {
+      "case_id": "senior_product_manager_platform",
+      "description": "Senior platform PM role for internal developer products.",
+      "tags": [
+        "product",
+        "senior",
+        "enterprise"
+      ],
+      "raw_jd": "Senior Product Manager, Platform\nOwn the roadmap for internal developer platform capabilities used by engineering teams.\nYou will define strategy, partner with platform and security leaders, and prioritize investments that improve engineering velocity.\nRequirements:\n- 6+ years in product management\n- Experience with platform products, stakeholder alignment, and roadmap communication\nPreferred:\n- Developer tools background\n- Analytics fluency\nHybrid in New York City.\n",
+      "gold": {
+        "job_title": "Senior Product Manager, Platform",
+        "functional_role_family": "product",
+        "organizational_role_mode": "senior_individual_contributor",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "Platform Products",
+          "Stakeholder Alignment",
+          "Roadmap Communication"
+        ],
+        "nice_to_have_skills": [
+          "Developer Tools Background",
+          "Analytics Fluency"
+        ],
+        "recruiter_intent_summary": "Demonstrates strategic platform product ownership with strong stakeholder alignment and prioritization skill.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.76,
+          "max_overall_score": 0.98,
+          "min_completeness_score": 0.74,
+          "max_completeness_score": 0.98,
+          "min_specificity_score": 0.6,
+          "max_ambiguity_score": 0.32,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Own the roadmap for platform capabilities",
+          "Define strategy with platform and security leaders",
+          "Prioritize investments that improve engineering velocity"
+        ]
+      }
+    },
+    {
+      "case_id": "director_product_enterprise",
+      "description": "Director-level product leadership role.",
+      "tags": [
+        "product",
+        "manager",
+        "enterprise",
+        "senior"
+      ],
+      "raw_jd": "Director of Product\nLead a team of product managers across our enterprise workflow suite.\nYou will set portfolio strategy, coach PMs, and align go-to-market, engineering, and design around annual priorities.\nRequirements:\n- 10+ years in product management and 4+ years leading managers or senior PMs\n- Portfolio strategy, executive communication, and team leadership\nPreferred:\n- SaaS platform experience\n- Pricing or monetization work\nHybrid in London.\n",
+      "gold": {
+        "job_title": "Director of Product",
+        "functional_role_family": "product",
+        "organizational_role_mode": "director_or_head",
+        "seniority_level": "director",
+        "must_have_skills": [
+          "Portfolio Strategy",
+          "Executive Communication",
+          "Team Leadership"
+        ],
+        "nice_to_have_skills": [
+          "SaaS Platform Experience",
+          "Pricing or Monetization"
+        ],
+        "recruiter_intent_summary": "Shows portfolio-level product leadership, people development, and executive alignment across functions.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.78,
+          "max_overall_score": 0.98,
+          "min_completeness_score": 0.76,
+          "max_completeness_score": 0.98,
+          "min_specificity_score": 0.62,
+          "max_ambiguity_score": 0.3,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Lead a team of product managers",
+          "Set portfolio strategy",
+          "Align go-to-market, engineering, and design around priorities"
+        ]
+      }
+    },
+    {
+      "case_id": "product_designer_mid",
+      "description": "Mid-level product designer role for end-to-end feature design.",
+      "tags": [
+        "design"
+      ],
+      "raw_jd": "Product Designer\nYou will design end-to-end user experiences for our onboarding and billing flows.\nRequirements:\n- 4+ years in product design\n- Figma, interaction design, visual design, and user flows\n- Experience collaborating with product managers and engineers\nNice to have:\n- Design systems\n- Experimentation\nHybrid in Los Angeles.\n",
+      "gold": {
+        "job_title": "Product Designer",
+        "functional_role_family": "design",
+        "organizational_role_mode": "individual_contributor",
+        "seniority_level": "mid",
+        "must_have_skills": [
+          "Figma",
+          "Interaction Design",
+          "Visual Design",
+          "User Flows"
+        ],
+        "nice_to_have_skills": [
+          "Design Systems",
+          "Experimentation"
+        ],
+        "recruiter_intent_summary": "Shows strong craft executing end-to-end product design in close partnership with PMs and engineers.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.72,
+          "max_overall_score": 0.95,
+          "min_completeness_score": 0.7,
+          "max_completeness_score": 0.94,
+          "min_specificity_score": 0.58,
+          "max_ambiguity_score": 0.34,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Design end-to-end onboarding and billing experiences",
+          "Create interaction and visual design artifacts",
+          "Collaborate with product managers and engineers"
+        ]
+      }
+    },
+    {
+      "case_id": "staff_product_designer",
+      "description": "Staff-level product designer with systems and leadership emphasis.",
+      "tags": [
+        "design",
+        "senior",
+        "lead"
+      ],
+      "raw_jd": "Staff Product Designer\nOwn design direction for complex B2B workflows and mentor designers across teams.\nYou will lead discovery with product and engineering, shape design systems usage, and raise UX quality.\nRequirements:\n- 8+ years in product design\n- Figma, systems thinking, prototyping, and stakeholder facilitation\nPreferred:\n- Enterprise SaaS experience\n- Accessibility\nRemote in North America.\n",
+      "gold": {
+        "job_title": "Staff Product Designer",
+        "functional_role_family": "design",
+        "organizational_role_mode": "tech_lead",
+        "seniority_level": "staff",
+        "must_have_skills": [
+          "Figma",
+          "Systems Thinking",
+          "Prototyping",
+          "Stakeholder Facilitation"
+        ],
+        "nice_to_have_skills": [
+          "Enterprise SaaS Experience",
+          "Accessibility"
+        ],
+        "recruiter_intent_summary": "Shows senior design leadership that combines systems thinking, discovery, and craft mentorship.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.76,
+          "max_overall_score": 0.98,
+          "min_completeness_score": 0.74,
+          "max_completeness_score": 0.98,
+          "min_specificity_score": 0.62,
+          "max_ambiguity_score": 0.3,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Own design direction for complex workflows",
+          "Lead discovery with product and engineering",
+          "Mentor designers and raise UX quality"
+        ]
+      }
+    },
+    {
+      "case_id": "design_manager_brand",
+      "description": "Design manager role spanning brand and product design operations.",
+      "tags": [
+        "design",
+        "manager",
+        "enterprise"
+      ],
+      "raw_jd": "Design Manager\nLead a multidisciplinary design team covering product marketing, brand, and lifecycle experiences.\nYou will manage designers, set design operations, and partner with marketing and product leadership.\nRequirements:\n- 7+ years in design and 2+ years managing designers\n- Team leadership, critique, hiring, and cross-functional collaboration\nPreferred:\n- Brand systems\n- Content design\nHybrid in Berlin.\n",
+      "gold": {
+        "job_title": "Design Manager",
+        "functional_role_family": "design",
+        "organizational_role_mode": "people_manager",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "Team Leadership",
+          "Critique",
+          "Hiring",
+          "Cross-functional Collaboration"
+        ],
+        "nice_to_have_skills": [
+          "Brand Systems",
+          "Content Design"
+        ],
+        "recruiter_intent_summary": "Demonstrates people leadership for design quality, team operations, and cross-functional coordination.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.74,
+          "max_overall_score": 0.96,
+          "min_completeness_score": 0.72,
+          "max_completeness_score": 0.96,
+          "min_specificity_score": 0.58,
+          "max_ambiguity_score": 0.34,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Lead a multidisciplinary design team",
+          "Set design operations",
+          "Partner with marketing and product leadership"
+        ]
+      }
+    },
+    {
+      "case_id": "qa_automation_engineer",
+      "description": "QA automation role with structured technical requirements.",
+      "tags": [
+        "qa",
+        "enterprise",
+        "highly_structured"
+      ],
+      "raw_jd": "QA Automation Engineer\nYou will build automated test suites for our core workflow platform.\nRequirements:\n- 4+ years in QA or test automation\n- Selenium, API testing, CI pipelines, and Python or Java\n- Strong defect analysis and regression strategy\nNice to have:\n- Playwright\n- Performance testing\nOnsite in Dublin.\n",
+      "gold": {
+        "job_title": "QA Automation Engineer",
+        "functional_role_family": "qa",
+        "organizational_role_mode": "individual_contributor",
+        "seniority_level": "mid",
+        "must_have_skills": [
+          "Selenium",
+          "API Testing",
+          "CI Pipelines",
+          "Python",
+          "Java"
+        ],
+        "nice_to_have_skills": [
+          "Playwright",
+          "Performance Testing"
+        ],
+        "recruiter_intent_summary": "Shows disciplined quality engineering with repeatable automation and defect prevention depth.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.76,
+          "max_overall_score": 0.98,
+          "min_completeness_score": 0.74,
+          "max_completeness_score": 0.98,
+          "min_specificity_score": 0.64,
+          "max_ambiguity_score": 0.28,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Build automated test suites",
+          "Support API and pipeline testing",
+          "Drive defect analysis and regression strategy"
+        ]
+      }
+    },
+    {
+      "case_id": "qa_manager_regulated",
+      "description": "QA manager role in a regulated environment.",
+      "tags": [
+        "qa",
+        "manager",
+        "enterprise",
+        "senior"
+      ],
+      "raw_jd": "QA Manager\nLead quality engineering for our healthcare operations platform.\nYou will manage QA engineers, define release quality standards, and coordinate testing across product, engineering, and compliance.\nRequirements:\n- 7+ years in quality engineering and 2+ years managing teams\n- Test strategy, release management, and regulated software experience\nPreferred:\n- Automation program ownership\n- Performance testing\nHybrid in Nashville.\n",
+      "gold": {
+        "job_title": "QA Manager",
+        "functional_role_family": "qa",
+        "organizational_role_mode": "people_manager",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "Test Strategy",
+          "Release Management",
+          "Regulated Software Experience"
+        ],
+        "nice_to_have_skills": [
+          "Automation Program Ownership",
+          "Performance Testing"
+        ],
+        "recruiter_intent_summary": "Demonstrates quality leadership that coordinates reliable releases in a regulated environment.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.76,
+          "max_overall_score": 0.98,
+          "min_completeness_score": 0.74,
+          "max_completeness_score": 0.98,
+          "min_specificity_score": 0.6,
+          "max_ambiguity_score": 0.32,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Lead quality engineering",
+          "Define release quality standards",
+          "Coordinate testing across product, engineering, and compliance"
+        ]
+      }
+    },
+    {
+      "case_id": "support_engineer_junior",
+      "description": "Junior support engineer role with customer problem-solving emphasis.",
+      "tags": [
+        "support",
+        "junior"
+      ],
+      "raw_jd": "Technical Support Engineer\nHelp customers troubleshoot API integrations and platform issues.\nRequirements:\n- 1+ years in technical support or implementation support\n- SQL basics, API debugging, and customer communication\n- Comfortable triaging issues with engineering\nNice to have:\n- Zendesk\n- Postman\nRemote in the UK.\n",
+      "gold": {
+        "job_title": "Technical Support Engineer",
+        "functional_role_family": "support",
+        "organizational_role_mode": "individual_contributor",
+        "seniority_level": "junior",
+        "must_have_skills": [
+          "SQL Basics",
+          "API Debugging",
+          "Customer Communication"
+        ],
+        "nice_to_have_skills": [
+          "Zendesk",
+          "Postman"
+        ],
+        "recruiter_intent_summary": "Shows dependable customer-facing troubleshooting with enough technical depth to partner with engineering.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.68,
+          "max_overall_score": 0.92,
+          "min_completeness_score": 0.66,
+          "max_completeness_score": 0.9,
+          "min_specificity_score": 0.54,
+          "max_ambiguity_score": 0.38,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Troubleshoot API integrations and platform issues",
+          "Communicate with customers",
+          "Triaging issues with engineering"
+        ]
+      }
+    },
+    {
+      "case_id": "vague_software_role",
+      "description": "Intentionally vague and noisy software JD.",
+      "tags": [
+        "vague",
+        "noisy"
+      ],
+      "raw_jd": "Software Role\nWe need someone to help teams move faster, work across functions, and improve delivery.\nExperience with modern tools is a plus.\nGood communicator. Flexible. Can wear many hats.\n",
+      "gold": {
+        "job_title": "Software Role",
+        "functional_role_family": "other",
+        "organizational_role_mode": "unknown",
+        "seniority_level": null,
+        "must_have_skills": [],
+        "nice_to_have_skills": [],
+        "recruiter_intent_summary": "Shows general problem-solving and cross-functional support in a vaguely defined role.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.35,
+          "max_overall_score": 0.75,
+          "min_completeness_score": 0.4,
+          "max_completeness_score": 0.75,
+          "min_specificity_score": 0.2,
+          "max_ambiguity_score": 0.95,
+          "min_ambiguity_score": 0.45,
+          "min_consistency_score": 0.4
+        },
+        "key_responsibility_clusters": [
+          "Help teams move faster",
+          "Work across functions",
+          "Improve delivery"
+        ]
+      }
+    },
+    {
+      "case_id": "noisy_pasted_fullstack",
+      "description": "Noisy pasted JD with bullet clutter and repeated headings.",
+      "tags": [
+        "fullstack",
+        "noisy"
+      ],
+      "raw_jd": "ROLE: Full Stack Engineer!!!\nCompany - Cedar Apps\nWHAT YOU WILL DO\n* Build React screens\n* Build Node.js APIs\nWHAT YOU WILL DO\n* Fix bugs fast\n* Work with product + design\nMUST HAVE\n* React / TypeScript / Node.js / PostgreSQL\n* 3+ years experience\nNICE TO HAVE\n* Docker\n* AWS\nRemote okay.\n",
+      "gold": {
+        "job_title": "Full Stack Engineer",
+        "functional_role_family": "fullstack",
+        "organizational_role_mode": "individual_contributor",
+        "seniority_level": "mid",
+        "must_have_skills": [
+          "React",
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL"
+        ],
+        "nice_to_have_skills": [
+          "Docker",
+          "AWS"
+        ],
+        "recruiter_intent_summary": "Shows practical full-stack execution and comfort operating in a fast-moving, messy environment.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.55,
+          "max_overall_score": 0.85,
+          "min_completeness_score": 0.55,
+          "max_completeness_score": 0.85,
+          "min_specificity_score": 0.5,
+          "max_ambiguity_score": 0.65,
+          "min_ambiguity_score": 0.2,
+          "min_consistency_score": 0.5
+        },
+        "key_responsibility_clusters": [
+          "Build React screens",
+          "Build Node.js APIs",
+          "Work with product and design"
+        ]
+      }
+    },
+    {
+      "case_id": "structured_backend_manager",
+      "description": "Highly structured backend manager JD with explicit sections.",
+      "tags": [
+        "backend",
+        "manager",
+        "enterprise",
+        "highly_structured",
+        "senior"
+      ],
+      "raw_jd": "Engineering Manager, Backend Platform\nCompany: RailStack\nAbout the role:\nLead the backend platform team responsible for APIs, service reliability, and engineering productivity.\nBasic Qualifications:\n- 8+ years in software engineering\n- 2+ years managing engineers\n- Strong experience with Java, PostgreSQL, distributed systems, and AWS\n- Experience coordinating with product, security, and infrastructure teams\nPreferred Qualifications:\n- Kafka\n- Kubernetes\nWork model: Hybrid in Chicago three days per week.\n",
+      "gold": {
+        "job_title": "Engineering Manager, Backend Platform",
+        "functional_role_family": "backend",
+        "organizational_role_mode": "people_manager",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "Java",
+          "PostgreSQL",
+          "Distributed Systems",
+          "AWS"
+        ],
+        "nice_to_have_skills": [
+          "Kafka",
+          "Kubernetes"
+        ],
+        "recruiter_intent_summary": "Demonstrates backend people leadership with strong architecture credibility and dependable cross-team delivery.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.82,
+          "max_overall_score": 1.0,
+          "min_completeness_score": 0.82,
+          "max_completeness_score": 1.0,
+          "min_specificity_score": 0.7,
+          "max_ambiguity_score": 0.22,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Lead the backend platform team",
+          "Own APIs, service reliability, and engineering productivity",
+          "Coordinate with product, security, and infrastructure teams"
+        ]
+      }
+    },
+    {
+      "case_id": "product_noisy_growth",
+      "description": "Noisy product growth JD with pasted formatting.",
+      "tags": [
+        "product",
+        "noisy",
+        "startup"
+      ],
+      "raw_jd": "TITLE Product Manager Growth\nWe move fast. Really fast.\nOwn onboarding, activation, retention. Own experiments. Own KPI reviews.\nneed: PM exp, funnels, metrics, A/B tests, roadmap calls.\nplus: SQL, B2C.\nremote-first.\n",
+      "gold": {
+        "job_title": "Product Manager Growth",
+        "functional_role_family": "product",
+        "organizational_role_mode": "individual_contributor",
+        "seniority_level": "mid",
+        "must_have_skills": [
+          "Funnels",
+          "Metrics",
+          "A/B Tests",
+          "Roadmap Calls"
+        ],
+        "nice_to_have_skills": [
+          "SQL",
+          "B2C"
+        ],
+        "recruiter_intent_summary": "Shows growth product execution with strong experimentation pace in a startup environment.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.55,
+          "max_overall_score": 0.85,
+          "min_completeness_score": 0.55,
+          "max_completeness_score": 0.85,
+          "min_specificity_score": 0.48,
+          "max_ambiguity_score": 0.6,
+          "min_ambiguity_score": 0.2,
+          "min_consistency_score": 0.5
+        },
+        "key_responsibility_clusters": [
+          "Own onboarding, activation, and retention",
+          "Own experiments and KPI reviews",
+          "Prioritize roadmap decisions"
+        ]
+      }
+    },
+    {
+      "case_id": "data_analytics_startup_generalist",
+      "description": "Startup analytics generalist role combining analysis and pipeline work.",
+      "tags": [
+        "data",
+        "analytics",
+        "startup"
+      ],
+      "raw_jd": "Data & Analytics Engineer\nYou will build lightweight pipelines, answer business questions in SQL, and create dashboards for go-to-market and product teams.\nRequirements:\n- 3+ years in analytics engineering, BI, or data analysis\n- SQL, Python, and dashboarding\n- Comfortable switching between ETL work and stakeholder analysis\nNice to have:\n- dbt\n- Reverse ETL\nRemote.\n",
+      "gold": {
+        "job_title": "Data & Analytics Engineer",
+        "functional_role_family": "data",
+        "organizational_role_mode": "individual_contributor",
+        "seniority_level": "mid",
+        "must_have_skills": [
+          "SQL",
+          "Python",
+          "Dashboarding"
+        ],
+        "nice_to_have_skills": [
+          "dbt",
+          "Reverse ETL"
+        ],
+        "recruiter_intent_summary": "Shows broad startup data ownership across pipelines, dashboards, and stakeholder analysis.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.68,
+          "max_overall_score": 0.92,
+          "min_completeness_score": 0.66,
+          "max_completeness_score": 0.9,
+          "min_specificity_score": 0.56,
+          "max_ambiguity_score": 0.42,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Build lightweight pipelines",
+          "Answer business questions in SQL",
+          "Create dashboards for product and go-to-market teams"
+        ]
+      }
+    },
+    {
+      "case_id": "backend_go_microservices",
+      "description": "Backend Go microservices role in enterprise software.",
+      "tags": [
+        "backend",
+        "senior",
+        "enterprise"
+      ],
+      "raw_jd": "Senior Go Backend Engineer\nYou will build microservices for our enterprise workflow engine, improve performance, and support service migrations.\nRequirements:\n- 5+ years in backend engineering\n- Go, gRPC, PostgreSQL, and microservices\n- Experience debugging distributed production systems\nNice to have:\n- Kafka\n- Docker\nHybrid in Madrid.\n",
+      "gold": {
+        "job_title": "Senior Go Backend Engineer",
+        "functional_role_family": "backend",
+        "organizational_role_mode": "senior_individual_contributor",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "Go",
+          "gRPC",
+          "PostgreSQL",
+          "Microservices"
+        ],
+        "nice_to_have_skills": [
+          "Kafka",
+          "Docker"
+        ],
+        "recruiter_intent_summary": "Shows backend execution depth in performant distributed services and migration-heavy delivery.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.76,
+          "max_overall_score": 0.96,
+          "min_completeness_score": 0.74,
+          "max_completeness_score": 0.96,
+          "min_specificity_score": 0.64,
+          "max_ambiguity_score": 0.3,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Build microservices for the workflow engine",
+          "Improve service performance",
+          "Support service migrations"
+        ]
+      }
+    },
+    {
+      "case_id": "frontend_mobile_web",
+      "description": "Frontend web role overlapping with mobile web performance concerns.",
+      "tags": [
+        "frontend",
+        "senior"
+      ],
+      "raw_jd": "Senior Frontend Engineer, Mobile Web\nOwn the React frontend for our mobile web checkout experience.\nRequirements:\n- 5+ years in frontend engineering\n- React, TypeScript, performance optimization, and responsive design\n- Experience partnering with product and design on conversion improvements\nNice to have:\n- Next.js\n- Experimentation\nHybrid in Paris.\n",
+      "gold": {
+        "job_title": "Senior Frontend Engineer, Mobile Web",
+        "functional_role_family": "frontend",
+        "organizational_role_mode": "senior_individual_contributor",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "React",
+          "TypeScript",
+          "Performance Optimization",
+          "Responsive Design"
+        ],
+        "nice_to_have_skills": [
+          "Next.js",
+          "Experimentation"
+        ],
+        "recruiter_intent_summary": "Shows frontend craft focused on performance, conversion, and close product partnership.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.74,
+          "max_overall_score": 0.96,
+          "min_completeness_score": 0.72,
+          "max_completeness_score": 0.96,
+          "min_specificity_score": 0.6,
+          "max_ambiguity_score": 0.32,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Own the React frontend for checkout",
+          "Optimize performance and responsive design",
+          "Partner on conversion improvements"
+        ]
+      }
+    },
+    {
+      "case_id": "product_platform_lead",
+      "description": "Lead PM-style product role with tech-lead-like coordination.",
+      "tags": [
+        "product",
+        "lead",
+        "enterprise"
+      ],
+      "raw_jd": "Lead Product Manager, Platform Integrations\nYou will lead integration strategy, define platform requirements, and coordinate execution across engineering, partner success, and operations.\nRequirements:\n- 7+ years in product management\n- API platform experience, roadmap leadership, and stakeholder alignment\nNice to have:\n- B2B SaaS\n- SQL\nHybrid in Amsterdam.\n",
+      "gold": {
+        "job_title": "Lead Product Manager, Platform Integrations",
+        "functional_role_family": "product",
+        "organizational_role_mode": "tech_lead",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "API Platform Experience",
+          "Roadmap Leadership",
+          "Stakeholder Alignment"
+        ],
+        "nice_to_have_skills": [
+          "B2B SaaS",
+          "SQL"
+        ],
+        "recruiter_intent_summary": "Shows senior cross-functional product leadership for integration strategy and execution alignment.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.74,
+          "max_overall_score": 0.96,
+          "min_completeness_score": 0.72,
+          "max_completeness_score": 0.96,
+          "min_specificity_score": 0.58,
+          "max_ambiguity_score": 0.34,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Lead integration strategy",
+          "Define platform requirements",
+          "Coordinate execution across partner functions"
+        ]
+      }
+    },
+    {
+      "case_id": "design_systems_manager",
+      "description": "Design systems manager role bridging craft and people leadership.",
+      "tags": [
+        "design",
+        "manager",
+        "enterprise"
+      ],
+      "raw_jd": "Manager, Design Systems\nLead the designers responsible for our shared components, design tokens, and documentation.\nYou will coach designers, set standards with frontend engineering, and prioritize system roadmap work.\nRequirements:\n- 6+ years in product design and 2+ years leading designers\n- Figma, design systems, facilitation, and team leadership\nPreferred:\n- Accessibility\n- Content design\nHybrid in Vancouver.\n",
+      "gold": {
+        "job_title": "Manager, Design Systems",
+        "functional_role_family": "design",
+        "organizational_role_mode": "people_manager",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "Figma",
+          "Design Systems",
+          "Facilitation",
+          "Team Leadership"
+        ],
+        "nice_to_have_skills": [
+          "Accessibility",
+          "Content Design"
+        ],
+        "recruiter_intent_summary": "Shows design systems people leadership with enough craft credibility to set standards across disciplines.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.76,
+          "max_overall_score": 0.98,
+          "min_completeness_score": 0.74,
+          "max_completeness_score": 0.98,
+          "min_specificity_score": 0.6,
+          "max_ambiguity_score": 0.3,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Lead designers responsible for shared components",
+          "Coach designers and set standards with frontend engineering",
+          "Prioritize design system roadmap work"
+        ]
+      }
+    },
+    {
+      "case_id": "analytics_consultant",
+      "description": "Analytics consultant role with client-facing delivery.",
+      "tags": [
+        "analytics",
+        "lead"
+      ],
+      "raw_jd": "Analytics Consultant\nYou will advise clients on KPI design, dashboard strategy, and experiment measurement.\nRequirements:\n- 5+ years in analytics consulting or business intelligence\n- SQL, dashboarding, stakeholder facilitation, and executive communication\nPreferred:\n- Looker\n- Retail analytics\nTravel up to 30%.\n",
+      "gold": {
+        "job_title": "Analytics Consultant",
+        "functional_role_family": "analytics",
+        "organizational_role_mode": "consultant",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "SQL",
+          "Dashboarding",
+          "Stakeholder Facilitation",
+          "Executive Communication"
+        ],
+        "nice_to_have_skills": [
+          "Looker",
+          "Retail Analytics"
+        ],
+        "recruiter_intent_summary": "Shows client-facing analytics leadership that translates ambiguous business questions into measurable insight delivery.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.7,
+          "max_overall_score": 0.94,
+          "min_completeness_score": 0.68,
+          "max_completeness_score": 0.92,
+          "min_specificity_score": 0.56,
+          "max_ambiguity_score": 0.38,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Advise clients on KPI design",
+          "Shape dashboard strategy",
+          "Support experiment measurement"
+        ]
+      }
+    },
+    {
+      "case_id": "backend_security_collab",
+      "description": "Backend role with security partnership emphasis.",
+      "tags": [
+        "backend",
+        "enterprise",
+        "senior"
+      ],
+      "raw_jd": "Senior Backend Engineer, Identity\nBuild backend services for authentication and authorization.\nYou will design APIs, partner closely with security engineers, and improve service reliability for identity workflows.\nRequirements:\n- 5+ years in backend engineering\n- Java, SQL, REST APIs, and authentication systems\nNice to have:\n- OAuth\n- AWS\nHybrid in Austin.\n",
+      "gold": {
+        "job_title": "Senior Backend Engineer, Identity",
+        "functional_role_family": "backend",
+        "organizational_role_mode": "senior_individual_contributor",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "Java",
+          "SQL",
+          "REST APIs",
+          "Authentication Systems"
+        ],
+        "nice_to_have_skills": [
+          "OAuth",
+          "AWS"
+        ],
+        "recruiter_intent_summary": "Shows backend depth in security-adjacent systems with reliable API execution and close partnership.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.74,
+          "max_overall_score": 0.96,
+          "min_completeness_score": 0.72,
+          "max_completeness_score": 0.96,
+          "min_specificity_score": 0.6,
+          "max_ambiguity_score": 0.32,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Build authentication and authorization services",
+          "Design APIs",
+          "Improve reliability for identity workflows"
+        ]
+      }
+    },
+    {
+      "case_id": "product_analyst_embedded",
+      "description": "Embedded product analytics role sitting between product and data.",
+      "tags": [
+        "analytics",
+        "product"
+      ],
+      "raw_jd": "Product Analytics Manager\nPartner with product squads to define metrics, evaluate launches, and surface insights that influence roadmap decisions.\nRequirements:\n- 5+ years in product analytics or analytics management\n- SQL, experimentation analysis, dashboards, and stakeholder communication\nNice to have:\n- Python\n- Growth analytics\nHybrid in Sydney.\n",
+      "gold": {
+        "job_title": "Product Analytics Manager",
+        "functional_role_family": "analytics",
+        "organizational_role_mode": "people_manager",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "SQL",
+          "Experimentation Analysis",
+          "Dashboards",
+          "Stakeholder Communication"
+        ],
+        "nice_to_have_skills": [
+          "Python",
+          "Growth Analytics"
+        ],
+        "recruiter_intent_summary": "Shows analytics leadership that can influence product roadmap decisions with trusted measurement.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.72,
+          "max_overall_score": 0.95,
+          "min_completeness_score": 0.7,
+          "max_completeness_score": 0.94,
+          "min_specificity_score": 0.58,
+          "max_ambiguity_score": 0.34,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Define metrics with product squads",
+          "Evaluate launches",
+          "Surface insights that influence roadmap decisions"
+        ]
+      }
+    },
+    {
+      "case_id": "platform_junior_internal_tools",
+      "description": "Junior platform/internal tools role.",
+      "tags": [
+        "platform",
+        "junior"
+      ],
+      "raw_jd": "Junior Platform Engineer\nSupport the internal tools team building scripts, deployment helpers, and team workflows.\nRequirements:\n- 2+ years in software or infrastructure engineering\n- Python, Bash, GitHub Actions, and Linux basics\nNice to have:\n- Docker\n- Kubernetes\nOnsite in Raleigh.\n",
+      "gold": {
+        "job_title": "Junior Platform Engineer",
+        "functional_role_family": "platform",
+        "organizational_role_mode": "individual_contributor",
+        "seniority_level": "junior",
+        "must_have_skills": [
+          "Python",
+          "Bash",
+          "GitHub Actions",
+          "Linux Basics"
+        ],
+        "nice_to_have_skills": [
+          "Docker",
+          "Kubernetes"
+        ],
+        "recruiter_intent_summary": "Shows practical execution improving internal tooling and developer workflows.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.68,
+          "max_overall_score": 0.92,
+          "min_completeness_score": 0.66,
+          "max_completeness_score": 0.9,
+          "min_specificity_score": 0.54,
+          "max_ambiguity_score": 0.36,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Support internal tools engineering",
+          "Build scripts and deployment helpers",
+          "Improve team workflows"
+        ]
+      }
+    },
+    {
+      "case_id": "enterprise_product_designer_structured",
+      "description": "Highly structured enterprise product design JD.",
+      "tags": [
+        "design",
+        "enterprise",
+        "highly_structured"
+      ],
+      "raw_jd": "Senior Product Designer, Workflow Platform\nResponsibilities:\n- Design complex workflow configuration experiences for enterprise admins\n- Create prototypes and production-ready design specifications\n- Partner with PMs, engineers, and researchers on iterative delivery\nRequirements:\n- 5+ years in product design\n- Figma, interaction design, prototyping, and design systems\nPreferred:\n- Enterprise SaaS\n- Accessibility\nWork model: Hybrid in New York City.\n",
+      "gold": {
+        "job_title": "Senior Product Designer, Workflow Platform",
+        "functional_role_family": "design",
+        "organizational_role_mode": "senior_individual_contributor",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "Figma",
+          "Interaction Design",
+          "Prototyping",
+          "Design Systems"
+        ],
+        "nice_to_have_skills": [
+          "Enterprise SaaS",
+          "Accessibility"
+        ],
+        "recruiter_intent_summary": "Shows strong design craft turning complex enterprise workflows into usable shipped experiences.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.8,
+          "max_overall_score": 1.0,
+          "min_completeness_score": 0.8,
+          "max_completeness_score": 1.0,
+          "min_specificity_score": 0.66,
+          "max_ambiguity_score": 0.24,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Design complex workflow configuration experiences",
+          "Create prototypes and design specifications",
+          "Partner with PMs, engineers, and researchers"
+        ]
+      }
+    },
+    {
+      "case_id": "backend_vague_startup_ops",
+      "description": "Looser startup backend JD with ops-heavy wording.",
+      "tags": [
+        "backend",
+        "startup",
+        "vague"
+      ],
+      "raw_jd": "Backend / Ops Engineer\nHelp us keep the product running and build whatever backend pieces are needed.\nYou might touch APIs, databases, scripts, cloud infra, and customer escalations.\nNeed solid Python and SQL. Bonus if you know AWS or Docker.\nMove fast and be resourceful.\n",
+      "gold": {
+        "job_title": "Backend / Ops Engineer",
+        "functional_role_family": "backend",
+        "organizational_role_mode": "founder_or_generalist",
+        "seniority_level": "mid",
+        "must_have_skills": [
+          "Python",
+          "SQL"
+        ],
+        "nice_to_have_skills": [
+          "AWS",
+          "Docker"
+        ],
+        "recruiter_intent_summary": "Shows broad backend ownership and pragmatic problem solving in a fast-moving startup environment.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.5,
+          "max_overall_score": 0.82,
+          "min_completeness_score": 0.5,
+          "max_completeness_score": 0.82,
+          "min_specificity_score": 0.42,
+          "max_ambiguity_score": 0.62,
+          "min_ambiguity_score": 0.2,
+          "min_consistency_score": 0.45
+        },
+        "key_responsibility_clusters": [
+          "Keep the product running",
+          "Build backend pieces as needed",
+          "Handle customer escalations and infrastructure work"
+        ]
+      }
+    },
+    {
+      "case_id": "product_manager_junior_associate",
+      "description": "Associate PM role with highly execution-focused expectations.",
+      "tags": [
+        "product",
+        "junior"
+      ],
+      "raw_jd": "Associate Product Manager\nSupport the PM team with backlog management, requirements writing, and launch coordination.\nRequirements:\n- 1+ years in product, consulting, analytics, or operations\n- Strong writing, stakeholder communication, and prioritization skills\nNice to have:\n- SQL\n- Experimentation exposure\nHybrid in Singapore.\n",
+      "gold": {
+        "job_title": "Associate Product Manager",
+        "functional_role_family": "product",
+        "organizational_role_mode": "individual_contributor",
+        "seniority_level": "junior",
+        "must_have_skills": [
+          "Writing",
+          "Stakeholder Communication",
+          "Prioritization"
+        ],
+        "nice_to_have_skills": [
+          "SQL",
+          "Experimentation Exposure"
+        ],
+        "recruiter_intent_summary": "Shows strong execution support, communication, and product coordination fundamentals.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.66,
+          "max_overall_score": 0.9,
+          "min_completeness_score": 0.64,
+          "max_completeness_score": 0.88,
+          "min_specificity_score": 0.48,
+          "max_ambiguity_score": 0.4,
+          "min_ambiguity_score": 0.0,
+          "min_consistency_score": 0.55
+        },
+        "key_responsibility_clusters": [
+          "Support backlog management",
+          "Write requirements",
+          "Coordinate launches"
+        ]
+      }
+    },
+    {
+      "case_id": "devops_noisy_enterprise",
+      "description": "Noisy but still actionable DevOps JD pasted from multiple sources.",
+      "tags": [
+        "devops",
+        "enterprise",
+        "noisy"
+      ],
+      "raw_jd": "DEVOPS ENGINEER / PLATFORM !!!\nNeed someone for CI/CD, K8s, infra as code, cloud costs, prod support.\nResponsibilities maybe include: automate deployments, improve reliability, fix incidents, work with security.\nMust: AWS, Terraform, Kubernetes, Linux.\nPlus: Datadog, scripting.\nHybrid maybe 2-3 days onsite in Phoenix.\n",
+      "gold": {
+        "job_title": "DevOps Engineer / Platform",
+        "functional_role_family": "devops",
+        "organizational_role_mode": "senior_individual_contributor",
+        "seniority_level": "senior",
+        "must_have_skills": [
+          "AWS",
+          "Terraform",
+          "Kubernetes",
+          "Linux"
+        ],
+        "nice_to_have_skills": [
+          "Datadog",
+          "Scripting"
+        ],
+        "recruiter_intent_summary": "Shows practical DevOps ownership across automation, reliability, and production support.",
+        "jd_quality_expectations": {
+          "min_overall_score": 0.58,
+          "max_overall_score": 0.86,
+          "min_completeness_score": 0.58,
+          "max_completeness_score": 0.86,
+          "min_specificity_score": 0.5,
+          "max_ambiguity_score": 0.58,
+          "min_ambiguity_score": 0.18,
+          "min_consistency_score": 0.48
+        },
+        "key_responsibility_clusters": [
+          "Automate deployments",
+          "Improve reliability and fix incidents",
+          "Work with security on production operations"
+        ]
+      }
+    }
+  ]
+}

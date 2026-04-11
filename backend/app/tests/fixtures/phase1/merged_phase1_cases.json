@@ -1,0 +1,148 @@
+{
+  "conflicting_title_case": {
+    "raw_jd": "Senior Backend Engineer\nAcme Payments is hiring\n\nWHAT YOU'LL DO:\n- Build Python APIs\n- Improve reliability for our fintech platform\n- Mentor engineers across teams\n\nREQUIREMENTS\n* 5+ years of experience building backend systems\n* Must have Python, PostgreSQL, and AWS experience\n* Hybrid in New York City\n\nPREFERRED QUALIFICATIONS\n• Kubernetes\n• Terraform\n",
+    "llm_payload": {
+      "job_title": "Staff Platform Architect",
+      "company_name": "Acme Payments",
+      "functional_role_family": "backend",
+      "organizational_role_mode": "senior_individual_contributor",
+      "seniority_level": "senior",
+      "primary_responsibility_clusters": [
+        "Build Python APIs",
+        "Improve reliability for our fintech platform"
+      ],
+      "must_have_skills": [
+        "Python",
+        "AWS"
+      ],
+      "nice_to_have_skills": [
+        "Kubernetes"
+      ],
+      "required_tools_platforms": [
+        "AWS",
+        "PostgreSQL"
+      ],
+      "required_domains": [
+        "fintech"
+      ],
+      "must_have_behaviors": [
+        "Mentoring"
+      ],
+      "business_goal_signals": [
+        "Improve platform reliability for payment workflows"
+      ],
+      "impact_signals": [
+        "Production reliability"
+      ],
+      "years_experience_requirement": 5,
+      "education_requirement": {},
+      "leadership_requirement": {
+        "mentoring_expected": true
+      },
+      "delivery_scope_requirement": {
+        "cross_functional_coordination_required": true
+      },
+      "constraint_signals": [],
+      "work_model_signals": [
+        "hybrid"
+      ],
+      "industry_domain": "fintech",
+      "key_action_verbs": [
+        "build",
+        "improve"
+      ],
+      "jd_quality_score": 0.82,
+      "parser_confidence": 0.79,
+      "requirement_confidence_by_item": [
+        {
+          "item_type": "job_title",
+          "item_value": "Staff Platform Architect",
+          "confidence": 0.58
+        },
+        {
+          "item_type": "must_have_skill",
+          "item_value": "Python",
+          "confidence": 0.92
+        },
+        {
+          "item_type": "business_goal_signal",
+          "item_value": "Improve platform reliability for payment workflows",
+          "confidence": 0.68
+        }
+      ],
+      "extraction_notes": [],
+      "normalized_keywords": [
+        "python",
+        "aws"
+      ],
+      "prioritized_requirements": [
+        {
+          "requirement_text": "Python",
+          "requirement_type": "must_have_skill",
+          "priority_rank": 1,
+          "priority_tier": "critical",
+          "confidence": 0.92
+        }
+      ]
+    }
+  },
+  "ambiguous_vague_case": {
+    "raw_jd": "Software Role\nWe need someone to help teams move faster, work across functions, and improve delivery. Experience with modern tools is a plus.\n",
+    "llm_payload": {
+      "job_title": "Software Role",
+      "company_name": null,
+      "functional_role_family": "platform",
+      "organizational_role_mode": "tech_lead",
+      "seniority_level": null,
+      "primary_responsibility_clusters": [
+        "Improve delivery across teams"
+      ],
+      "must_have_skills": [],
+      "nice_to_have_skills": [],
+      "required_tools_platforms": [],
+      "required_domains": [],
+      "must_have_behaviors": [
+        "cross functional collaboration"
+      ],
+      "business_goal_signals": [
+        "Accelerate team delivery"
+      ],
+      "impact_signals": [
+        "Delivery velocity"
+      ],
+      "years_experience_requirement": null,
+      "education_requirement": {},
+      "leadership_requirement": {
+        "strategy_ownership_expected": true
+      },
+      "delivery_scope_requirement": {
+        "cross_functional_coordination_required": true
+      },
+      "constraint_signals": [],
+      "work_model_signals": [],
+      "industry_domain": null,
+      "key_action_verbs": [
+        "improve"
+      ],
+      "jd_quality_score": 0.45,
+      "parser_confidence": 0.61,
+      "requirement_confidence_by_item": [
+        {
+          "item_type": "functional_role_family",
+          "item_value": "platform",
+          "confidence": 0.56
+        },
+        {
+          "item_type": "organizational_role_mode",
+          "item_value": "tech_lead",
+          "confidence": 0.52
+        }
+      ],
+      "extraction_notes": [],
+      "normalized_keywords": [
+        "delivery"
+      ],
+      "prioritized_requirements": []
+    }
+  }
+}

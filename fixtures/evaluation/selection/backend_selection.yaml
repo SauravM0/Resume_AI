@@ -1,0 +1,218 @@
+pack_id: selection_backend_strategy_gold
+pack_type: selection
+description: |
+  Gold selection evaluation pack for Phase 7.
+  These cases judge whether Phase 2 chooses evidence the way a strong human resume strategist would:
+  relevant recent experiences and projects are surfaced, weak or stale material stays out,
+  bullets are specific and role-aligned, and the final selection keeps healthy breadth.
+version: "2.0.0"
+
+cases:
+  - case_id: SEL-001-backend-platform-strength
+    description: Senior backend role should prioritize recent distributed-systems work and keep stale frontend work out.
+    pack_type: selection
+    job_description:
+      raw_text: |
+        Senior Backend Engineer
+
+        Requirements:
+        - Expert Python and Go
+        - Distributed systems and microservices at scale
+        - AWS, PostgreSQL, Kafka
+        - Build and operate critical APIs
+        - Partner on reliability and observability
+    profile:
+      path: profiles/senior_backend.json
+      summary: Strong backend/platform profile with one older frontend role that should be excluded.
+    phase1_expectations:
+      expected_role_family: backend
+      expected_seniority: senior
+    selection_expectations:
+      experience_expectations:
+        - type: must_include
+          value: Principal Backend Engineer @ Atlas Platform
+          match_mode: exact
+          reason: Most strategically relevant recent backend role.
+        - type: must_include
+          value: Senior Software Engineer @ StreamForge
+          match_mode: exact
+          reason: Adds API and performance evidence needed for a balanced backend story.
+        - type: must_not_include
+          value: Frontend Developer @ PixelCraft
+          match_mode: exact
+          reason: Old frontend work dilutes the backend narrative.
+      project_expectations:
+        - type: must_include
+          value: Multi-Region Event Pipeline
+          match_mode: exact
+        - type: must_not_include
+          value: Brand Refresh Microsite
+          match_mode: exact
+      bullet_expectations:
+        - type: must_include
+          value: 150 million events per day
+          match_mode: fuzzy
+        - type: must_include
+          value: cutting failure recovery time by 65%
+          match_mode: fuzzy
+        - type: must_include
+          value: reducing p95 latency by 48%
+          match_mode: fuzzy
+        - type: prefer_include
+          value: AWS autoscaling and observability
+          match_mode: fuzzy
+        - type: must_not_include
+          value: jQuery admin UI
+          match_mode: fuzzy
+      skill_expectations:
+        - type: must_include
+          value: Python
+        - type: must_include
+          value: Go
+        - type: must_include
+          value: AWS
+        - type: must_include
+          value: Kafka
+        - type: prefer_include
+          value: PostgreSQL
+        - type: must_not_include
+          value: jQuery
+      min_selection_relevance: 0.65
+      min_diversity_balance: 0.55
+
+  - case_id: SEL-002-recent-backend-over-legacy-java
+    description: Backend API role should surface recent Python and AWS evidence while excluding stale Java maintenance work.
+    pack_type: selection
+    job_description:
+      raw_text: |
+        Backend Engineer
+
+        Requirements:
+        - Python and FastAPI
+        - REST APIs
+        - AWS cloud deployments
+        - Strong testing and release discipline
+    profile:
+      path: profiles/mixed_experience.json
+      summary: Recent backend/API experience plus older Java and QA history.
+    phase1_expectations:
+      expected_role_family: backend
+      expected_seniority: senior
+    selection_expectations:
+      experience_expectations:
+        - type: must_include
+          value: Backend Engineer @ SignalStack
+          match_mode: exact
+        - type: must_include
+          value: Platform Engineer @ LedgerLoop
+          match_mode: exact
+        - type: must_not_include
+          value: Java Developer @ LegacyBank
+          match_mode: exact
+        - type: must_not_include
+          value: QA Analyst @ TestWorks
+          match_mode: exact
+      project_expectations:
+        - type: must_include
+          value: Billing API Migration
+          match_mode: exact
+        - type: must_not_include
+          value: Android Retail App
+          match_mode: exact
+      bullet_expectations:
+        - type: must_include
+          value: Built FastAPI services
+          match_mode: fuzzy
+        - type: must_include
+          value: Migrated billing workloads to AWS
+          match_mode: fuzzy
+        - type: prefer_include
+          value: reduced integration regressions
+          match_mode: fuzzy
+        - type: must_not_include
+          value: Struts monolith
+          match_mode: fuzzy
+      skill_expectations:
+        - type: must_include
+          value: Python
+        - type: must_include
+          value: FastAPI
+        - type: must_include
+          value: AWS
+        - type: must_include
+          value: REST APIs
+        - type: must_not_include
+          value: Java
+      min_selection_relevance: 0.6
+      min_diversity_balance: 0.5
+
+  - case_id: SEL-003-platform-breadth-balance
+    description: Staff platform role should preserve breadth across infrastructure, reliability, and developer-platform evidence instead of overfocusing one role.
+    pack_type: selection
+    job_description:
+      raw_text: |
+        Staff Platform Engineer
+
+        Requirements:
+        - Terraform and Kubernetes
+        - AWS infrastructure
+        - Incident response and reliability engineering
+        - Developer platform improvements
+        - Platform strategy and cross-team influence
+    profile:
+      path: profiles/backend.json
+      summary: Platform/reliability profile with one stale web role that should stay out.
+    phase1_expectations:
+      expected_role_family: platform
+      expected_seniority: staff
+    selection_expectations:
+      experience_expectations:
+        - type: must_include
+          value: Staff Platform Engineer @ RelayOps
+          match_mode: exact
+        - type: must_include
+          value: Senior SRE @ ComputeDock
+          match_mode: exact
+        - type: must_not_include
+          value: Web Developer @ Campus Labs
+          match_mode: exact
+      project_expectations:
+        - type: must_include
+          value: Developer Provisioning Platform
+          match_mode: exact
+        - type: acceptable_alternative
+          value: Incident Command Simulator
+          match_mode: exact
+          alternative_group: platform_breadth_support
+      bullet_expectations:
+        - type: must_include
+          value: Terraform modules
+          match_mode: fuzzy
+        - type: must_include
+          value: Cut mean time to recovery by 43%
+          match_mode: fuzzy
+        - type: acceptable_alternative
+          value: Reduced cloud spend by 18%
+          match_mode: fuzzy
+          alternative_group: breadth_outcome
+        - type: acceptable_alternative
+          value: self-service provisioning flow
+          match_mode: fuzzy
+          alternative_group: breadth_outcome
+        - type: must_not_include
+          value: WordPress sites
+          match_mode: fuzzy
+      skill_expectations:
+        - type: must_include
+          value: Terraform
+        - type: must_include
+          value: Kubernetes
+        - type: must_include
+          value: AWS
+        - type: acceptable_alternative
+          value: Incident Response
+          alternative_group: ops_depth
+        - type: must_not_include
+          value: WordPress
+      min_selection_relevance: 0.62
+      min_diversity_balance: 0.6

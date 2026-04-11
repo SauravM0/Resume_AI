@@ -1,0 +1,55 @@
+{
+  "role_type": "individual_contributor",
+  "seniority_level": "senior",
+  "technical_skills": [
+    "Python",
+    "Go",
+    "Kafka",
+    "AWS",
+    "PostgreSQL",
+    "Distributed Systems"
+  ],
+  "soft_skills": [
+    "Mentoring"
+  ],
+  "key_action_verbs": [
+    "build",
+    "design",
+    "lead"
+  ],
+  "must_have_requirements": [
+    "Python",
+    "Distributed Systems",
+    "AWS",
+    "Kafka"
+  ],
+  "nice_to_have_requirements": [
+    "Go",
+    "PostgreSQL",
+    "Mentoring"
+  ],
+  "company_culture_signals": [],
+  "years_experience_required": 6,
+  "prioritized_skills": [
+    {
+      "skill_name": "Python",
+      "priority": "core"
+    },
+    {
+      "skill_name": "AWS",
+      "priority": "core"
+    },
+    {
+      "skill_name": "Kafka",
+      "priority": "important"
+    },
+    {
+      "skill_name": "Distributed Systems",
+      "priority": "important"
+    },
+    {
+      "skill_name": "Go",
+      "priority": "nice_to_have"
+    }
+  ]
+}

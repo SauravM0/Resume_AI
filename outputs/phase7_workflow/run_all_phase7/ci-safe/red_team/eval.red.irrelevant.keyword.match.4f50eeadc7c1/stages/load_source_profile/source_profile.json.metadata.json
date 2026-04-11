@@ -1,0 +1,15 @@
+{
+  "artifact_id": "eval.red.irrelevant.keyword.match.4f50eeadc7c1.load_source_profile.source_profile",
+  "artifact_kind": "source_profile",
+  "case_id": "red.irrelevant.keyword.match",
+  "content_hash": "sha256:14fe1f563c6b8e1d454553eb79e75afdf371f4ecaf27d30701f6600753fbb3e5",
+  "content_type": "application/json",
+  "payload_format": "json",
+  "persisted_at": "2026-04-10T07:59:01.101475Z",
+  "redacted": true,
+  "redaction_policy": "phase7.basic_redaction.v1",
+  "run_id": "eval.red.irrelevant.keyword.match.4f50eeadc7c1",
+  "schema_version": "phase7.eval.artifact.v1",
+  "size_bytes": 16778,
+  "stage_name": "load_source_profile"
+}

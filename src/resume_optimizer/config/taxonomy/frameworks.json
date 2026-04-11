@@ -1,0 +1,12 @@
+{
+  "canonical_terms": {
+    "React": ["react", "reactjs", "react.js"],
+    "Next.js": ["next", "nextjs", "next.js"],
+    "FastAPI": ["fastapi"],
+    "Django": ["django"],
+    "Flask": ["flask"],
+    "Express": ["express", "expressjs", "express.js"],
+    "Storybook": ["storybook"],
+    "Spring Boot": ["spring boot", "springboot"]
+  }
+}

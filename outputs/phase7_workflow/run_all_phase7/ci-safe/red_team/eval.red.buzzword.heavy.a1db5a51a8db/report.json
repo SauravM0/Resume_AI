@@ -1,0 +1,209 @@
+{
+  "artifact_manifest": {
+    "case_id": "red.buzzword.heavy",
+    "entries": [
+      {
+        "artifact_id": "eval.red.buzzword.heavy.a1db5a51a8db.ingest_job_description.raw_job_description",
+        "artifact_kind": "raw_job_description",
+        "case_id": "red.buzzword.heavy",
+        "content_hash": "sha256:896c9b0524698b604ffe1b6cd267a9c2fceaac3940ee4583cfe26d345b602a65",
+        "content_type": "application/json",
+        "created_at": "2026-04-10T07:58:59.919385Z",
+        "metadata_path": "/mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI/outputs/phase7_workflow/run_all_phase7/ci-safe/red_team/eval.red.buzzword.heavy.a1db5a51a8db/stages/ingest_job_description/raw_job_description.json.metadata.json",
+        "payload_format": "json",
+        "redacted": true,
+        "relative_path": "stages/ingest_job_description/raw_job_description.json",
+        "run_id": "eval.red.buzzword.heavy.a1db5a51a8db",
+        "schema_version": "phase7.eval.artifact.v1",
+        "size_bytes": 609,
+        "stage_name": "ingest_job_description",
+        "storage_path": "/mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI/outputs/phase7_workflow/run_all_phase7/ci-safe/red_team/eval.red.buzzword.heavy.a1db5a51a8db/stages/ingest_job_description/raw_job_description.json"
+      },
+      {
+        "artifact_id": "eval.red.buzzword.heavy.a1db5a51a8db.load_source_profile.source_profile",
+        "artifact_kind": "source_profile",
+        "case_id": "red.buzzword.heavy",
+        "content_hash": "sha256:10db898ba76542dbfcb61124d06695a991b6480c1931a508be1281026424e4a0",
+        "content_type": "application/json",
+        "created_at": "2026-04-10T07:58:59.830490Z",
+        "metadata_path": "/mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI/outputs/phase7_workflow/run_all_phase7/ci-safe/red_team/eval.red.buzzword.heavy.a1db5a51a8db/stages/load_source_profile/source_profile.json.metadata.json",
+        "payload_format": "json",
+        "redacted": true,
+        "relative_path": "stages/load_source_profile/source_profile.json",
+        "run_id": "eval.red.buzzword.heavy.a1db5a51a8db",
+        "schema_version": "phase7.eval.artifact.v1",
+        "size_bytes": 25678,
+        "stage_name": "load_source_profile",
+        "storage_path": "/mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI/outputs/phase7_workflow/run_all_phase7/ci-safe/red_team/eval.red.buzzword.heavy.a1db5a51a8db/stages/load_source_profile/source_profile.json"
+      },
+      {
+        "artifact_id": "eval.red.buzzword.heavy.a1db5a51a8db.normalize_source_data.normalized_profile",
+        "artifact_kind": "normalized_profile",
+        "case_id": "red.buzzword.heavy",
+        "content_hash": "sha256:093e04a6f5e588da2fbbfaec65b9a22eb3dec99f5e66a30368faace23edff343",
+        "content_type": "application/json",
+        "created_at": "2026-04-10T07:58:59.880011Z",
+        "metadata_path": "/mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI/outputs/phase7_workflow/run_all_phase7/ci-safe/red_team/eval.red.buzzword.heavy.a1db5a51a8db/stages/normalize_source_data/normalized_profile.json.metadata.json",
+        "payload_format": "json",
+        "redacted": true,
+        "relative_path": "stages/normalize_source_data/normalized_profile.json",
+        "run_id": "eval.red.buzzword.heavy.a1db5a51a8db",
+        "schema_version": "phase7.eval.artifact.v1",
+        "size_bytes": 25654,
+        "stage_name": "normalize_source_data",
+        "storage_path": "/mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI/outputs/phase7_workflow/run_all_phase7/ci-safe/red_team/eval.red.buzzword.heavy.a1db5a51a8db/stages/normalize_source_data/normalized_profile.json"
+      }
+    ],
+    "generated_at": "2026-04-10T07:58:59.958627Z",
+    "run_id": "eval.red.buzzword.heavy.a1db5a51a8db",
+    "schema_version": "phase7.eval.manifest.v1"
+  },
+  "case": {
+    "expected_outputs": {
+      "acceptable_fallback_behavior": "Anchor on the strongest real evidence, omit noisy mismatches, and avoid keyword-stuffed summary language.",
+      "bad_behavior_to_catch": "Chasing stray buzzwords and pulling in irrelevant frontend or design-system evidence to match noise.",
+      "expected_output_snapshot": {
+        "forbidden_source_item_ids": [
+          "project.design-system-rollout"
+        ],
+        "max_single_source_bullet_share": 0.75,
+        "min_distinct_selected_sources": 2,
+        "risky_source_item_ids": [
+          "project.design-system-rollout"
+        ]
+      },
+      "expected_pipeline_status": "succeeded",
+      "expected_stage_sequence": [],
+      "required_artifact_kinds": [
+        "phase3_result",
+        "verification_report"
+      ],
+      "reviewer_guidance": [
+        "Inspect whether the final output stays grounded in actual backend/platform evidence instead of vague buzzword matching."
+      ],
+      "stage_expectations": []
+    },
+    "input_payload": {
+      "job_description_text": "AI cloud blockchain DevSecOps Kubernetes React platform transformation ninja. Must be world-class across everything.",
+      "source_profile_path": "/mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI/data/master_profile.example.json",
+      "template_id": "ats_standard"
+    },
+    "metadata": {
+      "case_id": "red.buzzword.heavy",
+      "description": "Buzzword soup should not trigger irrelevant keyword chasing.",
+      "pack_type": "red_team",
+      "scenario": "buzzword_heavy_job_description",
+      "source_fixture": "fixtures/evaluation/red_team/starter_cases.json",
+      "tags": [
+        "buzzwords",
+        "keyword-chasing"
+      ]
+    }
+  },
+  "run_summary": {
+    "artifact_manifest_path": "/mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI/outputs/phase7_workflow/run_all_phase7/ci-safe/red_team/eval.red.buzzword.heavy.a1db5a51a8db/manifest.json",
+    "case_id": "red.buzzword.heavy",
+    "duration_ms": 140,
+    "finished_at": "2026-04-10T07:58:59.958663Z",
+    "pack_type": "red_team",
+    "pipeline_status": "pending",
+    "report_path": "/mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI/outputs/phase7_workflow/run_all_phase7/ci-safe/red_team/eval.red.buzzword.heavy.a1db5a51a8db/run_manifest.json",
+    "run_id": "eval.red.buzzword.heavy.a1db5a51a8db",
+    "started_at": "2026-04-10T07:58:59.818637Z",
+    "status": "passed",
+    "summary_path": "/mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI/outputs/phase7_workflow/run_all_phase7/ci-safe/red_team/eval.red.buzzword.heavy.a1db5a51a8db/summary.md"
+  },
+  "scoring_summary": {
+    "artifact_paths": {},
+    "case_id": "red.buzzword.heavy",
+    "findings": [
+      "verification output missing",
+      "distinct_selected_sources=0, weak_coverage_areas=none",
+      "dominant_share=1.00, source_bullet_counts=none",
+      "missing summary"
+    ],
+    "metrics": [
+      {
+        "details": "verification output missing",
+        "metric_name": "overclaim_risk",
+        "passed": false,
+        "score": 0.0
+      },
+      {
+        "details": "case does not require weak-fit caution",
+        "metric_name": "weak_fit_honesty",
+        "passed": true,
+        "score": 1.0
+      },
+      {
+        "details": "distinct_selected_sources=0, weak_coverage_areas=none",
+        "metric_name": "ranking_collapse",
+        "passed": false,
+        "score": 0.0
+      },
+      {
+        "details": "dominant_share=1.00, source_bullet_counts=none",
+        "metric_name": "one_source_dominance",
+        "passed": false,
+        "score": 0.0
+      },
+      {
+        "details": "forbidden_selected=none, selected_sources=none",
+        "metric_name": "irrelevant_keyword_chasing",
+        "passed": true,
+        "score": 1.0
+      },
+      {
+        "details": "missing summary",
+        "metric_name": "unsafe_summary_inflation",
+        "passed": false,
+        "score": 0.0
+      }
+    ],
+    "outcome": "fail",
+    "overall_score": 0.3333,
+    "reviewer_comments": [
+      "Bad behavior target: Chasing stray buzzwords and pulling in irrelevant frontend or design-system evidence to match noise.",
+      "Acceptable fallback: Anchor on the strongest real evidence, omit noisy mismatches, and avoid keyword-stuffed summary language.",
+      "Inspect whether the final output stays grounded in actual backend/platform evidence instead of vague buzzword matching."
+    ],
+    "reviewer_signals": [
+      {
+        "details": "verification output missing",
+        "severity": "error",
+        "signal_name": "overclaim_risk",
+        "triggered": true
+      },
+      {
+        "severity": "warning",
+        "signal_name": "weak_fit_honesty",
+        "triggered": false
+      },
+      {
+        "details": "distinct_selected_sources=0, weak_coverage_areas=none",
+        "severity": "warning",
+        "signal_name": "ranking_collapse",
+        "triggered": true
+      },
+      {
+        "details": "dominant_share=1.00, source_bullet_counts=none",
+        "severity": "warning",
+        "signal_name": "one_source_dominance",
+        "triggered": true
+      },
+      {
+        "severity": "error",
+        "signal_name": "irrelevant_keyword_chasing",
+        "triggered": false
+      },
+      {
+        "details": "missing summary",
+        "severity": "error",
+        "signal_name": "unsafe_summary_inflation",
+        "triggered": true
+      }
+    ],
+    "run_id": "eval.red.buzzword.heavy.a1db5a51a8db",
+    "scorer_name": "red_team_quality_scorer"
+  }
+}

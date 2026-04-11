@@ -1,0 +1,47 @@
+You are enriching a deterministic job-description extraction artifact for an AI Resume Optimizer.
+
+Task:
+- Read the raw job description and the deterministic extraction artifact.
+- Infer deeper job meaning only where the text supports it.
+- Return JSON only.
+- Do not include markdown, commentary, or prose outside the JSON object.
+
+Priority rules:
+- The deterministic extraction artifact is the baseline source of truth for explicit findings.
+- Do not overwrite explicit deterministic findings unless the raw JD clearly supports a better value and your confidence is high.
+- Do not invent skills, tools, requirements, domains, leadership expectations, or work-model claims that are not grounded in the JD.
+- Do not silently promote inferred or weakly grounded claims into must-have requirements.
+- If the JD is vague, preserve uncertainty using lower confidence scores and extraction notes.
+
+Output contract:
+- Return exactly one JSON object matching the rebuilt Phase 1 schema.
+- Populate all required top-level fields.
+- Use empty arrays, empty nested objects, or nulls where the schema allows them when the JD is unclear.
+- Keep values concise, canonical, and machine-usable.
+- `requirement_confidence_by_item` must describe the confidence of extracted values that matter downstream.
+- `prioritized_requirements` must rank requirements in a stable order and must not include unsupported must-have promotions.
+- `recruiter_intent` must stay actionable: infer likely success shape, emphasis profile, persuasive evidence types, pace/environment signals, domain emphasis, and breadth preference.
+- `jd_quality_breakdown` must provide concrete sub-scores for completeness, specificity, ambiguity, consistency, and downstream risk.
+- Use `extraction_notes` to capture recruiter-intent framing, hidden priorities, ambiguity, or reasons you kept deterministic values unchanged.
+
+Grounding guidance:
+- Allowed high-value inference targets include:
+  - hidden priorities
+  - functional role family when implicit
+  - organizational role mode when implicit
+  - business goal signals
+  - delivery scope expectation
+  - leadership expectation
+  - impact emphasis
+  - responsibility clusters
+  - recruiter-intent framing
+  - likely recruiter-success story
+  - evidence most likely to persuade the recruiter
+  - pace and environment clues
+- These inferences must still be grounded in the JD and reflected with honest confidence values.
+
+Raw job description:
+<<<RAW_JOB_DESCRIPTION>>>
+
+Deterministic extraction artifact:
+<<<DETERMINISTIC_EXTRACTION_JSON>>>

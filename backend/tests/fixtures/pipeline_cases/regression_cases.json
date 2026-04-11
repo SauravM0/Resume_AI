@@ -1,0 +1,73 @@
+{
+  "schema_version": "phase6.pipeline_cases.v1",
+  "cases": [
+    {
+      "case_id": "strong_match",
+      "scenario_type": "strong_match",
+      "job_description_text": "Senior Software Engineer role focused on TypeScript, React, Python APIs, checkout flows, and pragmatic delivery.",
+      "expected_status": "succeeded",
+      "snapshot_fields": ["stage_sequence", "artifact_kinds"]
+    },
+    {
+      "case_id": "moderate_match",
+      "scenario_type": "moderate_match",
+      "job_description_text": "Product engineer role needing React delivery, API collaboration, and some backend familiarity.",
+      "expected_status": "succeeded",
+      "snapshot_fields": ["stage_sequence"]
+    },
+    {
+      "case_id": "weak_match",
+      "scenario_type": "weak_match",
+      "job_description_text": "Infrastructure role emphasizing Go, Kubernetes operators, and cluster networking.",
+      "expected_status": "succeeded",
+      "snapshot_fields": ["stage_sequence"]
+    },
+    {
+      "case_id": "short_jd",
+      "scenario_type": "short_jd",
+      "job_description_text": "Need a senior frontend engineer.",
+      "expected_status": "succeeded",
+      "snapshot_fields": ["stage_sequence"]
+    },
+    {
+      "case_id": "noisy_jd",
+      "scenario_type": "noisy_jd",
+      "job_description_text": "About us: snacks, foosball, fast-paced vibes. Responsibilities include React, TypeScript, API integration, checkout UX, and clear collaboration.",
+      "expected_status": "succeeded",
+      "snapshot_fields": ["stage_sequence"]
+    },
+    {
+      "case_id": "special_characters",
+      "scenario_type": "special_characters",
+      "job_description_text": "Engineer for C#, C++, Node.js, customer-facing APIs, and integrations with quotes, ampersands, and unicode-adjacent punctuation.",
+      "expected_status": "succeeded",
+      "snapshot_fields": ["stage_sequence", "artifact_kinds"]
+    },
+    {
+      "case_id": "latex_sensitive_content",
+      "scenario_type": "latex_sensitive_content",
+      "job_description_text": "Role includes LaTeX-sensitive content such as C++, 50% reliability, $ cost controls, # tags, underscores, and ampersands.",
+      "expected_status": "succeeded",
+      "snapshot_fields": ["stage_sequence", "artifact_kinds"]
+    },
+    {
+      "case_id": "verifier_rejection",
+      "scenario_type": "verifier_rejection",
+      "job_description_text": "Role that intentionally triggers verifier rejection in the deterministic harness.",
+      "expected_status": "blocked",
+      "forced_failure_stage": "verify_generated_content",
+      "forced_failure_type": "verification_blocked",
+      "expected_terminal_stage": "verify_generated_content",
+      "snapshot_fields": ["stage_sequence"]
+    },
+    {
+      "case_id": "retry_triggering",
+      "scenario_type": "retry_triggering",
+      "job_description_text": "Role that triggers one retry during structured generation and then succeeds.",
+      "expected_status": "succeeded",
+      "retry_once_stage": "generate_structured_content",
+      "forced_failure_type": "generation_schema",
+      "snapshot_fields": ["stage_sequence", "artifact_kinds"]
+    }
+  ]
+}

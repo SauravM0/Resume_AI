@@ -1,0 +1,15 @@
+{
+  "canonical_terms": {
+    "PostgreSQL": ["postgres", "postgresql", "postgre", "pg"],
+    "Redis": ["redis"],
+    "Docker": ["docker", "dockerized", "containerized"],
+    "Kubernetes": ["k8s", "kubernetes", "kube"],
+    "Terraform": ["terraform", "terraform io", "tf"],
+    "GitHub Actions": ["github actions", "gha"],
+    "GitHub": ["github"],
+    "Datadog": ["datadog"],
+    "Snowflake": ["snowflake"],
+    "Kafka": ["kafka", "apache kafka"],
+    "Node.js": ["node", "nodejs", "node.js"]
+  }
+}

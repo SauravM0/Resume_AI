@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "resume-optimizer"
+version = "0.1.0"
+description = "Phase 0 source-of-truth data layer for an AI Resume Optimizer."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "alembic>=1.13,<2",
+  "fastapi>=0.115,<1",
+  "openai>=1.75,<2",
+  "pydantic>=2.7,<3",
+  "sqlalchemy>=2.0,<3",
+]
+
+[project.optional-dependencies]
+test = [
+  "httpx>=0.27,<1",
+  "pytest>=8,<9",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src", "backend" = "backend"}
+
+[tool.setuptools.packages.find]
+where = ["src", "."]
+include = ["resume_optimizer*", "backend*"]
+
+[tool.setuptools.package-data]
+"backend.app.templates.latex" = ["ats_standard/v1/*.tex"]
+
+[tool.pytest.ini_options]
+markers = [
+  "semantic: semantic verification integration tests using deterministic fake model clients",
+  "latex: tests that require a local LaTeX/pdflatex installation",
+  "phase8: release-readiness verification tests for production hardening",
+]

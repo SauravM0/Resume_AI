@@ -1,0 +1,107 @@
+pack_id: jd_parse_management
+pack_type: jd_parse
+description: |
+  Job description parsing tests for Engineering Manager and Leadership roles.
+  Tests extraction of leadership signals, team management expectations, and IC vs management classification.
+version: "1.0.0"
+
+cases:
+  - case_id: MGR-001-eng-manager
+    description: Engineering Manager - team leadership
+    pack_type: jd_parse
+    
+    job_description:
+      raw_text: |
+        Engineering Manager
+        
+        Lead our backend engineering team to build innovative products.
+        
+        Requirements:
+        - 5+ years of software engineering experience
+        - 2+ years of team management
+        - Track record of delivering complex projects
+        - Strong communication skills
+        
+        Responsibilities:
+        - Manage and grow a team of 5-8 engineers
+        - Drive technical strategy
+        - Partner with product on roadmaps
+        - Conduct performance reviews
+        - Foster team culture and mentoring
+    tags:
+      - management
+      - leadership
+      - people-management
+    
+    phase1_expectations:
+      expected_job_title: Engineering Manager
+      expected_role_family: management
+      expected_seniority: senior
+      
+      expected_skills:
+        - type: must_include
+          value: team management
+          match_mode: fuzzy
+          weight: 1.0
+        - type: must_include
+          value: mentoring
+          match_mode: fuzzy
+          weight: 0.9
+        - type: must_include
+          value: project delivery
+          match_mode: fuzzy
+          weight: 0.8
+        - type: must_not_include
+          value: individual contributor
+          match_mode: fuzzy
+          weight: 1.0
+      
+      min_quality_score: 0.70
+      min_parser_confidence: 0.65
+
+  - case_id: MGR-002-tech-lead
+    description: Technical Lead - IC with leadership
+    pack_type: jd_parse
+    
+    job_description:
+      raw_text: |
+        Technical Lead
+        
+        Join us as a Technical Lead - a senior IC role with team mentorship responsibilities.
+        
+        Requirements:
+        - 6+ years of software engineering
+        - Experience guiding technical decisions
+        - Strong mentorship skills
+        
+        Responsibilities:
+        - Lead architecture for critical systems
+        - Mentor junior engineers
+        - Drive engineering standards
+        - Collaborate across teams (no direct reports)
+    tags:
+      - management
+      - tech-lead
+      - ic-leadership
+    
+    phase1_expectations:
+      expected_job_title: Technical Lead
+      expected_role_family: management
+      expected_seniority: staff
+      
+      expected_skills:
+        - type: must_include
+          value: architecture
+          match_mode: fuzzy
+          weight: 1.0
+        - type: must_include
+          value: mentorship
+          match_mode: fuzzy
+          weight: 1.0
+        - type: must_not_include
+          value: hiring
+          match_mode: exact
+          weight: 0.5
+      
+      min_quality_score: 0.65
+      min_parser_confidence: 0.60

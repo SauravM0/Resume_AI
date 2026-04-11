@@ -1,0 +1,1111 @@
+{
+  "total_cases": 3,
+  "passed_cases": 0,
+  "failed_cases": 3,
+  "avg_experience_precision": 0.6667,
+  "avg_experience_recall": 1.0,
+  "avg_project_precision": 1.0,
+  "avg_project_recall": 0.0,
+  "avg_bullet_precision": 0.5571,
+  "avg_bullet_recall": 1.0,
+  "avg_skill_correctness": 0.9167,
+  "avg_diversity_balance": 1.0,
+  "pathology_rate": 1.0,
+  "case_results": [
+    {
+      "case_id": "SEL-001-backend-platform-strength",
+      "description": "Senior backend role should prioritize recent distributed-systems work and keep stale frontend work out.",
+      "passed": false,
+      "overall_score": 0.747,
+      "experience_precision": 0.6667,
+      "experience_recall": 1.0,
+      "project_precision": 1.0,
+      "project_recall": 0.0,
+      "bullet_precision": 0.5714,
+      "bullet_recall": 1.0,
+      "skill_correctness": 1.0,
+      "diversity_balance_score": 1.0,
+      "average_selection_relevance": 0.4737,
+      "experience_score": {
+        "precision": 0.6667,
+        "recall": 1.0,
+        "matched_actual_count": 2,
+        "actual_count": 3,
+        "false_positive_count": 1,
+        "violated_exclusions": 1,
+        "positive_assessments": [
+          {
+            "label": "Principal Backend Engineer @ Atlas Platform",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Principal Backend Engineer @ Atlas Platform"
+            ],
+            "notes": [
+              "Most strategically relevant recent backend role."
+            ]
+          },
+          {
+            "label": "Senior Software Engineer @ StreamForge",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Senior Software Engineer @ StreamForge"
+            ],
+            "notes": [
+              "Adds API and performance evidence needed for a balanced backend story."
+            ]
+          }
+        ],
+        "exclusion_assessments": [
+          {
+            "label": "Frontend Developer @ PixelCraft",
+            "expectation_type": "must_not_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": false,
+            "matched_item_labels": [
+              "Frontend Developer @ PixelCraft"
+            ],
+            "notes": [
+              "Old frontend work dilutes the backend narrative."
+            ]
+          }
+        ]
+      },
+      "project_score": {
+        "precision": 1.0,
+        "recall": 0.0,
+        "matched_actual_count": 0,
+        "actual_count": 0,
+        "false_positive_count": 0,
+        "violated_exclusions": 0,
+        "positive_assessments": [
+          {
+            "label": "Multi-Region Event Pipeline",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": false,
+            "matched_item_labels": [],
+            "notes": []
+          }
+        ],
+        "exclusion_assessments": [
+          {
+            "label": "Brand Refresh Microsite",
+            "expectation_type": "must_not_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [],
+            "notes": []
+          }
+        ]
+      },
+      "bullet_score": {
+        "precision": 0.5714,
+        "recall": 1.0,
+        "matched_actual_count": 4,
+        "actual_count": 7,
+        "false_positive_count": 3,
+        "violated_exclusions": 1,
+        "positive_assessments": [
+          {
+            "label": "150 million events per day",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Principal Backend Engineer @ Atlas Platform: Led design of a Python microservices platform handling 150 million events per day across multi-tenant workloads."
+            ],
+            "notes": []
+          },
+          {
+            "label": "cutting failure recovery time by 65%",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Principal Backend Engineer @ Atlas Platform: Built a distributed job orchestration service in Go and PostgreSQL, cutting failure recovery time by 65%."
+            ],
+            "notes": []
+          },
+          {
+            "label": "reducing p95 latency by 48%",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Senior Software Engineer @ StreamForge: Optimized SQL and Redis access patterns, reducing p95 latency by 48% on revenue-critical endpoints."
+            ],
+            "notes": []
+          },
+          {
+            "label": "AWS autoscaling and observability",
+            "expectation_type": "prefer_include",
+            "weight": 1.0,
+            "required": false,
+            "matched": true,
+            "matched_item_labels": [
+              "Principal Backend Engineer @ Atlas Platform: Partnered with SRE to harden AWS autoscaling and observability for critical APIs."
+            ],
+            "notes": []
+          }
+        ],
+        "exclusion_assessments": [
+          {
+            "label": "jQuery admin UI",
+            "expectation_type": "must_not_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": false,
+            "matched_item_labels": [
+              "Frontend Developer @ PixelCraft: Maintained a jQuery admin UI and shipped marketing site updates for seasonal campaigns."
+            ],
+            "notes": []
+          }
+        ]
+      },
+      "skill_score": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "matched_actual_count": 5,
+        "actual_count": 5,
+        "false_positive_count": 0,
+        "violated_exclusions": 0,
+        "positive_assessments": [
+          {
+            "label": "Python",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Python"
+            ],
+            "notes": []
+          },
+          {
+            "label": "Go",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Go"
+            ],
+            "notes": []
+          },
+          {
+            "label": "AWS",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "AWS"
+            ],
+            "notes": []
+          },
+          {
+            "label": "Kafka",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Kafka"
+            ],
+            "notes": []
+          },
+          {
+            "label": "PostgreSQL",
+            "expectation_type": "prefer_include",
+            "weight": 1.0,
+            "required": false,
+            "matched": true,
+            "matched_item_labels": [
+              "PostgreSQL"
+            ],
+            "notes": []
+          }
+        ],
+        "exclusion_assessments": [
+          {
+            "label": "jQuery",
+            "expectation_type": "must_not_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [],
+            "notes": []
+          }
+        ]
+      },
+      "pathological": {
+        "has_one_dominating": false,
+        "has_too_few_bullets": false,
+        "has_irrelevant_old": true,
+        "has_repetition": false,
+        "dominant_experience_share": 0.42857142857142855,
+        "repeated_source_share": 0.42857142857142855,
+        "total_selected_bullets": 7,
+        "reasons": [
+          "Older experience 'Frontend Developer @ PixelCraft' was selected despite low relevance and no gold expectation support."
+        ]
+      },
+      "failure_reasons": [
+        "experience violated exclusion: Frontend Developer @ PixelCraft -> Frontend Developer @ PixelCraft",
+        "project missing required expectation: Multi-Region Event Pipeline",
+        "bullet violated exclusion: jQuery admin UI -> Frontend Developer @ PixelCraft: Maintained a jQuery admin UI and shipped marketing site updates for seasonal campaigns.",
+        "project recall 0.00 below 0.50",
+        "average selected relevance 0.47 below 0.65",
+        "pathology: irrelevant old experience was included"
+      ],
+      "actual_selection": {
+        "experiences": [
+          {
+            "id": "exp.atlas-platform",
+            "label": "Principal Backend Engineer @ Atlas Platform",
+            "relevance_score": 0.8632,
+            "source_item_id": "exp.atlas-platform",
+            "selected_bullet_count": 3,
+            "evidence_count": 4,
+            "end_year": null
+          },
+          {
+            "id": "exp.streamforge",
+            "label": "Senior Software Engineer @ StreamForge",
+            "relevance_score": 0.4249,
+            "source_item_id": "exp.streamforge",
+            "selected_bullet_count": 3,
+            "evidence_count": 4,
+            "end_year": 2022
+          },
+          {
+            "id": "exp.pixelcraft",
+            "label": "Frontend Developer @ PixelCraft",
+            "relevance_score": 0.1329,
+            "source_item_id": "exp.pixelcraft",
+            "selected_bullet_count": 1,
+            "evidence_count": 2,
+            "end_year": 2018
+          }
+        ],
+        "projects": [],
+        "bullets": [
+          {
+            "id": "bullet.atlas.events",
+            "label": "Principal Backend Engineer @ Atlas Platform: Led design of a Python microservices platform handling 150 million events per day across multi-tenant workloads.",
+            "relevance_score": 0.8632,
+            "source_item_id": "exp.atlas-platform",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": null
+          },
+          {
+            "id": "bullet.atlas.recovery",
+            "label": "Principal Backend Engineer @ Atlas Platform: Built a distributed job orchestration service in Go and PostgreSQL, cutting failure recovery time by 65%.",
+            "relevance_score": 0.8632,
+            "source_item_id": "exp.atlas-platform",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": null
+          },
+          {
+            "id": "bullet.atlas.aws",
+            "label": "Principal Backend Engineer @ Atlas Platform: Partnered with SRE to harden AWS autoscaling and observability for critical APIs.",
+            "relevance_score": 0.8632,
+            "source_item_id": "exp.atlas-platform",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": null
+          },
+          {
+            "id": "bullet.streamforge.api",
+            "label": "Senior Software Engineer @ StreamForge: Shipped the REST API platform used by 40 plus internal services and major enterprise integrations.",
+            "relevance_score": 0.4249,
+            "source_item_id": "exp.streamforge",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": 2022
+          },
+          {
+            "id": "bullet.streamforge.latency",
+            "label": "Senior Software Engineer @ StreamForge: Optimized SQL and Redis access patterns, reducing p95 latency by 48% on revenue-critical endpoints.",
+            "relevance_score": 0.4249,
+            "source_item_id": "exp.streamforge",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": 2022
+          },
+          {
+            "id": "bullet.streamforge.mentoring",
+            "label": "Senior Software Engineer @ StreamForge: Mentored four backend engineers on service ownership, incident response, and deployment hygiene.",
+            "relevance_score": 0.4249,
+            "source_item_id": "exp.streamforge",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": 2022
+          },
+          {
+            "id": "bullet.pixelcraft.ui",
+            "label": "Frontend Developer @ PixelCraft: Maintained a jQuery admin UI and shipped marketing site updates for seasonal campaigns.",
+            "relevance_score": 0.1329,
+            "source_item_id": "exp.pixelcraft",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": 2018
+          }
+        ],
+        "skills": [
+          {
+            "id": "sel.skill.python",
+            "label": "Python",
+            "relevance_score": 0.8268,
+            "source_item_id": "skill.python",
+            "selected_bullet_count": 0,
+            "evidence_count": 1,
+            "end_year": null
+          },
+          {
+            "id": "sel.skill.go",
+            "label": "Go",
+            "relevance_score": 0.8575,
+            "source_item_id": "skill.go",
+            "selected_bullet_count": 0,
+            "evidence_count": 1,
+            "end_year": null
+          },
+          {
+            "id": "sel.skill.postgresql",
+            "label": "PostgreSQL",
+            "relevance_score": 0.8575,
+            "source_item_id": "skill.postgresql",
+            "selected_bullet_count": 0,
+            "evidence_count": 1,
+            "end_year": null
+          },
+          {
+            "id": "sel.skill.kafka",
+            "label": "Kafka",
+            "relevance_score": 0.77,
+            "source_item_id": "skill.kafka",
+            "selected_bullet_count": 0,
+            "evidence_count": 1,
+            "end_year": null
+          },
+          {
+            "id": "sel.skill.aws",
+            "label": "AWS",
+            "relevance_score": 0.77,
+            "source_item_id": "skill.aws",
+            "selected_bullet_count": 0,
+            "evidence_count": 1,
+            "end_year": null
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "SEL-002-recent-backend-over-legacy-java",
+      "description": "Backend API role should surface recent Python and AWS evidence while excluding stale Java maintenance work.",
+      "passed": false,
+      "overall_score": 0.727,
+      "experience_precision": 0.6667,
+      "experience_recall": 1.0,
+      "project_precision": 1.0,
+      "project_recall": 0.0,
+      "bullet_precision": 0.6,
+      "bullet_recall": 1.0,
+      "skill_correctness": 0.875,
+      "diversity_balance_score": 1.0,
+      "average_selection_relevance": 0.4434,
+      "experience_score": {
+        "precision": 0.6667,
+        "recall": 1.0,
+        "matched_actual_count": 2,
+        "actual_count": 3,
+        "false_positive_count": 1,
+        "violated_exclusions": 1,
+        "positive_assessments": [
+          {
+            "label": "Backend Engineer @ SignalStack",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Backend Engineer @ SignalStack"
+            ],
+            "notes": []
+          },
+          {
+            "label": "Platform Engineer @ LedgerLoop",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Platform Engineer @ LedgerLoop"
+            ],
+            "notes": []
+          }
+        ],
+        "exclusion_assessments": [
+          {
+            "label": "Java Developer @ LegacyBank",
+            "expectation_type": "must_not_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": false,
+            "matched_item_labels": [
+              "Java Developer @ LegacyBank"
+            ],
+            "notes": []
+          },
+          {
+            "label": "QA Analyst @ TestWorks",
+            "expectation_type": "must_not_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [],
+            "notes": []
+          }
+        ]
+      },
+      "project_score": {
+        "precision": 1.0,
+        "recall": 0.0,
+        "matched_actual_count": 0,
+        "actual_count": 0,
+        "false_positive_count": 0,
+        "violated_exclusions": 0,
+        "positive_assessments": [
+          {
+            "label": "Billing API Migration",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": false,
+            "matched_item_labels": [],
+            "notes": []
+          }
+        ],
+        "exclusion_assessments": [
+          {
+            "label": "Android Retail App",
+            "expectation_type": "must_not_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [],
+            "notes": []
+          }
+        ]
+      },
+      "bullet_score": {
+        "precision": 0.6,
+        "recall": 1.0,
+        "matched_actual_count": 3,
+        "actual_count": 5,
+        "false_positive_count": 2,
+        "violated_exclusions": 1,
+        "positive_assessments": [
+          {
+            "label": "Built FastAPI services",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Backend Engineer @ SignalStack: Built FastAPI services for customer billing and usage events, improving API response consistency for external clients."
+            ],
+            "notes": []
+          },
+          {
+            "label": "Migrated billing workloads to AWS",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Platform Engineer @ LedgerLoop: Migrated billing workloads to AWS ECS and automated rollout checks for REST API services."
+            ],
+            "notes": []
+          },
+          {
+            "label": "reduced integration regressions",
+            "expectation_type": "prefer_include",
+            "weight": 1.0,
+            "required": false,
+            "matched": true,
+            "matched_item_labels": [
+              "Backend Engineer @ SignalStack: Added contract tests and deployment checks that reduced integration regressions during weekly releases."
+            ],
+            "notes": []
+          }
+        ],
+        "exclusion_assessments": [
+          {
+            "label": "Struts monolith",
+            "expectation_type": "must_not_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": false,
+            "matched_item_labels": [
+              "Java Developer @ LegacyBank: Maintained a Struts monolith and handled defect tickets for internal banking workflows."
+            ],
+            "notes": []
+          }
+        ]
+      },
+      "skill_score": {
+        "precision": 1.0,
+        "recall": 0.75,
+        "matched_actual_count": 3,
+        "actual_count": 3,
+        "false_positive_count": 0,
+        "violated_exclusions": 0,
+        "positive_assessments": [
+          {
+            "label": "Python",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Python"
+            ],
+            "notes": []
+          },
+          {
+            "label": "FastAPI",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "FastAPI"
+            ],
+            "notes": []
+          },
+          {
+            "label": "AWS",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "AWS"
+            ],
+            "notes": []
+          },
+          {
+            "label": "REST APIs",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": false,
+            "matched_item_labels": [],
+            "notes": []
+          }
+        ],
+        "exclusion_assessments": [
+          {
+            "label": "Java",
+            "expectation_type": "must_not_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [],
+            "notes": []
+          }
+        ]
+      },
+      "pathological": {
+        "has_one_dominating": false,
+        "has_too_few_bullets": false,
+        "has_irrelevant_old": true,
+        "has_repetition": false,
+        "dominant_experience_share": 0.4,
+        "repeated_source_share": 0.4,
+        "total_selected_bullets": 5,
+        "reasons": [
+          "Older experience 'Java Developer @ LegacyBank' was selected despite low relevance and no gold expectation support."
+        ]
+      },
+      "failure_reasons": [
+        "experience violated exclusion: Java Developer @ LegacyBank -> Java Developer @ LegacyBank",
+        "project missing required expectation: Billing API Migration",
+        "bullet violated exclusion: Struts monolith -> Java Developer @ LegacyBank: Maintained a Struts monolith and handled defect tickets for internal banking workflows.",
+        "skill missing required expectation: REST APIs",
+        "project recall 0.00 below 0.50",
+        "average selected relevance 0.44 below 0.60",
+        "pathology: irrelevant old experience was included"
+      ],
+      "actual_selection": {
+        "experiences": [
+          {
+            "id": "exp.signalstack",
+            "label": "Backend Engineer @ SignalStack",
+            "relevance_score": 0.7203,
+            "source_item_id": "exp.signalstack",
+            "selected_bullet_count": 2,
+            "evidence_count": 3,
+            "end_year": null
+          },
+          {
+            "id": "exp.ledgerloop",
+            "label": "Platform Engineer @ LedgerLoop",
+            "relevance_score": 0.5035,
+            "source_item_id": "exp.ledgerloop",
+            "selected_bullet_count": 2,
+            "evidence_count": 3,
+            "end_year": 2022
+          },
+          {
+            "id": "exp.legacybank",
+            "label": "Java Developer @ LegacyBank",
+            "relevance_score": 0.1065,
+            "source_item_id": "exp.legacybank",
+            "selected_bullet_count": 1,
+            "evidence_count": 2,
+            "end_year": 2019
+          }
+        ],
+        "projects": [],
+        "bullets": [
+          {
+            "id": "bullet.signalstack.fastapi",
+            "label": "Backend Engineer @ SignalStack: Built FastAPI services for customer billing and usage events, improving API response consistency for external clients.",
+            "relevance_score": 0.7203,
+            "source_item_id": "exp.signalstack",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": null
+          },
+          {
+            "id": "bullet.signalstack.testing",
+            "label": "Backend Engineer @ SignalStack: Added contract tests and deployment checks that reduced integration regressions during weekly releases.",
+            "relevance_score": 0.7203,
+            "source_item_id": "exp.signalstack",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": null
+          },
+          {
+            "id": "bullet.ledgerloop.aws",
+            "label": "Platform Engineer @ LedgerLoop: Migrated billing workloads to AWS ECS and automated rollout checks for REST API services.",
+            "relevance_score": 0.5035,
+            "source_item_id": "exp.ledgerloop",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": 2022
+          },
+          {
+            "id": "bullet.ledgerloop.monitoring",
+            "label": "Platform Engineer @ LedgerLoop: Introduced service dashboards and alerting to shorten time to detect API failures.",
+            "relevance_score": 0.5035,
+            "source_item_id": "exp.ledgerloop",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": 2022
+          },
+          {
+            "id": "bullet.legacybank.struts",
+            "label": "Java Developer @ LegacyBank: Maintained a Struts monolith and handled defect tickets for internal banking workflows.",
+            "relevance_score": 0.1065,
+            "source_item_id": "exp.legacybank",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": 2019
+          }
+        ],
+        "skills": [
+          {
+            "id": "sel.skill.fastapi",
+            "label": "FastAPI",
+            "relevance_score": 0.8325,
+            "source_item_id": "skill.mix.fastapi",
+            "selected_bullet_count": 0,
+            "evidence_count": 1,
+            "end_year": null
+          },
+          {
+            "id": "sel.skill.python",
+            "label": "Python",
+            "relevance_score": 0.8138,
+            "source_item_id": "skill.mix.python",
+            "selected_bullet_count": 0,
+            "evidence_count": 1,
+            "end_year": null
+          },
+          {
+            "id": "sel.skill.aws",
+            "label": "AWS",
+            "relevance_score": 0.8138,
+            "source_item_id": "skill.mix.aws",
+            "selected_bullet_count": 0,
+            "evidence_count": 1,
+            "end_year": null
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "SEL-003-platform-breadth-balance",
+      "description": "Staff platform role should preserve breadth across infrastructure, reliability, and developer-platform evidence instead of overfocusing one role.",
+      "passed": false,
+      "overall_score": 0.712,
+      "experience_precision": 0.6667,
+      "experience_recall": 1.0,
+      "project_precision": 1.0,
+      "project_recall": 0.0,
+      "bullet_precision": 0.5,
+      "bullet_recall": 1.0,
+      "skill_correctness": 0.875,
+      "diversity_balance_score": 1.0,
+      "average_selection_relevance": 0.4452,
+      "experience_score": {
+        "precision": 0.6667,
+        "recall": 1.0,
+        "matched_actual_count": 2,
+        "actual_count": 3,
+        "false_positive_count": 1,
+        "violated_exclusions": 1,
+        "positive_assessments": [
+          {
+            "label": "Staff Platform Engineer @ RelayOps",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Staff Platform Engineer @ RelayOps"
+            ],
+            "notes": []
+          },
+          {
+            "label": "Senior SRE @ ComputeDock",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Senior Sre @ ComputeDock"
+            ],
+            "notes": []
+          }
+        ],
+        "exclusion_assessments": [
+          {
+            "label": "Web Developer @ Campus Labs",
+            "expectation_type": "must_not_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": false,
+            "matched_item_labels": [
+              "Web Developer @ Campus Labs"
+            ],
+            "notes": []
+          }
+        ]
+      },
+      "project_score": {
+        "precision": 1.0,
+        "recall": 0.0,
+        "matched_actual_count": 0,
+        "actual_count": 0,
+        "false_positive_count": 0,
+        "violated_exclusions": 0,
+        "positive_assessments": [
+          {
+            "label": "Developer Provisioning Platform",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": false,
+            "matched_item_labels": [],
+            "notes": []
+          },
+          {
+            "label": "Incident Command Simulator",
+            "expectation_type": "acceptable_alternative",
+            "weight": 1.0,
+            "required": false,
+            "matched": false,
+            "matched_item_labels": [],
+            "notes": []
+          }
+        ],
+        "exclusion_assessments": []
+      },
+      "bullet_score": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "matched_actual_count": 3,
+        "actual_count": 6,
+        "false_positive_count": 3,
+        "violated_exclusions": 1,
+        "positive_assessments": [
+          {
+            "label": "Terraform modules",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Staff Platform Engineer @ RelayOps: Built Terraform modules and paved-road deployment templates used by more than 30 service teams."
+            ],
+            "notes": []
+          },
+          {
+            "label": "Cut mean time to recovery by 43%",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Senior Sre @ ComputeDock: Cut mean time to recovery by 43% by redesigning incident response roles, runbooks, and service ownership coverage."
+            ],
+            "notes": []
+          },
+          {
+            "label": "Reduced cloud spend by 18% | self-service provisioning flow",
+            "expectation_type": "acceptable_alternative",
+            "weight": 1.0,
+            "required": false,
+            "matched": true,
+            "matched_item_labels": [
+              "Staff Platform Engineer @ RelayOps: Reduced cloud spend by 18% through right-sizing, workload scheduling, and storage policy changes."
+            ],
+            "notes": []
+          }
+        ],
+        "exclusion_assessments": [
+          {
+            "label": "WordPress sites",
+            "expectation_type": "must_not_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": false,
+            "matched_item_labels": [
+              "Web Developer @ Campus Labs: Maintained WordPress sites and campus marketing pages for event promotions."
+            ],
+            "notes": []
+          }
+        ]
+      },
+      "skill_score": {
+        "precision": 1.0,
+        "recall": 0.75,
+        "matched_actual_count": 3,
+        "actual_count": 3,
+        "false_positive_count": 0,
+        "violated_exclusions": 0,
+        "positive_assessments": [
+          {
+            "label": "Terraform",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Terraform"
+            ],
+            "notes": []
+          },
+          {
+            "label": "Kubernetes",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "Kubernetes"
+            ],
+            "notes": []
+          },
+          {
+            "label": "AWS",
+            "expectation_type": "must_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [
+              "AWS"
+            ],
+            "notes": []
+          },
+          {
+            "label": "Incident Response",
+            "expectation_type": "acceptable_alternative",
+            "weight": 1.0,
+            "required": false,
+            "matched": false,
+            "matched_item_labels": [],
+            "notes": []
+          }
+        ],
+        "exclusion_assessments": [
+          {
+            "label": "WordPress",
+            "expectation_type": "must_not_include",
+            "weight": 1.0,
+            "required": true,
+            "matched": true,
+            "matched_item_labels": [],
+            "notes": []
+          }
+        ]
+      },
+      "pathological": {
+        "has_one_dominating": false,
+        "has_too_few_bullets": false,
+        "has_irrelevant_old": true,
+        "has_repetition": false,
+        "dominant_experience_share": 0.5,
+        "repeated_source_share": 0.5,
+        "total_selected_bullets": 6,
+        "reasons": [
+          "Older experience 'Web Developer @ Campus Labs' was selected despite low relevance and no gold expectation support."
+        ]
+      },
+      "failure_reasons": [
+        "experience violated exclusion: Web Developer @ Campus Labs -> Web Developer @ Campus Labs",
+        "project missing required expectation: Developer Provisioning Platform",
+        "bullet violated exclusion: WordPress sites -> Web Developer @ Campus Labs: Maintained WordPress sites and campus marketing pages for event promotions.",
+        "project recall 0.00 below 0.50",
+        "average selected relevance 0.45 below 0.62",
+        "pathology: irrelevant old experience was included"
+      ],
+      "actual_selection": {
+        "experiences": [
+          {
+            "id": "exp.relayops",
+            "label": "Staff Platform Engineer @ RelayOps",
+            "relevance_score": 0.7477,
+            "source_item_id": "exp.relayops",
+            "selected_bullet_count": 3,
+            "evidence_count": 4,
+            "end_year": null
+          },
+          {
+            "id": "exp.computedock",
+            "label": "Senior Sre @ ComputeDock",
+            "relevance_score": 0.5111,
+            "source_item_id": "exp.computedock",
+            "selected_bullet_count": 2,
+            "evidence_count": 3,
+            "end_year": 2022
+          },
+          {
+            "id": "exp.campuslabs",
+            "label": "Web Developer @ Campus Labs",
+            "relevance_score": 0.0767,
+            "source_item_id": "exp.campuslabs",
+            "selected_bullet_count": 1,
+            "evidence_count": 2,
+            "end_year": 2017
+          }
+        ],
+        "projects": [],
+        "bullets": [
+          {
+            "id": "bullet.relayops.terraform",
+            "label": "Staff Platform Engineer @ RelayOps: Built Terraform modules and paved-road deployment templates used by more than 30 service teams.",
+            "relevance_score": 0.7477,
+            "source_item_id": "exp.relayops",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": null
+          },
+          {
+            "id": "bullet.relayops.cost",
+            "label": "Staff Platform Engineer @ RelayOps: Reduced cloud spend by 18% through right-sizing, workload scheduling, and storage policy changes.",
+            "relevance_score": 0.7477,
+            "source_item_id": "exp.relayops",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": null
+          },
+          {
+            "id": "bullet.relayops.platform",
+            "label": "Staff Platform Engineer @ RelayOps: Drove platform roadmap reviews with application teams to improve developer onboarding and service standards.",
+            "relevance_score": 0.7477,
+            "source_item_id": "exp.relayops",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": null
+          },
+          {
+            "id": "bullet.computedock.mttr",
+            "label": "Senior Sre @ ComputeDock: Cut mean time to recovery by 43% by redesigning incident response roles, runbooks, and service ownership coverage.",
+            "relevance_score": 0.5111,
+            "source_item_id": "exp.computedock",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": 2022
+          },
+          {
+            "id": "bullet.computedock.k8s",
+            "label": "Senior Sre @ ComputeDock: Ran Kubernetes reliability improvements and cluster upgrade playbooks for stateful production services.",
+            "relevance_score": 0.5111,
+            "source_item_id": "exp.computedock",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": 2022
+          },
+          {
+            "id": "bullet.campuslabs.wordpress",
+            "label": "Web Developer @ Campus Labs: Maintained WordPress sites and campus marketing pages for event promotions.",
+            "relevance_score": 0.0767,
+            "source_item_id": "exp.campuslabs",
+            "selected_bullet_count": 1,
+            "evidence_count": 1,
+            "end_year": 2017
+          }
+        ],
+        "skills": [
+          {
+            "id": "sel.skill.kubernetes",
+            "label": "Kubernetes",
+            "relevance_score": 0.8334,
+            "source_item_id": "skill.platform.kubernetes",
+            "selected_bullet_count": 0,
+            "evidence_count": 1,
+            "end_year": null
+          },
+          {
+            "id": "sel.skill.terraform",
+            "label": "Terraform",
+            "relevance_score": 0.8586,
+            "source_item_id": "skill.platform.terraform",
+            "selected_bullet_count": 0,
+            "evidence_count": 1,
+            "end_year": null
+          },
+          {
+            "id": "sel.skill.aws",
+            "label": "AWS",
+            "relevance_score": 0.8334,
+            "source_item_id": "skill.platform.aws",
+            "selected_bullet_count": 0,
+            "evidence_count": 1,
+            "end_year": null
+          }
+        ]
+      }
+    }
+  ]
+}

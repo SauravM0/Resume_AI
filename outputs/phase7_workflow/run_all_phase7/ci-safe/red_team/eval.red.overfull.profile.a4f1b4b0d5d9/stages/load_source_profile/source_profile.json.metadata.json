@@ -1,0 +1,15 @@
+{
+  "artifact_id": "eval.red.overfull.profile.a4f1b4b0d5d9.load_source_profile.source_profile",
+  "artifact_kind": "source_profile",
+  "case_id": "red.overfull.profile",
+  "content_hash": "sha256:aeb74f21f704735beefa98814a98c74b6086d43c116442ad2273aa69cc2d5a33",
+  "content_type": "application/json",
+  "payload_format": "json",
+  "persisted_at": "2026-04-10T07:59:00.890509Z",
+  "redacted": true,
+  "redaction_policy": "phase7.basic_redaction.v1",
+  "run_id": "eval.red.overfull.profile.a4f1b4b0d5d9",
+  "schema_version": "phase7.eval.artifact.v1",
+  "size_bytes": 16762,
+  "stage_name": "load_source_profile"
+}

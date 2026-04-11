@@ -1,0 +1,75 @@
+pack_id: jd_parse_frontend_senior
+pack_type: jd_parse
+description: |
+  Job description parsing test for a Senior Frontend Engineer role.
+  Tests extraction of frontend frameworks, UI/UX signals, and proper frontend classification.
+version: "1.0.0"
+
+cases:
+  - case_id: FE-001-frontend-senior
+    description: Senior Frontend Engineer - React focus
+    pack_type: jd_parse
+    
+    job_description:
+      raw_text: |
+        Senior Frontend Engineer
+        
+        We are seeking a Senior Frontend Engineer to build beautiful,
+        performant user interfaces for our web applications.
+        
+        Requirements:
+        - 5+ years of frontend development experience
+        - Expert in React and TypeScript
+        - Strong CSS and modern styling (Tailwind, styled-components)
+        - Experience with state management (Redux, Zustand, Jotai)
+        - Understanding of web performance optimization
+        
+        Preferred:
+        - Experience with Next.js or Remix
+        - Knowledge of accessibility (WCAG)
+        - Testing experience (Jest, Cypress)
+        
+        Responsibilities:
+        - Build and maintain React components
+        - Optimize application performance
+        - Ensure accessibility compliance
+        - Mentor junior developers
+    tags:
+      - frontend
+      - senior
+      - react
+    
+    phase1_expectations:
+      expected_job_title: Senior Frontend Engineer
+      expected_role_family: frontend
+      expected_seniority: senior
+      
+      expected_skills:
+        - type: must_include
+          value: React
+          match_mode: exact
+          weight: 1.0
+        - type: must_include
+          value: TypeScript
+          match_mode: exact
+          weight: 1.0
+        - type: must_include
+          value: CSS
+          match_mode: exact
+          weight: 0.9
+        - type: must_include
+          value: state management
+          match_mode: fuzzy
+          weight: 0.8
+        - type: prefer_include
+          value: Next.js
+          match_mode: exact
+          weight: 0.7
+        - type: must_not_include
+          value: Go
+          match_mode: exact
+          weight: 1.0
+          reason: Backend language should not be in frontend JD
+      
+      min_quality_score: 0.75
+      min_parser_confidence: 0.70

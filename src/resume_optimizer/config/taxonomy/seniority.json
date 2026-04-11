@@ -1,0 +1,14 @@
+{
+  "canonical_terms": {
+    "intern": ["intern", "internship"],
+    "junior": ["junior", "jr", "jr.", "entry level", "entry-level", "associate"],
+    "mid": ["mid", "mid-level", "mid level", "intermediate"],
+    "senior": ["senior", "sr", "sr."],
+    "lead": ["lead", "principal lead", "tech lead", "team lead"],
+    "staff": ["staff"],
+    "principal": ["principal", "architect"],
+    "manager": ["manager", "mgr", "mgr.", "people manager", "engineering manager"],
+    "director": ["director", "head of engineering"],
+    "executive": ["executive", "vp", "svp", "cxo", "cto", "ceo"]
+  }
+}

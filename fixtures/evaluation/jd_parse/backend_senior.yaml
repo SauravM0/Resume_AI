@@ -1,0 +1,134 @@
+pack_id: jd_parse_backend_senior
+pack_type: jd_parse
+description: |
+  Job description parsing test for a Senior Backend Engineer role.
+  Tests extraction of backend-specific skills, system design expectations,
+  and proper role family/seniority classification.
+version: "1.0.0"
+
+cases:
+  - case_id: BE-001-backend-senior
+    description: Senior Backend Engineer - standard clean JD
+    pack_type: jd_parse
+    
+    job_description:
+      raw_text: |
+        Senior Backend Engineer - Distributed Systems
+        
+        We are looking for a Senior Backend Engineer to join our platform team.
+        You will design and build high-performance, scalable microservices
+        handling millions of requests per day.
+        
+        Requirements:
+        - 5+ years of experience in backend development
+        - Strong proficiency in Python or Go
+        - Experience with distributed systems and microservices
+        - Knowledge of SQL and NoSQL databases
+        - Familiarity with cloud platforms (AWS, GCP, or Azure)
+        
+        Preferred:
+        - Experience with Kubernetes and container orchestration
+        - Knowledge of event-driven architectures (Kafka, RabbitMQ)
+        - Background in fintech or payments
+        
+        Responsibilities:
+        - Design and implement scalable backend services
+        - Lead technical design reviews
+        - Mentor junior engineers
+        - Participate in on-call rotation
+    tags:
+      - backend
+      - senior
+      - system_design
+    
+    phase1_expectations:
+      expected_job_title: Senior Backend Engineer
+      expected_role_family: backend
+      expected_seniority: senior
+      
+      expected_skills:
+        - type: must_include
+          value: Python
+          match_mode: exact
+          weight: 1.0
+        - type: must_include
+          value: Go
+          match_mode: exact
+          weight: 0.9
+        - type: must_include
+          value: distributed systems
+          match_mode: fuzzy
+          weight: 1.0
+        - type: must_include
+          value: microservices
+          match_mode: exact
+          weight: 1.0
+        - type: must_include
+          value: SQL
+          match_mode: exact
+          weight: 1.0
+        - type: prefer_include
+          value: Kubernetes
+          match_mode: exact
+          weight: 0.7
+        - type: prefer_include
+          value: Kafka
+          match_mode: exact
+          weight: 0.6
+        - type: must_not_include
+          value: React
+          match_mode: exact
+          weight: 1.0
+          reason: Frontend skill should not appear in backend JD
+      
+      min_quality_score: 0.75
+      min_parser_confidence: 0.70
+
+  - case_id: BE-002-backend-staff
+    description: Staff Engineer - architecture leadership
+    pack_type: jd_parse
+    
+    job_description:
+      raw_text: |
+        Staff Backend Engineer - Platform Architecture
+        
+        Join our platform engineering team as a Staff Engineer to drive
+        the technical vision for our core infrastructure.
+        
+        Requirements:
+        - 8+ years of backend engineering experience
+        - Proven track record of designing and shipping distributed systems
+        - Deep expertise in system design and performance optimization
+        - Experience leading technical initiatives across teams
+        
+        Responsibilities:
+        - Define technical architecture for new platform services
+        - Drive engineering best practices across the organization
+        - Mentor senior engineers and tech leads
+        - Collaborate with product and design on technical feasibility
+    tags:
+      - backend
+      - staff
+      - architecture
+    
+    phase1_expectations:
+      expected_job_title: Staff Backend Engineer
+      expected_role_family: backend
+      expected_seniority: staff
+      
+      expected_skills:
+        - type: must_include
+          value: system design
+          match_mode: fuzzy
+          weight: 1.0
+        - type: must_include
+          value: distributed systems
+          match_mode: fuzzy
+          weight: 1.0
+        - type: must_include
+          value: performance optimization
+          match_mode: fuzzy
+          weight: 0.9
+      
+      min_quality_score: 0.70
+      min_parser_confidence: 0.65

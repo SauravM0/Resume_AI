@@ -1,0 +1,9 @@
+alembic<2,>=1.13
+fastapi<1,>=0.115
+openai<2,>=1.75
+pydantic<3,>=2.7
+sqlalchemy<3,>=2.0
+
+[test]
+httpx<1,>=0.27
+pytest<9,>=8

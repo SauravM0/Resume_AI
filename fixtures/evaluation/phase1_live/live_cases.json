@@ -1,0 +1,240 @@
+{
+  "cases": [
+    {
+      "case_id": "live_backend_distributed_systems",
+      "description": "Real messy JD for senior backend with distributed systems focus - contains boilerplate and mixed requirements",
+      "raw_jd": "Senior Backend Engineer - Distributed Systems\n\nWHO WE ARE\nWe're a fast-growing fintech startup building the next generation of payment infrastructure. Our team of 50+ engineers is tackling hard problems at scale.\n\nWHAT YOU'LL DO\n- Design and build high-performance microservices handling 50M+ requests/day\n- Work with Go, Python, Kafka, and PostgreSQL\n- Mentor junior engineers and drive technical decisions\n- Participate in on-call rotation\n\nWHAT WE'RE LOOKING FOR\n- 5+ years backend development experience\n- Experience with distributed systems and microservices architecture\n- Strong knowledge of data structures, algorithms, and system design\n- Experience with cloud platforms (AWS/GCP)\n\nNICE TO HAVE\n- Experience with Kubernetes and Docker\n- Background in payments or financial services\n- Knowledge of real-time data processing\n\nBENEFITS\n- Competitive salary and equity\n- Unlimited PTO\n- Health, dental, vision\n- Remote friendly\n\nOur stack: Go, Python, PostgreSQL, Kafka, Redis, Kubernetes, AWS",
+      "gold": {
+        "job_title": "Senior Backend Engineer",
+        "role_family": "backend",
+        "seniority": "senior",
+        "must_have_skills": [
+          "Go",
+          "Python",
+          "Microservices",
+          "Distributed Systems",
+          "PostgreSQL",
+          "Kafka",
+          "AWS"
+        ],
+        "nice_to_have_skills": [
+          "Kubernetes",
+          "Docker",
+          "Redis",
+          "GCP"
+        ],
+        "key_tools": [
+          "Go",
+          "Python",
+          "PostgreSQL",
+          "Kafka",
+          "AWS",
+          "Kubernetes"
+        ],
+        "responsibility_clusters": [
+          "Design and build high-performance microservices",
+          "Mentor junior engineers",
+          "Drive technical decisions",
+          "On-call rotation"
+        ],
+        "business_domain": "fintech",
+        "evidence_type": "system_design",
+        "intent_summary": "Proves ability to build and scale distributed systems at high throughput with strong mentorship and technical leadership."
+      }
+    },
+    {
+      "case_id": "live_frontend_react_enterprise",
+      "description": "Frontend role with messy JD - contains company boilerplate and mixed seniority signals",
+      "raw_jd": "About the Role\nJoin our Platform Engineering team as we transform how our customers interact with our products. You'll be working on our web platform that serves millions of users.\n\nRequirements:\n• 3+ years of experience building production React applications\n• Strong proficiency in TypeScript and modern JavaScript\n• Experience with state management (Redux, Context, or similar)\n• Understanding of web performance optimization\n• Familiar with testing frameworks like Jest or Cypress\n\nPreferred Qualifications:\n• Experience with Next.js or Remix\n• Background in design systems or component libraries\n• Experience with GraphQL\n• Knowledge of accessibility (WCAG)\n\nWhat We Offer:\nGreat benefits, collaborative culture, career growth opportunities.\n\nLocation: Hybrid - 3 days in office (San Francisco)\n\nJoin our team of talented engineers!",
+      "gold": {
+        "job_title": "Frontend Engineer",
+        "role_family": "frontend",
+        "seniority": "mid",
+        "must_have_skills": [
+          "React",
+          "TypeScript",
+          "JavaScript",
+          "Redux"
+        ],
+        "nice_to_have_skills": [
+          "Next.js",
+          "Remix",
+          "GraphQL",
+          "Jest",
+          "Cypress",
+          "Design Systems"
+        ],
+        "key_tools": [
+          "React",
+          "TypeScript",
+          "Redux",
+          "JavaScript"
+        ],
+        "responsibility_clusters": [
+          "Build production React applications",
+          "Web performance optimization",
+          "State management"
+        ],
+        "business_domain": "platform",
+        "evidence_type": "product_ui",
+        "intent_summary": "Demonstrates React proficiency with modern JavaScript and state management for production customer-facing applications."
+      }
+    },
+    {
+      "case_id": "live_fullstack_node_react",
+      "description": "Fullstack role with noisy JD - startup style with unclear structure",
+      "raw_jd": "We're looking for a Full Stack Developer to join our growing team!\n\nYOU SHOULD HAVE:\n- JavaScript/TypeScript experience\n- React for frontend\n- Node.js backend skills\n- SQL and NoSQL experience\n\nPLUS IF YOU HAVE:\n- GraphQL\n- AWS experience\n- Startup experience\n\nTHE WORK:\nYou'll be building features end-to-end, from database to UI. We move fast and ship often. You'll own features and work closely with product and design.\n\nWHO WE ARE:\nEarly stage startup (Series A), building productivity tools for remote teams.\n\nAPPLY NOW!",
+      "gold": {
+        "job_title": "Full Stack Developer",
+        "role_family": "fullstack",
+        "seniority": "mid",
+        "must_have_skills": [
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "Node.js",
+          "SQL"
+        ],
+        "nice_to_have_skills": [
+          "GraphQL",
+          "AWS",
+          "NoSQL"
+        ],
+        "key_tools": [
+          "React",
+          "Node.js",
+          "SQL",
+          "JavaScript"
+        ],
+        "responsibility_clusters": [
+          "Build features end-to-end",
+          "Own features",
+          "Work with product and design"
+        ],
+        "business_domain": "productivity",
+        "evidence_type": "fullstack_delivery",
+        "intent_summary": "Shows end-to-end ownership and fast execution across frontend and backend in a startup environment."
+      }
+    },
+    {
+      "case_id": "live_platform_kubernetes",
+      "description": "Platform/DevOps role with technical JD - should extract strong signal",
+      "raw_jd": "Platform Engineer - Kubernetes & Cloud Infrastructure\n\nAs a Platform Engineer, you'll own our cloud infrastructure and developer experience. You'll build systems that enable engineers to ship code faster and more safely.\n\nResponsibilities:\n- Design and operate Kubernetes clusters across multiple regions\n- Build CI/CD pipelines and internal developer platforms\n- Implement infrastructure as code (Terraform, Pulumi)\n- Establish monitoring, alerting, and incident response\n- Partner with application teams to optimize performance and reliability\n\nRequirements:\n- 4+ years in DevOps, SRE, or Platform Engineering\n- Expert knowledge of Kubernetes (CKA/CKAD preferred)\n- Strong experience with Terraform or similar IaC tools\n- Proficiency in Python or Go for automation\n- Experience with GitHub Actions, ArgoCD, or similar\n\nNice to have:\n- Experience with service mesh (Istio, Linkerd)\n- Background in security (CKS preferred)\n- Experience with observability stacks (Prometheus, Grafana, Jaeger)\n\nLocation: Remote (US)",
+      "gold": {
+        "job_title": "Platform Engineer",
+        "role_family": "platform",
+        "seniority": "senior",
+        "must_have_skills": [
+          "Kubernetes",
+          "Terraform",
+          "CI/CD",
+          "Python",
+          "Go",
+          "Infrastructure as Code"
+        ],
+        "nice_to_have_skills": [
+          "Service Mesh",
+          "Istio",
+          "Prometheus",
+          "Grafana",
+          "ArgoCD"
+        ],
+        "key_tools": [
+          "Kubernetes",
+          "Terraform",
+          "Python",
+          "Go",
+          "GitHub Actions"
+        ],
+        "responsibility_clusters": [
+          "Design and operate Kubernetes clusters",
+          "Build CI/CD pipelines",
+          "Infrastructure as code",
+          "Monitoring and alerting"
+        ],
+        "business_domain": "infrastructure",
+        "evidence_type": "cloud_platform",
+        "intent_summary": "Proves Kubernetes expertise with infrastructure-as-code and CI/CD pipeline ownership for developer productivity."
+      }
+    },
+    {
+      "case_id": "live_data_engineer_snowflake",
+      "description": "Data engineering role with domain-specific requirements",
+      "raw_jd": "Data Engineer\n\nWe're seeking a Data Engineer to build and maintain our data pipelines and analytics infrastructure.\n\nWhat you'll work on:\n- Build ETL pipelines using Python and Airflow\n- Design and optimize Snowflake data warehouse\n- Work with data scientists to productionize models\n- Ensure data quality and governance\n\nWhat you bring:\n- 3+ years data engineering experience\n- Expert in SQL and Python\n- Experience with Snowflake, BigQuery, or Redshift\n- Knowledge of Airflow, Dagster, or similar orchestration tools\n\nBonus points for:\n- Spark or Databricks experience\n- Experience with dbt\n- Background in analytics engineering\n\nThis is a hybrid role - 2 days/week in our NYC office.",
+      "gold": {
+        "job_title": "Data Engineer",
+        "role_family": "data",
+        "seniority": "mid",
+        "must_have_skills": [
+          "Python",
+          "SQL",
+          "Snowflake",
+          "ETL",
+          "Airflow"
+        ],
+        "nice_to_have_skills": [
+          "Spark",
+          "dbt",
+          "BigQuery",
+          "Redshift",
+          "Databricks"
+        ],
+        "key_tools": [
+          "Python",
+          "SQL",
+          "Snowflake",
+          "Airflow"
+        ],
+        "responsibility_clusters": [
+          "Build ETL pipelines",
+          "Design data warehouse",
+          "Productionize models",
+          "Data quality and governance"
+        ],
+        "business_domain": "analytics",
+        "evidence_type": "data_pipeline",
+        "intent_summary": "Shows ETL and data warehouse expertise with Python/SQL for analytics infrastructure and pipeline reliability."
+      }
+    },
+    {
+      "case_id": "live_sre_reliability",
+      "description": "SRE role with focus on reliability and incident management",
+      "raw_jd": "Site Reliability Engineer\n\nJoin our SRE team to ensure our platform remains available, performant, and scalable.\n\nYour mission: Improve system reliability and reduce toil through automation.\n\nKey responsibilities:\n- Respond to incidents and drive post-mortem improvements\n- Build monitoring and observability solutions\n- Automate operational processes and reduce manual work\n- Capacity planning and performance tuning\n- On-call rotation (roughly 1 week every 6 weeks)\n\nWhat we're looking for:\n- 4+ years of SRE, DevOps, or systems engineering experience\n- Strong Linux fundamentals and troubleshooting skills\n- Experience with Prometheus, Grafana, or similar\n- Proficiency in Python, Go, or Bash for scripting\n- Understanding of SLOs, SLIs, and error budgets\n\nNice to have:\n- Experience with Kubernetes at scale\n- Chaos engineering (Chaos Monkey, Gremlin)\n- Experience with incident management tools (PagerDuty)\n\nCompensation: $180-220k + equity\n\nApply if you care about reliability and want to make systems bulletproof!",
+      "gold": {
+        "job_title": "Site Reliability Engineer",
+        "role_family": "devops",
+        "seniority": "senior",
+        "must_have_skills": [
+          "Linux",
+          "Prometheus",
+          "Grafana",
+          "Python",
+          "Go",
+          "Incident Response",
+          "SRE"
+        ],
+        "nice_to_have_skills": [
+          "Kubernetes",
+          "Chaos Engineering",
+          "PagerDuty"
+        ],
+        "key_tools": [
+          "Prometheus",
+          "Grafana",
+          "Python",
+          "Go",
+          "Linux"
+        ],
+        "responsibility_clusters": [
+          "Respond to incidents",
+          "Build monitoring solutions",
+          "Automate operational processes",
+          "Capacity planning"
+        ],
+        "business_domain": "infrastructure",
+        "evidence_type": "reliability_operations",
+        "intent_summary": "Proves SRE fundamentals with incident response, observability, and automation for platform reliability."
+      }
+    }
+  ]
+}

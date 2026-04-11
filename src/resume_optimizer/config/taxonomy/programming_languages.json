@@ -1,0 +1,12 @@
+{
+  "canonical_terms": {
+    "Python": ["python", "py"],
+    "JavaScript": ["javascript", "js"],
+    "TypeScript": ["typescript", "ts"],
+    "Go": ["go", "golang"],
+    "Java": ["java"],
+    "SQL": ["sql"],
+    "C#": ["c#", "csharp"],
+    "Ruby": ["ruby"]
+  }
+}

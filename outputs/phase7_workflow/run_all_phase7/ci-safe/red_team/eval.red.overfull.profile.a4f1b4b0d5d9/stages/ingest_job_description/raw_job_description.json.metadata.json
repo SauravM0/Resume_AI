@@ -1,0 +1,15 @@
+{
+  "artifact_id": "eval.red.overfull.profile.a4f1b4b0d5d9.ingest_job_description.raw_job_description",
+  "artifact_kind": "raw_job_description",
+  "case_id": "red.overfull.profile",
+  "content_hash": "sha256:c50bc6970b7e74531a23e01c929d751e843e715940727b0188120a0bc8d307be",
+  "content_type": "application/json",
+  "payload_format": "json",
+  "persisted_at": "2026-04-10T07:59:00.984653Z",
+  "redacted": true,
+  "redaction_policy": "phase7.basic_redaction.v1",
+  "run_id": "eval.red.overfull.profile.a4f1b4b0d5d9",
+  "schema_version": "phase7.eval.artifact.v1",
+  "size_bytes": 594,
+  "stage_name": "ingest_job_description"
+}

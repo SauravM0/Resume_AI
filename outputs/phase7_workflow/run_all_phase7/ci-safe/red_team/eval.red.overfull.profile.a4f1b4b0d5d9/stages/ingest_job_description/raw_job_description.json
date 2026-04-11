@@ -1,0 +1,16 @@
+{
+  "artifact_metadata": {
+    "artifact_name": "raw_job_description.json",
+    "case_id": "red.overfull.profile",
+    "persisted_at": "2026-04-10T07:59:00.984653+00:00",
+    "run_id": "eval.red.overfull.profile.a4f1b4b0d5d9",
+    "schema_version": "phase7.eval.artifact.v1",
+    "stage_name": "ingest_job_description"
+  },
+  "payload": {
+    "jd_hash": "sha256:ec65a059055e5ec1a0656219df[REDACTED_PHONE]c9c7dea1adbd04401f820c2793a485",
+    "request": {
+      "job_description_text": "Principal backend engineer for distributed systems, reliability, and multi-region platform work."
+    }
+  }
+}

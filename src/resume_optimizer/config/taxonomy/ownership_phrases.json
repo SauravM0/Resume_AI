@@ -1,0 +1,24 @@
+{
+  "canonical_terms": {
+    "ownership": [
+      "owned",
+      "ownership",
+      "responsible for",
+      "end-to-end ownership",
+      "owned roadmap"
+    ],
+    "execution_drive": [
+      "drove",
+      "spearheaded",
+      "led delivery",
+      "delivered",
+      "launched"
+    ],
+    "operational_responsibility": [
+      "operated",
+      "on-call",
+      "service ownership",
+      "runbooks"
+    ]
+  }
+}

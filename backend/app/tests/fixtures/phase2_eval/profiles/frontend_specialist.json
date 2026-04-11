@@ -1,0 +1,45 @@
+{
+  "id": "prof.frontend_specialist",
+  "personal_profile": {
+    "id": "pers.frontend_specialist",
+    "full_name": "Frontend Specialist",
+    "headline": "Senior Frontend Engineer",
+    "summary": "Frontend specialist with expertise in React and TypeScript."
+  },
+  "experience": [
+    {
+      "id": "exp.ui-core",
+      "title": "Senior Frontend Engineer",
+      "organization": "ModernWeb Inc",
+      "start_date": "2022-01-01",
+      "end_date": "2026-01-01",
+      "bullets": [
+        { "id": "bullet_1", "text": "Led the migration of the core design system to React 18 and TypeScript, improving render performance by 40%." },
+        { "id": "bullet_2", "text": "Architected a scalable component library using Tailwind CSS, reducing CSS bundle size by 60%." }
+      ]
+    },
+    {
+      "id": "exp.design-system",
+      "title": "Frontend Developer",
+      "organization": "CreativeUI",
+      "start_date": "2019-06-01",
+      "end_date": "2021-12-31",
+      "bullets": [
+        { "id": "bullet_3", "text": "Developed a high-performance data visualization dashboard using D3.js and React." },
+        { "id": "bullet_4", "text": "Optimized LCP and CLS metrics, achieving a Lighthouse score of 95+ for core pages." }
+      ]
+    },
+    {
+      "id": "exp.old-java-backend",
+      "title": "Junior Java Developer",
+      "organization": "LegacyCorp",
+      "start_date": "2015-01-01",
+      "end_date": "2017-12-31",
+      "bullets": [
+        { "id": "bullet_5", "text": "Maintained legacy Spring Boot services for internal HR tooling." },
+        { "id": "bullet_6", "text": "Fixed bugs in a monolithic Java application using Hibernate and Oracle DB." }
+      ]
+    }
+  ],
+  "projects": []
+}

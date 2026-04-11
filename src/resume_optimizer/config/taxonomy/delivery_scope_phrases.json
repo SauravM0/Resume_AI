@@ -1,0 +1,10 @@
+{
+  "canonical_terms": {
+    "feature_scope": ["feature", "workflow", "module", "component"],
+    "system_scope": ["system", "service", "backend", "api"],
+    "platform_scope": ["platform", "infrastructure", "shared service", "internal platform"],
+    "product_scope": ["product", "customer-facing", "application"],
+    "organizational_scope": ["team-wide", "organization-wide", "org-wide", "across teams"],
+    "company_scope": ["company-wide", "enterprise-wide", "global"]
+  }
+}

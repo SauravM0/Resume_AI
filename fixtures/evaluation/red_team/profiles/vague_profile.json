@@ -1,0 +1,71 @@
+{
+  "id": "master.redteam.vague-profile",
+  "personal_profile": {
+    "id": "person.redteam.vague-profile",
+    "item_type": "personal_profile",
+    "full_name": "Taylor Brooks",
+    "headline": "Software Engineer",
+    "summary": "Generalist engineer with broad but lightly specified experience.",
+    "email": "taylor.brooks@example.com",
+    "role_type": "individual_contributor",
+    "seniority_level": "mid"
+  },
+  "experience": [
+    {
+      "id": "exp.vague.appworks",
+      "item_type": "experience",
+      "organization": "AppWorks",
+      "title": "Software Engineer",
+      "employment_type": "full_time",
+      "role_type": "individual_contributor",
+      "seniority_level": "mid",
+      "start_date": {
+        "raw_value": "2021-03"
+      },
+      "current": true,
+      "bullets": [
+        {
+          "id": "bullet.vague.teamwork",
+          "item_type": "bullet",
+          "text": "Helped with product improvements across the engineering team.",
+          "tools": [
+            "JavaScript"
+          ],
+          "impact_level": "low",
+          "impact_score": 0.24,
+          "recency_score": 0.94
+        },
+        {
+          "id": "bullet.vague.platform",
+          "item_type": "bullet",
+          "text": "Supported platform updates and collaborated on various engineering tasks.",
+          "tools": [
+            "AWS"
+          ],
+          "impact_level": "low",
+          "impact_score": 0.22,
+          "recency_score": 0.93
+        }
+      ],
+      "tools": [
+        "JavaScript",
+        "AWS"
+      ],
+      "domain_tags": [
+        "generalist"
+      ],
+      "verified_status": "self_reported",
+      "evidence_strength": "weak",
+      "impact_score": 0.23,
+      "recency_score": 0.94
+    }
+  ],
+  "projects": [],
+  "skills": [
+    {
+      "id": "skill.vague.javascript",
+      "item_type": "skill",
+      "name": "JavaScript"
+    }
+  ]
+}

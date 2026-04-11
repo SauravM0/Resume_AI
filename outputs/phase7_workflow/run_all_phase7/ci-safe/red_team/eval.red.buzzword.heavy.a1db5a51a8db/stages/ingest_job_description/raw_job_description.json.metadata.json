@@ -1,0 +1,15 @@
+{
+  "artifact_id": "eval.red.buzzword.heavy.a1db5a51a8db.ingest_job_description.raw_job_description",
+  "artifact_kind": "raw_job_description",
+  "case_id": "red.buzzword.heavy",
+  "content_hash": "sha256:896c9b0524698b604ffe1b6cd267a9c2fceaac3940ee4583cfe26d345b602a65",
+  "content_type": "application/json",
+  "payload_format": "json",
+  "persisted_at": "2026-04-10T07:58:59.919385Z",
+  "redacted": true,
+  "redaction_policy": "phase7.basic_redaction.v1",
+  "run_id": "eval.red.buzzword.heavy.a1db5a51a8db",
+  "schema_version": "phase7.eval.artifact.v1",
+  "size_bytes": 609,
+  "stage_name": "ingest_job_description"
+}

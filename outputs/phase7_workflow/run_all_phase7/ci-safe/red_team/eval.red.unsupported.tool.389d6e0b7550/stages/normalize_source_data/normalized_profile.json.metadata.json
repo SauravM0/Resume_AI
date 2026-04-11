@@ -1,0 +1,15 @@
+{
+  "artifact_id": "eval.red.unsupported.tool.389d6e0b7550.normalize_source_data.normalized_profile",
+  "artifact_kind": "normalized_profile",
+  "case_id": "red.unsupported.tool",
+  "content_hash": "sha256:2f771c0973fc3892acf44fc51e2e303a6383a99c2f922c1a902fb992835002f2",
+  "content_type": "application/json",
+  "payload_format": "json",
+  "persisted_at": "2026-04-10T07:59:00.717024Z",
+  "redacted": true,
+  "redaction_policy": "phase7.basic_redaction.v1",
+  "run_id": "eval.red.unsupported.tool.389d6e0b7550",
+  "schema_version": "phase7.eval.artifact.v1",
+  "size_bytes": 15485,
+  "stage_name": "normalize_source_data"
+}

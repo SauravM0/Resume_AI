@@ -1,0 +1,15 @@
+{
+  "artifact_id": "eval.case.end_to_end.backend_example.e96f6d50dc80.normalize_source_data.normalized_profile",
+  "artifact_kind": "normalized_profile",
+  "case_id": "case.end_to_end.backend_example",
+  "content_hash": "sha256:8350d295d01ae3b234336acd29f9a400f4e8eef693ab0f5b13289ef4237d8042",
+  "content_type": "application/json",
+  "payload_format": "json",
+  "persisted_at": "2026-04-10T07:58:55.946322Z",
+  "redacted": true,
+  "redaction_policy": "phase7.basic_redaction.v1",
+  "run_id": "eval.case.end_to_end.backend_example.e96f6d50dc80",
+  "schema_version": "phase7.eval.artifact.v1",
+  "size_bytes": 25680,
+  "stage_name": "normalize_source_data"
+}

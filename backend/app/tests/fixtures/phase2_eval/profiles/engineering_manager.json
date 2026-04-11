@@ -1,0 +1,46 @@
+{
+  "id": "prof.engineering_manager",
+  "personal_profile": {
+    "id": "pers.engineering_manager",
+    "full_name": "Engineering Manager",
+    "headline": "Engineering Manager",
+    "summary": "Engineering leader with expertise in scaling teams."
+  },
+  "experience": [
+    {
+      "id": "exp.org-wide-migration",
+      "title": "Staff Engineer / Tech Lead",
+      "organization": "ScaleUp",
+      "start_date": "2021-01-01",
+      "end_date": "2026-01-01",
+      "bullets": [
+        { "id": "bullet_1", "text": "Spearheaded the organizational migration from monolith to microservices, coordinating across 5 teams." },
+        { "id": "bullet_2", "text": "Defined the technical roadmap for the platform's 3-year growth strategy." },
+        { "id": "bullet_3", "text": "Mentored 10+ senior engineers, promoting 3 to lead roles." }
+      ]
+    },
+    {
+      "id": "exp.team-scaling",
+      "title": "Engineering Manager",
+      "organization": "FastGrowth",
+      "start_date": "2018-01-01",
+      "end_date": "2020-12-31",
+      "bullets": [
+        { "id": "bullet_4", "text": "Scaled the engineering team from 5 to 40 people while maintaining delivery velocity." },
+        { "id": "bullet_5", "text": "Implemented a new RFC process that reduced architectural bottlenecks by 30%." }
+      ]
+    },
+    {
+      "id": "exp.ic-role",
+      "title": "Software Engineer",
+      "organization": "EarlyStart",
+      "start_date": "2014-01-01",
+      "end_date": "2017-12-31",
+      "bullets": [
+        { "id": "bullet_6", "text": "Implemented API endpoints for the user onboarding flow." },
+        { "id": "bullet_7", "text": "Wrote unit tests for the payment processing module." }
+      ]
+    }
+  ],
+  "projects": []
+}

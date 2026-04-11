@@ -1,0 +1,15 @@
+{
+  "artifact_id": "eval.red.conflicting.requirements.eaf59bdcf032.normalize_source_data.normalized_profile",
+  "artifact_kind": "normalized_profile",
+  "case_id": "red.conflicting.requirements",
+  "content_hash": "sha256:cd2798b5fc1d7b04096280674784cf42a01504875ba7ee533f9c0cbef687fe33",
+  "content_type": "application/json",
+  "payload_format": "json",
+  "persisted_at": "2026-04-10T07:59:00.074531Z",
+  "redacted": true,
+  "redaction_policy": "phase7.basic_redaction.v1",
+  "run_id": "eval.red.conflicting.requirements.eaf59bdcf032",
+  "schema_version": "phase7.eval.artifact.v1",
+  "size_bytes": 15501,
+  "stage_name": "normalize_source_data"
+}

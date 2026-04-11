@@ -1,0 +1,30 @@
+{
+  "messy_jd": {
+    "text": "Senior Backend Engineer\nAcme Payments is hiring\n\nWHAT YOU'LL DO:\n- Build Python APIs\n- Improve reliability for our fintech platform\n- Mentor engineers across teams\n\nREQUIREMENTS\n* 5+ years of experience building backend systems\n* Must have Python, PostgreSQL, and AWS experience\n* Hybrid in New York City\n\nPREFERRED QUALIFICATIONS\n• Kubernetes\n• Terraform\n",
+    "expected_title": "Senior Backend Engineer",
+    "expected_company": "Acme Payments",
+    "expected_work_model": "hybrid",
+    "expected_domain": "fintech"
+  },
+  "startup_jd": {
+    "text": "Founding Full-Stack Engineer\nJoin BrightSeed as an early-stage founding engineer.\nYou will work across frontend, backend, infra, and product.\nBonus if you have React Native experience.\nRemote within the US.\n",
+    "expected_title": "Founding Full-Stack Engineer",
+    "expected_company": "BrightSeed",
+    "expected_work_model": "remote",
+    "expected_scope_term": "platform"
+  },
+  "enterprise_jd": {
+    "text": "Engineering Manager, Platform\nCompany: Northstar Cloud\n\nAbout the role:\nLead a team of platform engineers responsible for internal tooling and cloud infrastructure.\n\nBasic Qualifications:\n- 8+ years of experience in software engineering\n- Bachelor's degree in Computer Science or related field\n- Experience with AWS, Kubernetes, and Terraform\n\nPreferred Qualifications:\n- Fintech or regulated systems background\n- Experience partnering with security and product stakeholders\n\nWork model: Onsite in Seattle four days per week.\n",
+    "expected_title": "Engineering Manager, Platform",
+    "expected_company": "Northstar Cloud",
+    "expected_work_model": "onsite",
+    "expected_domain": "fintech"
+  },
+  "vague_jd": {
+    "text": "Software Role\nWe need someone to help teams move faster, work across functions, and improve delivery. Experience with modern tools is a plus.\n",
+    "expected_title": "Software Role",
+    "expected_company": null,
+    "expected_work_model": null,
+    "expected_domain": null
+  }
+}

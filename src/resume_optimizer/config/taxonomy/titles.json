@@ -1,0 +1,45 @@
+{
+  "aliases": {
+    "sr": "senior",
+    "sr.": "senior",
+    "jr": "junior",
+    "jr.": "junior",
+    "swe": "software engineer",
+    "eng": "engineer",
+    "mgr": "manager",
+    "mgr.": "manager",
+    "pm": "product manager"
+  },
+  "canonical_titles": {
+    "Software Engineer": ["software engineer", "software developer", "application developer"],
+    "Senior Software Engineer": ["senior software engineer", "sr software engineer", "sr engineer", "senior engineer"],
+    "Staff Software Engineer": ["staff software engineer"],
+    "Principal Engineer": ["principal engineer", "software architect"],
+    "Engineering Manager": ["engineering manager", "software engineering manager"],
+    "Director of Engineering": ["director of engineering", "engineering director"],
+    "Frontend Engineer": ["frontend engineer", "front end engineer", "front-end engineer", "ui engineer"],
+    "Backend Engineer": ["backend engineer", "back end engineer", "back-end engineer", "api engineer"],
+    "Full-Stack Engineer": ["full stack engineer", "full-stack engineer", "fullstack engineer"],
+    "DevOps Engineer": ["devops engineer", "site reliability engineer", "sre"],
+    "Data Engineer": ["data engineer", "analytics engineer"],
+    "Machine Learning Engineer": ["machine learning engineer", "ml engineer", "ai engineer"],
+    "Product Manager": ["product manager"],
+    "Designer": ["designer", "product designer", "ux designer", "ui designer"]
+  },
+  "role_family_hints": {
+    "Software Engineer": "engineering",
+    "Senior Software Engineer": "engineering",
+    "Staff Software Engineer": "engineering",
+    "Principal Engineer": "engineering",
+    "Engineering Manager": "management",
+    "Director of Engineering": "management",
+    "Frontend Engineer": "engineering",
+    "Backend Engineer": "engineering",
+    "Full-Stack Engineer": "engineering",
+    "DevOps Engineer": "engineering",
+    "Data Engineer": "engineering",
+    "Machine Learning Engineer": "engineering",
+    "Product Manager": "product",
+    "Designer": "design"
+  }
+}

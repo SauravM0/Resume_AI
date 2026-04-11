@@ -1,0 +1,16 @@
+{
+  "artifact_metadata": {
+    "artifact_name": "raw_job_description.json",
+    "case_id": "red.conflicting.requirements",
+    "persisted_at": "2026-04-10T07:59:00.108532+00:00",
+    "run_id": "eval.red.conflicting.requirements.eaf59bdcf032",
+    "schema_version": "phase7.eval.artifact.v1",
+    "stage_name": "ingest_job_description"
+  },
+  "payload": {
+    "jd_hash": "sha256:1b4fc2c3077d7749b57f4ed68a053dd6c4d34d6ab1b90f8e433fb4c5a4e51736",
+    "request": {
+      "job_description_text": "Seeking a staff backend architect who is also a senior product designer, owns multi-region Go infrastructure, and leads enterprise sales engineering."
+    }
+  }
+}

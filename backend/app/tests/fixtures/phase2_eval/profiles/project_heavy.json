@@ -1,0 +1,35 @@
+{
+  "id": "prof.project_heavy",
+  "personal_profile": {
+    "id": "pers.project_heavy",
+    "full_name": "Project Heavy",
+    "headline": "Cloud Engineer",
+    "summary": "Cloud engineer with strong project evidence."
+  },
+  "experience": [
+    {
+      "id": "exp.generalist",
+      "title": "Software Engineer",
+      "organization": "GenericCorp",
+      "start_date": "2020-01-01",
+      "end_date": "2026-01-01",
+      "bullets": [
+        { "id": "bullet_1", "text": "Worked on general internal tools using Python." },
+        { "id": "bullet_2", "text": "Participated in agile sprints and code reviews." }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj.cloud-native-k8s",
+      "name": "Cloud Native Kubernetes Orchestrator",
+      "start_date": "2023-01-01",
+      "end_date": "2024-01-01",
+      "bullets": [
+        { "id": "bullet_p1", "text": "Built a custom Kubernetes operator for automated scaling of stateful workloads." },
+        { "id": "bullet_p2", "text": "Implemented gRPC communication between control plane components for low-latency signaling." },
+        { "id": "bullet_p3", "text": "Reduced pod startup latency by 20% through optimized image pull policies." }
+      ]
+    }
+  ]
+}

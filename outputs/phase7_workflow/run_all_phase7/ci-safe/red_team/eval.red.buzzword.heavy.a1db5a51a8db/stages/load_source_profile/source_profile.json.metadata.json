@@ -1,0 +1,15 @@
+{
+  "artifact_id": "eval.red.buzzword.heavy.a1db5a51a8db.load_source_profile.source_profile",
+  "artifact_kind": "source_profile",
+  "case_id": "red.buzzword.heavy",
+  "content_hash": "sha256:10db898ba76542dbfcb61124d06695a991b6480c1931a508be1281026424e4a0",
+  "content_type": "application/json",
+  "payload_format": "json",
+  "persisted_at": "2026-04-10T07:58:59.830490Z",
+  "redacted": true,
+  "redaction_policy": "phase7.basic_redaction.v1",
+  "run_id": "eval.red.buzzword.heavy.a1db5a51a8db",
+  "schema_version": "phase7.eval.artifact.v1",
+  "size_bytes": 25678,
+  "stage_name": "load_source_profile"
+}

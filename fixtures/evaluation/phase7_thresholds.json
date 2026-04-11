@@ -1,0 +1,46 @@
+{
+  "ci_safe": {
+    "selection": {
+      "min_total_cases": 3,
+      "regression_guardrail": {
+        "max_metric_regression": 0.03,
+        "baseline": {
+          "pass_rate": 0.6667,
+          "avg_experience_precision": 0.8,
+          "avg_experience_recall": 0.88,
+          "avg_project_precision": 0.95,
+          "avg_project_recall": 0.66,
+          "avg_bullet_precision": 0.72,
+          "avg_bullet_recall": 0.88,
+          "avg_skill_correctness": 0.85,
+          "avg_diversity_balance": 0.82,
+          "pathology_rate": 0.33,
+          "avg_selection_relevance": 0.7,
+          "avg_overall_score": 0.8
+        }
+      },
+      "absolute_quality": {
+        "min_pass_rate": 0.66,
+        "max_pathology_rate": 0.34,
+        "min_avg_project_recall": 0.5,
+        "min_avg_selection_relevance": 0.65,
+        "min_avg_overall_score": 0.75
+      }
+    }
+  },
+  "live": {
+    "jd_parse": {
+      "min_pass_rate": 0.8,
+      "min_must_have_skill_recall": 0.6,
+      "min_responsibility_recall": 0.5
+    },
+    "end_to_end": {
+      "max_fail_count": 0,
+      "max_review_count": 0
+    },
+    "red_team": {
+      "max_fail_count": 0,
+      "max_review_count": 0
+    }
+  }
+}

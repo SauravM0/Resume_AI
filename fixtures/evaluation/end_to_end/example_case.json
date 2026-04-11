@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "case_id": "case.end_to_end.backend_example",
+    "pack_type": "end_to_end",
+    "scenario": "backend_resume_generation",
+    "description": "Example end-to-end quality evaluation for a backend-targeted final resume.",
+    "tags": [
+      "backend",
+      "golden",
+      "reviewer-visible"
+    ],
+    "source_fixture": "fixtures/evaluation/end_to_end/example_case.json"
+  },
+  "input_payload": {
+    "source_profile_path": "/mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI/data/master_profile.example.json",
+    "job_description_text": "Senior backend engineer building reliable Python services, APIs, and cloud platform workflows.",
+    "template_id": "ats_standard"
+  },
+  "expected_outputs": {
+    "expected_pipeline_status": "succeeded",
+    "required_artifact_kinds": [
+      "phase3_result",
+      "verification_report"
+    ],
+    "expected_output_snapshot": {
+      "require_headline": true,
+      "require_summary": true,
+      "required_sections": [
+        "summary",
+        "experience",
+        "skills"
+      ],
+      "min_experience_count": 1,
+      "min_skill_count": 1,
+      "min_summary_quality": 0.55,
+      "min_section_sanity": 0.6,
+      "expected_verification_status": "passed_with_warnings",
+      "max_verification_issue_count": 6,
+      "expected_selected_source_ids": [
+        "exp.northstar-tech",
+        "exp.harbor-cloud"
+      ],
+      "expected_omitted_source_ids": [
+        "proj.portfolio-playground"
+      ],
+      "require_render_success": false
+    },
+    "reviewer_guidance": [
+      "Check whether the summary feels backend-specific rather than generic full-stack positioning.",
+      "Confirm the final resume still foregrounds recent backend platform work over older frontend material.",
+      "If verification passes with warnings, inspect whether the warnings are acceptable strategic tradeoffs."
+    ]
+  }
+}

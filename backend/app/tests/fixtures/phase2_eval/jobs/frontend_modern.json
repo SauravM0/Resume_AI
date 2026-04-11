@@ -1,0 +1,23 @@
+{
+  "role_type": "individual_contributor",
+  "seniority_level": "senior",
+  "industry_domain": "web_development",
+  "technical_skills": ["React", "TypeScript", "Tailwind", "Next.js", "D3.js"],
+  "soft_skills": ["UX focus", "attention to detail"],
+  "key_action_verbs": ["architected", "optimized", "led"],
+  "must_have_requirements": [
+    "proven experience building scalable design systems",
+    "strong track record of performance optimization (LCP, CLS)"
+  ],
+  "nice_to_have_requirements": [
+    "experience with accessibility (a11y)",
+    "familiarity with Web Vitals"
+  ],
+  "company_culture_signals": ["innovation", "user-centric"],
+  "years_experience_required": 5,
+  "prioritized_skills": [
+    { "skill_name": "React", "priority": "core" },
+    { "skill_name": "TypeScript", "priority": "core" },
+    { "skill_name": "Tailwind", "priority": "important" }
+  ]
+}

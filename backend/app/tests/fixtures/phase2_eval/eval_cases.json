@@ -1,0 +1,144 @@
+{
+  "cases": [
+    {
+      "case_id": "backend_golden",
+      "description": "Backend infra ranking prefers recent distributed-systems experience and core backend skills.",
+      "profile_fixture": "profiles/senior_backend.json",
+      "job_analysis_fixture": "jobs/backend_golden.json",
+      "expectation": {
+        "allowed_statuses": [
+          "success"
+        ],
+        "require_nonempty_selection": true,
+        "min_selected_item_count": 8,
+        "min_must_have_skill_coverage": 1.0,
+        "min_provenance_completeness": 1.0,
+        "min_explanation_completeness": 1.0,
+        "min_selection_diversity": 1.0,
+        "min_duplicate_suppression": 1.0,
+        "expected_top_experience_source_ids": [
+          "exp.atlas-platform",
+          "exp.streamforge"
+        ],
+        "required_selected_skill_names": [
+          "Python",
+          "AWS",
+          "Kafka"
+        ],
+        "required_warning_signals": [
+          "high_overlap_but_old"
+        ],
+        "forbidden_warning_signals": [
+          "duplicate_or_near_duplicate"
+        ],
+        "max_duplicate_selected_count": 0,
+        "max_diagnostic_warning_count": 0
+      }
+    },
+    {
+      "case_id": "platform_breadth",
+      "description": "Platform ranking surfaces Terraform and reliability breadth ahead of irrelevant frontend history.",
+      "profile_fixture": "profiles/platform_backend.json",
+      "job_analysis_fixture": "jobs/platform_breadth.json",
+      "expectation": {
+        "allowed_statuses": [
+          "success"
+        ],
+        "require_nonempty_selection": true,
+        "min_selected_item_count": 7,
+        "min_must_have_skill_coverage": 1.0,
+        "min_provenance_completeness": 1.0,
+        "min_explanation_completeness": 1.0,
+        "min_selection_diversity": 1.0,
+        "min_duplicate_suppression": 1.0,
+        "expected_top_experience_source_ids": [
+          "exp.relayops",
+          "exp.computedock"
+        ],
+        "required_selected_skill_names": [
+          "Terraform",
+          "AWS",
+          "Kubernetes"
+        ],
+        "required_warning_signals": [
+          "high_overlap_but_old"
+        ],
+        "forbidden_warning_signals": [
+          "duplicate_or_near_duplicate"
+        ],
+        "max_duplicate_selected_count": 0,
+        "max_diagnostic_warning_count": 0
+      }
+    },
+    {
+      "case_id": "frontend_strategic",
+      "description": "Frontend ranking prioritizes modern UI frameworks and UX outcomes, excluding stale Java/Spring history.",
+      "profile_fixture": "profiles/frontend_specialist.json",
+      "job_analysis_fixture": "jobs/frontend_modern.json",
+      "expectation": {
+        "allowed_statuses": [
+          "success"
+        ],
+        "require_nonempty_selection": true,
+        "min_selected_item_count": 6,
+        "min_must_have_skill_coverage": 1.0,
+        "expected_top_experience_source_ids": [
+          "exp.ui-core",
+          "exp.design-system"
+        ],
+        "required_selected_skill_names": [
+          "React",
+          "TypeScript",
+          "Tailwind"
+        ],
+        "forbidden_experience_source_ids": [
+          "exp.old-java-backend"
+        ]
+      }
+    },
+    {
+      "case_id": "leadership_impact",
+      "description": "Leadership ranking promotes architecture, ownership, and mentorship over individual contributor tasks.",
+      "profile_fixture": "profiles/engineering_manager.json",
+      "job_analysis_fixture": "jobs/staff_engineer.json",
+      "expectation": {
+        "allowed_statuses": [
+          "success"
+        ],
+        "require_nonempty_selection": true,
+        "min_selected_item_count": 6,
+        "min_must_have_skill_coverage": 1.0,
+        "expected_top_experience_source_ids": [
+          "exp.org-wide-migration",
+          "exp.team-scaling"
+        ],
+        "required_selected_skill_names": [
+          "System Design",
+          "Roadmapping",
+          "Mentorship"
+        ]
+      }
+    },
+    {
+      "case_id": "project_gap_fill",
+      "description": "Project-dominant case where projects provide critical must-have evidence missing from work history.",
+      "profile_fixture": "profiles/project_heavy.json",
+      "job_analysis_fixture": "jobs/specialized_cloud.json",
+      "expectation": {
+        "allowed_statuses": [
+          "success"
+        ],
+        "require_nonempty_selection": true,
+        "min_selected_item_count": 5,
+        "min_must_have_skill_coverage": 1.0,
+        "required_selected_project_source_ids": [
+          "proj.cloud-native-k8s"
+        ],
+        "required_selected_skill_names": [
+          "Kubernetes",
+          "gRPC"
+        ]
+      }
+    }
+  ]
+}

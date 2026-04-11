@@ -1,0 +1,15 @@
+{
+  "artifact_id": "eval.red.unsupported.tool.389d6e0b7550.load_source_profile.source_profile",
+  "artifact_kind": "source_profile",
+  "case_id": "red.unsupported.tool",
+  "content_hash": "sha256:76d48bea452ebebe3b5d8d9a23d7814f29e02b99602a10c029aa81b23fdaa6ea",
+  "content_type": "application/json",
+  "payload_format": "json",
+  "persisted_at": "2026-04-10T07:59:00.656345Z",
+  "redacted": true,
+  "redaction_policy": "phase7.basic_redaction.v1",
+  "run_id": "eval.red.unsupported.tool.389d6e0b7550",
+  "schema_version": "phase7.eval.artifact.v1",
+  "size_bytes": 15537,
+  "stage_name": "load_source_profile"
+}

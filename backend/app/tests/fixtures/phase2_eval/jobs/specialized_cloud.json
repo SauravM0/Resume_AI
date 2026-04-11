@@ -1,0 +1,23 @@
+{
+  "role_type": "individual_contributor",
+  "seniority_level": "mid",
+  "industry_domain": "cloud_infrastructure",
+  "technical_skills": ["Kubernetes", "gRPC", "Go", "Terraform", "Prometheus"],
+  "soft_skills": ["problem solving", "technical writing"],
+  "key_action_verbs": ["built", "implemented", "reduced"],
+  "must_have_requirements": [
+    "experience building custom Kubernetes operators",
+    "low-latency communication implementation using gRPC"
+  ],
+  "nice_to_have_requirements": [
+    "experience with service mesh (Istio/Linkerd)",
+    "familiarity with eBPF"
+  ],
+  "company_culture_signals": ["performance", "reliability"],
+  "years_experience_required": 3,
+  "prioritized_skills": [
+    { "skill_name": "Kubernetes", "priority": "core" },
+    { "skill_name": "gRPC", "priority": "core" },
+    { "skill_name": "Go", "priority": "core" }
+  ]
+}

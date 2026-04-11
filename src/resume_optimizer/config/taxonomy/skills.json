@@ -1,0 +1,23 @@
+{
+  "canonical_terms": {
+    "Python": ["python", "py"],
+    "JavaScript": ["javascript", "js"],
+    "TypeScript": ["typescript", "ts"],
+    "Node.js": ["node", "nodejs", "node.js"],
+    "React": ["react", "reactjs", "react.js"],
+    "PostgreSQL": ["postgres", "postgresql", "postgre"],
+    "AWS": ["aws", "amazon web services"],
+    "Google Cloud Platform": ["gcp", "google cloud", "google cloud platform"],
+    "Docker": ["docker"],
+    "Kubernetes": ["k8s", "kubernetes", "kube"],
+    "Terraform": ["terraform", "terraform io", "tf"],
+    "FastAPI": ["fastapi"],
+    "SQL": ["sql"],
+    "Redis": ["redis"],
+    "GitHub Actions": ["github actions"],
+    "GitHub": ["github"],
+    "Go": ["golang"],
+    "Storybook": ["storybook"],
+    "LaTeX": ["latex", "tex"]
+  }
+}

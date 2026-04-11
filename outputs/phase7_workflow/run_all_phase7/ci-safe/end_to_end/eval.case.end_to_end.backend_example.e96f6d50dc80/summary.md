@@ -1,0 +1,23 @@
+# Evaluation Run `eval.case.end_to_end.backend_example.e96f6d50dc80`
+
+- Case ID: `case.end_to_end.backend_example`
+- Execution Mode: `dry_run`
+- Run Status: `passed`
+- Pipeline Status: `pending`
+- Artifact Count: `3`
+
+## Stages
+- `load_source_profile`: `succeeded` artifacts=`1` load_source_profile completed
+- `normalize_source_data`: `succeeded` artifacts=`1` normalize_source_data completed
+- `ingest_job_description`: `succeeded` artifacts=`1` ingest_job_description completed
+- `parse_job_description`: `skipped` artifacts=`0` dry-run stopped before live LLM stages
+- `rank_select_evidence`: `skipped` artifacts=`0` dry-run stopped before live LLM stages
+- `generate_structured_content`: `skipped` artifacts=`0` dry-run stopped before live LLM stages
+- `verify_generated_content`: `skipped` artifacts=`0` dry-run stopped before live LLM stages
+- `render_deterministic_latex`: `skipped` artifacts=`0` dry-run stopped before live LLM stages
+- `compile_pdf`: `skipped` artifacts=`0` dry-run stopped before live LLM stages
+
+## Artifacts
+- `ingest_job_description` `raw_job_description` [stages/ingest_job_description/raw_job_description.json]
+- `load_source_profile` `source_profile` [stages/load_source_profile/source_profile.json]
+- `normalize_source_data` `normalized_profile` [stages/normalize_source_data/normalized_profile.json]

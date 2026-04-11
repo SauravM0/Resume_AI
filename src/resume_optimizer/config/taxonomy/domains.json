@@ -1,0 +1,23 @@
+{
+  "canonical_terms": {
+    "frontend": ["fe", "frontend", "front-end", "front end", "ui"],
+    "backend": ["be", "backend", "back-end", "back end", "api"],
+    "fullstack": ["fullstack", "full-stack", "full stack"],
+    "cloud": ["cloud", "cloud-native", "cloud native"],
+    "platform": ["platform", "platform engineering"],
+    "data": ["data", "analytics", "reporting"],
+    "machine-learning": ["ml", "machine learning", "machine-learning"],
+    "artificial-intelligence": ["ai", "artificial intelligence", "artificial-intelligence"],
+    "saas": ["saas", "software as a service"],
+    "fintech": ["fintech", "financial technology", "payments", "banking"],
+    "e-commerce": ["e-commerce", "ecommerce", "commerce", "retail"],
+    "healthcare": ["healthcare", "health care", "health-tech", "healthtech"],
+    "developer-tools": ["developer tools", "dev tools", "tooling", "internal tooling"],
+    "observability": ["observability", "monitoring", "telemetry"],
+    "productivity": ["productivity", "workflow automation", "automation"],
+    "enterprise": ["enterprise", "b2b"],
+    "consumer": ["consumer", "b2c"],
+    "devops": ["devops", "sre", "site reliability"],
+    "security": ["security", "cybersecurity", "cyber security"]
+  }
+}

@@ -1,0 +1,117 @@
+pack_id: jd_parse_data
+pack_type: jd_parse
+description: |
+  Job description parsing tests for Data and Analytics roles.
+  Tests extraction of data-specific skills, tools, and domain knowledge.
+version: "1.0.0"
+
+cases:
+  - case_id: DATA-001-data-analyst
+    description: Data Analyst - SQL and visualization focus
+    pack_type: jd_parse
+    
+    job_description:
+      raw_text: |
+        Data Analyst
+        
+        Join our analytics team to drive data-informed decision making.
+        
+        Requirements:
+        - 3+ years of experience in data analysis
+        - Expert in SQL and database design
+        - Proficiency in Python or R for data analysis
+        - Experience with visualization tools (Tableau, Looker, Power BI)
+        - Strong statistical analysis skills
+        
+        Responsibilities:
+        - Analyze datasets and generate insights
+        - Build dashboards and reports
+        - Collaborate with business teams
+        - Present findings to stakeholders
+    tags:
+      - data
+      - analytics
+      - sql
+    
+    phase1_expectations:
+      expected_job_title: Data Analyst
+      expected_role_family: data
+      expected_seniority: mid
+      
+      expected_skills:
+        - type: must_include
+          value: SQL
+          match_mode: exact
+          weight: 1.0
+        - type: must_include
+          value: Python
+          match_mode: exact
+          weight: 0.9
+        - type: must_include
+          value: Tableau
+          match_mode: exact
+          weight: 0.8
+        - type: must_include
+          value: statistical analysis
+          match_mode: fuzzy
+          weight: 0.9
+        - type: must_not_include
+          value: React
+          match_mode: exact
+          weight: 1.0
+      
+      min_quality_score: 0.70
+      min_parser_confidence: 0.65
+
+  - case_id: DATA-002-ml-engineer
+    description: ML Engineer - production ML systems
+    pack_type: jd_parse
+    
+    job_description:
+      raw_text: |
+        Machine Learning Engineer
+        
+        We are building the next generation of ML-powered products.
+        
+        Requirements:
+        - 4+ years of ML engineering experience
+        - Strong Python and PyTorch or TensorFlow
+        - Experience deploying models to production
+        - Knowledge of MLOps practices
+        - Understanding of feature engineering
+        
+        Responsibilities:
+        - Build and deploy ML pipelines
+        - Optimize model performance
+        - Collaborate with data scientists
+        - Monitor model accuracy in production
+    tags:
+      - ml
+      - data
+      - production
+    
+    phase1_expectations:
+      expected_job_title: Machine Learning Engineer
+      expected_role_family: ml
+      expected_seniority: senior
+      
+      expected_skills:
+        - type: must_include
+          value: PyTorch
+          match_mode: exact
+          weight: 1.0
+        - type: must_include
+          value: TensorFlow
+          match_mode: exact
+          weight: 0.9
+        - type: must_include
+          value: Python
+          match_mode: exact
+          weight: 1.0
+        - type: must_include
+          value: MLOps
+          match_mode: fuzzy
+          weight: 0.8
+      
+      min_quality_score: 0.70
+      min_parser_confidence: 0.65

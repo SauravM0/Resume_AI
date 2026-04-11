@@ -1,0 +1,30 @@
+{
+  "canonical_terms": {
+    "technical_leadership": [
+      "tech lead",
+      "technical lead",
+      "architected",
+      "set technical direction",
+      "led engineering"
+    ],
+    "people_management": [
+      "managed team",
+      "people manager",
+      "engineering manager",
+      "managed engineers",
+      "hired"
+    ],
+    "mentorship": [
+      "mentored",
+      "coached",
+      "guided engineers",
+      "onboarded engineers"
+    ],
+    "cross_functional_leadership": [
+      "cross-functional leadership",
+      "led cross-functional",
+      "partnered across",
+      "worked with stakeholders"
+    ]
+  }
+}

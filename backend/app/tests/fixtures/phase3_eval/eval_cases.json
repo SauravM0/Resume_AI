@@ -1,0 +1,121 @@
+{
+  "cases": [
+    {
+      "case_id": "backend_strong_match",
+      "description": "Backend platform role should preserve both relevant experiences, omit redundant project coverage, and highlight core backend skills.",
+      "profile_fixture": "strong_backend_engineer",
+      "job_analysis": {
+        "role_type": "individual_contributor",
+        "seniority_level": "staff",
+        "industry_domain": "cloud",
+        "technical_skills": ["Python", "AWS", "Kubernetes", "Terraform", "PostgreSQL"],
+        "soft_skills": ["Leadership", "Stakeholder Management"],
+        "key_action_verbs": ["architect", "lead", "optimize", "automate"],
+        "must_have_requirements": [
+          "Architect backend systems on AWS",
+          "Improve reliability and delivery for platform services"
+        ],
+        "nice_to_have_requirements": [
+          "Mentor engineers",
+          "Support developer platform adoption"
+        ],
+        "company_culture_signals": ["ownership", "delivery", "platform"],
+        "years_experience_required": 7,
+        "prioritized_skills": [
+          {"skill_name": "Python", "priority": "core"},
+          {"skill_name": "AWS", "priority": "core"},
+          {"skill_name": "Kubernetes", "priority": "important"},
+          {"skill_name": "Terraform", "priority": "important"}
+        ]
+      },
+      "expectation": {
+        "selected_experiences": [
+          "fixture.backend.exp.current",
+          "fixture.backend.exp.prev"
+        ],
+        "selected_projects": [],
+        "highlighted_skills": ["Python", "AWS"],
+        "omitted_items": [
+          {
+            "item_id": "fixture.backend.project",
+            "omission_reason": "redundant_with_stronger_selected_content"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "backend_redundant_projects_hidden",
+      "description": "Backend role should keep experience evidence primary and omit redundant or weakly fitting projects.",
+      "profile_fixture": "project_selection_profile",
+      "job_analysis": {
+        "role_type": "individual_contributor",
+        "seniority_level": "senior",
+        "industry_domain": "cloud",
+        "technical_skills": ["Python", "AWS", "Terraform"],
+        "must_have_requirements": [
+          "Build Python services on AWS",
+          "Automate infrastructure with Terraform"
+        ],
+        "prioritized_skills": [
+          {"skill_name": "Python", "priority": "core"},
+          {"skill_name": "AWS", "priority": "core"},
+          {"skill_name": "Terraform", "priority": "important"}
+        ]
+      },
+      "expectation": {
+        "selected_experiences": [
+          "fixture.project.selection.exp.backend"
+        ],
+        "selected_projects": [],
+        "highlighted_skills": ["Python"],
+        "omitted_items": [
+          {
+            "item_id": "fixture.project.selection.project.redundant",
+            "omission_reason": "redundant_with_stronger_selected_content"
+          },
+          {
+            "item_id": "fixture.project.selection.project.portfolio",
+            "omission_reason": "low_relevance"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "frontend_portfolio_projects_promoted",
+      "description": "Portfolio-sensitive frontend role should keep the backend experience but add the unique React portfolio project and highlight React.",
+      "profile_fixture": "project_selection_profile",
+      "job_analysis": {
+        "role_type": "individual_contributor",
+        "seniority_level": "senior",
+        "industry_domain": "product",
+        "technical_skills": ["React", "TypeScript"],
+        "must_have_requirements": [
+          "Build polished React user interfaces",
+          "Use TypeScript for reusable frontend components"
+        ],
+        "nice_to_have_requirements": [
+          "Show portfolio-quality UI work"
+        ],
+        "prioritized_skills": [
+          {"skill_name": "React", "priority": "core"},
+          {"skill_name": "TypeScript", "priority": "core"}
+        ]
+      },
+      "expectation": {
+        "selected_experiences": [
+          "fixture.project.selection.exp.backend"
+        ],
+        "selected_projects": [
+          "fixture.project.selection.project.portfolio"
+        ],
+        "highlighted_skills": ["React"],
+        "omitted_items": [
+          {
+            "item_id": "fixture.project.selection.project.redundant",
+            "omission_reason": "low_relevance"
+          }
+        ]
+      }
+    }
+  ]
+}

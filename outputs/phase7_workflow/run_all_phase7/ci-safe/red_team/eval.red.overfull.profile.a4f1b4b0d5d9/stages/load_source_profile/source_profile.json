@@ -1,0 +1,527 @@
+{
+  "artifact_metadata": {
+    "artifact_name": "source_profile.json",
+    "case_id": "red.overfull.profile",
+    "persisted_at": "2026-04-10T07:59:00.890509+00:00",
+    "run_id": "eval.red.overfull.profile.a4f1b4b0d5d9",
+    "schema_version": "phase7.eval.artifact.v1",
+    "stage_name": "load_source_profile"
+  },
+  "payload": {
+    "loaded_from": "/mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI/fixtures/evaluation/selection/profiles/senior_backend.json",
+    "source_profile": {
+      "awards": [],
+      "certifications": [],
+      "education": [],
+      "experience": [
+        {
+          "bullets": [
+            {
+              "canonical_tags": [],
+              "domain_tags": [],
+              "evidence_strength": "weak",
+              "id": "bullet.atlas.events",
+              "impact_level": "high",
+              "impact_score": 0.95,
+              "item_type": "bullet",
+              "metrics": [],
+              "recency_score": 0.98,
+              "rewrite_allowed": true,
+              "source_links": [],
+              "text": "Led design of a Python microservices platform handling 150 million events per day across multi-tenant workloads.",
+              "tools": [
+                "Python",
+                "Kafka",
+                "AWS"
+              ],
+              "verified_status": "unverified"
+            },
+            {
+              "canonical_tags": [],
+              "domain_tags": [],
+              "evidence_strength": "weak",
+              "id": "bullet.atlas.recovery",
+              "impact_level": "high",
+              "impact_score": 0.93,
+              "item_type": "bullet",
+              "metrics": [],
+              "recency_score": 0.97,
+              "rewrite_allowed": true,
+              "source_links": [],
+              "text": "Built a distributed job orchestration service in Go and PostgreSQL, cutting failure recovery time by 65%.",
+              "tools": [
+                "Go",
+                "PostgreSQL",
+                "Distributed Systems"
+              ],
+              "verified_status": "unverified"
+            },
+            {
+              "canonical_tags": [],
+              "domain_tags": [],
+              "evidence_strength": "weak",
+              "id": "bullet.atlas.aws",
+              "impact_level": "medium",
+              "impact_score": 0.74,
+              "item_type": "bullet",
+              "metrics": [],
+              "recency_score": 0.97,
+              "rewrite_allowed": true,
+              "source_links": [],
+              "text": "Partnered with SRE to harden AWS autoscaling and observability for critical APIs.",
+              "tools": [
+                "AWS",
+                "Observability"
+              ],
+              "verified_status": "unverified"
+            }
+          ],
+          "canonical_tags": [],
+          "current": true,
+          "domain_tags": [
+            "backend",
+            "distributed-systems",
+            "cloud"
+          ],
+          "employment_type": "full_time",
+          "evidence_strength": "strong",
+          "id": "exp.atlas-platform",
+          "impact_score": 0.93,
+          "item_type": "experience",
+          "metrics": [],
+          "organization": "Atlas Platform",
+          "recency_score": 0.98,
+          "rewrite_allowed": true,
+          "role_type": "individual_contributor",
+          "seniority_level": "principal",
+          "source_links": [],
+          "start_date": {
+            "month": 2,
+            "normalized_value": "2022-02",
+            "precision": "month",
+            "raw_value": "2022-02",
+            "year": 2022
+          },
+          "title": "Principal Backend Engineer",
+          "tools": [
+            "Python",
+            "Go",
+            "Kafka",
+            "PostgreSQL",
+            "AWS"
+          ],
+          "verified_status": "corroborated"
+        },
+        {
+          "bullets": [
+            {
+              "canonical_tags": [],
+              "domain_tags": [],
+              "evidence_strength": "weak",
+              "id": "bullet.streamforge.api",
+              "impact_level": "high",
+              "impact_score": 0.86,
+              "item_type": "bullet",
+              "metrics": [],
+              "recency_score": 0.71,
+              "rewrite_allowed": true,
+              "source_links": [],
+              "text": "Shipped the REST API platform used by 40 plus internal services and major enterprise integrations.",
+              "tools": [
+                "Python",
+                "Rest Apis",
+                "Microservices"
+              ],
+              "verified_status": "unverified"
+            },
+            {
+              "canonical_tags": [],
+              "domain_tags": [],
+              "evidence_strength": "weak",
+              "id": "bullet.streamforge.latency",
+              "impact_level": "high",
+              "impact_score": 0.9,
+              "item_type": "bullet",
+              "metrics": [],
+              "recency_score": 0.72,
+              "rewrite_allowed": true,
+              "source_links": [],
+              "text": "Optimized SQL and Redis access patterns, reducing p95 latency by 48% on revenue-critical endpoints.",
+              "tools": [
+                "SQL",
+                "Redis",
+                "Performance"
+              ],
+              "verified_status": "unverified"
+            },
+            {
+              "canonical_tags": [],
+              "domain_tags": [],
+              "evidence_strength": "weak",
+              "id": "bullet.streamforge.mentoring",
+              "impact_level": "medium",
+              "impact_score": 0.69,
+              "item_type": "bullet",
+              "metrics": [],
+              "recency_score": 0.7,
+              "rewrite_allowed": true,
+              "source_links": [],
+              "text": "Mentored four backend engineers on service ownership, incident response, and deployment hygiene.",
+              "tools": [
+                "Leadership",
+                "Incident Response"
+              ],
+              "verified_status": "unverified"
+            }
+          ],
+          "canonical_tags": [],
+          "current": false,
+          "domain_tags": [
+            "backend",
+            "data"
+          ],
+          "employment_type": "full_time",
+          "end_date": {
+            "month": 1,
+            "normalized_value": "2022-01",
+            "precision": "month",
+            "raw_value": "2022-01",
+            "year": 2022
+          },
+          "evidence_strength": "strong",
+          "id": "exp.streamforge",
+          "impact_score": 0.84,
+          "item_type": "experience",
+          "metrics": [],
+          "organization": "StreamForge",
+          "recency_score": 0.72,
+          "rewrite_allowed": true,
+          "role_type": "individual_contributor",
+          "seniority_level": "senior",
+          "source_links": [],
+          "start_date": {
+            "month": 6,
+            "normalized_value": "2018-06",
+            "precision": "month",
+            "raw_value": "2018-06",
+            "year": 2018
+          },
+          "title": "Senior Software Engineer",
+          "tools": [
+            "Python",
+            "Redis",
+            "SQL",
+            "Rest Apis"
+          ],
+          "verified_status": "self_reported"
+        },
+        {
+          "bullets": [
+            {
+              "canonical_tags": [],
+              "domain_tags": [],
+              "evidence_strength": "weak",
+              "id": "bullet.pixelcraft.ui",
+              "impact_level": "low",
+              "impact_score": 0.25,
+              "item_type": "bullet",
+              "metrics": [],
+              "recency_score": 0.18,
+              "rewrite_allowed": true,
+              "source_links": [],
+              "text": "Maintained a jQuery admin UI and shipped marketing site updates for seasonal campaigns.",
+              "tools": [
+                "Jquery",
+                "Html",
+                "Css"
+              ],
+              "verified_status": "unverified"
+            }
+          ],
+          "canonical_tags": [],
+          "current": false,
+          "domain_tags": [
+            "frontend"
+          ],
+          "employment_type": "full_time",
+          "end_date": {
+            "month": 5,
+            "normalized_value": "2018-05",
+            "precision": "month",
+            "raw_value": "2018-05",
+            "year": 2018
+          },
+          "evidence_strength": "moderate",
+          "id": "exp.pixelcraft",
+          "impact_score": 0.22,
+          "item_type": "experience",
+          "metrics": [],
+          "organization": "PixelCraft",
+          "recency_score": 0.18,
+          "rewrite_allowed": true,
+          "role_type": "individual_contributor",
+          "seniority_level": "mid",
+          "source_links": [],
+          "start_date": {
+            "month": 1,
+            "normalized_value": "2014-01",
+            "precision": "month",
+            "raw_value": "2014-01",
+            "year": 2014
+          },
+          "title": "Frontend Developer",
+          "tools": [
+            "Jquery",
+            "Css"
+          ],
+          "verified_status": "self_reported"
+        }
+      ],
+      "id": "master.selection.senior-backend",
+      "personal_profile": {
+        "canonical_tags": [],
+        "domain_tags": [],
+        "email": "[REDACTED]",
+        "evidence_strength": "weak",
+        "full_name": "Jordan Hale",
+        "headline": "Senior Backend Engineer",
+        "id": "person.selection.senior-backend",
+        "item_type": "personal_profile",
+        "rewrite_allowed": true,
+        "role_type": "individual_contributor",
+        "seniority_level": "senior",
+        "source_links": [],
+        "summary": "Backend engineer focused on distributed systems, platform APIs, and cloud reliability.",
+        "verified_status": "unverified"
+      },
+      "projects": [
+        {
+          "bullets": [
+            {
+              "canonical_tags": [],
+              "domain_tags": [],
+              "evidence_strength": "weak",
+              "id": "bullet.project.pipeline",
+              "impact_level": "high",
+              "impact_score": 0.82,
+              "item_type": "bullet",
+              "metrics": [],
+              "recency_score": 0.94,
+              "rewrite_allowed": true,
+              "source_links": [],
+              "text": "Designed a Kafka replication pipeline with replay safeguards and regional failover testing.",
+              "tools": [
+                "Kafka",
+                "AWS",
+                "Distributed Systems"
+              ],
+              "verified_status": "unverified"
+            }
+          ],
+          "canonical_tags": [],
+          "domain_tags": [
+            "backend",
+            "reliability"
+          ],
+          "evidence_strength": "strong",
+          "id": "proj.multi-region-pipeline",
+          "impact_score": 0.81,
+          "item_type": "project",
+          "metrics": [],
+          "name": "Multi-Region Event Pipeline",
+          "recency_score": 0.94,
+          "rewrite_allowed": true,
+          "role": "Technical Lead",
+          "role_type": "individual_contributor",
+          "seniority_level": "senior",
+          "source_links": [],
+          "start_date": {
+            "month": 3,
+            "normalized_value": "2023-03",
+            "precision": "month",
+            "raw_value": "2023-03",
+            "year": 2023
+          },
+          "summary": "Side platform project for resilient cross-region event ingestion.",
+          "tools": [
+            "Kafka",
+            "AWS"
+          ],
+          "verified_status": "self_reported"
+        },
+        {
+          "bullets": [
+            {
+              "canonical_tags": [],
+              "domain_tags": [],
+              "evidence_strength": "weak",
+              "id": "bullet.project.brand",
+              "impact_level": "low",
+              "impact_score": 0.2,
+              "item_type": "bullet",
+              "metrics": [],
+              "recency_score": 0.15,
+              "rewrite_allowed": true,
+              "source_links": [],
+              "text": "Implemented landing pages and A B tests for a microsite refresh.",
+              "tools": [
+                "Jquery",
+                "Css"
+              ],
+              "verified_status": "unverified"
+            }
+          ],
+          "canonical_tags": [],
+          "domain_tags": [
+            "frontend"
+          ],
+          "evidence_strength": "weak",
+          "id": "proj.brand-microsite",
+          "impact_score": 0.2,
+          "item_type": "project",
+          "metrics": [],
+          "name": "Brand Refresh Microsite",
+          "recency_score": 0.15,
+          "rewrite_allowed": true,
+          "role": "Frontend Engineer",
+          "source_links": [],
+          "start_date": {
+            "month": 2,
+            "normalized_value": "2017-02",
+            "precision": "month",
+            "raw_value": "2017-02",
+            "year": 2017
+          },
+          "summary": "Marketing microsite redesign.",
+          "tools": [
+            "Jquery"
+          ],
+          "verified_status": "self_reported"
+        }
+      ],
+      "skills": [
+        {
+          "canonical_tags": [],
+          "category": "backend",
+          "domain_tags": [],
+          "evidence_strength": "weak",
+          "id": "skill.python",
+          "item_type": "skill",
+          "metrics": [],
+          "name": "Python",
+          "recency_score": 0.98,
+          "rewrite_allowed": true,
+          "source_links": [],
+          "tools": [],
+          "verified_status": "unverified"
+        },
+        {
+          "canonical_tags": [],
+          "category": "backend",
+          "domain_tags": [],
+          "evidence_strength": "weak",
+          "id": "skill.go",
+          "item_type": "skill",
+          "metrics": [],
+          "name": "Go",
+          "recency_score": 0.95,
+          "rewrite_allowed": true,
+          "source_links": [],
+          "tools": [],
+          "verified_status": "unverified"
+        },
+        {
+          "canonical_tags": [],
+          "category": "data",
+          "domain_tags": [],
+          "evidence_strength": "weak",
+          "id": "skill.kafka",
+          "item_type": "skill",
+          "metrics": [],
+          "name": "Kafka",
+          "recency_score": 0.94,
+          "rewrite_allowed": true,
+          "source_links": [],
+          "tools": [],
+          "verified_status": "unverified"
+        },
+        {
+          "canonical_tags": [],
+          "category": "cloud",
+          "domain_tags": [],
+          "evidence_strength": "weak",
+          "id": "skill.aws",
+          "item_type": "skill",
+          "metrics": [],
+          "name": "AWS",
+          "recency_score": 0.96,
+          "rewrite_allowed": true,
+          "source_links": [],
+          "tools": [],
+          "verified_status": "unverified"
+        },
+        {
+          "canonical_tags": [],
+          "category": "data",
+          "domain_tags": [],
+          "evidence_strength": "weak",
+          "id": "skill.postgresql",
+          "item_type": "skill",
+          "metrics": [],
+          "name": "PostgreSQL",
+          "recency_score": 0.94,
+          "rewrite_allowed": true,
+          "source_links": [],
+          "tools": [],
+          "verified_status": "unverified"
+        },
+        {
+          "canonical_tags": [],
+          "category": "architecture",
+          "domain_tags": [],
+          "evidence_strength": "weak",
+          "id": "skill.microservices",
+          "item_type": "skill",
+          "metrics": [],
+          "name": "Microservices",
+          "recency_score": 0.95,
+          "rewrite_allowed": true,
+          "source_links": [],
+          "tools": [],
+          "verified_status": "unverified"
+        },
+        {
+          "canonical_tags": [],
+          "category": "architecture",
+          "domain_tags": [],
+          "evidence_strength": "weak",
+          "id": "skill.distributed-systems",
+          "item_type": "skill",
+          "metrics": [],
+          "name": "Distributed Systems",
+          "recency_score": 0.95,
+          "rewrite_allowed": true,
+          "source_links": [],
+          "tools": [],
+          "verified_status": "unverified"
+        },
+        {
+          "canonical_tags": [],
+          "category": "frontend",
+          "domain_tags": [],
+          "evidence_strength": "weak",
+          "id": "skill.jquery",
+          "item_type": "skill",
+          "metrics": [],
+          "name": "Jquery",
+          "recency_score": 0.14,
+          "rewrite_allowed": true,
+          "source_links": [],
+          "tools": [],
+          "verified_status": "unverified"
+        }
+      ]
+    },
+    "source_profile_id": "master.selection.senior-backend"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "role_type": "lead",
+  "seniority_level": "staff",
+  "industry_domain": "enterprise_software",
+  "technical_skills": ["System Design", "Roadmapping", "Mentorship", "Architecture"],
+  "soft_skills": ["leadership", "strategic planning", "communication"],
+  "key_action_verbs": ["spearheaded", "scaled", "mentored"],
+  "must_have_requirements": [
+    "experience leading org-wide technical migrations",
+    "proven ability to scale engineering teams and processes"
+  ],
+  "nice_to_have_requirements": [
+    "experience with Fortune 500 companies",
+    "background in cloud infrastructure"
+  ],
+  "company_culture_signals": ["scale", "excellence"],
+  "years_experience_required": 10,
+  "prioritized_skills": [
+    { "skill_name": "System Design", "priority": "core" },
+    { "skill_name": "Roadmapping", "priority": "core" },
+    { "skill_name": "Mentorship", "priority": "core" }
+  ]
+}

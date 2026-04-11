@@ -1,0 +1,15 @@
+{
+  "canonical_terms": {
+    "frontend": ["frontend", "front-end", "front end", "ui engineer", "ui developer"],
+    "backend": ["backend", "back-end", "back end", "api engineer", "platform engineer"],
+    "fullstack": ["fullstack", "full-stack", "full stack"],
+    "devops": ["devops", "sre", "site reliability", "infrastructure"],
+    "data": ["data", "analytics", "data engineering", "data engineer"],
+    "ml": ["ml", "machine learning", "ai engineer", "ml engineer"],
+    "product": ["product", "product manager", "pm"],
+    "design": ["design", "designer", "ux", "ui/ux"],
+    "management": ["manager", "management", "director", "people manager", "engineering manager"],
+    "individual_contributor": ["ic", "individual contributor", "software engineer", "engineer", "developer"],
+    "leadership": ["lead", "tech lead", "team lead", "architect"]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "role_type": "individual_contributor",
+  "seniority_level": "staff",
+  "technical_skills": [
+    "Terraform",
+    "AWS",
+    "Kubernetes",
+    "Incident Response",
+    "Developer Experience"
+  ],
+  "soft_skills": [
+    "Platform Strategy"
+  ],
+  "key_action_verbs": [
+    "build",
+    "reduce",
+    "drive"
+  ],
+  "must_have_requirements": [
+    "Terraform",
+    "AWS",
+    "Developer Experience"
+  ],
+  "nice_to_have_requirements": [
+    "Kubernetes",
+    "Incident Response"
+  ],
+  "company_culture_signals": [],
+  "years_experience_required": 7,
+  "prioritized_skills": [
+    {
+      "skill_name": "Terraform",
+      "priority": "core"
+    },
+    {
+      "skill_name": "AWS",
+      "priority": "core"
+    },
+    {
+      "skill_name": "Developer Experience",
+      "priority": "important"
+    },
+    {
+      "skill_name": "Kubernetes",
+      "priority": "important"
+    },
+    {
+      "skill_name": "Incident Response",
+      "priority": "nice_to_have"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "cases": [
+    {
+      "id": "numeric_supported",
+      "item_type": "experience_bullet",
+      "match_kind": "experience",
+      "match_item_id": "exp.platform",
+      "match_bullet_id": "bullet.platform.1",
+      "generated_text": "Implemented Python APIs that reduced latency by 25% for internal workflows.",
+      "expected_validator_names": []
+    },
+    {
+      "id": "numeric_unsupported",
+      "item_type": "experience_bullet",
+      "match_kind": "experience",
+      "match_item_id": "exp.platform",
+      "match_bullet_id": "bullet.platform.1",
+      "generated_text": "Implemented Python APIs that reduced latency by 40% for internal workflows.",
+      "expected_validator_names": ["numeric_claim_validator"]
+    },
+    {
+      "id": "tool_supported",
+      "item_type": "experience_bullet",
+      "match_kind": "experience",
+      "match_item_id": "exp.platform",
+      "match_bullet_id": "bullet.platform.1",
+      "generated_text": "Implemented Python APIs for internal workflows.",
+      "expected_validator_names": []
+    },
+    {
+      "id": "tool_cloud_unsupported",
+      "item_type": "experience_bullet",
+      "match_kind": "experience",
+      "match_item_id": "exp.platform",
+      "match_bullet_id": "bullet.platform.1",
+      "generated_text": "Implemented Python APIs on AWS and Kubernetes for internal workflows.",
+      "expected_validator_names": ["tool_technology_validator"]
+    },
+    {
+      "id": "ownership_unsupported",
+      "item_type": "experience_bullet",
+      "match_kind": "experience",
+      "match_item_id": "exp.platform",
+      "match_bullet_id": "bullet.platform.2",
+      "generated_text": "Owned PostgreSQL reliability improvements for data services.",
+      "expected_validator_names": ["ownership_drift_validator", "role_inflation_validator", "seniority_leadership_inflation_validator"]
+    },
+    {
+      "id": "leadership_unsupported",
+      "item_type": "experience_bullet",
+      "match_kind": "experience",
+      "match_item_id": "exp.platform",
+      "match_bullet_id": "bullet.platform.3",
+      "generated_text": "Mentored engineers and managed stakeholders across platform workflows.",
+      "expected_validator_names": ["leadership_drift_validator", "ownership_drift_validator", "seniority_leadership_inflation_validator"]
+    },
+    {
+      "id": "scope_unsupported",
+      "item_type": "project_bullet",
+      "match_kind": "project",
+      "match_item_id": "project.design-system-rollout",
+      "match_bullet_id": "bullet.project-design-system-adoption",
+      "generated_text": "Architected a large-scale distributed systems platform across three product surfaces.",
+      "expected_validator_names": ["domain_drift_validator", "ownership_drift_validator", "scope_drift_validator", "seniority_leadership_inflation_validator"]
+    },
+    {
+      "id": "certification_supported",
+      "item_type": "summary",
+      "match_kind": "summary",
+      "generated_text": "Backend engineer with AWS Certified Solutions Architect credentials.",
+      "expected_validator_names": []
+    },
+    {
+      "id": "certification_unsupported",
+      "item_type": "summary",
+      "match_kind": "summary",
+      "generated_text": "Backend engineer with Google Cloud certified expertise.",
+      "expected_validator_names": ["certification_drift_validator", "tool_technology_validator"]
+    },
+    {
+      "id": "award_supported",
+      "item_type": "summary",
+      "match_kind": "summary",
+      "generated_text": "Dean's List graduate with backend experience.",
+      "expected_validator_names": []
+    },
+    {
+      "id": "award_unsupported",
+      "item_type": "summary",
+      "match_kind": "summary",
+      "generated_text": "Award-winning backend engineer with platform experience.",
+      "expected_validator_names": ["certification_award_drift_validator"]
+    },
+    {
+      "id": "domain_unsupported",
+      "item_type": "summary",
+      "match_kind": "summary",
+      "generated_text": "Backend engineer with deep fintech and payments expertise.",
+      "expected_validator_names": ["domain_drift_validator"]
+    },
+    {
+      "id": "keyword_unsupported",
+      "item_type": "experience_bullet",
+      "match_kind": "experience",
+      "match_item_id": "exp.platform",
+      "match_bullet_id": "bullet.platform.1",
+      "generated_text": "Implemented distributed systems for internal workflows.",
+      "job_keywords": ["distributed systems"],
+      "expected_validator_names": ["keyword_support_validator", "domain_drift_validator", "scope_drift_validator"]
+    },
+    {
+      "id": "summary_breadth_unsupported",
+      "item_type": "summary",
+      "match_kind": "summary",
+      "generated_text": "Full-stack platform engineer with people management experience.",
+      "expected_validator_names": ["leadership_drift_validator", "seniority_leadership_inflation_validator", "summary_breadth_validator", "summary_fact_validator"]
+    }
+  ]
+}

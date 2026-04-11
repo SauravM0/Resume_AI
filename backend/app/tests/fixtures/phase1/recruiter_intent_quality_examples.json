@@ -1,0 +1,27 @@
+{
+  "strong_jd": {
+    "name": "enterprise_jd",
+    "expected": {
+      "breadth_preference": "balanced",
+      "min_recruiter_intent_confidence": 0.7,
+      "max_ambiguity_score": 0.35,
+      "min_completeness_score": 0.8
+    }
+  },
+  "weak_jd": {
+    "name": "vague_jd",
+    "expected": {
+      "breadth_preference": "unknown",
+      "max_recruiter_intent_confidence": 0.6,
+      "min_ambiguity_score": 0.45,
+      "max_completeness_score": 0.65
+    }
+  },
+  "ambiguous_jd": {
+    "name": "vague_jd",
+    "expected": {
+      "min_downstream_risk_score": 0.45,
+      "requires_ambiguity_note": true
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "id": "master.redteam.duplicate-profile",
+  "personal_profile": {
+    "id": "person.redteam.duplicate-profile",
+    "item_type": "personal_profile",
+    "full_name": "Casey Rivera",
+    "headline": "Software Engineer",
+    "summary": "Engineer with repeated claims across adjacent resume sources.",
+    "email": "casey.rivera@example.com",
+    "role_type": "individual_contributor",
+    "seniority_level": "senior"
+  },
+  "experience": [
+    {
+      "id": "exp.duplicate.current",
+      "item_type": "experience",
+      "organization": "OrbitOps",
+      "title": "Software Engineer",
+      "employment_type": "full_time",
+      "role_type": "individual_contributor",
+      "seniority_level": "senior",
+      "start_date": {
+        "raw_value": "2022-01"
+      },
+      "current": true,
+      "bullets": [
+        {
+          "id": "bullet.duplicate.current.api",
+          "item_type": "bullet",
+          "text": "Improved API latency by 35% through query-path tuning and cache cleanup.",
+          "tools": [
+            "Python",
+            "PostgreSQL"
+          ],
+          "impact_level": "high",
+          "impact_score": 0.78,
+          "recency_score": 0.95
+        },
+        {
+          "id": "bullet.duplicate.current.support",
+          "item_type": "bullet",
+          "text": "Helped stabilize release workflows and service ownership rituals.",
+          "tools": [
+            "GitHub Actions"
+          ],
+          "impact_level": "medium",
+          "impact_score": 0.49,
+          "recency_score": 0.93
+        }
+      ],
+      "tools": [
+        "Python",
+        "PostgreSQL"
+      ],
+      "domain_tags": [
+        "backend",
+        "api"
+      ],
+      "verified_status": "self_reported",
+      "evidence_strength": "moderate",
+      "impact_score": 0.71,
+      "recency_score": 0.95
+    },
+    {
+      "id": "exp.duplicate.previous",
+      "item_type": "experience",
+      "organization": "OrbitOps",
+      "title": "Backend Engineer",
+      "employment_type": "contract",
+      "role_type": "individual_contributor",
+      "seniority_level": "mid",
+      "start_date": {
+        "raw_value": "2020-01"
+      },
+      "end_date": {
+        "raw_value": "2021-12"
+      },
+      "current": false,
+      "bullets": [
+        {
+          "id": "bullet.duplicate.previous.api",
+          "item_type": "bullet",
+          "text": "Improved API latency by 35% through query-path tuning and cache cleanup.",
+          "tools": [
+            "Python",
+            "PostgreSQL"
+          ],
+          "impact_level": "high",
+          "impact_score": 0.76,
+          "recency_score": 0.66
+        }
+      ],
+      "tools": [
+        "Python",
+        "PostgreSQL"
+      ],
+      "domain_tags": [
+        "backend",
+        "api"
+      ],
+      "verified_status": "self_reported",
+      "evidence_strength": "moderate",
+      "impact_score": 0.7,
+      "recency_score": 0.66
+    }
+  ],
+  "projects": [],
+  "skills": [
+    {
+      "id": "skill.duplicate.python",
+      "item_type": "skill",
+      "name": "Python"
+    },
+    {
+      "id": "skill.duplicate.postgresql",
+      "item_type": "skill",
+      "name": "PostgreSQL"
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "area_results": [
+    {
+      "blocker": true,
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-s",
+        "backend/app/tests/phase8/test_phase8_release_readiness.py"
+      ],
+      "description": "Cross-area Phase 8 release-readiness scenarios.",
+      "duration_seconds": 4.105,
+      "name": "phase8_scenarios",
+      "node_ids": [
+        "backend/app/tests/phase8/test_phase8_release_readiness.py"
+      ],
+      "output_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0\nrootdir: /mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI\nconfigfile: pyproject.toml\nplugins: dash-4.0.0, anyio-4.12.1, timeout-2.4.0\ncollected 4 items\n\nbackend/app/tests/phase8/test_phase8_release_readiness.py ....\n\n============================== 4 passed in 2.79s ===============================",
+      "passed": true
+    },
+    {
+      "blocker": true,
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-s",
+        "backend/app/tests/unit/test_privacy_redaction.py"
+      ],
+      "description": "Structured logging presence, JSON shape, and sensitive-content redaction.",
+      "duration_seconds": 3.882,
+      "name": "structured_logging_and_privacy",
+      "node_ids": [
+        "backend/app/tests/unit/test_privacy_redaction.py"
+      ],
+      "output_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0\nrootdir: /mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI\nconfigfile: pyproject.toml\nplugins: dash-4.0.0, anyio-4.12.1, timeout-2.4.0\ncollected 3 items\n\nbackend/app/tests/unit/test_privacy_redaction.py ...\n\n============================== 3 passed in 2.71s ===============================",
+      "passed": true
+    },
+    {
+      "blocker": true,
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-s",
+        "backend/app/tests/unit/test_failure_handling.py"
+      ],
+      "description": "Typed failure categories, safe user messages, and deterministic handling metadata.",
+      "duration_seconds": 4.275,
+      "name": "failure_taxonomy",
+      "node_ids": [
+        "backend/app/tests/unit/test_failure_handling.py"
+      ],
+      "output_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0\nrootdir: /mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI\nconfigfile: pyproject.toml\nplugins: dash-4.0.0, anyio-4.12.1, timeout-2.4.0\ncollected 7 items\n\nbackend/app/tests/unit/test_failure_handling.py .......\n\n============================== 7 passed in 3.06s ===============================",
+      "passed": true
+    },
+    {
+      "blocker": true,
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-s",
+        "backend/app/tests/unit/test_retry_fallback_policy.py",
+        "backend/app/tests/unit/test_safe_fallbacks.py"
+      ],
+      "description": "Retryable versus non-retryable handling and explicit fallback behavior.",
+      "duration_seconds": 6.972,
+      "name": "retry_and_fallback_policy",
+      "node_ids": [
+        "backend/app/tests/unit/test_retry_fallback_policy.py",
+        "backend/app/tests/unit/test_safe_fallbacks.py"
+      ],
+      "output_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0\nrootdir: /mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI\nconfigfile: pyproject.toml\nplugins: dash-4.0.0, anyio-4.12.1, timeout-2.4.0\ncollected 11 items\n\nbackend/app/tests/unit/test_retry_fallback_policy.py .....\nbackend/app/tests/unit/test_safe_fallbacks.py ......\n\n============================== 11 passed in 5.61s ==============================",
+      "passed": true
+    },
+    {
+      "blocker": true,
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-s",
+        "backend/app/tests/unit/test_safe_cache.py"
+      ],
+      "description": "Deterministic cache correctness, invalidation, and no stale reuse across changes.",
+      "duration_seconds": 7.517,
+      "name": "safe_cache",
+      "node_ids": [
+        "backend/app/tests/unit/test_safe_cache.py"
+      ],
+      "output_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0\nrootdir: /mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI\nconfigfile: pyproject.toml\nplugins: dash-4.0.0, anyio-4.12.1, timeout-2.4.0\ncollected 5 items\n\nbackend/app/tests/unit/test_safe_cache.py .....\n\n============================== 5 passed in 6.18s ===============================",
+      "passed": true
+    },
+    {
+      "blocker": true,
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-s",
+        "backend/app/tests/unit/test_runtime_config.py"
+      ],
+      "description": "Typed config validation, environment profiles, and secret redaction.",
+      "duration_seconds": 3.052,
+      "name": "runtime_config_and_secrets",
+      "node_ids": [
+        "backend/app/tests/unit/test_runtime_config.py"
+      ],
+      "output_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0\nrootdir: /mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI\nconfigfile: pyproject.toml\nplugins: dash-4.0.0, anyio-4.12.1, timeout-2.4.0\ncollected 7 items\n\nbackend/app/tests/unit/test_runtime_config.py .......\n\n============================== 7 passed in 1.96s ===============================",
+      "passed": true
+    },
+    {
+      "blocker": true,
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-s",
+        "backend/app/tests/unit/test_artifact_manager.py"
+      ],
+      "description": "Artifact persistence boundaries and safe compile-workspace cleanup.",
+      "duration_seconds": 4.687,
+      "name": "artifact_cleanup",
+      "node_ids": [
+        "backend/app/tests/unit/test_artifact_manager.py"
+      ],
+      "output_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0\nrootdir: /mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI\nconfigfile: pyproject.toml\nplugins: dash-4.0.0, anyio-4.12.1, timeout-2.4.0\ncollected 3 items\n\nbackend/app/tests/unit/test_artifact_manager.py ...\n\n============================== 3 passed in 3.46s ===============================",
+      "passed": true
+    },
+    {
+      "blocker": true,
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-s",
+        "backend/app/tests/unit/test_run_confidence.py"
+      ],
+      "description": "Internal confidence gating and degraded or unsafe classification.",
+      "duration_seconds": 3.862,
+      "name": "confidence_scoring",
+      "node_ids": [
+        "backend/app/tests/unit/test_run_confidence.py"
+      ],
+      "output_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0\nrootdir: /mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI\nconfigfile: pyproject.toml\nplugins: dash-4.0.0, anyio-4.12.1, timeout-2.4.0\ncollected 4 items\n\nbackend/app/tests/unit/test_run_confidence.py ....\n\n============================== 4 passed in 2.72s ===============================",
+      "passed": true
+    },
+    {
+      "blocker": true,
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-s",
+        "backend/app/tests/unit/test_support_tooling.py"
+      ],
+      "description": "Operator CLI health, safe diagnostics output, and support-safe redaction.",
+      "duration_seconds": 4.766,
+      "name": "operator_tooling",
+      "node_ids": [
+        "backend/app/tests/unit/test_support_tooling.py"
+      ],
+      "output_excerpt": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0\nrootdir: /mnt/c/Users/Alexa/OneDrive/Desktop/ResumeAI\nconfigfile: pyproject.toml\nplugins: dash-4.0.0, anyio-4.12.1, timeout-2.4.0\ncollected 5 items\n\nbackend/app/tests/unit/test_support_tooling.py .....\n\n============================== 5 passed in 3.38s ===============================",
+      "passed": true
+    }
+  ],
+  "generated_at": "2026-04-10T18:16:56.367149+00:00",
+  "known_limitations": [
+    "The suite validates the production-hardening layers and does not replace the full product regression suite.",
+    "Idempotency verification is process-local and does not exercise distributed locking behavior.",
+    "Artifact cleanup verification covers only the bounded compiler temp-workspace policy."
+  ],
+  "overall_status": "pass",
+  "profile": "quick",
+  "release_recommendation": "release_candidate_approved",
+  "required_environment_settings": [
+    "RESUME_OPTIMIZER_ENV=test",
+    "pytest and test extras installed",
+    "Run from repository root",
+    "Use the full profile before release"
+  ],
+  "unresolved_risks": [
+    "Quick profile omits integration-only checks; full profile is required before release.",
+    "No blocking hardening regressions were detected in the selected profile."
+  ]
+}

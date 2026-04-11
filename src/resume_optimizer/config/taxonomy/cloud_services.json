@@ -1,0 +1,14 @@
+{
+  "canonical_terms": {
+    "AWS": ["aws", "amazon web services"],
+    "Amazon EC2": ["ec2", "amazon ec2"],
+    "Amazon S3": ["s3", "amazon s3"],
+    "AWS Lambda": ["lambda", "aws lambda"],
+    "Amazon RDS": ["rds", "amazon rds"],
+    "Google Cloud Platform": ["gcp", "google cloud", "google cloud platform"],
+    "Google Kubernetes Engine": ["gke", "google kubernetes engine"],
+    "BigQuery": ["bigquery", "big query"],
+    "Microsoft Azure": ["azure", "microsoft azure"],
+    "Azure Kubernetes Service": ["aks", "azure kubernetes service"]
+  }
+}

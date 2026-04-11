@@ -1,0 +1,38 @@
+You are analyzing a raw job description for an AI Resume Optimizer.
+
+Task:
+- Extract the job requirements and signals from the job description.
+- Return JSON only.
+- Do not include markdown, commentary, or code fences.
+
+Required output fields:
+- technical_skills: array of strings
+- soft_skills: array of strings
+- seniority_level: string or null
+- role_type: string or null
+- industry_domain: string or null
+- key_action_verbs: array of strings
+- must_have_requirements: array of strings
+- nice_to_have_requirements: array of strings
+- company_culture_signals: array of strings
+
+Rules:
+- Base the output only on the provided job description.
+- If a field is not clear from the text, use null for scalar fields or an empty array for list fields.
+- Keep extracted values concise and normalized when possible.
+- Do not invent technologies, responsibilities, or qualifications not present in the input.
+- The final response must be valid JSON matching this shape exactly:
+{
+  "technical_skills": [],
+  "soft_skills": [],
+  "seniority_level": null,
+  "role_type": null,
+  "industry_domain": null,
+  "key_action_verbs": [],
+  "must_have_requirements": [],
+  "nice_to_have_requirements": [],
+  "company_culture_signals": []
+}
+
+Raw job description:
+<<<RAW_JOB_DESCRIPTION>>>
