@@ -20,6 +20,8 @@ import type {
   GenerateResumeResponse,
   GenerationResultData,
   PhaseStatus,
+  PipelineProgressEvent,
+  ProgressConnectionState,
   ResumeGenerationRunStatus,
   RunMetadata,
 } from "../types/pipeline";
@@ -80,22 +82,27 @@ export function useResumeGeneration(options: UseResumeGenerationOptions = {}) {
     currentRunId && state.status !== "idle" && state.status !== "cancelled",
   );
 
+  const handleProgressEvent = useCallback((event: PipelineProgressEvent) => {
+    dispatch({ type: "progress_event_received", event });
+  }, []);
+
+  const handleProgressConnectionChange = useCallback((connection: ProgressConnectionState) => {
+    if (!currentRunId) {
+      return;
+    }
+
+    dispatch({
+      type: "progress_connection_changed",
+      runId: currentRunId,
+      connection,
+    });
+  }, [currentRunId]);
+
   usePipelineProgress(currentRunId, {
     baseUrl: options.baseUrl,
     enabled: shouldSubscribe,
-    onEvent: (event) => {
-      dispatch({ type: "progress_event_received", event });
-    },
-    onConnectionChange: (connection) => {
-      if (!currentRunId) {
-        return;
-      }
-      dispatch({
-        type: "progress_connection_changed",
-        runId: currentRunId,
-        connection,
-      });
-    },
+    onEvent: handleProgressEvent,
+    onConnectionChange: handleProgressConnectionChange,
   });
 
   const submit = useCallback(

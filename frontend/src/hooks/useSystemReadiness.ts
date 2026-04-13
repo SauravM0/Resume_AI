@@ -18,7 +18,7 @@ export interface UseSystemReadinessOptions {
 
 const CHECKING_STATE: BackendHealthState = {
   status: "checking",
-  summary: "Checking backend reachability.",
+  summary: "Checking backend health.",
 };
 
 export function useSystemReadiness(options: UseSystemReadinessOptions = {}) {
@@ -27,7 +27,7 @@ export function useSystemReadiness(options: UseSystemReadinessOptions = {}) {
   const refresh = useCallback(async () => {
     setBackendHealth({
       status: "checking",
-      summary: "Checking backend reachability.",
+      summary: "Checking backend health.",
     });
 
     const result = await probeBackendHealth({ baseUrl: options.baseUrl });
@@ -41,27 +41,27 @@ export function useSystemReadiness(options: UseSystemReadinessOptions = {}) {
   const readiness: ReadinessIndicator[] = [
     {
       key: "master-profile",
-      label: "Master profile",
+      label: "Profile path",
       state: options.sourceProfilePath ?? DEFAULT_SOURCE_PROFILE_PATH ? "ready" : "unavailable",
-      summary: options.sourceProfilePath ?? DEFAULT_SOURCE_PROFILE_PATH ? "Profile path configured." : "No source profile path configured.",
+      summary: options.sourceProfilePath ?? DEFAULT_SOURCE_PROFILE_PATH ? "Profile path set." : "No source profile path set.",
       detail:
         options.sourceProfilePath ?? DEFAULT_SOURCE_PROFILE_PATH
-          ? `Configured path: ${options.sourceProfilePath ?? DEFAULT_SOURCE_PROFILE_PATH}. Final validation happens when the backend loads the profile.`
+          ? `Path: ${options.sourceProfilePath ?? DEFAULT_SOURCE_PROFILE_PATH}. Backend will validate when run starts.`
           : "A source profile path or source profile id is required before generation can start.",
     },
     {
       key: "template",
       label: "Template",
       state: options.templateId ?? DEFAULT_TEMPLATE_ID ? "ready" : "warning",
-      summary: options.templateId ?? DEFAULT_TEMPLATE_ID ? "Template configured." : "Template not configured.",
+      summary: options.templateId ?? DEFAULT_TEMPLATE_ID ? "Template set." : "Template not set.",
       detail:
         options.templateId ?? DEFAULT_TEMPLATE_ID
-          ? `Configured template: ${options.templateId ?? DEFAULT_TEMPLATE_ID}. Template availability is confirmed by the backend during execution.`
-          : "The backend currently defaults to ats_standard if no template is selected.",
+          ? `Template: ${options.templateId ?? DEFAULT_TEMPLATE_ID}. Backend will validate when rendering starts.`
+          : "The backend defaults to ats_standard if no template is selected.",
     },
     {
       key: "backend",
-      label: "Backend",
+      label: "Backend status",
       state:
         backendHealth.status === "healthy"
           ? "ready"

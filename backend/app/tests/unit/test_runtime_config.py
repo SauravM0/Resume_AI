@@ -65,7 +65,7 @@ def test_environment_profile_selection_works(monkeypatch) -> None:
 def test_invalid_config_fails_startup(monkeypatch) -> None:
     monkeypatch.setenv("RESUME_OPTIMIZER_ENV", "production")
     monkeypatch.setenv("RESUME_OPTIMIZER_LOG_LEVEL", "DEBUG")
-    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
 
     with pytest.raises(RuntimeError, match="Invalid runtime configuration"):
         _reload_config_module()
@@ -77,21 +77,21 @@ def test_invalid_config_fails_startup(monkeypatch) -> None:
 
 def test_safe_config_summary_redacts_secrets(monkeypatch) -> None:
     monkeypatch.setenv("RESUME_OPTIMIZER_ENV", "local")
-    monkeypatch.setenv("OPENAI_API_KEY", "sk-test-secret")
+    monkeypatch.setenv("GEMINI_API_KEY", "AIza-test-secret-key-value-for-testing-purposes-only")
     monkeypatch.setenv("DATABASE_URL", "postgresql://user:pass@db.example.com/prod")
 
     reloaded = _reload_config_module()
     try:
         summary = reloaded.get_effective_config_summary()
 
-        assert summary["security"]["openai_api_key"] == "[REDACTED]"
+        assert summary["security"]["gemini_api_key"] == "[REDACTED]"
         assert summary["database"]["database_url"] == "[REDACTED]"
         assert summary["secret_status"]["approved_runtime_source"] == "typed_runtime_config"
-        assert summary["secret_status"]["openai_api_key"]["configured"] is True
-        assert summary["secret_status"]["openai_api_key"]["display_value"] == "[REDACTED]"
+        assert summary["secret_status"]["gemini_api_key"]["configured"] is True
+        assert summary["secret_status"]["gemini_api_key"]["display_value"] == "[REDACTED]"
         assert summary["secret_status"]["database_url"]["configured"] is True
         assert summary["secret_status"]["database_url"]["display_value"] == "[REDACTED]"
-        assert "sk-test-secret" not in str(summary)
+        assert "AIza-test-secret" not in str(summary)
         assert "db.example.com" not in str(summary)
     finally:
         _reload_config_module()
@@ -116,15 +116,15 @@ def test_partial_nested_settings_keep_defaults(monkeypatch) -> None:
 
 
 def test_secret_accessors_fail_clearly_when_required(monkeypatch) -> None:
-    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
     monkeypatch.delenv("DATABASE_URL", raising=False)
 
     reloaded = _reload_config_module()
     try:
         settings = reloaded.Settings(environment="local")
 
-        with pytest.raises(RuntimeError, match="Missing required secret OPENAI_API_KEY"):
-            settings.get_openai_api_key(required=True, consumer="live_evaluation")
+        with pytest.raises(RuntimeError, match="Missing required secret GEMINI_API_KEY"):
+            settings.get_gemini_api_key(required=True, consumer="live_evaluation")
         with pytest.raises(RuntimeError, match="Missing required secret DATABASE_URL"):
             settings.get_database_url(required=True, consumer="persistence")
     finally:
@@ -133,7 +133,7 @@ def test_secret_accessors_fail_clearly_when_required(monkeypatch) -> None:
 
 def test_test_environment_allows_stub_safe_missing_secrets(monkeypatch) -> None:
     monkeypatch.setenv("RESUME_OPTIMIZER_ENV", "test")
-    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
     monkeypatch.delenv("DATABASE_URL", raising=False)
 
     reloaded = _reload_config_module()
@@ -141,8 +141,8 @@ def test_test_environment_allows_stub_safe_missing_secrets(monkeypatch) -> None:
         settings = reloaded.Settings()
 
         assert settings.environment.value == "test"
-        assert settings.get_openai_api_key() is None
+        assert settings.get_gemini_api_key() is None
         assert settings.get_database_url() is None
-        assert settings.secret_status_summary()["openai_api_key"]["required"] is False
+        assert settings.secret_status_summary()["gemini_api_key"]["required"] is False
     finally:
         _reload_config_module()

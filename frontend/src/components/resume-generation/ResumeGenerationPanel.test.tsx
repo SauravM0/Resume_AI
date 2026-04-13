@@ -157,7 +157,7 @@ describe("ResumeGenerationPanel", () => {
     renderWithWorkflow(<ResumeGenerationPanel />);
 
     expect(screen.getByText("Progress phases")).toBeInTheDocument();
-    expect(screen.getByText("Backend unavailable")).toBeInTheDocument();
+    expect(screen.getByText("Transport failure")).toBeInTheDocument();
 
     const retryButtons = screen.getAllByRole("button", { name: "Retry run" });
     const enabledRetryButton = retryButtons.find((button) => !button.hasAttribute("disabled"));

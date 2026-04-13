@@ -60,10 +60,18 @@ export function ErrorPanel({
         <h2 style={{ marginBottom: 8 }}>Run failure</h2>
         <p style={{ marginTop: 0 }}>{display.explanation}</p>
         <p>
-          <strong>Backend detail:</strong> {error.message}
+          <strong>Failure type:</strong> {error.failure_type ?? "Not reported"}
         </p>
         <p>
-          <strong>Suggested next step:</strong> {display.retry_recommendation}
+          <strong>Backend detail:</strong> {error.message}
+        </p>
+        {error.transport_detail ? (
+          <p>
+            <strong>Transport detail:</strong> {error.transport_detail}
+          </p>
+        ) : null}
+        <p>
+          <strong>Suggested next step:</strong> {error.suggested_next_step ?? display.retry_recommendation}
         </p>
         {error.run_id || run?.run_id ? (
           <p>

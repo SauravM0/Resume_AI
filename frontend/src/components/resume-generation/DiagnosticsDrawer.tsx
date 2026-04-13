@@ -29,7 +29,9 @@ export function DiagnosticsDrawer({
   const diagnosticsPayload = {
     run_id: error.run_id ?? run?.run_id ?? result?.run_metadata.run_id,
     phase_name: error.stage_name ?? progress?.current_stage?.stage_name,
-    backend_detail: error.message,
+    backend_detail: error.backend_detail ?? error.message,
+    transport_detail: error.transport_detail,
+    suggested_next_step: error.suggested_next_step,
     latest_progress_event: progress?.latest_event,
     completed_phases: progress?.completed_stages.map((stage) => stage.stage_name) ?? [],
     verification_failures: result?.verification_warnings ?? [],
@@ -80,7 +82,11 @@ export function DiagnosticsDrawer({
         />
         <DiagnosticField
           label="Backend detail"
-          value={error.message}
+          value={error.backend_detail ?? error.message}
+        />
+        <DiagnosticField
+          label="Transport detail"
+          value={error.transport_detail ?? "Not reported"}
         />
         <DiagnosticField
           label="Failure type"

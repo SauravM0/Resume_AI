@@ -110,6 +110,9 @@ class PipelineRunRecorder:
                 attempt_number=attempt_number,
                 message=payload["message"],
                 machine_payload_json=payload["machine_payload_json"],
+                started_at=started_at,
+                ended_at=ended_at,
+                duration_ms=duration_ms,
             )
         if self.repository is not None:
             from backend.app.db.repositories.orchestration_repository import StageEventCreate

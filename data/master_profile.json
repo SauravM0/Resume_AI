@@ -1,0 +1,28 @@
+{
+  "id": "profile.default",
+  "personal_profile": {
+    "id": "personal.default",
+    "item_type": "personal_profile",
+    "source_links": [],
+    "canonical_tags": [],
+    "domain_tags": [],
+    "verified_status": "unverified",
+    "evidence_strength": "weak",
+    "rewrite_allowed": true,
+    "full_name": "saurav madake",
+    "headline": "saurav",
+    "summary": "Hi \nI'm Saurav, a 2026 batch student. I'm applying for the Software Engineering Rorole and am very excited about it. \n\n\nSince you're there, could you let me know if there's anything specific I should focus on for the application, if possible can u help for referral.",
+    "email": "sauravmadake890@gmail.com",
+    "phone": "9172027838",
+    "location": "pune",
+    "linkedin_url": "https://www.linkedin.com/in/sauravmadake/",
+    "github_url": "https://github.com/SauravM0",
+    "role_type": "individual_contributor"
+  },
+  "experience": [],
+  "projects": [],
+  "education": [],
+  "certifications": [],
+  "awards": [],
+  "skills": []
+}

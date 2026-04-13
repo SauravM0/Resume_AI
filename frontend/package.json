@@ -6,8 +6,8 @@
   "description": "Vite + React frontend for the ResumeAI generation workflow. Run with: npm install && npm run dev",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
-    "preview": "vite preview",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"
   },

@@ -38,7 +38,7 @@ export function SystemReadinessCard({
         <div className="rg-section-header">
           <h2 style={{ marginBottom: 0 }}>System readiness</h2>
           <p className="rg-muted" style={{ marginBottom: 0 }}>
-            Confirm backend reachability and core workflow inputs before starting a run.
+            Confirm backend reachability plus the configured profile and template inputs before starting a run.
           </p>
         </div>
         <button type="button" className="rg-button" onClick={onRefresh}>
@@ -58,7 +58,7 @@ export function SystemReadinessCard({
           }}
         >
           <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-            <strong>Backend</strong>
+            <strong>Backend status</strong>
             <StatusBadge tone={backendTone}>{backendHealth.status}</StatusBadge>
           </div>
           <div>{backendHealth.summary}</div>

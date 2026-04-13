@@ -130,6 +130,48 @@ def build_phase2_ranking_artifacts(
         max_bullets_per_item=_MAX_BULLETS_PER_ITEM,
         min_bullets_if_available=_MIN_BULLETS_IF_AVAILABLE,
     )
+    logger.debug(
+        "phase2 selection decision",
+        extra={
+            "selected_experiences": [
+                {
+                    "id": item.source_item_id,
+                    "reason": item.selection_audit.selection_reason,
+                    "summary": item.selection_audit.human_summary,
+                    "score_factors": item.selection_audit.score_factors,
+                }
+                for item in resume_selection.selected_experiences
+            ],
+            "selected_projects": [
+                {
+                    "id": item.source_item_id,
+                    "reason": item.selection_audit.selection_reason,
+                    "summary": item.selection_audit.human_summary,
+                    "score_factors": item.selection_audit.score_factors,
+                }
+                for item in resume_selection.selected_projects
+            ],
+            "selected_skills": [
+                {
+                    "id": item.source_item_id,
+                    "skill": item.skill_name,
+                    "reason": item.selection_audit.selection_reason,
+                    "summary": item.selection_audit.human_summary,
+                    "score_factors": item.selection_audit.score_factors,
+                }
+                for item in resume_selection.selected_skills
+            ],
+            "omitted_candidates": [
+                {
+                    "id": item.source_item_id,
+                    "type": item.item_type.value,
+                    "reason": item.reason,
+                    "summary": item.selection_audit.human_summary,
+                }
+                for item in resume_selection.omitted_items[:10]
+            ],
+        },
+    )
     ranked_experiences = [
         _project_aggregate_to_ranked_item(aggregate, source_profile, ItemType.EXPERIENCE)
         for aggregate in resume_selection.selected_experiences

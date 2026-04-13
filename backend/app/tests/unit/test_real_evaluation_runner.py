@@ -90,7 +90,7 @@ def test_real_evaluation_cli_reports_missing_live_dependencies(
     monkeypatch,
     capsys,
 ) -> None:
-    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
     case_path = tmp_path / "case.json"
     case_path.write_text(
         json.dumps(
@@ -135,8 +135,8 @@ def test_real_evaluation_cli_reports_missing_live_dependencies(
     assert exit_code == 1
     assert payload["results"][0]["execution_mode"] == "real"
     assert payload["results"][0]["run_status"] == "error"
-    assert payload["results"][0]["missing_dependencies"][0]["dependency_name"] == "openai_api_key"
-    assert "Missing OPENAI_API_KEY" in payload["results"][0]["final_message"]
+    assert payload["results"][0]["missing_dependencies"][0]["dependency_name"] == "gemini_api_key"
+    assert "Missing GEMINI_API_KEY" in payload["results"][0]["final_message"]
 
 
 def test_real_evaluation_cli_plain_output_marks_dry_run(

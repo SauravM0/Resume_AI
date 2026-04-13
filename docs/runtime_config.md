@@ -11,7 +11,7 @@ Supported environments:
 - `test`
   Uses isolated test metrics and cache paths, disables audit persistence by default, and keeps diagnostics enabled.
 - `production`
-  Disables debug logging and internal diagnostics exposure by default, requires `OPENAI_API_KEY`, and forbids unsafe workspace retention defaults.
+  Disables debug logging and internal diagnostics exposure by default, requires `GEMINI_API_KEY`, and forbids unsafe workspace retention defaults.
 
 Select the profile with `RESUME_OPTIMIZER_ENV=local|test|production`.
 
@@ -96,9 +96,9 @@ Artifacts and diagnostics:
 
 Security and models:
 
-- `OPENAI_API_KEY`
+- `GEMINI_API_KEY`
 - `DATABASE_URL`
-- `OPENAI_MODEL`
+- `GEMINI_MODEL`
 - `PHASE3_GENERATION_MODEL`
 - `PHASE6_SEMANTIC_MODEL`
 - `PHASE4_SEMANTIC_MODEL`

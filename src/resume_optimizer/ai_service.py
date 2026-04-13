@@ -17,7 +17,7 @@ from .phase1_parser import (
 from .phase1_role_modeling import compatibility_role_type_value
 
 if TYPE_CHECKING:
-    from openai import OpenAI
+    from google.genai.client import Client as GeminiClient
 
 
 class JobAnalysisError(RuntimeError):
@@ -31,7 +31,7 @@ class MalformedJobAnalysisJSONError(JobAnalysisError):
 def analyze_job_description(
     job_description_text: str,
     *,
-    client: OpenAI | None = None,
+    client: GeminiClient | None = None,
     model: str | None = None,
 ) -> ParsedJobAnalysisResponse:
     """Compatibility wrapper that adapts the rebuilt parser to the legacy raw schema."""
@@ -53,7 +53,7 @@ def analyze_job_description(
 def parse_job_description(
     job_description_text: str,
     *,
-    client: OpenAI | None = None,
+    client: GeminiClient | None = None,
     model: str | None = None,
 ) -> Phase1ParseResult:
     """Public rebuilt Phase 1 parser entrypoint preserving deterministic artifacts."""

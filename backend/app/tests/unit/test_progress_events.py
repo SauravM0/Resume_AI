@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import datetime, timezone
 from pathlib import Path
 import sys
 
@@ -32,12 +33,16 @@ def test_recorder_emits_run_and_stage_progress_events() -> None:
         status=StageStatus.RUNNING,
         attempt_number=1,
         message="parse started",
+        started_at=datetime(2026, 4, 12, 0, 0, tzinfo=timezone.utc),
     )
     recorder.record_stage_event(
         stage_name=StageName.PARSE_JOB_DESCRIPTION,
         status=StageStatus.SUCCEEDED,
         attempt_number=1,
         message="parse completed",
+        started_at=datetime(2026, 4, 12, 0, 0, tzinfo=timezone.utc),
+        ended_at=datetime(2026, 4, 12, 0, 0, 1, tzinfo=timezone.utc),
+        duration_ms=1000,
     )
     recorder.finalize_run(status=PipelineStatus.SUCCEEDED, duration_ms=10)
 
@@ -51,6 +56,9 @@ def test_recorder_emits_run_and_stage_progress_events() -> None:
     ]
     assert events[1].stage_name == StageName.PARSE_JOB_DESCRIPTION
     assert events[2].progress_percent is not None
+    assert events[2].metadata["phase_id"] == "parse_job_description"
+    assert events[2].metadata["phase_label"] == "parse job description"
+    assert events[2].metadata["duration_ms"] == 1000
     assert events[-1].progress_percent == 100
 
 
@@ -71,6 +79,8 @@ def test_progress_event_metadata_does_not_expose_raw_reason() -> None:
 
     assert event.human_message == "generate structured content retry scheduled."
     assert event.metadata["failure_type"] == "generation_schema"
+    assert event.metadata["phase_id"] == "generate_structured_content"
+    assert event.metadata["status"] == "retrying"
     assert "reason" not in event.metadata
 
 

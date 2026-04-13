@@ -4,6 +4,7 @@ import type {
   PipelineProgressEventType,
   PipelineStageName,
 } from "../types/pipeline";
+import { buildApiUrl } from "../lib/apiBase";
 
 const PROGRESS_STREAM_ENDPOINT = "/api/pipeline-runs";
 
@@ -165,8 +166,10 @@ function subscribeToSseProgress(
   runId: string,
   options: ProgressStreamOptions,
 ): ProgressStreamSubscription {
-  const baseUrl = options.baseUrl ?? "";
-  const url = `${baseUrl}${PROGRESS_STREAM_ENDPOINT}/${encodeURIComponent(runId)}/events`;
+  const url = buildApiUrl(
+    `${PROGRESS_STREAM_ENDPOINT}/${encodeURIComponent(runId)}/events`,
+    options.baseUrl,
+  );
   const source = (options.eventSourceFactory ?? ((target) => new EventSource(target)))(url);
 
   source.onopen = () => {

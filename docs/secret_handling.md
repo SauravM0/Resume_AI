@@ -6,12 +6,12 @@ Secret-bearing runtime values are centralized in [config.py](/mnt/c/Users/Alexa/
 
 Runtime secret loading is allowed only through typed config:
 
-- `OPENAI_API_KEY`
+- `GEMINI_API_KEY`
 - `DATABASE_URL`
 
 Operational code should read them through:
 
-- `DEFAULT_SETTINGS.get_openai_api_key(...)`
+- `DEFAULT_SETTINGS.get_gemini_api_key(...)`
 - `DEFAULT_SETTINGS.get_database_url(...)`
 
 Direct `os.getenv(...)` reads for these secrets are not part of the approved runtime path.
@@ -20,14 +20,14 @@ Direct `os.getenv(...)` reads for these secrets are not part of the approved run
 
 Current baseline behavior:
 
-- `production` requires `OPENAI_API_KEY`
+- `production` requires `GEMINI_API_KEY`
 - `production` still blocks unsafe debug logging and unsafe diagnostics exposure
 - `DATABASE_URL` is optional by default and only required by callers that explicitly ask for it
 - `test` allows missing secrets so stub-safe and dry-run behavior still works
 
 If a caller marks a secret as required, config raises a clear runtime error such as:
 
-- `Missing required secret OPENAI_API_KEY for live_evaluation.`
+- `Missing required secret GEMINI_API_KEY for live_evaluation.`
 - `Missing required secret DATABASE_URL for persistence.`
 
 ## Redaction Guarantees
@@ -51,7 +51,7 @@ Secrets are never emitted raw in:
 {
   "secret_status": {
     "approved_runtime_source": "typed_runtime_config",
-    "openai_api_key": {
+    "gemini_api_key": {
       "configured": true,
       "required": true,
       "display_value": "[REDACTED]"

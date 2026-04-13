@@ -23,6 +23,30 @@ export function buildErrorDisplayModel(
           "Update the job description or input settings, then submit again.",
         next_action_label: "Edit JD",
       };
+    case "api_route_not_found":
+      return {
+        classification,
+        title: "API route not reachable",
+        explanation:
+          "The frontend reached the backend origin, but the resume generation API route was not available there.",
+        phase_label: phaseLabel,
+        retry_recommendation:
+          error.suggested_next_step ??
+          "Confirm the frontend proxy or API base URL points at the backend application.",
+        next_action_label: "Retry run",
+      };
+    case "sse_route_not_found":
+      return {
+        classification,
+        title: "Progress stream unavailable",
+        explanation:
+          "The backend progress stream route could not be reached, so live run updates are unavailable.",
+        phase_label: phaseLabel,
+        retry_recommendation:
+          error.suggested_next_step ??
+          "Confirm the /events route is exposed and routed correctly from the frontend.",
+        next_action_label: "Show details",
+      };
     case "backend_unavailable":
       return {
         classification,
@@ -114,12 +138,13 @@ export function buildErrorDisplayModel(
     case "transport_network_error":
       return {
         classification,
-        title: "Transport error",
+        title: "Transport failure",
         explanation:
-          "The frontend lost connection to the backend or the request failed in transit.",
+          "The frontend could not complete the request because the backend was unreachable or the request failed in transit.",
         phase_label: phaseLabel,
         retry_recommendation:
-          "Retry safely. Prior run context and successful earlier phases remain visible.",
+          error.suggested_next_step ??
+          "Retry safely after confirming the backend server is running and the API base URL is correct.",
         next_action_label: "Retry run",
       };
     case "frontend_exception":
@@ -149,6 +174,8 @@ export function buildErrorDisplayModel(
 
 export function classifyError(error: BackendErrorPayload): ErrorClassification {
   const message = error.message.toLowerCase();
+  const backendDetail = error.backend_detail?.toLowerCase() ?? "";
+  const transportDetail = error.transport_detail?.toLowerCase() ?? "";
   const failureType = error.failure_type?.toLowerCase() ?? "";
   const failureCategory = error.failure_category?.toLowerCase() ?? "";
   const stage = error.stage_name?.toLowerCase() ?? "";
@@ -161,13 +188,40 @@ export function classifyError(error: BackendErrorPayload): ErrorClassification {
     return "validation";
   }
   if (
+    error.transport_target === "generate_resume" &&
+    error.status_code === 404
+  ) {
+    return "api_route_not_found";
+  }
+  if (
+    error.transport_target === "progress_stream" &&
+    error.status_code === 404
+  ) {
+    return "sse_route_not_found";
+  }
+  if (
+    message.includes("timeout") ||
+    failureType.includes("timeout") ||
+    transportDetail.includes("timed out") ||
+    transportDetail.includes("aborterror")
+  ) {
+    return "timeout";
+  }
+  if (
     error.error_source === "transport" ||
     failureCategory.includes("transport") ||
-    message.includes("network")
+    message.includes("network") ||
+    transportDetail.includes("econnrefused") ||
+    transportDetail.includes("failed to fetch") ||
+    transportDetail.includes("network request failed")
   ) {
-    return "backend_unavailable";
+    return "transport_network_error";
   }
-  if (error.status_code === 503 || message.includes("unavailable")) {
+  if (
+    error.status_code === 503 ||
+    message.includes("unavailable") ||
+    backendDetail.includes("temporarily unavailable")
+  ) {
     return "backend_unavailable";
   }
   if (
@@ -207,9 +261,6 @@ export function classifyError(error: BackendErrorPayload): ErrorClassification {
   }
   if (message.includes("artifact") || failureType.includes("artifact")) {
     return "artifact_unavailable";
-  }
-  if (message.includes("timeout") || failureType.includes("timeout")) {
-    return "timeout";
   }
   if (error.error_source === "frontend") {
     return "frontend_exception";

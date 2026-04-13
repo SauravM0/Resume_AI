@@ -3,15 +3,19 @@
 from __future__ import annotations
 
 import logging
+from pathlib import Path
 from time import perf_counter
 
 from fastapi import FastAPI, HTTPException
 from starlette.requests import Request
+from backend.app.api.routes.artifacts import router as artifact_router
 from backend.app.api.routes.generate_resume import router as generate_resume_router
 from backend.app.api.routes.progress_stream import router as progress_stream_router
 from backend.app.api.routes.resume import router as resume_router
 from backend.app.observability import bind_run_id, configure_logging, generate_request_id, log_event, reset_trace_context, set_request_id
 from backend.app.privacy import sanitize_exception_message
+from backend.app.services.template_registry import get_active_template, TemplateRegistryError
+from resume_optimizer.config import DEFAULT_SETTINGS
 
 from .ai_service import JobAnalysisError, analyze_job_description
 from .job_models import NormalizedJobAnalysis, RawJobDescriptionRequest
@@ -25,6 +29,7 @@ from .services.phase3_service import DEFAULT_PHASE3_SERVICE
 configure_logging()
 
 app = FastAPI(title="Resume Optimizer API")
+app.include_router(artifact_router)
 app.include_router(generate_resume_router)
 app.include_router(progress_stream_router)
 app.include_router(resume_router)
@@ -116,6 +121,26 @@ def analyze_job(request: RawJobDescriptionRequest) -> NormalizedJobAnalysis:
             status_code=500,
             detail=f"AI service setup failed: {sanitize_exception_message(str(exc))}",
         ) from exc
+
+
+@app.get("/api/health")
+def health() -> dict[str, bool]:
+    """Return a small runtime health summary for frontend readiness checks."""
+
+    profile_path_configured = Path(DEFAULT_SETTINGS.default_profile_path).exists()
+    try:
+        get_active_template()
+    except (TemplateRegistryError, FileNotFoundError, OSError, ValueError):
+        template_configured = False
+    else:
+        template_configured = True
+
+    return {
+        "ok": profile_path_configured and template_configured,
+        "api": True,
+        "profile_path_configured": profile_path_configured,
+        "template_configured": template_configured,
+    }
 
 
 @app.post("/api/rank-resume-content", response_model=RankingResponse)

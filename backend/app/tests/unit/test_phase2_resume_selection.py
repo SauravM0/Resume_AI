@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 from backend.app.tests.fixtures.phase2_candidate_profiles import (
+    frontend_heavy_engineer_profile,
+    leadership_heavy_profile,
+    project_selection_profile as fixture_project_selection_profile,
     strong_backend_engineer_profile,
     strong_backend_job_analysis,
 )
@@ -220,6 +223,99 @@ def test_diversity_balancing_allows_concentration_when_one_experience_is_dominan
     assert bullet_counts["fixture.backend.exp.current"] / total_bullets > 0.6
 
 
+def test_backend_role_preserves_secondary_experience_when_it_adds_coverage() -> None:
+    artifacts = build_phase2_ranking_artifacts(
+        strong_backend_job_analysis(),
+        _backend_breadth_profile(),
+    )
+
+    selected_ids = [
+        item.source_item_id
+        for item in artifacts.selection_result.resume_selection_decision.selected_experiences
+    ]
+
+    assert selected_ids[:2] == [
+        "fixture.backend.breadth.exp.primary",
+        "fixture.backend.breadth.exp.secondary",
+    ]
+
+
+def test_frontend_role_chooses_frontend_heavy_evidence_and_skills() -> None:
+    artifacts = build_phase2_ranking_artifacts(
+        _frontend_heavy_job(),
+        frontend_heavy_engineer_profile(),
+    )
+    decision = artifacts.selection_result.resume_selection_decision
+
+    assert decision.selected_experiences[0].source_item_id == "fixture.frontend.exp"
+    assert {"React", "TypeScript"}.issubset(
+        set(decision.selected_experiences[0].ranking_explanation.matched_keywords)
+    )
+    assert [skill.skill_name for skill in decision.selected_skills[:2]] == [
+        "React",
+        "TypeScript",
+    ]
+
+
+def test_leadership_role_preserves_leadership_signals() -> None:
+    artifacts = build_phase2_ranking_artifacts(
+        _leadership_job(),
+        leadership_heavy_profile(),
+    )
+    selected = artifacts.selection_result.resume_selection_decision.selected_experiences[0]
+
+    assert selected.source_item_id == "fixture.leadership.exp"
+    assert selected.ownership_leadership_score >= 0.3
+    assert selected.selection_audit.score_factors["ownership_leadership_score"] >= 0.3
+    assert selected.selection_audit.selection_reason
+    assert selected.selection_audit.human_summary
+    assert selected.matched_requirement_diversity >= 1
+
+
+def test_project_gap_fill_case_promotes_unique_project_when_experience_misses_requirement() -> None:
+    artifacts = build_phase2_ranking_artifacts(
+        _frontend_project_job(),
+        fixture_project_selection_profile(),
+    )
+    decision = artifacts.selection_result.resume_selection_decision
+
+    assert [item.source_item_id for item in decision.selected_projects] == [
+        "fixture.project.selection.project.portfolio"
+    ]
+    assert decision.selected_projects[0].unique_evidence_score > 0.4
+    assert decision.project_selection_reasoning.experience_gap_detected is True
+
+
+def test_one_page_mode_preserves_breadth_in_aggregate_selection() -> None:
+    artifacts = build_phase2_ranking_artifacts(
+        _aggregate_selection_job(),
+        _aggregate_selection_profile(),
+    )
+
+    selected = artifacts.selection_result.resume_selection_decision.selected_experiences
+
+    assert len(selected) >= 2
+    assert selected[0].source_item_id == "fixture.aggregate.exp.broad"
+    assert selected[1].matched_requirement_diversity >= 1
+
+
+def test_redundant_project_is_suppressed_when_experience_already_covers_backend_work() -> None:
+    artifacts = build_phase2_ranking_artifacts(
+        _backend_project_job(),
+        fixture_project_selection_profile(),
+    )
+    decision = artifacts.selection_result.resume_selection_decision
+
+    assert decision.selected_projects == []
+    omitted = {
+        item.source_item_id: item.reason for item in decision.omitted_projects
+    }
+    assert (
+        omitted["fixture.project.selection.project.redundant"]
+        == "redundant_with_stronger_selected_content"
+    )
+
+
 def _aggregate_selection_profile() -> MasterProfile:
     return MasterProfile(
         id="fixture.aggregate",
@@ -327,6 +423,90 @@ def _aggregate_selection_profile() -> MasterProfile:
                 ],
                 verified_status=VerifiedStatus.SELF_REPORTED,
                 evidence_strength=EvidenceStrength.MODERATE,
+            ),
+        ],
+    )
+
+
+def _backend_breadth_profile() -> MasterProfile:
+    return MasterProfile(
+        id="fixture.backend.breadth",
+        personal_profile=PersonalProfile(
+            id="fixture.backend.breadth.person",
+            full_name="Taylor Breadth",
+            headline="Staff Backend Engineer",
+            summary="Backend engineer with platform delivery and supporting reliability experience.",
+            role_type=RoleType.INDIVIDUAL_CONTRIBUTOR,
+            seniority_level=SeniorityLevel.STAFF,
+            verified_status=VerifiedStatus.SELF_REPORTED,
+            evidence_strength=EvidenceStrength.MODERATE,
+        ),
+        experience=[
+            ExperienceEntry(
+                id="fixture.backend.breadth.exp.primary",
+                organization="InfraScale",
+                title="Staff Backend Platform Engineer",
+                role_type=RoleType.INDIVIDUAL_CONTRIBUTOR,
+                seniority_level=SeniorityLevel.STAFF,
+                start_date=PartialDate(raw_value="2022-03"),
+                current=True,
+                tools=["Python", "AWS", "Kubernetes", "Terraform"],
+                bullets=[
+                    BulletEntry(
+                        id="fixture.backend.breadth.exp.primary.b1",
+                        text="Architected backend services on AWS and Kubernetes with Terraform, reducing deployment time 52%.",
+                        tools=["Python", "AWS", "Kubernetes", "Terraform"],
+                        metrics=[MetricEntry(id="fixture.backend.breadth.metric.1", label="Deployment reduction", value=52, unit="%")],
+                        verified_status=VerifiedStatus.CORROBORATED,
+                        evidence_strength=EvidenceStrength.STRONG,
+                    )
+                ],
+                verified_status=VerifiedStatus.CORROBORATED,
+                evidence_strength=EvidenceStrength.STRONG,
+            ),
+            ExperienceEntry(
+                id="fixture.backend.breadth.exp.secondary",
+                organization="ServiceLayer",
+                title="Senior Backend Engineer",
+                role_type=RoleType.INDIVIDUAL_CONTRIBUTOR,
+                seniority_level=SeniorityLevel.SENIOR,
+                start_date=PartialDate(raw_value="2020-01"),
+                end_date=PartialDate(raw_value="2022-02"),
+                tools=["Python", "PostgreSQL"],
+                bullets=[
+                    BulletEntry(
+                        id="fixture.backend.breadth.exp.secondary.b1",
+                        text="Mentored backend engineers and improved developer platform adoption across four teams.",
+                        tools=["Python"],
+                        verified_status=VerifiedStatus.CORROBORATED,
+                        evidence_strength=EvidenceStrength.STRONG,
+                    ),
+                    BulletEntry(
+                        id="fixture.backend.breadth.exp.secondary.b2",
+                        text="Owned reliability reviews and delivery planning for platform APIs serving critical internal teams.",
+                        tools=["PostgreSQL"],
+                        verified_status=VerifiedStatus.CORROBORATED,
+                        evidence_strength=EvidenceStrength.STRONG,
+                    ),
+                ],
+                verified_status=VerifiedStatus.CORROBORATED,
+                evidence_strength=EvidenceStrength.STRONG,
+            ),
+        ],
+        skills=[
+            SkillEntry(
+                id="fixture.backend.breadth.skill.python",
+                name="Python",
+                category="backend",
+                verified_status=VerifiedStatus.CORROBORATED,
+                evidence_strength=EvidenceStrength.STRONG,
+            ),
+            SkillEntry(
+                id="fixture.backend.breadth.skill.aws",
+                name="AWS",
+                category="cloud",
+                verified_status=VerifiedStatus.CORROBORATED,
+                evidence_strength=EvidenceStrength.STRONG,
             ),
         ],
     )
@@ -586,5 +766,49 @@ def _frontend_project_job() -> NormalizedJobAnalysis:
         prioritized_skills=[
             NormalizedSkillRequirement(skill_name="React", priority=SkillPriority.CORE),
             NormalizedSkillRequirement(skill_name="TypeScript", priority=SkillPriority.CORE),
+        ],
+    )
+
+
+def _frontend_heavy_job() -> NormalizedJobAnalysis:
+    return NormalizedJobAnalysis(
+        role_type=RoleType.INDIVIDUAL_CONTRIBUTOR,
+        seniority_level=SeniorityLevel.SENIOR,
+        industry_domain="product",
+        technical_skills=["React", "TypeScript", "Next.js", "Accessibility"],
+        must_have_requirements=[
+            "Build accessible React user interfaces",
+            "Own TypeScript design system components",
+        ],
+        nice_to_have_requirements=[
+            "Partner with product and design stakeholders",
+            "Run experimentation for onboarding UX",
+        ],
+        prioritized_skills=[
+            NormalizedSkillRequirement(skill_name="React", priority=SkillPriority.CORE),
+            NormalizedSkillRequirement(skill_name="TypeScript", priority=SkillPriority.CORE),
+            NormalizedSkillRequirement(skill_name="Next.js", priority=SkillPriority.IMPORTANT),
+        ],
+    )
+
+
+def _leadership_job() -> NormalizedJobAnalysis:
+    return NormalizedJobAnalysis(
+        role_type=RoleType.MANAGER,
+        seniority_level=SeniorityLevel.DIRECTOR,
+        industry_domain="platform",
+        technical_skills=["AWS", "Kubernetes"],
+        soft_skills=["Leadership", "Mentoring", "Stakeholder Management"],
+        must_have_requirements=[
+            "Lead cross-functional roadmap execution",
+            "Mentor engineering leaders and teams",
+        ],
+        nice_to_have_requirements=[
+            "Improve reliability planning and delivery execution",
+        ],
+        prioritized_skills=[
+            NormalizedSkillRequirement(skill_name="Leadership", priority=SkillPriority.CORE),
+            NormalizedSkillRequirement(skill_name="Stakeholder Management", priority=SkillPriority.CORE),
+            NormalizedSkillRequirement(skill_name="Mentoring", priority=SkillPriority.IMPORTANT),
         ],
     )

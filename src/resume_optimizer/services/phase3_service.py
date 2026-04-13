@@ -21,6 +21,11 @@ from ..generation import (
     present_skills,
     validate_generation_quality,
 )
+from ..generation.contracts import (
+    GenerationQualitySignals,
+    QualitySignal,
+    QualitySignalSeverity,
+)
 from ..generation.phase3_compat import build_phase3_compat_result
 from ..phase1_models import Phase1JobAnalysis
 from ..phase1_role_modeling import FunctionalRoleFamily, OrganizationalRoleMode
@@ -136,7 +141,30 @@ class Phase3Service:
             story_focus_mode=_resolve_story_focus_mode(section_plan),
         )
         summary_input = build_summary_generation_input(full_generation_context)
-        summary_output = self.summary_service.generate(summary_input)
+        summary_output = None
+        summary_quality_signals = GenerationQualitySignals()
+        try:
+            summary_output = self.summary_service.generate(summary_input)
+        except Exception as exc:
+            logger.warning(
+                "phase3 summary generation degraded to omission",
+                extra={
+                    "profile_id": source_profile.id,
+                    "context_id": full_generation_context.context_id,
+                    "error": str(exc),
+                },
+            )
+            summary_quality_signals = GenerationQualitySignals(
+                warnings=[
+                    QualitySignal(
+                        signal_id=f"quality.phase5.summary_omitted.{full_generation_context.context_id}",
+                        severity=QualitySignalSeverity.WARNING,
+                        message="Summary generation failed; proceeding without a summary section.",
+                        section_id=summary_input.section_id,
+                        suggested_fallback_action="omit_summary_and_continue",
+                    )
+                ]
+            )
         bullet_inputs = build_bullet_rewrite_inputs(full_generation_context)
         bullet_outputs = [
             bullet_output
@@ -150,7 +178,7 @@ class Phase3Service:
             except ValueError:
                 skill_output = None
         pre_assembly_quality = merge_quality_signals(
-            summary_output.quality_signals,
+            summary_output.quality_signals if summary_output is not None else summary_quality_signals,
             *[output.rewrite_quality_signals for output in bullet_outputs],
             *( [skill_output.quality_signals] if skill_output is not None else [] ),
         )
@@ -214,7 +242,11 @@ class Phase3Service:
             result_record=result_record,
             bounded_generation_context=full_generation_context.model_dump(mode="json", exclude_none=True),
             bounded_generation_artifacts={
-                "summary_output": summary_output.model_dump(mode="json", exclude_none=True),
+                "summary_output": (
+                    summary_output.model_dump(mode="json", exclude_none=True)
+                    if summary_output is not None
+                    else None
+                ),
                 "bullet_outputs": [output.model_dump(mode="json", exclude_none=True) for output in bullet_outputs],
                 "skill_presentation_output": (
                     skill_output.model_dump(mode="json", exclude_none=True)

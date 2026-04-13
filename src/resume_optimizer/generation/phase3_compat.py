@@ -349,6 +349,13 @@ def _build_validation_report(
     result: Phase3GenerationResult,
 ) -> Phase3ValidationReport:
     applied_fallbacks: list[Phase3FallbackAction] = []
+    if summary_output is None:
+        applied_fallbacks.append(
+            Phase3FallbackAction(
+                action_type=Phase3FallbackActionType.SUMMARY_FALLBACK,
+                message="Summary generation was skipped so the rest of the resume could still be built.",
+            )
+        )
     if summary_output is not None and any(
         phrase in warning.casefold()
         for warning in summary_output.warnings

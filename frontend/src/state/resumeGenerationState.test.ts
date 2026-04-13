@@ -104,4 +104,24 @@ describe("resumeGenerationReducer", () => {
     expect(reset.error).toBeNull();
     expect(reset.progress).toBeNull();
   });
+
+  it("does not create a new progress object when the connection state is unchanged", () => {
+    const submitting = resumeGenerationReducer(makeResumeGenerationState(), {
+      type: "submitting",
+      request: makeGenerateRequest({ pipeline_run_id: "run.connection" }),
+      runId: "run.connection",
+    });
+
+    const next = resumeGenerationReducer(submitting, {
+      type: "progress_connection_changed",
+      runId: "run.connection",
+      connection: {
+        enabled: true,
+        connected: false,
+        transport: "sse",
+      },
+    });
+
+    expect(next.progress).toBe(submitting.progress);
+  });
 });

@@ -27,6 +27,17 @@ class PipelineProgressEventType(StrEnum):
     RUN_FAILED = "run_failed"
 
 
+class StageOutputPhase(StrEnum):
+    """Canonical pipeline phase outputs."""
+
+    PHASE_1_JOB_ANALYSIS = "phase_1_job_analysis"
+    PHASE_2_SELECTION = "phase_2_selection"
+    PHASE_3_GENERATION_PLAN = "phase_3_generation_plan"
+    PHASE_4_VERIFICATION = "phase_4_verification"
+    PHASE_5_TEMPLATE_RENDER = "phase_5_template_render"
+    PHASE_6_PDF_ARTIFACT = "phase_6_pdf_artifact"
+
+
 class PipelineProgressEvent(StrictModel):
     """Safe event payload for logs, SSE, and frontend progress state."""
 
@@ -35,9 +46,11 @@ class PipelineProgressEvent(StrictModel):
     event_type: PipelineProgressEventType
     timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     stage_name: StageName | None = None
+    phase_output: StageOutputPhase | None = None
     human_message: NonEmptyStr
     machine_status: NonEmptyStr
     progress_percent: int | None = Field(default=None, ge=0, le=100)
+    stage_data: dict[str, Any] | None = None
     metadata: dict[str, Any] = Field(default_factory=dict)
 
     def to_log_payload(self) -> dict[str, Any]:

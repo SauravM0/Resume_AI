@@ -7,7 +7,14 @@ import os
 from pathlib import Path
 from typing import Any, Literal
 
-from pydantic import BaseModel, Field, SecretStr, ValidationError, field_validator, model_validator
+from pydantic import (
+    BaseModel,
+    Field,
+    SecretStr,
+    ValidationError,
+    field_validator,
+    model_validator,
+)
 
 from .constants import DEFAULT_PROFILE_ENCODING, MASTER_PROFILE_EXAMPLE_PATH
 
@@ -58,9 +65,9 @@ class CacheSettings(BaseModel):
 class ArtifactRetentionSettings(BaseModel):
     artifact_root: Path = Path("data/pipeline_artifacts")
     compile_workspace_root: Path | None = None
-    compile_workspace_cleanup_policy: Literal["keep", "clean_on_success", "clean_always"] = (
-        "clean_always"
-    )
+    compile_workspace_cleanup_policy: Literal[
+        "keep", "clean_on_success", "clean_always"
+    ] = "clean_always"
     persist_sensitive_debug_artifacts: bool = False
 
 
@@ -79,9 +86,9 @@ class PrivacySettings(BaseModel):
 
 
 class ModelSettings(BaseModel):
-    phase1_job_analysis_model: str = "gpt-5.4-mini"
-    phase3_generation_model: str = "gpt-5.4-mini"
-    phase6_semantic_model: str = "gpt-5.4-mini"
+    phase1_job_analysis_model: str = "gemini-1.5-flash-latest"
+    phase3_generation_model: str = "gemini-1.5-flash-latest"
+    phase6_semantic_model: str = "gemini-1.5-flash-latest"
 
     @field_validator("*")
     @classmethod
@@ -96,8 +103,14 @@ class DatabaseSettings(BaseModel):
     database_url: SecretStr | None = None
 
 
+class AISettings(BaseModel):
+    provider: str = "gemini"
+    model: str = "gemini-1.5-flash-latest"
+    gemini_api_key: SecretStr | None = None
+
+
 class SecuritySettings(BaseModel):
-    openai_api_key: SecretStr | None = None
+    gemini_api_key: SecretStr | None = None
 
 
 class Settings(BaseModel):
@@ -111,11 +124,16 @@ class Settings(BaseModel):
     retry_policy: RetryPolicySettings = Field(default_factory=RetryPolicySettings)
     timeouts: TimeoutSettings = Field(default_factory=TimeoutSettings)
     cache: CacheSettings = Field(default_factory=CacheSettings)
-    artifacts: ArtifactRetentionSettings = Field(default_factory=ArtifactRetentionSettings)
-    diagnostics: InternalDiagnosticsSettings = Field(default_factory=InternalDiagnosticsSettings)
+    artifacts: ArtifactRetentionSettings = Field(
+        default_factory=ArtifactRetentionSettings
+    )
+    diagnostics: InternalDiagnosticsSettings = Field(
+        default_factory=InternalDiagnosticsSettings
+    )
     privacy: PrivacySettings = Field(default_factory=PrivacySettings)
     models: ModelSettings = Field(default_factory=ModelSettings)
     database: DatabaseSettings = Field(default_factory=DatabaseSettings)
+    ai: AISettings = Field(default_factory=AISettings)
     security: SecuritySettings = Field(default_factory=SecuritySettings)
     phase2_persistence_enabled: bool = False
     semantic_verification_enabled: bool = True
@@ -129,18 +147,32 @@ class Settings(BaseModel):
             return data.model_dump(mode="python")
         payload = dict(data or {})
         environment = RuntimeEnvironment(
-            str(payload.get("environment") or os.getenv("RESUME_OPTIMIZER_ENV", "local")).casefold()
+            str(
+                payload.get("environment") or os.getenv("RESUME_OPTIMIZER_ENV", "local")
+            ).casefold()
         )
         profile = _environment_profile(environment)
 
         payload.setdefault("environment", environment)
-        payload.setdefault("default_profile_path", Path(os.getenv("DEFAULT_PROFILE_PATH", profile["default_profile_path"])))
-        payload.setdefault("file_encoding", os.getenv("DEFAULT_PROFILE_ENCODING", DEFAULT_PROFILE_ENCODING))
+        payload.setdefault(
+            "default_profile_path",
+            Path(os.getenv("DEFAULT_PROFILE_PATH", profile["default_profile_path"])),
+        )
+        payload.setdefault(
+            "file_encoding",
+            os.getenv("DEFAULT_PROFILE_ENCODING", DEFAULT_PROFILE_ENCODING),
+        )
         payload["logging"] = _merge_mapping(
             {
-                "level": os.getenv("RESUME_OPTIMIZER_LOG_LEVEL", profile["logging_level"]).upper(),
-                "redact_sensitive_fields": _env_bool("RESUME_OPTIMIZER_REDACT_SENSITIVE_FIELDS", True),
-                "additional_redacted_fields": _env_csv("RESUME_OPTIMIZER_ADDITIONAL_REDACTED_FIELDS"),
+                "level": os.getenv(
+                    "RESUME_OPTIMIZER_LOG_LEVEL", profile["logging_level"]
+                ).upper(),
+                "redact_sensitive_fields": _env_bool(
+                    "RESUME_OPTIMIZER_REDACT_SENSITIVE_FIELDS", True
+                ),
+                "additional_redacted_fields": _env_csv(
+                    "RESUME_OPTIMIZER_ADDITIONAL_REDACTED_FIELDS"
+                ),
                 "additional_redacted_suffixes": _env_csv(
                     "RESUME_OPTIMIZER_ADDITIONAL_REDACTED_SUFFIXES",
                     default=["_text", "_content", "_payload"],
@@ -152,17 +184,24 @@ class Settings(BaseModel):
             {
                 "enabled": _env_bool("RESUME_OPTIMIZER_METRICS_ENABLED", True),
                 "stage_metrics_path": Path(
-                    os.getenv("PIPELINE_STAGE_METRICS_PATH", profile["stage_metrics_path"])
+                    os.getenv(
+                        "PIPELINE_STAGE_METRICS_PATH", profile["stage_metrics_path"]
+                    )
                 ),
                 "cache_metrics_path": Path(
-                    os.getenv("RESUME_OPTIMIZER_CACHE_METRICS_PATH", profile["cache_metrics_path"])
+                    os.getenv(
+                        "RESUME_OPTIMIZER_CACHE_METRICS_PATH",
+                        profile["cache_metrics_path"],
+                    )
                 ),
             },
             payload.get("metrics"),
         )
         payload["retry_policy"] = _merge_mapping(
             {
-                "parse_retry_max_attempts": _env_int("RESUME_OPTIMIZER_PARSE_RETRY_MAX_ATTEMPTS", 2),
+                "parse_retry_max_attempts": _env_int(
+                    "RESUME_OPTIMIZER_PARSE_RETRY_MAX_ATTEMPTS", 2
+                ),
                 "generation_retry_max_attempts": _env_int(
                     "RESUME_OPTIMIZER_GENERATION_RETRY_MAX_ATTEMPTS", 2
                 ),
@@ -195,12 +234,16 @@ class Settings(BaseModel):
         payload["cache"] = _merge_mapping(
             {
                 "enabled": _env_bool("RESUME_OPTIMIZER_CACHE_ENABLED", True),
-                "root": Path(os.getenv("RESUME_OPTIMIZER_CACHE_ROOT", profile["cache_root"])),
+                "root": Path(
+                    os.getenv("RESUME_OPTIMIZER_CACHE_ROOT", profile["cache_root"])
+                ),
                 "max_entries": _env_int(
                     "RESUME_OPTIMIZER_CACHE_MAX_ENTRIES",
                     profile["cache_max_entries"],
                 ),
-                "default_ttl_seconds": _env_int("RESUME_OPTIMIZER_CACHE_DEFAULT_TTL_SECONDS", 86400),
+                "default_ttl_seconds": _env_int(
+                    "RESUME_OPTIMIZER_CACHE_DEFAULT_TTL_SECONDS", 86400
+                ),
                 "idempotency_completed_ttl_seconds": _env_int(
                     "RESUME_OPTIMIZER_IDEMPOTENCY_COMPLETED_TTL_SECONDS",
                     300,
@@ -249,7 +292,10 @@ class Settings(BaseModel):
                 ),
                 "audit_persistence_enabled": _env_bool(
                     "PHASE6_AUDIT_PERSISTENCE_ENABLED",
-                    _env_bool("PHASE4_AUDIT_PERSISTENCE_ENABLED", profile["audit_persistence_enabled"]),
+                    _env_bool(
+                        "PHASE4_AUDIT_PERSISTENCE_ENABLED",
+                        profile["audit_persistence_enabled"],
+                    ),
                 ),
             },
             payload.get("diagnostics"),
@@ -277,13 +323,15 @@ class Settings(BaseModel):
         )
         payload["models"] = _merge_mapping(
             {
-                "phase1_job_analysis_model": os.getenv("OPENAI_MODEL", "gpt-5.4-mini"),
-                "phase3_generation_model": os.getenv("PHASE3_GENERATION_MODEL", "gpt-5.4-mini"),
+                "phase1_job_analysis_model": os.getenv("GEMINI_MODEL", "gemini-1.5-flash-latest"),
+                "phase3_generation_model": os.getenv(
+                    "PHASE3_GENERATION_MODEL", "gemini-1.5-flash-latest"
+                ),
                 "phase6_semantic_model": os.getenv(
                     "PHASE6_SEMANTIC_MODEL",
                     os.getenv(
                         "PHASE4_SEMANTIC_MODEL",
-                        os.getenv("OPENAI_MODEL", "gpt-5.4-mini"),
+                        os.getenv("GEMINI_MODEL", "gemini-1.5-flash-latest"),
                     ),
                 ),
             },
@@ -295,9 +343,17 @@ class Settings(BaseModel):
             },
             payload.get("database"),
         )
+        payload["ai"] = _merge_mapping(
+            {
+                "provider": os.getenv("AI_PROVIDER", "gemini"),
+                "model": os.getenv("AI_MODEL", "gemini-1.5-flash-latest"),
+                "gemini_api_key": os.getenv("GEMINI_API_KEY"),
+            },
+            payload.get("ai"),
+        )
         payload["security"] = _merge_mapping(
             {
-                "openai_api_key": os.getenv("OPENAI_API_KEY"),
+                "gemini_api_key": os.getenv("GEMINI_API_KEY"),
             },
             payload.get("security"),
         )
@@ -353,12 +409,14 @@ class Settings(BaseModel):
         if self.environment == RuntimeEnvironment.PRODUCTION:
             if self.logging.level == "DEBUG":
                 raise ValueError("production logging level must not be DEBUG")
-            if self.security.openai_api_key is None:
-                raise ValueError("OPENAI_API_KEY is required in production")
+            if self.security.gemini_api_key is None:
+                raise ValueError("GEMINI_API_KEY is required in production")
             if self.privacy.expose_internal_diagnostics:
                 raise ValueError("production must not expose internal diagnostics")
             if self.artifacts.compile_workspace_cleanup_policy == "keep":
-                raise ValueError("production must not keep compile workspaces by default")
+                raise ValueError(
+                    "production must not keep compile workspaces by default"
+                )
         if not self.default_profile_path:
             raise ValueError("default_profile_path is required")
         return self
@@ -415,16 +473,37 @@ class Settings(BaseModel):
     def phase3_safe_logging_enabled(self) -> bool:
         return self.privacy.safe_logging_enabled
 
-    def get_openai_api_key(self, *, required: bool = False, consumer: str = "runtime") -> str | None:
-        """Return the configured OpenAI API key or fail clearly when required."""
+    def get_gemini_api_key(
+        self, *, required: bool = False, consumer: str = "runtime"
+    ) -> str | None:
+        """Return the configured Gemini API key or fail clearly when required."""
 
-        secret = self.security.openai_api_key
+        secret = self.security.gemini_api_key
         value = secret.get_secret_value() if secret is not None else None
         if required and not value:
-            raise RuntimeError(f"Missing required secret OPENAI_API_KEY for {consumer}.")
+            raise RuntimeError(
+                f"Missing required secret GEMINI_API_KEY for {consumer}."
+            )
         return value
 
-    def get_database_url(self, *, required: bool = False, consumer: str = "runtime") -> str | None:
+    def get_ai_provider(self) -> str:
+        """Return the configured AI provider."""
+        return self.ai.provider
+
+    def get_ai_model(self) -> str:
+        """Return the configured AI model."""
+        return self.ai.model
+
+    def is_ai_configured(self) -> bool:
+        """Check if AI provider is configured with required credentials."""
+        provider = self.ai.provider.lower()
+        if provider == "gemini":
+            return self.ai.gemini_api_key is not None
+        return False
+
+    def get_database_url(
+        self, *, required: bool = False, consumer: str = "runtime"
+    ) -> str | None:
         """Return the configured database URL or fail clearly when required."""
 
         secret = self.database.database_url
@@ -438,10 +517,10 @@ class Settings(BaseModel):
 
         return {
             "approved_runtime_source": "typed_runtime_config",
-            "openai_api_key": {
-                "configured": self.security.openai_api_key is not None,
+            "gemini_api_key": {
+                "configured": self.security.gemini_api_key is not None,
                 "required": self.environment == RuntimeEnvironment.PRODUCTION,
-                "display_value": _redact_secret(self.security.openai_api_key),
+                "display_value": _redact_secret(self.security.gemini_api_key),
             },
             "database_url": {
                 "configured": self.database.database_url is not None,
@@ -490,7 +569,7 @@ class Settings(BaseModel):
                 "database_url": _redact_secret(self.database.database_url),
             },
             "security": {
-                "openai_api_key": _redact_secret(self.security.openai_api_key),
+                "gemini_api_key": _redact_secret(self.security.gemini_api_key),
             },
             "secret_status": self.secret_status_summary(),
             "feature_flags": {

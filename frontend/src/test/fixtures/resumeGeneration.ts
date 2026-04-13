@@ -349,6 +349,7 @@ export function makeProgressState(overrides: Partial<PipelineProgressState> = {}
 export function makeBackendError(overrides: Partial<BackendErrorPayload> = {}): BackendErrorPayload {
   return {
     message: "PDF compilation failed.",
+    backend_detail: "PDF compilation failed.",
     stage_name: "compile_pdf",
     failure_type: "pdf_compile_error",
     failure_category: "rendering",
@@ -369,7 +370,7 @@ export function makeBackendError(overrides: Partial<BackendErrorPayload> = {}): 
 export function makeBackendHealth(overrides: Partial<BackendHealthState> = {}): BackendHealthState {
   return {
     status: "healthy",
-    summary: "Backend is reachable.",
+    summary: "Backend reachable.",
     checked_at: "2026-04-12T10:00:00.000Z",
     ...overrides,
   };
@@ -379,21 +380,21 @@ export function makeReadinessIndicators(): ReadinessIndicator[] {
   return [
     {
       key: "master_profile",
-      label: "Master profile available",
+      label: "Profile path configured",
       state: "ready",
-      summary: "Source profile path resolved successfully.",
+      summary: "Profile path configured.",
     },
     {
       key: "template",
-      label: "Template available",
+      label: "Template configured",
       state: "ready",
-      summary: "Template is ready for rendering.",
+      summary: "Template configured.",
     },
     {
       key: "backend",
       label: "Backend reachable",
       state: "ready",
-      summary: "Health probe completed successfully.",
+      summary: "Backend reachable.",
     },
   ];
 }

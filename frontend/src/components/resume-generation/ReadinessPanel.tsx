@@ -30,7 +30,7 @@ export function ReadinessPanel({
         <div className="rg-section-header">
           <h2 style={{ margin: 0 }}>System readiness</h2>
           <p className="rg-muted" style={{ margin: "8px 0 0" }}>
-            Check backend reachability and configured inputs before you start a run.
+            Check backend reachability plus configured profile and template inputs before you start a run.
           </p>
         </div>
         <button type="button" className="rg-button" onClick={onRefresh}>

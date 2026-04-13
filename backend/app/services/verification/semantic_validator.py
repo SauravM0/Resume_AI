@@ -27,7 +27,7 @@ from backend.app.services.verification.types import (
 )
 from resume_optimizer.config import DEFAULT_SETTINGS
 from resume_optimizer.models import NonEmptyStr, ScoreValue, StableId, StrictModel
-from resume_optimizer.openai_client import build_openai_client
+from resume_optimizer.gemini_client import build_gemini_client
 
 PROMPT_PATH = (
     Path(__file__).resolve().parents[1]
@@ -197,7 +197,7 @@ class SemanticValidatorService:
     def _call_model(self, prompt: str) -> str:
         """Execute one low-temperature JSON-only semantic verification call."""
 
-        client = self._client or build_openai_client()
+        client = self._client or build_gemini_client()
         input_messages = [
             {
                 "role": "user",

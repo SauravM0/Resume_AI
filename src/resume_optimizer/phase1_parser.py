@@ -19,7 +19,7 @@ from .phase1_models import Phase1ParseResult
 from .prompt_loader import format_phase1_job_enrichment_prompt
 
 if TYPE_CHECKING:
-    from openai import OpenAI
+    from google.genai.client import Client as GeminiClient
 
 
 class Phase1ParserError(RuntimeError):
@@ -33,7 +33,7 @@ class MalformedPhase1ParserJSONError(Phase1ParserError):
 def parse_job_description_with_llm_enrichment(
     job_description_text: str,
     *,
-    client: OpenAI | None = None,
+    client: GeminiClient | None = None,
     model: str | None = None,
 ) -> Phase1ParseResult:
     """Parse a JD deterministically first, then enrich it with a strict LLM pass."""
@@ -106,7 +106,7 @@ def parse_job_description_with_llm_enrichment(
     )
 
 
-def _run_phase1_enrichment_call(*, client: OpenAI, model: str, prompt: str) -> str:
+def _run_phase1_enrichment_call(*, client: GeminiClient, model: str, prompt: str) -> str:
     try:
         return create_json_response_text(
             client=client,

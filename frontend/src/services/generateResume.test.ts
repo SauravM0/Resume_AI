@@ -11,7 +11,7 @@ describe("generateResume", () => {
   });
 
   it("normalizes a full success payload", async () => {
-    vi.spyOn(globalThis, "fetch").mockResolvedValue(
+    const fetchSpy = vi.spyOn(globalThis, "fetch").mockResolvedValue(
       new Response(
         JSON.stringify({
           run_id: "run.success",
@@ -31,6 +31,13 @@ describe("generateResume", () => {
             summary: "Completed",
             messages: ["Completed"],
           },
+          run_metadata: {
+            template_id: "ats_standard",
+            page_length_pages: 1,
+            summary_state: "generated",
+            selected_experience_count: 1,
+            resume_ready: true,
+          },
         }),
         { status: 200 },
       ),
@@ -42,6 +49,32 @@ describe("generateResume", () => {
     expect(response.status).toBe("succeeded");
     expect(response.available_outputs[0]?.kind).toBe("pdf");
     expect(response.selected_experiences[0]?.title).toBe("Senior Engineer");
+    expect(response.run_metadata?.template_id).toBe("ats_standard");
+    expect(response.run_metadata?.page_length_pages).toBe(1);
+    expect(response.run_metadata?.summary_state).toBe("generated");
+    expect(fetchSpy).toHaveBeenCalledWith(
+      "/api/generate-resume",
+      expect.objectContaining({
+        method: "POST",
+      }),
+    );
+  });
+
+  it("builds the request URL from an explicit API base URL when provided", async () => {
+    const fetchSpy = vi.spyOn(globalThis, "fetch").mockResolvedValue(
+      new Response(JSON.stringify({ run_id: "run.base-url" }), { status: 200 }),
+    );
+
+    await generateResume(makeGenerateRequest({ pipeline_run_id: "run.base-url" }), {
+      baseUrl: "http://localhost:8000/",
+    });
+
+    expect(fetchSpy).toHaveBeenCalledWith(
+      "http://localhost:8000/api/generate-resume",
+      expect.objectContaining({
+        method: "POST",
+      }),
+    );
   });
 
   it("normalizes low-detail backend payloads safely", async () => {
@@ -116,7 +149,11 @@ describe("generateResume", () => {
   it("surfaces transport errors directly when fetch rejects", async () => {
     vi.spyOn(globalThis, "fetch").mockRejectedValue(new Error("Network down"));
 
-    await expect(generateResume(makeGenerateRequest())).rejects.toThrow("Network down");
+    await expect(generateResume(makeGenerateRequest())).rejects.toMatchObject({
+      message: "Transport request failed.",
+      error_source: "transport",
+      transport_detail: "Network down",
+    });
   });
 
   it("derives downloadable outputs from artifact metadata when outputs are omitted", () => {
@@ -146,6 +183,35 @@ describe("generateResume", () => {
         reference: "https://example.com/run.artifacts/resume.pdf",
       }),
     ]);
+  });
+
+  it("preserves backend artifact URLs and run metadata needed by the success view", () => {
+    const response = normalizeGenerateResumeResponse(
+      {
+        run_id: "run.visible",
+        status: "succeeded_with_warnings",
+        run_metadata: {
+          template_id: "ats_standard",
+          page_length_pages: 1,
+          page_mode: "compact",
+          summary_state: "omitted",
+          selected_experience_count: 2,
+        },
+        available_outputs: [
+          {
+            kind: "pdf",
+            storage_kind: "local_file",
+            reference: "/api/pipeline-runs/run.visible/artifacts/artifact.pdf?path=%2Ftmp%2Frun.visible%2Fresume.pdf",
+            file_name: "resume.pdf",
+          },
+        ],
+      },
+      makeGenerateRequest({ pipeline_run_id: "run.visible" }),
+    );
+
+    expect(response.available_outputs[0]?.reference).toContain("/api/pipeline-runs/run.visible/artifacts/");
+    expect(response.run_metadata?.summary_state).toBe("omitted");
+    expect(response.run_metadata?.selected_experience_count).toBe(2);
   });
 
   it("normalizes backend error diagnostics safely when messages are inconsistent", () => {

@@ -31,7 +31,7 @@ from .prompt_loader import (
 )
 
 if TYPE_CHECKING:
-    from openai import OpenAI
+    from google.genai.client import Client as GeminiClient
 
 
 logger = logging.getLogger(__name__)
@@ -55,7 +55,7 @@ class Phase3ContentGenerationService:
     def __init__(
         self,
         *,
-        client: OpenAI | None = None,
+        client: GeminiClient | None = None,
         model: str | None = None,
         settings: Settings = DEFAULT_SETTINGS,
     ) -> None:
@@ -171,7 +171,7 @@ class Phase3ContentGenerationService:
     def _run_generation_call(
         self,
         *,
-        client: OpenAI,
+        client: GeminiClient,
         model: str,
         input_messages: list[dict[str, Any]],
     ) -> str:
@@ -396,7 +396,7 @@ class Phase3ContentGenerationService:
 def generate_phase3_content(
     payload: Phase3GenerationPayload,
     *,
-    client: OpenAI | None = None,
+    client: GeminiClient | None = None,
     model: str | None = None,
     settings: Settings = DEFAULT_SETTINGS,
     generation_preferences: GenerationPreferences | None = None,

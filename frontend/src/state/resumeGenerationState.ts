@@ -291,6 +291,16 @@ function updateProgressConnection(
   connection: ProgressConnectionState,
 ): PipelineProgressState {
   const base = current ?? createEmptyProgressState(runId);
+  if (
+    base.run_id === runId &&
+    base.connection.enabled === connection.enabled &&
+    base.connection.connected === connection.connected &&
+    base.connection.transport === connection.transport &&
+    base.connection.last_error === connection.last_error
+  ) {
+    return base;
+  }
+
   return {
     ...base,
     run_id: runId,

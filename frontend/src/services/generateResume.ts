@@ -8,6 +8,8 @@ import type {
   RunDiagnostics,
   VerificationWarning,
 } from "../types/pipeline";
+import { buildApiUrl } from "../lib/apiBase";
+import { normalizeGenerateResumeTransportError } from "../utils/errorClassification";
 
 const GENERATE_RESUME_ENDPOINT = "/api/generate-resume";
 
@@ -20,18 +22,32 @@ export async function generateResume(
   request: GenerateResumeRequest,
   options: GenerateResumeOptions = {},
 ): Promise<GenerateResumeResponse> {
-  const baseUrl = options.baseUrl ?? "";
-  const response = await fetch(`${baseUrl}${GENERATE_RESUME_ENDPOINT}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(request),
-    signal: options.signal,
-  });
+  const requestUrl = buildApiUrl(GENERATE_RESUME_ENDPOINT, options.baseUrl);
+  let response: Response;
+
+  try {
+    response = await fetch(requestUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request),
+      signal: options.signal,
+    });
+  } catch (error) {
+    throw normalizeGenerateResumeTransportError(error, {
+      requestUrl,
+    });
+  }
 
   const payload = await readJson(response);
   if (!response.ok) {
+    if (response.status === 404) {
+      throw normalizeGenerateResumeTransportError(new Error(`HTTP ${response.status}`), {
+        requestUrl,
+        statusCode: response.status,
+      });
+    }
     throw normalizeGenerateResumeError(payload, response.status);
   }
 
@@ -118,10 +134,11 @@ export function normalizeGenerateResumeResponse(
     verification_warnings: verificationWarnings,
     fallback_repairs: fallbackRepairs,
     run_metadata: {
+      ...normalizeRunMetadata(record.run_metadata),
       run_id: runId,
       source_profile_id: request.source_profile_id,
       source_profile_path: request.source_profile_path,
-      template_id: request.template_id,
+      template_id: readString((isRecord(record.run_metadata) ? record.run_metadata.template_id : undefined)) ?? request.template_id,
       render_job_id: request.render_job_id,
       frontend_correlation_id: request.frontend_correlation_id,
     },
@@ -158,12 +175,14 @@ export function normalizeGenerateResumeError(
       },
       metadata: detail,
       error_source: "backend",
+      backend_detail: readString(detail.message) ?? readString(payload.message),
     };
   }
   return {
     message: "Resume generation failed.",
     status_code: statusCode,
     error_source: "backend",
+    backend_detail: "Resume generation failed.",
   };
 }
 
@@ -298,6 +317,32 @@ function normalizePipelineStatus(value: string | undefined): GenerateResumeRespo
   return "pending";
 }
 
+function normalizeRunMetadata(value: unknown): GenerateResumeResponse["run_metadata"] {
+  if (!isRecord(value)) {
+    return undefined;
+  }
+  return {
+    ...value,
+    run_id: readString(value.run_id),
+    started_at: readString(value.started_at),
+    finished_at: readString(value.finished_at),
+    source_profile_id: readString(value.source_profile_id),
+    source_profile_path: readString(value.source_profile_path),
+    template_id: readString(value.template_id),
+    render_job_id: readString(value.render_job_id),
+    frontend_correlation_id: readString(value.frontend_correlation_id),
+    request_fingerprint: readString(value.request_fingerprint),
+    idempotency_status: readString(value.idempotency_status),
+    page_length_pages: normalizePageLength(value.page_length_pages),
+    page_mode: readString(value.page_mode),
+    summary_state: readString(value.summary_state),
+    selected_experience_count: readNumber(value.selected_experience_count),
+    selected_project_count: readNumber(value.selected_project_count),
+    selected_skill_count: readNumber(value.selected_skill_count),
+    resume_ready: readBoolean(value.resume_ready),
+  };
+}
+
 function normalizeSeverity(value: string | undefined): "info" | "warning" | "error" {
   if (value === "info" || value === "error") {
     return value;
@@ -312,6 +357,10 @@ function normalizeRepairStatus(
     return value;
   }
   return "applied";
+}
+
+function normalizePageLength(value: unknown): 1 | 2 | undefined {
+  return value === 2 ? 2 : value === 1 ? 1 : undefined;
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {

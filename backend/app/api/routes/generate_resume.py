@@ -15,8 +15,13 @@ from backend.app.api.idempotency import (
 from backend.app.metrics.storage import record_stage_metric
 from backend.app.observability import bind_run_id, log_event
 from backend.app.orchestration.errors import OrchestrationError
-from backend.app.orchestration.orchestrator import DEFAULT_RESUME_GENERATION_ORCHESTRATOR
-from backend.app.schemas.orchestration import GenerateResumePipelineResponse, PipelineInput
+from backend.app.orchestration.orchestrator import (
+    DEFAULT_RESUME_GENERATION_ORCHESTRATOR,
+)
+from backend.app.schemas.orchestration import (
+    GenerateResumePipelineResponse,
+    PipelineInput,
+)
 
 router = APIRouter(prefix="/api", tags=["resume"])
 logger = logging.getLogger(__name__)
@@ -42,7 +47,9 @@ def generate_resume(
         requested_run_id=request.pipeline_run_id,
         idempotency_key=idempotency_key,
     )
-    request = request.model_copy(update={"pipeline_run_id": idempotency_decision.run_id})
+    request = request.model_copy(
+        update={"pipeline_run_id": idempotency_decision.run_id}
+    )
     log_event(
         logger,
         service="resume_optimizer.api.generate_resume",
@@ -71,7 +78,9 @@ def generate_resume(
         },
     )
     if idempotency_decision.outcome == "in_flight_duplicate":
-        duplicate_response = build_in_flight_duplicate_response(run_id=idempotency_decision.run_id)
+        duplicate_response = build_in_flight_duplicate_response(
+            run_id=idempotency_decision.run_id
+        )
         http_response.status_code = 202
         http_response.headers["X-Idempotency-Status"] = "in_flight_duplicate"
         http_response.headers["X-Idempotency-Fingerprint"] = immutable_input_hash
@@ -164,6 +173,38 @@ def generate_resume(
             status_code=exc.http_status_code,
             detail=exc.to_safe_api_detail(),
         ) from exc
-    except Exception:
+    except Exception as exc:
         DEFAULT_GENERATION_IDEMPOTENCY_REGISTRY.release(canonical_key=canonical_key)
-        raise
+        from backend.app.orchestration.enums import OrchestrationFailureType, StageName
+        from backend.app.orchestration.errors import OrchestrationError
+
+        fallback_error = OrchestrationError(
+            message=str(exc),
+            failure_type=OrchestrationFailureType.INTERNAL,
+            stage_name=StageName.PERSIST_ARTIFACTS,
+            http_status_code=500,
+            user_safe_message="An unexpected error occurred during resume generation.",
+            operator_diagnostic_message=f"Unhandled exception in /api/generate-resume: {exc}",
+            root_cause=exc,
+        )
+        log_event(
+            logger,
+            level=logging.ERROR,
+            service="resume_optimizer.api.generate_resume",
+            event_name="pipeline_unhandled_exception",
+            outcome="failure",
+            stage_name=fallback_error.stage_name.value
+            if fallback_error.stage_name
+            else None,
+            error_code=fallback_error.failure_type.value,
+            metadata={
+                "route": "/api/generate-resume",
+                "http_status_code": fallback_error.http_status_code,
+                "exception_type": type(exc).__name__,
+                "operator_diagnostic_message": fallback_error.operator_diagnostic_message,
+            },
+        )
+        raise HTTPException(
+            status_code=fallback_error.http_status_code,
+            detail=fallback_error.to_safe_api_detail(),
+        ) from exc

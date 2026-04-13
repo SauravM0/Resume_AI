@@ -16,6 +16,23 @@ Phase 0 establishes the source-truth layer for a future AI Resume Optimizer. The
 - Phase 3 payload assembly, structural planning, strict JSON generation, rewrite safeguards, and fallback validation
 - A repeatable Phase 2 evaluation harness in `src/resume_optimizer/phase2_eval.py`
 
+## run this project
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+pip install uvicorn
+export MASTER_PROFILE_PATH=data/master_profile.example.json
+export GEMINI_API_KEY=your_key_here
+uvicorn backend.app.main:app --reload --host 127.0.0.1 --port 8000
+
+cd frontend
+npm install
+npm run dev
+```
+
+
+
 ## What Is Not Included Yet
 
 - Frontend

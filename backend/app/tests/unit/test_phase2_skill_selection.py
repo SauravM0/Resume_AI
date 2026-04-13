@@ -83,6 +83,96 @@ def test_skill_selector_enforces_limits_and_preserves_display_order() -> None:
     }
 
 
+def test_skill_selector_supports_canonical_multiword_skills_from_selected_evidence_context() -> None:
+    profile = MasterProfile(
+        id="fixture.skills.soft",
+        personal_profile=PersonalProfile(
+            id="fixture.skills.soft.person",
+            full_name="Taylor Soft Skills",
+            headline="Frontend Engineer",
+            role_type=RoleType.INDIVIDUAL_CONTRIBUTOR,
+            seniority_level=SeniorityLevel.SENIOR,
+            verified_status=VerifiedStatus.SELF_REPORTED,
+            evidence_strength=EvidenceStrength.MODERATE,
+        ),
+        experience=[
+            ExperienceEntry(
+                id="fixture.skills.soft.exp",
+                organization="AppStudio",
+                title="Senior Frontend Engineer",
+                role_type=RoleType.INDIVIDUAL_CONTRIBUTOR,
+                seniority_level=SeniorityLevel.SENIOR,
+                start_date=PartialDate(raw_value="2023-01"),
+                current=True,
+                bullets=[
+                    BulletEntry(
+                        id="fixture.skills.soft.exp.b1",
+                        text="Partnered with product and design stakeholders to drive onboarding experiments and UX improvements.",
+                        verified_status=VerifiedStatus.CORROBORATED,
+                        evidence_strength=EvidenceStrength.STRONG,
+                    )
+                ],
+                verified_status=VerifiedStatus.CORROBORATED,
+                evidence_strength=EvidenceStrength.STRONG,
+            )
+        ],
+        skills=[
+            SkillEntry(
+                id="fixture.skills.soft.stakeholder",
+                name="Stakeholder Management",
+                category="leadership",
+                verified_status=VerifiedStatus.CORROBORATED,
+                evidence_strength=EvidenceStrength.STRONG,
+            )
+        ],
+    )
+    job_features = adapt_job_analysis_to_ranking_features(
+        NormalizedJobAnalysis(
+            role_type=RoleType.INDIVIDUAL_CONTRIBUTOR,
+            seniority_level=SeniorityLevel.SENIOR,
+            industry_domain="product",
+            technical_skills=["React"],
+            soft_skills=["Stakeholder Management"],
+            must_have_requirements=["Partner effectively with stakeholders across product and design"],
+            prioritized_skills=[
+                NormalizedSkillRequirement(
+                    skill_name="Stakeholder Management",
+                    priority=SkillPriority.CORE,
+                )
+            ],
+        )
+    )
+
+    selected, omitted = select_strategic_skills(
+        source_profile=profile,
+        job_features=job_features,
+        evidence_scores=[
+            _soft_skill_evidence_score(),
+        ],
+        selected_experiences=[
+            ExperienceAggregateScore(
+                source_item_id="fixture.skills.soft.exp",
+                title="Senior Frontend Engineer",
+                relevance_score=0.9,
+                evidence_score_ids=["ev.stakeholder"],
+                selected_bullet_ids=["fixture.skills.soft.exp.b1"],
+                ranking_explanation=_explanation(
+                    ["product stakeholders", "design stakeholders", "experimentation"]
+                ),
+                selection_audit=_selection_audit(
+                    ["Stakeholder Management", "Product Partnership"]
+                ),
+            )
+        ],
+        selected_projects=[],
+        max_highlighted_skills=3,
+        max_per_category=2,
+    )
+
+    assert [skill.skill_name for skill in selected] == ["Stakeholder Management"]
+    assert not omitted
+
+
 def _skill_profile() -> MasterProfile:
     return MasterProfile(
         id="fixture.skills",
@@ -184,6 +274,34 @@ def _evidence_scores():
         ev("ev.terraform", "fixture.skills.exp.b1", ["Terraform"], 0.88),
         ev("ev.kubernetes", "fixture.skills.exp.b2", ["Kubernetes"], 0.72),
     ]
+
+
+def _soft_skill_evidence_score():
+    from resume_optimizer.resume_selection_models import EvidenceScore
+    from resume_optimizer.scoring_engine import ScoreComponent
+
+    return EvidenceScore(
+        id="ev.stakeholder",
+        item_type="experience",
+        source_item_id="fixture.skills.soft.exp",
+        source_bullet_id="fixture.skills.soft.exp.b1",
+        title="Senior Frontend Engineer",
+        evidence_text="stakeholder evidence",
+        keywords=["product stakeholders", "design stakeholders", "experimentation"],
+        relevance_score=0.86,
+        ranking_explanation=_explanation(
+            ["product stakeholders", "design stakeholders", "experimentation"]
+        ).model_copy(
+            update={
+                "matched_job_requirements": [
+                    "Partner effectively with stakeholders across product and design"
+                ]
+            }
+        ),
+        component_scores={
+            "recency": ScoreComponent(value=8.0, weight=10.0, rationale="recent")
+        },
+    )
 
 
 def _explanation(keywords: list[str]):

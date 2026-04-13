@@ -711,15 +711,15 @@ class OrchestratedRealPipelineRunner:
     ) -> list[EvaluationDependencyStatus]:
         checks: list[EvaluationDependencyStatus] = []
         if config.use_live_llm and _stage_order_index(stop_stage) >= _stage_order_index(LIVE_LLM_REQUIRED_FROM_STAGE):
-            key = DEFAULT_SETTINGS.get_openai_api_key()
+            key = DEFAULT_SETTINGS.get_gemini_api_key()
             checks.append(
                 EvaluationDependencyStatus(
-                    dependency_name="openai_api_key",
+                    dependency_name="gemini_api_key",
                     available=bool(key),
                     message=(
-                        "OPENAI_API_KEY is configured."
+                        "GEMINI_API_KEY is configured."
                         if key
-                        else "Missing OPENAI_API_KEY for live job parsing and generation."
+                        else "Missing GEMINI_API_KEY for live job parsing and generation."
                     ),
                 )
             )

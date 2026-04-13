@@ -103,7 +103,7 @@ export function deriveResultTrustLabel(result: GenerationResultData): string {
   const fallbackUsed = hasFallbackUsage(result.diagnostics?.fallback_repairs);
 
   if (result.overall_status === "succeeded" && warnings === 0 && !fallbackUsed) {
-    return "Fully trusted";
+    return "Clean run";
   }
 
   if (result.downloadable_outputs.some((output) => output.kind === "pdf")) {

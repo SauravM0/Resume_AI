@@ -75,4 +75,26 @@ describe("progressStream", () => {
     expect(addEventListener).toHaveBeenCalled();
     expect(close).toHaveBeenCalled();
   });
+
+  it("builds the SSE URL from an explicit API base URL when provided", () => {
+    const close = vi.fn();
+    const addEventListener = vi.fn();
+    const eventSourceFactory = vi.fn(() => ({
+      onopen: null,
+      onerror: null,
+      onmessage: null,
+      addEventListener,
+      close,
+    })) as unknown as (url: string) => EventSource;
+
+    subscribeToPipelineProgress("run.base-url", {
+      baseUrl: "http://localhost:8000/",
+      eventSourceFactory,
+      onEvent: vi.fn(),
+    });
+
+    expect(eventSourceFactory).toHaveBeenCalledWith(
+      "http://localhost:8000/api/pipeline-runs/run.base-url/events",
+    );
+  });
 });

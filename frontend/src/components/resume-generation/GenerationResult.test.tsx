@@ -9,12 +9,19 @@ describe("GenerationResult", () => {
   it("renders a clean success summary and hides diagnostics by default", () => {
     renderWithWorkflow(
       <GenerationResult
-        result={makeGenerationResult()}
+        result={makeGenerationResult({
+          run_metadata: {
+            run_id: "run.ready",
+            template_id: "ats_standard",
+          },
+        })}
         onStartNewRun={vi.fn()}
       />,
     );
 
-    expect(screen.getByText("Successful run")).toBeInTheDocument();
+    expect(screen.getByText("Resume ready")).toBeInTheDocument();
+    expect(screen.getAllByText("run.ready").length).toBeGreaterThan(0);
+    expect(screen.getByText("ats_standard")).toBeInTheDocument();
     expect(screen.getByText("Result summary")).toBeInTheDocument();
     expect(screen.queryByText("Diagnostics are not available for this run")).not.toBeInTheDocument();
     expect(screen.getByText("Selection summary")).toBeInTheDocument();
@@ -69,5 +76,33 @@ describe("GenerationResult", () => {
     expect(screen.getByText("Repair path used")).toBeInTheDocument();
     expect(screen.getByText("Claim needs review.")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Inspect structured output" })).toBeInTheDocument();
+  });
+
+  it("shows safe degraded success when the summary was omitted but the resume is still downloadable", () => {
+    renderWithWorkflow(
+      <GenerationResult
+        result={makeGenerationResult({
+          overall_status: "succeeded_with_warnings",
+          raw_response: {
+            ...makeGenerationResult().raw_response,
+            run_metadata: {
+              run_id: "run.summary-omitted",
+              template_id: "ats_standard",
+              page_length_pages: 1,
+              summary_state: "omitted",
+            },
+          },
+          run_metadata: {
+            run_id: "run.summary-omitted",
+            template_id: "ats_standard",
+          },
+        })}
+        onStartNewRun={vi.fn()}
+      />,
+    );
+
+    expect(screen.getByText("Summary omitted safely")).toBeInTheDocument();
+    expect(screen.getByText("PDF ready")).toBeInTheDocument();
+    expect(screen.getByText("omitted")).toBeInTheDocument();
   });
 });

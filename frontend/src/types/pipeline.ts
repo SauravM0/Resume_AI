@@ -89,6 +89,9 @@ export interface BackendHealthState {
   detail?: string;
   http_status_code?: number;
   checked_at?: string;
+  api?: boolean;
+  profile_path_configured?: boolean;
+  template_configured?: boolean;
 }
 
 export type ReadinessState = "ready" | "warning" | "unavailable" | "unknown";
@@ -112,6 +115,13 @@ export interface RunMetadata {
   frontend_correlation_id?: string;
   request_fingerprint?: string;
   idempotency_status?: string;
+  page_length_pages?: 1 | 2;
+  page_mode?: string;
+  summary_state?: string;
+  selected_experience_count?: number;
+  selected_project_count?: number;
+  selected_skill_count?: number;
+  resume_ready?: boolean;
 }
 
 export interface SelectedExperience {
@@ -232,11 +242,17 @@ export interface BackendErrorPayload {
   diagnostics?: RunDiagnostics;
   metadata?: Record<string, unknown>;
   error_source?: "backend" | "frontend" | "transport" | "validation";
+  backend_detail?: string;
+  transport_detail?: string;
+  suggested_next_step?: string;
+  transport_target?: "generate_resume" | "progress_stream" | "health";
 }
 
 export type ErrorClassification =
   | "validation"
   | "backend_unavailable"
+  | "api_route_not_found"
+  | "sse_route_not_found"
   | "job_analysis_failed"
   | "selection_failed"
   | "generation_failed"
@@ -455,5 +471,5 @@ export interface GenerateResumeResponse {
   selected_skills: SelectedSkill[];
   verification_warnings: VerificationWarning[];
   fallback_repairs: FallbackRepairMetadata[];
-  run_metadata?: Partial<RunMetadata>;
+  run_metadata?: (Partial<RunMetadata> & Record<string, unknown>);
 }

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections import OrderedDict
 from datetime import date
+import logging
 from statistics import fmean
 
 from .evidence_models import CanonicalEvidenceUnit
@@ -33,6 +34,10 @@ STRATEGIC_NARRATIVE_WEIGHT = 0.15
 RECENT_ROLE_BONUS = 0.1
 HIGH_IMPACT_BONUS = 0.08
 OWNERSHIP_LEADERSHIP_BONUS = 0.05
+SECONDARY_EXPERIENCE_MIN_COVERAGE_GAIN = 0.1
+SECONDARY_EXPERIENCE_MAX_STALE_RISK = 0.72
+
+logger = logging.getLogger(__name__)
 
 
 def _getattr_safe(obj: object, attr: str, default: float) -> float:
@@ -269,10 +274,24 @@ def _select_best_aggregate_set(
         should_force_for_coverage = coverage_gain >= 0.20 and (
             best.strategic_fit_score >= 0.30 or best.relevance_score >= 0.40
         )
+        should_keep_secondary_experience = (
+            item_type == ItemType.EXPERIENCE
+            and len(selected) == 1
+            and len(selected) < limit
+            and coverage_gain >= SECONDARY_EXPERIENCE_MIN_COVERAGE_GAIN
+            and _getattr_safe(best, "stale_risk_score", 1.0) <= SECONDARY_EXPERIENCE_MAX_STALE_RISK
+            and (
+                best.matched_must_have_count > 0
+                or best.matched_requirement_diversity >= 2
+                or best.direct_alignment_score >= 0.42
+                or best.ownership_leadership_score >= 0.45
+            )
+        )
 
         should_keep = (
             best_utility >= required_floor
             or should_force_for_coverage
+            or should_keep_secondary_experience
             or (
                 item_type == ItemType.EXPERIENCE
                 and len(selected) < limit
@@ -301,10 +320,10 @@ def _select_best_aggregate_set(
                         best.matched_must_have_count > 0
                         and best.strategic_fit_score >= 0.25
                     )
-                    or (_getattr_safe(best, "project_utility_score", 0.0) >= 0.2)
+                    or (_getattr_safe(best, "project_utility_score", 0.0) >= 0.24)
                     or (best.impact_score >= 0.6 and best.relevance_score >= 0.3)
                     or (
-                        _getattr_safe(best, "unique_evidence_score", 0.0) >= 0.3
+                        _getattr_safe(best, "unique_evidence_score", 0.0) >= 0.22
                         and best.relevance_score >= 0.25
                     )
                 )
@@ -379,31 +398,29 @@ def _coverage_gain_score(
     selected: list[ExperienceAggregateScore] | list[ProjectAggregateScore],
     job_features: JobRankingFeatures,
 ) -> float:
-    current_required = {
-        skill.casefold()
-        for item in selected
-        for skill in item.ranking_explanation.matched_required_skills
-    }
-    current_requirements = {
-        requirement.casefold()
-        for item in selected
-        for requirement in item.ranking_explanation.matched_job_requirements
-    }
-    candidate_required = {
-        skill.casefold()
-        for skill in aggregate.ranking_explanation.matched_required_skills
-    }
-    candidate_requirements = {
-        requirement.casefold()
-        for requirement in aggregate.ranking_explanation.matched_job_requirements
-    }
-    new_required = candidate_required - current_required
-    new_requirements = candidate_requirements - current_requirements
+    current_signals = _combined_signal_buckets(selected, job_features)
+    candidate_signals = _aggregate_signal_buckets(aggregate, job_features)
+
+    new_required = candidate_signals["must_have"] - current_signals["must_have"]
+    new_requirements = candidate_signals["requirements"] - current_signals["requirements"]
+    new_preferred = candidate_signals["preferred"] - current_signals["preferred"]
+    new_responsibility = candidate_signals["responsibility"] - current_signals["responsibility"]
+    new_domain = candidate_signals["domain"] - current_signals["domain"]
+    new_leadership = candidate_signals["leadership"] - current_signals["leadership"]
+
     required_possible = max(1, len(job_features.canonical_must_have_skills.values))
     requirement_possible = max(1, _expected_requirement_count(job_features))
-    score = (len(new_required) / required_possible) * 0.7 + (
-        len(new_requirements) / requirement_possible
-    ) * 0.3
+    preferred_possible = max(1, len(job_features.canonical_nice_to_have_skills.values))
+    responsibility_possible = max(1, len(job_features.responsibility_themes) or 1)
+    domain_possible = max(1, len(job_features.domain_targets) or 1)
+    score = (
+        (len(new_required) / required_possible) * 0.4
+        + (len(new_requirements) / requirement_possible) * 0.22
+        + (len(new_preferred) / preferred_possible) * 0.1
+        + (len(new_responsibility) / responsibility_possible) * 0.12
+        + (len(new_domain) / domain_possible) * 0.08
+        + min(1.0, float(len(new_leadership))) * 0.08
+    )
     return round(min(1.0, score), 4)
 
 
@@ -413,32 +430,12 @@ def _selection_redundancy_penalty(
 ) -> float:
     if not selected:
         return 0.0
-    candidate_signals = {
-        *[
-            value.casefold()
-            for value in aggregate.ranking_explanation.matched_required_skills
-        ],
-        *[
-            value.casefold()
-            for value in aggregate.ranking_explanation.matched_job_requirements
-        ],
-        *[value.casefold() for value in aggregate.ranking_explanation.matched_keywords],
-    }
+    candidate_signals = _aggregate_overlap_signals(aggregate)
     if not candidate_signals:
         return 0.0
     best_overlap = 0.0
     for item in selected:
-        selected_signals = {
-            *[
-                value.casefold()
-                for value in item.ranking_explanation.matched_required_skills
-            ],
-            *[
-                value.casefold()
-                for value in item.ranking_explanation.matched_job_requirements
-            ],
-            *[value.casefold() for value in item.ranking_explanation.matched_keywords],
-        }
+        selected_signals = _aggregate_overlap_signals(item)
         if not selected_signals:
             continue
         overlap = len(candidate_signals & selected_signals) / len(
@@ -687,6 +684,36 @@ def _compose_project_selection(
                             "unique_evidence_score": aggregate.unique_evidence_score,
                         },
                         human_summary="Project did not add enough incremental strategic value.",
+                    ),
+                )
+            )
+            continue
+        if (
+            aggregate.redundancy_score >= 0.72
+            and aggregate.unique_evidence_score < 0.18
+            and not experience_gap_detected
+            and not should_promote_for_gaps
+            and not should_promote_for_strength
+            and not should_promote_for_portfolio
+        ):
+            omitted.append(
+                OmittedSelectionItem(
+                    item_type=ItemType.PROJECT,
+                    source_item_id=aggregate.source_item_id,
+                    evidence_score_ids=aggregate.evidence_score_ids,
+                    reason="redundant_with_stronger_selected_content",
+                    rationale="Project repeated already-selected experience evidence without adding enough net JD coverage.",
+                    selection_audit=_simple_omission_audit(
+                        matched_requirements=aggregate.selection_audit.matched_requirements,
+                        omission_reason="redundant_with_stronger_selected_content",
+                        selection_reason="project_omitted",
+                        supporting_evidence_ids=aggregate.evidence_score_ids,
+                        score_factors={
+                            "aggregate_score": aggregate.relevance_score,
+                            "redundancy_score": aggregate.redundancy_score,
+                            "unique_evidence_score": aggregate.unique_evidence_score,
+                        },
+                        human_summary="Project was redundant with stronger selected experience coverage.",
                     ),
                 )
             )
@@ -2754,7 +2781,7 @@ def _experience_gap_detected(
     selected_experiences: list[ExperienceAggregateScore],
     job_features: JobRankingFeatures,
 ) -> bool:
-    return _experience_coverage_ratio(selected_experiences, job_features) < 0.6
+    return _experience_coverage_ratio(selected_experiences, job_features) < 0.68
 
 
 def _project_fills_must_have_gaps(
@@ -2802,14 +2829,27 @@ def _experience_coverage_ratio(
 ) -> float:
     if not selected_experiences:
         return 0.0
-    matched_required = {
-        skill.casefold()
-        for experience in selected_experiences
-        for skill in experience.ranking_explanation.matched_required_skills
-    }
-    return _coverage_score(
-        len(matched_required),
+    signal_buckets = _combined_signal_buckets(selected_experiences, job_features)
+    required_score = _coverage_score(
+        len(signal_buckets["must_have"]),
         len(job_features.canonical_must_have_skills.values),
+    )
+    requirement_score = _coverage_score(
+        len(signal_buckets["requirements"]),
+        _expected_requirement_count(job_features),
+    )
+    responsibility_score = _coverage_score(
+        len(signal_buckets["responsibility"]),
+        max(1, len(job_features.responsibility_themes) or 1),
+    )
+    return round(
+        min(
+            1.0,
+            required_score * 0.55
+            + requirement_score * 0.3
+            + responsibility_score * 0.15,
+        ),
+        4,
     )
 
 
@@ -2819,12 +2859,139 @@ def _project_coverage_ratio(
 ) -> float:
     if not selected_projects:
         return 0.0
-    matched_required = {
-        skill.casefold()
-        for project in selected_projects
-        for skill in project.ranking_explanation.matched_required_skills
-    }
-    return _coverage_score(
-        len(matched_required),
-        len(job_features.canonical_must_have_skills.values),
+    signal_buckets = _combined_signal_buckets(selected_projects, job_features)
+    return round(
+        min(
+            1.0,
+            _coverage_score(
+                len(signal_buckets["must_have"]),
+                len(job_features.canonical_must_have_skills.values),
+            )
+            * 0.6
+            + _coverage_score(
+                len(signal_buckets["requirements"]),
+                _expected_requirement_count(job_features),
+            )
+            * 0.4,
+        ),
+        4,
     )
+
+
+def _combined_signal_buckets(
+    selected_items: list[ExperienceAggregateScore] | list[ProjectAggregateScore],
+    job_features: JobRankingFeatures,
+) -> dict[str, set[str]]:
+    combined = {
+        "must_have": set(),
+        "preferred": set(),
+        "requirements": set(),
+        "responsibility": set(),
+        "domain": set(),
+        "leadership": set(),
+    }
+    for item in selected_items:
+        item_signals = _aggregate_signal_buckets(item, job_features)
+        for key, values in item_signals.items():
+            combined[key].update(values)
+    return combined
+
+
+def _aggregate_signal_buckets(
+    aggregate: ExperienceAggregateScore | ProjectAggregateScore,
+    job_features: JobRankingFeatures,
+) -> dict[str, set[str]]:
+    matched_keywords = {
+        _comparison_key(keyword)
+        for keyword in aggregate.ranking_explanation.matched_keywords
+        if keyword
+    }
+    matched_requirements = {
+        _comparison_key(requirement)
+        for requirement in aggregate.ranking_explanation.matched_job_requirements
+        if requirement
+    }
+    matched_required = {
+        _comparison_key(skill)
+        for skill in aggregate.ranking_explanation.matched_required_skills
+        if skill
+    }
+    matched_preferred = {
+        _comparison_key(skill)
+        for skill in aggregate.ranking_explanation.matched_preferred_skills
+        if skill
+    }
+    responsibility_themes = {
+        _comparison_key(theme)
+        for theme in job_features.responsibility_themes
+        if theme
+    }
+    domain_targets = {
+        _comparison_key(target)
+        for target in job_features.domain_targets
+        if target
+    }
+
+    responsibility_matches = {
+        value
+        for value in matched_keywords | matched_requirements
+        if value in responsibility_themes
+    }
+    domain_matches = {
+        value for value in matched_keywords | matched_requirements if value in domain_targets
+    }
+    leadership_matches = {
+        value
+        for value in matched_keywords | matched_requirements
+        if any(
+            token in value
+            for token in (
+                "lead",
+                "manager",
+                "mentor",
+                "owner",
+                "ownership",
+                "stakeholder",
+                "roadmap",
+                "delivery",
+                "execution",
+                "architect",
+                "strategy",
+            )
+        )
+    }
+
+    return {
+        "must_have": matched_required,
+        "preferred": matched_preferred,
+        "requirements": matched_requirements,
+        "responsibility": responsibility_matches,
+        "domain": domain_matches,
+        "leadership": leadership_matches,
+    }
+
+
+def _aggregate_overlap_signals(
+    aggregate: ExperienceAggregateScore | ProjectAggregateScore,
+) -> set[str]:
+    signals = {
+        f"required:{_comparison_key(skill)}"
+        for skill in aggregate.ranking_explanation.matched_required_skills
+        if skill
+    }
+    signals.update(
+        f"preferred:{_comparison_key(skill)}"
+        for skill in aggregate.ranking_explanation.matched_preferred_skills
+        if skill
+    )
+    signals.update(
+        f"requirement:{_comparison_key(requirement)}"
+        for requirement in aggregate.ranking_explanation.matched_job_requirements
+        if requirement
+    )
+    signals.update(
+        f"keyword:{_comparison_key(keyword)}"
+        for keyword in aggregate.ranking_explanation.matched_keywords
+        if keyword
+    )
+    return signals

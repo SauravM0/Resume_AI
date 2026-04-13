@@ -15,6 +15,15 @@ from .resume_selection_models import (
     SkillHighlightScore,
 )
 
+_GENERIC_SKILL_TOKENS = {
+    "development",
+    "engineering",
+    "management",
+    "platform",
+    "services",
+    "systems",
+}
+
 
 def select_strategic_skills(
     *,
@@ -47,8 +56,7 @@ def select_strategic_skills(
             evidence
             for evidence_list in evidence_by_source.values()
             for evidence in evidence_list
-            if skill_key in {_comparison_key(keyword) for keyword in evidence.keywords}
-            or skill_key in {_comparison_key(keyword) for keyword in evidence.ranking_explanation.matched_keywords}
+            if _skill_matches_evidence(skill.name, evidence, job_features)
         ]
         if jd_weight <= 0:
             omitted.append(
@@ -221,7 +229,79 @@ def _job_relevance_weight(skill_key: str, job_features: JobRankingFeatures) -> f
         return 0.75
     if skill_key in {_comparison_key(value) for value in job_features.canonical_all_skills}:
         return 0.5
+    if skill_key in {_comparison_key(value) for value in job_features.responsibility_themes}:
+        return 0.7
+    if any(
+        skill_key in _comparison_key(value) or _comparison_key(value) in skill_key
+        for value in job_features.responsibility_themes
+    ):
+        return 0.55
     return 0.0
+
+
+def _skill_matches_evidence(
+    skill_name: str,
+    evidence: EvidenceScore,
+    job_features: JobRankingFeatures,
+) -> bool:
+    skill_key = _comparison_key(skill_name)
+    skill_tokens = _informative_tokens(skill_key)
+    evidence_phrases = {
+        _comparison_key(value)
+        for value in [
+            *evidence.keywords,
+            *evidence.ranking_explanation.matched_keywords,
+            *evidence.ranking_explanation.matched_required_skills,
+            *evidence.ranking_explanation.matched_preferred_skills,
+            *evidence.ranking_explanation.matched_job_requirements,
+        ]
+        if value
+    }
+    if skill_key in evidence_phrases:
+        return True
+
+    for phrase in evidence_phrases:
+        phrase_tokens = _informative_tokens(phrase)
+        if skill_tokens and skill_tokens.issubset(phrase_tokens):
+            return True
+        if skill_tokens and phrase_tokens and skill_tokens.intersection(phrase_tokens):
+            return True
+        if phrase in skill_key or skill_key in phrase:
+            return True
+
+    canonical_job_phrases = {
+        _comparison_key(value)
+        for value in [
+            *job_features.canonical_must_have_skills.values,
+            *job_features.canonical_nice_to_have_skills.values,
+            *job_features.canonical_all_skills,
+        ]
+        if value
+    }
+    related_job_phrases = {
+        phrase
+        for phrase in canonical_job_phrases
+        if phrase == skill_key or phrase in skill_key or skill_key in phrase
+    }
+    return bool(related_job_phrases.intersection(evidence_phrases))
+
+
+def _informative_tokens(value: str) -> set[str]:
+    tokens = {
+        _normalize_token(token)
+        for token in value.split()
+        if token and _normalize_token(token) not in _GENERIC_SKILL_TOKENS
+    }
+    return {token for token in tokens if token}
+
+
+def _normalize_token(token: str) -> str:
+    normalized = token.strip().casefold()
+    if normalized.endswith("ies") and len(normalized) > 3:
+        return normalized[:-3] + "y"
+    if normalized.endswith("s") and len(normalized) > 3:
+        return normalized[:-1]
+    return normalized
 
 
 def _job_priority_index(skill_key: str, job_features: JobRankingFeatures) -> int:

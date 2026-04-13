@@ -5,13 +5,20 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from hashlib import sha256
+import json
 import logging
 
-from backend.app.cache.codecs import deserialize_normalize_source_data_output, serialize_model
+from backend.app.cache.codecs import (
+    deserialize_normalize_source_data_output,
+    serialize_model,
+)
 from backend.app.cache.keys import build_cache_key, stable_code_hash, stable_model_hash
 from backend.app.cache.storage import get_or_compute
 from backend.app.observability import bind_run_id, get_request_id, log_event
-from backend.app.orchestration.artifacts.artifact_manager import ArtifactManager, build_default_artifact_manager
+from backend.app.orchestration.artifacts.artifact_manager import (
+    ArtifactManager,
+    build_default_artifact_manager,
+)
 from backend.app.orchestration.confidence import assess_run_confidence
 from backend.app.orchestration.enums import (
     ArtifactKind,
@@ -41,10 +48,16 @@ from backend.app.orchestration.result_builder import (
     GenerateResumePipelineResponse,
     build_pipeline_response,
 )
-from backend.app.orchestration.runner import PipelineRunRecorder, build_default_pipeline_recorder
+from backend.app.orchestration.runner import (
+    PipelineRunRecorder,
+    build_default_pipeline_recorder,
+)
 from backend.app.orchestration.stage_executor import StageExecutor
 from backend.app.orchestration.adapters.base import StageExecutionContext
-from backend.app.orchestration.stage_registry import DEFAULT_STAGE_REGISTRY, StageRegistry
+from backend.app.orchestration.stage_registry import (
+    DEFAULT_STAGE_REGISTRY,
+    StageRegistry,
+)
 from backend.app.services.verification.audit_artifact import (
     VERIFICATION_AUDIT_ARTIFACT_SCHEMA_VERSION,
     build_verification_audit_artifact,
@@ -67,8 +80,12 @@ class ResumeGenerationOrchestrator:
     """Execute the full Phase 1-5 pipeline with Phase 6 persistence events."""
 
     recorder_factory: object = build_default_pipeline_recorder
-    stage_registry: StageRegistry = field(default_factory=lambda: DEFAULT_STAGE_REGISTRY)
-    artifact_manager: ArtifactManager = field(default_factory=build_default_artifact_manager)
+    stage_registry: StageRegistry = field(
+        default_factory=lambda: DEFAULT_STAGE_REGISTRY
+    )
+    artifact_manager: ArtifactManager = field(
+        default_factory=build_default_artifact_manager
+    )
 
     def run(self, request: PipelineInput) -> GenerateResumePipelineResponse:
         """Run the end-to-end resume generation pipeline."""
@@ -83,8 +100,11 @@ class ResumeGenerationOrchestrator:
             requested_template=request.template_id,
             requested_mode="resume_pdf",
             job_description_hash=jd_hash,
-            source_profile_id=request.source_profile_id or (
-                request.source_profile.id if request.source_profile is not None else None
+            source_profile_id=request.source_profile_id
+            or (
+                request.source_profile.id
+                if request.source_profile is not None
+                else None
             ),
         )
         bind_run_id(run_id)
@@ -110,27 +130,54 @@ class ResumeGenerationOrchestrator:
         rendered = None
         compiled = None
         try:
+            logger.info(f"[PHASE] LOAD_SOURCE_PROFILE started for run_id={run_id}")
             loaded = executor.execute(
                 StageName.LOAD_SOURCE_PROFILE,
                 lambda: self._load_source_profile(request),
             )
-            self._record_model_artifact(recorder, StageName.LOAD_SOURCE_PROFILE, ArtifactKind.SOURCE_PROFILE, loaded)
+            logger.info(
+                f"[PHASE] LOAD_SOURCE_PROFILE completed for run_id={run_id}, profile_id={loaded.source_profile_id}"
+            )
+            self._record_model_artifact(
+                recorder,
+                StageName.LOAD_SOURCE_PROFILE,
+                ArtifactKind.SOURCE_PROFILE,
+                loaded,
+            )
+            logger.info(f"[PHASE] NORMALIZE_SOURCE_DATA started for run_id={run_id}")
             normalized = executor.execute(
                 StageName.NORMALIZE_SOURCE_DATA,
                 lambda: self._normalize_source_data(loaded),
             )
-            self._record_model_artifact(recorder, StageName.NORMALIZE_SOURCE_DATA, ArtifactKind.NORMALIZED_PROFILE, normalized)
+            logger.info(f"[PHASE] NORMALIZE_SOURCE_DATA completed for run_id={run_id}")
+            self._record_model_artifact(
+                recorder,
+                StageName.NORMALIZE_SOURCE_DATA,
+                ArtifactKind.NORMALIZED_PROFILE,
+                normalized,
+            )
+            logger.info(f"[PHASE] INGEST_JOB_DESCRIPTION started for run_id={run_id}")
             ingested = executor.execute(
                 StageName.INGEST_JOB_DESCRIPTION,
                 lambda: self._ingest_job_description(request, jd_hash),
             )
-            self._record_model_artifact(recorder, StageName.INGEST_JOB_DESCRIPTION, ArtifactKind.RAW_JOB_DESCRIPTION, ingested)
+            logger.info(
+                f"[PHASE] INGEST_JOB_DESCRIPTION completed for run_id={run_id}, jd_hash={jd_hash}"
+            )
+            self._record_model_artifact(
+                recorder,
+                StageName.INGEST_JOB_DESCRIPTION,
+                ArtifactKind.RAW_JOB_DESCRIPTION,
+                ingested,
+            )
             parsed = executor.execute(
                 StageName.PARSE_JOB_DESCRIPTION,
                 lambda: self.stage_registry.execute(
                     StageName.PARSE_JOB_DESCRIPTION,
                     ParseJobDescriptionInput(request=ingested.request),
-                    self._stage_context(run_id, recorder, StageName.PARSE_JOB_DESCRIPTION),
+                    self._stage_context(
+                        run_id, recorder, StageName.PARSE_JOB_DESCRIPTION
+                    ),
                 ),
             )
             self._record_parse_fallbacks(recorder, parsed)
@@ -140,10 +187,17 @@ class ResumeGenerationOrchestrator:
                 lambda: self.stage_registry.execute(
                     StageName.RANK_SELECT_EVIDENCE,
                     self._rank_select_evidence_input(parsed, normalized),
-                    self._stage_context(run_id, recorder, StageName.RANK_SELECT_EVIDENCE),
+                    self._stage_context(
+                        run_id, recorder, StageName.RANK_SELECT_EVIDENCE
+                    ),
                 ),
             )
-            self._record_model_artifact(recorder, StageName.RANK_SELECT_EVIDENCE, ArtifactKind.PHASE2_SELECTION, ranked)
+            self._record_model_artifact(
+                recorder,
+                StageName.RANK_SELECT_EVIDENCE,
+                ArtifactKind.PHASE2_SELECTION,
+                ranked,
+            )
             generated = executor.execute(
                 StageName.GENERATE_STRUCTURED_CONTENT,
                 lambda: self.stage_registry.execute(
@@ -156,17 +210,26 @@ class ResumeGenerationOrchestrator:
                         source_profile=normalized.normalized_profile,
                         generation_preferences=request.generation_preferences,
                     ),
-                    self._stage_context(run_id, recorder, StageName.GENERATE_STRUCTURED_CONTENT),
+                    self._stage_context(
+                        run_id, recorder, StageName.GENERATE_STRUCTURED_CONTENT
+                    ),
                 ),
             )
             self._record_generation_fallbacks(recorder, generated.validation_report)
-            self._record_model_artifact(recorder, StageName.GENERATE_STRUCTURED_CONTENT, ArtifactKind.PHASE3_RESULT, generated)
+            self._record_model_artifact(
+                recorder,
+                StageName.GENERATE_STRUCTURED_CONTENT,
+                ArtifactKind.PHASE3_RESULT,
+                generated,
+            )
             verified = executor.execute(
                 StageName.VERIFY_GENERATED_CONTENT,
                 lambda: self.stage_registry.execute(
                     StageName.VERIFY_GENERATED_CONTENT,
                     self._verify_generated_content_input(parsed, normalized, generated),
-                    self._stage_context(run_id, recorder, StageName.VERIFY_GENERATED_CONTENT),
+                    self._stage_context(
+                        run_id, recorder, StageName.VERIFY_GENERATED_CONTENT
+                    ),
                 ),
             )
             self._record_verification_artifacts(
@@ -179,10 +242,17 @@ class ResumeGenerationOrchestrator:
                 lambda: self.stage_registry.execute(
                     StageName.RENDER_DETERMINISTIC_LATEX,
                     self._render_latex_input(request, normalized, verified, run_id),
-                    self._stage_context(run_id, recorder, StageName.RENDER_DETERMINISTIC_LATEX),
+                    self._stage_context(
+                        run_id, recorder, StageName.RENDER_DETERMINISTIC_LATEX
+                    ),
                 ),
             )
-            self._record_model_artifact(recorder, StageName.RENDER_DETERMINISTIC_LATEX, ArtifactKind.LATEX_DOCUMENT, rendered)
+            self._record_model_artifact(
+                recorder,
+                StageName.RENDER_DETERMINISTIC_LATEX,
+                ArtifactKind.LATEX_DOCUMENT,
+                rendered,
+            )
             compiled = executor.execute(
                 StageName.COMPILE_PDF,
                 lambda: self.stage_registry.execute(
@@ -204,7 +274,9 @@ class ResumeGenerationOrchestrator:
                 if compiled.pdf_artifact_ref is not None
                 else compiled.compile_result.pdf_file_path
             )
-            status = self._pipeline_status_from_verification(verified.verification_report.decision_outcome)
+            status = self._pipeline_status_from_verification(
+                verified.verification_report.decision_outcome
+            )
             recorder.set_confidence_assessment(
                 assess_run_confidence(
                     parsed=parsed,
@@ -231,12 +303,18 @@ class ResumeGenerationOrchestrator:
                 duration_ms=_duration_ms(started_at, datetime.now(timezone.utc)),
                 metadata={
                     "status": status.value,
-                    "final_confidence_level": recorder.run_diagnostics()["final_confidence_level"],
+                    "final_confidence_level": recorder.run_diagnostics()[
+                        "final_confidence_level"
+                    ],
                 },
             )
         except OrchestrationError as exc:
             exc.run_id = run_id
-            status = PipelineStatus.BLOCKED if exc.http_status_code == 409 else PipelineStatus.FAILED
+            status = (
+                PipelineStatus.BLOCKED
+                if exc.http_status_code == 409
+                else PipelineStatus.FAILED
+            )
             recorder.set_confidence_assessment(
                 assess_run_confidence(
                     parsed=parsed,
@@ -247,7 +325,9 @@ class ResumeGenerationOrchestrator:
                     compiled=compiled,
                     retry_attempts=recorder.retry_attempts,
                     fallback_audits=recorder.fallback_audits,
-                    terminal_failure_stage=exc.stage_name.value if exc.stage_name is not None else None,
+                    terminal_failure_stage=exc.stage_name.value
+                    if exc.stage_name is not None
+                    else None,
                 )
             )
             recorder.finalize_run(
@@ -269,11 +349,43 @@ class ResumeGenerationOrchestrator:
                 error_code=exc.failure_type.value,
                 metadata={
                     "status": status.value,
-                    "final_confidence_level": recorder.run_diagnostics()["final_confidence_level"],
+                    "final_confidence_level": recorder.run_diagnostics()[
+                        "final_confidence_level"
+                    ],
                 },
             )
             raise
 
+        response = build_pipeline_response(
+            run_id=run_id,
+            status=status,
+            artifact_manifest=recorder.artifacts,
+            stage_events=recorder.stage_events,
+            warnings=recorder.warnings,
+            final_file_reference=final_file_reference,
+            selected_experiences=_selected_experience_payload(verified, ranked),
+            selected_projects=_selected_project_payload(verified, ranked),
+            selected_skills=_selected_skill_payload(verified, ranked),
+            run_metadata={
+                "run_id": run_id,
+                "template_id": request.template_id,
+                "page_length_pages": (
+                    request.generation_preferences.target_page_count
+                    if request.generation_preferences is not None
+                    and request.generation_preferences.target_page_count is not None
+                    else 1
+                ),
+                "page_mode": (
+                    "compact"
+                    if request.generation_preferences is not None
+                    and request.generation_preferences.target_page_count == 1
+                    else "standard"
+                ),
+                "summary_state": _summary_state(generated),
+                "debug_mode": bool(request.persist_intermediate_artifacts),
+            },
+        )
+        self._publish_completed_result_artifact(recorder, response)
         return build_pipeline_response(
             run_id=run_id,
             status=status,
@@ -281,6 +393,27 @@ class ResumeGenerationOrchestrator:
             stage_events=recorder.stage_events,
             warnings=recorder.warnings,
             final_file_reference=final_file_reference,
+            selected_experiences=_selected_experience_payload(verified, ranked),
+            selected_projects=_selected_project_payload(verified, ranked),
+            selected_skills=_selected_skill_payload(verified, ranked),
+            run_metadata={
+                "run_id": run_id,
+                "template_id": request.template_id,
+                "page_length_pages": (
+                    request.generation_preferences.target_page_count
+                    if request.generation_preferences is not None
+                    and request.generation_preferences.target_page_count is not None
+                    else 1
+                ),
+                "page_mode": (
+                    "compact"
+                    if request.generation_preferences is not None
+                    and request.generation_preferences.target_page_count == 1
+                    else "standard"
+                ),
+                "summary_state": _summary_state(generated),
+                "debug_mode": bool(request.persist_intermediate_artifacts),
+            },
         )
 
     def _pipeline_status_from_verification(
@@ -299,14 +432,23 @@ class ResumeGenerationOrchestrator:
         return PipelineStatus.FAILED
 
     def _load_source_profile(self, request: PipelineInput) -> LoadSourceProfileOutput:
+        from backend.app.services.master_profile_service import (
+            load_master_profile,
+            is_profile_valid,
+            get_master_profile_path,
+        )
+
         if request.source_profile is not None:
             return LoadSourceProfileOutput(
                 source_profile_id=request.source_profile.id,
                 source_profile=request.source_profile,
                 loaded_from="inline",
             )
+
+        profile_path = request.source_profile_path or get_master_profile_path()
+
         try:
-            profile = load_and_normalize_master_profile(request.source_profile_path) if request.source_profile_path is not None else load_and_normalize_master_profile("data/master_profile.example.json")
+            profile = load_master_profile()
         except Exception as exc:
             raise StageExecutionError(
                 f"source profile loading failed: {exc}",
@@ -314,7 +456,19 @@ class ResumeGenerationOrchestrator:
                 stage_name=StageName.LOAD_SOURCE_PROFILE,
                 http_status_code=400,
             ) from exc
-        if request.source_profile_id is not None and profile.id != request.source_profile_id:
+
+        if not is_profile_valid(profile):
+            raise StageExecutionError(
+                f"master profile is invalid. Please fix profile errors before generating.",
+                failure_type=OrchestrationFailureType.SOURCE_PROFILE_LOAD,
+                stage_name=StageName.LOAD_SOURCE_PROFILE,
+                http_status_code=400,
+            )
+
+        if (
+            request.source_profile_id is not None
+            and profile.id != request.source_profile_id
+        ):
             raise StageExecutionError(
                 "loaded source profile id does not match requested source_profile_id",
                 failure_type=OrchestrationFailureType.INPUT_VALIDATION,
@@ -324,15 +478,19 @@ class ResumeGenerationOrchestrator:
         return LoadSourceProfileOutput(
             source_profile_id=profile.id,
             source_profile=profile,
-            loaded_from=str(request.source_profile_path or "data/master_profile.example.json"),
+            loaded_from=str(profile_path),
         )
 
-    def _normalize_source_data(self, loaded: LoadSourceProfileOutput) -> NormalizeSourceDataOutput:
+    def _normalize_source_data(
+        self, loaded: LoadSourceProfileOutput
+    ) -> NormalizeSourceDataOutput:
         cache_key = build_cache_key(
             PROFILE_NORMALIZATION_CACHE_NAMESPACE,
             {
                 "source_profile_hash": stable_model_hash(loaded.source_profile),
-                "normalizer_code_hash": stable_code_hash(normalize_master_profile, validate_master_profile),
+                "normalizer_code_hash": stable_code_hash(
+                    normalize_master_profile, validate_master_profile
+                ),
             },
         )
         try:
@@ -354,7 +512,9 @@ class ResumeGenerationOrchestrator:
                 http_status_code=400,
             ) from exc
 
-    def _ingest_job_description(self, request: PipelineInput, jd_hash: str) -> IngestJobDescriptionOutput:
+    def _ingest_job_description(
+        self, request: PipelineInput, jd_hash: str
+    ) -> IngestJobDescriptionOutput:
         try:
             raw_request = RawJobDescriptionRequest(
                 job_description_text=request.job_description_text,
@@ -389,7 +549,9 @@ class ResumeGenerationOrchestrator:
         normalized: NormalizeSourceDataOutput,
         generated,
     ):
-        from backend.app.orchestration.pipeline_models import VerifyGeneratedContentInput
+        from backend.app.orchestration.pipeline_models import (
+            VerifyGeneratedContentInput,
+        )
 
         return VerifyGeneratedContentInput(
             source_profile_id=normalized.source_profile_id,
@@ -407,7 +569,9 @@ class ResumeGenerationOrchestrator:
         verified,
         run_id: str,
     ):
-        from backend.app.orchestration.pipeline_models import RenderDeterministicLatexInput
+        from backend.app.orchestration.pipeline_models import (
+            RenderDeterministicLatexInput,
+        )
 
         return RenderDeterministicLatexInput(
             source_profile=normalized.normalized_profile,
@@ -436,7 +600,8 @@ class ResumeGenerationOrchestrator:
             storage_kind="inline",
             schema_version="phase6.pipeline.result.v1",
             inline_json={"artifact_count": len(recorder.artifacts)},
-            metadata=recorder.run_diagnostics() | {
+            metadata=recorder.run_diagnostics()
+            | {
                 "artifact_count": len(recorder.artifacts),
             },
         )
@@ -445,6 +610,31 @@ class ResumeGenerationOrchestrator:
             "artifact_count": len(recorder.artifacts),
             **recorder.run_diagnostics(),
         }
+
+    def _publish_completed_result_artifact(
+        self,
+        recorder: PipelineRunRecorder,
+        response: GenerateResumePipelineResponse,
+    ) -> None:
+        """Persist the final API payload as a structured JSON artifact without failing the run."""
+
+        try:
+            self.artifact_manager.persist_text_artifact(
+                recorder=recorder,
+                stage_name=StageName.PERSIST_ARTIFACTS,
+                artifact_type=ArtifactKind.PIPELINE_RESULT,
+                relative_name="outputs/result.json",
+                content=json.dumps(
+                    response.model_dump(mode="json", exclude_none=True),
+                    indent=2,
+                    sort_keys=True,
+                ),
+                content_type="application/json",
+            )
+        except Exception as exc:
+            recorder.warnings.append(
+                f"Completed result artifact could not be published: {exc}"
+            )
 
     def _record_model_artifact(
         self,
@@ -569,7 +759,9 @@ class ResumeGenerationOrchestrator:
             },
         )
 
-    def _record_generation_fallbacks(self, recorder: PipelineRunRecorder, validation_report) -> None:
+    def _record_generation_fallbacks(
+        self, recorder: PipelineRunRecorder, validation_report
+    ) -> None:
         """Translate existing Phase 3 conservative repairs into orchestration audits."""
 
         for action in validation_report.applied_fallbacks:
@@ -580,7 +772,8 @@ class ResumeGenerationOrchestrator:
                 stage_name=StageName.GENERATE_STRUCTURED_CONTENT,
                 fallback_class=fallback_class,
                 reason=action.message,
-                final_output_downgraded=fallback_class != FallbackClass.REBUILD_GENERATION_METADATA,
+                final_output_downgraded=fallback_class
+                != FallbackClass.REBUILD_GENERATION_METADATA,
                 machine_payload_json={
                     "source_item_id": action.source_item_id,
                     "phase3_action_type": action.action_type.value,
@@ -617,3 +810,137 @@ def _duration_ms(started_at: datetime, ended_at: datetime) -> int:
 
 
 DEFAULT_RESUME_GENERATION_ORCHESTRATOR = ResumeGenerationOrchestrator()
+
+
+def _selected_experience_payload(
+    verified,
+    ranked,
+) -> list[dict[str, object]]:
+    verified_result = getattr(
+        getattr(verified, "rendering_output", None), "verified_result", None
+    )
+    if verified_result is not None and getattr(
+        verified_result, "selected_experiences", None
+    ):
+        return [
+            {
+                "id": experience.source_item_id,
+                "title": experience.title,
+                "company": experience.organization,
+                "summary": _joined_bullets(
+                    bullet.rewritten_text for bullet in experience.generated_bullets[:2]
+                ),
+                "score": experience.ranking_relevance_score,
+                "rationale": "Selected for source-backed relevance to the job description.",
+                "evidence": [bullet.id for bullet in experience.generated_bullets],
+            }
+            for experience in verified_result.selected_experiences
+        ]
+
+    selection = getattr(ranked, "selection_result", None)
+    if selection is None:
+        return []
+    return [
+        {
+            "id": item.source_item_id,
+            "score": item.relevance_score,
+            "rationale": item.ranking_explanation.summary,
+            "evidence": list(item.selected_bullet_ids),
+        }
+        for item in selection.selected_experiences
+    ]
+
+
+def _selected_project_payload(
+    verified,
+    ranked,
+) -> list[dict[str, object]]:
+    verified_result = getattr(
+        getattr(verified, "rendering_output", None), "verified_result", None
+    )
+    if verified_result is not None and getattr(
+        verified_result, "selected_projects", None
+    ):
+        return [
+            {
+                "id": project.source_item_id,
+                "name": project.name,
+                "summary": _joined_bullets(
+                    bullet.rewritten_text for bullet in project.generated_bullets[:2]
+                ),
+                "score": project.ranking_relevance_score,
+                "rationale": "Selected for source-backed relevance to the job description.",
+                "evidence": [bullet.id for bullet in project.generated_bullets],
+            }
+            for project in verified_result.selected_projects
+        ]
+
+    selection = getattr(ranked, "selection_result", None)
+    if selection is None:
+        return []
+    return [
+        {
+            "id": item.source_item_id,
+            "score": item.relevance_score,
+            "rationale": item.ranking_explanation.summary,
+            "evidence": list(item.selected_bullet_ids),
+        }
+        for item in selection.selected_projects
+    ]
+
+
+def _selected_skill_payload(
+    verified,
+    ranked,
+) -> list[dict[str, object]]:
+    verified_result = getattr(
+        getattr(verified, "rendering_output", None), "verified_result", None
+    )
+    if verified_result is not None and getattr(
+        verified_result, "skills_to_highlight", None
+    ):
+        return [
+            {
+                "id": f"skill.{skill.skill_name.casefold().replace(' ', '-')}",
+                "name": skill.skill_name,
+                "score": skill.confidence_score,
+                "rationale": "Highlighted by the verified generation output.",
+            }
+            for skill in verified_result.skills_to_highlight
+        ]
+
+    selection = getattr(ranked, "selection_result", None)
+    if selection is None:
+        return []
+    return [
+        {
+            "id": item.source_item_id,
+            "name": item.skill_name,
+            "score": item.relevance_score,
+            "rationale": item.ranking_explanation.summary,
+        }
+        for item in selection.selected_skills
+    ]
+
+
+def _joined_bullets(lines) -> str | None:
+    values = [line.strip() for line in lines if isinstance(line, str) and line.strip()]
+    if not values:
+        return None
+    return " ".join(values)
+
+
+def _summary_state(generated) -> str:
+    validation_report = getattr(generated, "validation_report", None)
+    phase3_result = getattr(generated, "phase3_result", None)
+    if phase3_result is None:
+        return "unknown"
+    if getattr(phase3_result, "summary", None) is None:
+        return "omitted"
+    applied_fallbacks = getattr(validation_report, "applied_fallbacks", []) or []
+    if any(
+        str(getattr(action, "action_type", "")) == "summary_fallback"
+        for action in applied_fallbacks
+    ):
+        return "fallback"
+    return "generated"

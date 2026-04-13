@@ -2,6 +2,7 @@ import { ArtifactLinksPanel } from "./ArtifactLinksPanel";
 import { ArtifactActions } from "./ArtifactActions";
 import { RunQualitySummary } from "./RunQualitySummary";
 import { SelectionSummary } from "./SelectionSummary";
+import { KeywordsPanel } from "./KeywordsPanel";
 import {
   countMeaningfulWarnings,
   formatPipelineOutcome,
@@ -27,6 +28,11 @@ export function GenerationResult({
   const fallbackUsed = hasFallbackUsage(result.diagnostics?.fallback_repairs);
   const role = inferDetectedRole(result);
   const pageLength = inferGeneratedPageLength(result);
+  const pdfReady = result.downloadable_outputs.some((output) => output.kind === "pdf");
+  const summaryState =
+    typeof result.raw_response.run_metadata?.summary_state === "string"
+      ? result.raw_response.run_metadata.summary_state
+      : undefined;
   const outcomeType =
     result.overall_status === "succeeded" && warningsCount === 0 && !fallbackUsed
       ? "success"
@@ -40,11 +46,14 @@ export function GenerationResult({
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
           <StatusBadge tone={outcomeType === "success" ? "success" : "warning"}>
             {outcomeType === "success"
-              ? "Successful run"
+              ? pdfReady
+                ? "Resume ready"
+                : "Successful run"
               : result.overall_status === "succeeded_with_warnings"
                 ? "Success with warnings"
                 : "Partial success"}
           </StatusBadge>
+          {pdfReady ? <StatusBadge tone="success">PDF ready</StatusBadge> : null}
           {warningsCount > 0 ? <StatusBadge tone="warning">{warningsCount} warnings</StatusBadge> : null}
           {fallbackUsed ? <StatusBadge tone="warning">Repair used</StatusBadge> : null}
         </div>
@@ -55,12 +64,15 @@ export function GenerationResult({
             : "The run produced outputs, but warnings, fallback behavior, or incomplete artifacts require review before final use."}
         </p>
         <div className="rg-meta-grid">
+          <SummaryStat label="Run ID" value={result.run_metadata.run_id} />
           <SummaryStat label="Final status" value={formatPipelineOutcome(result.overall_status)} />
           <SummaryStat label="Detected role / title" value={role ?? "Not reported"} />
+          <SummaryStat label="Template used" value={result.run_metadata.template_id ?? "Not reported"} />
           <SummaryStat label="Page length" value={pageLength} />
           <SummaryStat label="Selected experiences" value={String(result.selected_experiences.length)} />
           <SummaryStat label="Selected projects" value={String(result.selected_projects.length)} />
           <SummaryStat label="Selected skills" value={String(result.selected_skills.length)} />
+          <SummaryStat label="Summary state" value={summaryState ?? "Not reported"} />
           <SummaryStat label="Warnings count" value={String(warningsCount)} />
           <SummaryStat label="Fallback / repair used" value={fallbackUsed ? "Yes" : "No"} />
         </div>
@@ -78,6 +90,8 @@ export function GenerationResult({
       </div>
 
       <SelectionSummary result={result} />
+
+      <KeywordsPanel result={result} />
 
       {debug ? (
         <SurfaceCard>
@@ -130,6 +144,16 @@ export function GenerationResult({
             ) : null}
             {fallbackUsed ? <li>Fallback or repair logic was used during the run.</li> : null}
           </ul>
+        </SurfaceCard>
+      ) : null}
+
+      {summaryState === "omitted" ? (
+        <SurfaceCard tone="warning">
+          <h3 style={{ marginTop: 0 }}>Summary omitted safely</h3>
+          <p style={{ marginBottom: 0 }}>
+            The backend skipped the summary section so the resume could still be completed with selected experience,
+            project, and skill evidence.
+          </p>
         </SurfaceCard>
       ) : null}
     </section>

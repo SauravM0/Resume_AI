@@ -11,7 +11,7 @@ from typing import Any
 EMAIL_PATTERN = re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", re.IGNORECASE)
 PHONE_PATTERN = re.compile(r"\b(?:\+?1[-.\s]*)?(?:\(?\d{3}\)?[-.\s]+){2}\d{4}\b")
 URL_PATTERN = re.compile(r"\bhttps?://[^\s]+", re.IGNORECASE)
-OPENAI_KEY_PATTERN = re.compile(r"\bsk-[A-Za-z0-9_-]{8,}\b")
+GEMINI_KEY_PATTERN = re.compile(r"\bAIza[A-Za-z0-9_-]{30,}\b")
 DEFAULT_EXCEPTION_MESSAGE = "Sensitive error details were redacted."
 
 
@@ -175,7 +175,7 @@ def fingerprint_object(value: Any) -> str:
 
 
 def _sanitize_inline_text(value: str) -> str:
-    sanitized = OPENAI_KEY_PATTERN.sub("[REDACTED_API_KEY]", value)
+    sanitized = GEMINI_KEY_PATTERN.sub("[REDACTED_API_KEY]", value)
     sanitized = EMAIL_PATTERN.sub("[REDACTED_EMAIL]", sanitized)
     sanitized = PHONE_PATTERN.sub("[REDACTED_PHONE]", sanitized)
     sanitized = URL_PATTERN.sub("[REDACTED_URL]", sanitized)
@@ -186,7 +186,7 @@ def _looks_like_sensitive_freeform(value: str) -> bool:
     lowered = value.casefold()
     if "\n" in value or len(value) > 160:
         return True
-    if OPENAI_KEY_PATTERN.search(value) or EMAIL_PATTERN.search(value) or PHONE_PATTERN.search(value):
+    if GEMINI_KEY_PATTERN.search(value) or EMAIL_PATTERN.search(value) or PHONE_PATTERN.search(value):
         return True
     return any(
         token in lowered

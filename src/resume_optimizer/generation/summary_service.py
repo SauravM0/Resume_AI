@@ -31,7 +31,7 @@ from .quality_validator import merge_quality_signals, validate_summary_quality
 from .rewrite_policy import RewritePolicyContext, RewritePolicyTarget, evaluate_rewrite_policy
 
 if TYPE_CHECKING:
-    from openai import OpenAI
+    from google.genai.client import Client as GeminiClient
 
 _TOKEN_PATTERN = re.compile(r"[a-z0-9][a-z0-9.+#/%-]*")
 _NUMBER_PATTERN = re.compile(r"\b\d+(?:\.\d+)?%?\b")
@@ -127,7 +127,7 @@ class SummaryGenerationService:
     def __init__(
         self,
         *,
-        client: OpenAI | None = None,
+        client: GeminiClient | None = None,
         model: str | None = None,
         settings: Settings = DEFAULT_SETTINGS,
         prompt_template: str | None = None,
