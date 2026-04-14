@@ -24,11 +24,14 @@ test = [
 ]
 
 [tool.setuptools]
-package-dir = {"" = "src", "backend" = "backend"}
+# package-dir configuration for monorepo
+# Note: runtime resolves via start_backend.py sys.path injection
 
 [tool.setuptools.packages.find]
-where = ["src", "."]
+# Directories where packages are found
+where = ["packages/resume_core/src", "apps/backend"]
 include = ["resume_optimizer*", "backend*"]
+exclude = ["tests*", "**/tests"]
 
 [tool.setuptools.package-data]
 "backend.app.templates.latex" = ["ats_standard/v1/*.tex"]

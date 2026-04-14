@@ -1,0 +1,13 @@
+{
+  "id": "empty.profile",
+  "personal_profile": {
+    "id": "person.empty",
+    "item_type": "personal_profile",
+    "full_name": ""
+  },
+  "experience": [],
+  "projects": [],
+  "skills": [],
+  "education": [],
+  "certifications": []
+}

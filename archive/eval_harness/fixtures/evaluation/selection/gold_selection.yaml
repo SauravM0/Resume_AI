@@ -1,0 +1,657 @@
+pack_id: gold_selection_v1
+pack_type: selection
+description: |
+  Gold selection evaluation pack for hardening the Phase 2 deterministic selection engine.
+  Tests 10 critical selection scenarios that define product quality: frontend/backend/fullstack,
+  senior/entry-level, project-heavy/stale/weak-fit/compression/gap-fill cases.
+  Success requires matching relevant experiences, filtering stale content, supporting skills with evidence,
+  and compressing intelligently for one-page output.
+version: "1.0.0"
+
+cases:
+  - case_id: GOLD-FE-001-frontend-senior-react
+    description: Senior frontend role should select React/TypeScript experience and exclude old jQuery work
+    pack_type: selection
+    job_description:
+      raw_text: |
+        Senior Frontend Engineer
+        
+        Requirements:
+        - 5+ years React and TypeScript experience
+        - Component architecture and state management (Redux, Zustand)
+        - Modern CSS (Tailwind, styled-components)
+        - Performance optimization
+        - Testing (Jest, Cypress)
+        
+        Responsibilities:
+        - Build and maintain React components
+        - Optimize application performance
+        - Mentor junior developers
+    profile:
+      path: profiles/frontend_modern.json
+      summary: Strong React/TypeScript profile with old jQuery work that should be excluded
+    phase1_expectations:
+      expected_role_family: frontend
+      expected_seniority: senior
+    selection_expectations:
+      experience_expectations:
+        - type: must_include
+          value: Senior Frontend Engineer @ TechFlow
+          reason: Most relevant recent frontend experience with React/TypeScript
+        - type: must_include
+          value: Frontend Developer @ WebAgency
+          reason: Adds frontend breadth and modern React evidence
+        - type: must_not_include
+          value: Junior Web Dev @ OldCorp
+          reason: Old jQuery work dilutes the React narrative
+      project_expectations:
+        - type: must_include
+          value: E-commerce Redesign
+          reason: Strong modern React project evidence
+        - type: must_not_include
+          value: Legacy Site Update
+          reason: Old HTML/CSS project does not add value
+      bullet_expectations:
+        - type: must_include
+          value: React 18 with TypeScript
+          match_mode: fuzzy
+        - type: must_include
+          value: component library
+          match_mode: fuzzy
+        - type: must_include
+          value: 85% code coverage
+          match_mode: fuzzy
+        - type: must_not_include
+          value: jQuery admin
+          match_mode: fuzzy
+      skill_expectations:
+        - type: must_include
+          value: React
+        - type: must_include
+          value: TypeScript
+        - type: must_include
+          value: Jest
+        - type: must_not_include
+          value: jQuery
+      min_selection_relevance: 0.65
+      min_diversity_balance: 0.50
+
+  - case_id: GOLD-BE-002-backend-platform
+    description: Backend platform role should prioritize distributed systems work and suppress old frontend experience
+    pack_type: selection
+    job_description:
+      raw_text: |
+        Senior Backend Engineer
+        
+        Requirements:
+        - Expert Python and Go
+        - Distributed systems and microservices
+        - AWS, PostgreSQL, Kafka
+        - Build and operate critical APIs
+        
+        Responsibilities:
+        - Design and implement scalable backend services
+        - Lead technical design reviews
+    profile:
+      path: profiles/senior_backend.json
+      summary: Strong backend/platform profile with one older frontend role that should be excluded
+    phase1_expectations:
+      expected_role_family: backend
+      expected_seniority: senior
+    selection_expectations:
+      experience_expectations:
+        - type: must_include
+          value: Principal Backend Engineer @ Atlas Platform
+          reason: Most strategically relevant recent backend role
+        - type: must_include
+          value: Senior Software Engineer @ StreamForge
+          reason: Adds API and performance evidence
+        - type: must_not_include
+          value: Frontend Developer @ PixelCraft
+          reason: Old frontend work dilutes backend narrative
+      project_expectations:
+        - type: must_include
+          value: Multi-Region Event Pipeline
+        - type: must_not_include
+          value: Brand Refresh Microsite
+      bullet_expectations:
+        - type: must_include
+          value: 150 million events per day
+          match_mode: fuzzy
+        - type: must_include
+          value: cutting failure recovery time by 65%
+          match_mode: fuzzy
+        - type: must_not_include
+          value: jQuery admin UI
+          match_mode: fuzzy
+      skill_expectations:
+        - type: must_include
+          value: Python
+        - type: must_include
+          value: Go
+        - type: must_include
+          value: AWS
+        - type: must_include
+          value: Kafka
+        - type: must_not_include
+          value: jQuery
+      min_selection_relevance: 0.65
+      min_diversity_balance: 0.55
+
+  - case_id: GOLD-FS-003-fullstack
+    description: Fullstack role should show both frontend and backend evidence without overconcentration
+    pack_type: selection
+    job_description:
+      raw_text: |
+        Fullstack Engineer
+        
+        Requirements:
+        - React and Node.js experience
+        - REST and GraphQL APIs
+        - PostgreSQL database
+        - End-to-end feature ownership
+        
+        Responsibilities:
+        - Build features from frontend to backend
+        - Design API contracts
+    profile:
+      path: profiles/fullstack.json
+      summary: Fullstack profile with strong Node.js/React and data entry clerks from 7 years ago
+    phase1_expectations:
+      expected_role_family: fullstack
+      expected_seniority: senior
+    selection_expectations:
+      experience_expectations:
+        - type: must_include
+          value: Fullstack Engineer @ StartupXYZ
+          reason: Most recent fullstack evidence
+        - type: must_include
+          value: Software Engineer @ EnterpriseCo
+          reason: Adds backend depth
+        - type: must_not_include
+          value: Data Entry Clerk @ OldCorp
+          reason: Irrelevant old operations work
+      project_expectations:
+        - type: must_include
+          value: Customer Dashboard
+      bullet_expectations:
+        - type: must_include
+          value: React frontend and Node.js/Express backend
+          match_mode: fuzzy
+        - type: must_include
+          value: GraphQL API layer
+          match_mode: fuzzy
+        - type: must_not_include
+          value: customer data in legacy database
+          match_mode: fuzzy
+      skill_expectations:
+        - type: must_include
+          value: React
+        - type: must_include
+          value: Node.js
+        - type: must_include
+          value: GraphQL
+        - type: must_not_include
+          value: Spreadsheets
+      min_selection_relevance: 0.60
+      min_diversity_balance: 0.55
+
+  - case_id: GOLD-BE-004-recent-backend-over-legacy
+    description: Backend role should surface recent Python/AWS and exclude stale Java work and QA
+    pack_type: selection
+    job_description:
+      raw_text: |
+        Backend Engineer
+        
+        Requirements:
+        - Python and FastAPI
+        - REST APIs
+        - AWS cloud deployments
+        - Strong testing discipline
+        
+        Responsibilities:
+        - Build and maintain backend services
+        - Ensure API reliability
+    profile:
+      path: profiles/mixed_experience.json
+      summary: Recent backend/API experience plus old Java and QA history
+    phase1_expectations:
+      expected_role_family: backend
+      expected_seniority: senior
+    selection_expectations:
+      experience_expectations:
+        - type: must_include
+          value: Backend Engineer @ SignalStack
+        - type: must_include
+          value: Platform Engineer @ LedgerLoop
+        - type: must_not_include
+          value: Java Developer @ LegacyBank
+        - type: must_not_include
+          value: QA Analyst @ TestWorks
+      project_expectations:
+        - type: must_include
+          value: Billing API Migration
+        - type: must_not_include
+          value: Android Retail App
+      bullet_expectations:
+        - type: must_include
+          value: FastAPI services
+          match_mode: fuzzy
+        - type: must_include
+          value: Migrated billing workloads to AWS
+          match_mode: fuzzy
+        - type: must_not_include
+          value: Struts monolith
+          match_mode: fuzzy
+      skill_expectations:
+        - type: must_include
+          value: Python
+        - type: must_include
+          value: FastAPI
+        - type: must_include
+          value: AWS
+        - type: must_not_include
+          value: Java
+      min_selection_relevance: 0.60
+      min_diversity_balance: 0.50
+
+  - case_id: GOLD-PLAT-005-platform-breadth
+    description: Staff platform role should preserve breadth across infrastructure, reliability, and developer-platform evidence
+    pack_type: selection
+    job_description:
+      raw_text: |
+        Staff Platform Engineer
+        
+        Requirements:
+        - Terraform and Kubernetes
+        - AWS infrastructure
+        - Incident response and reliability engineering
+        - Developer platform improvements
+        - Platform strategy and cross-team influence
+        
+        Responsibilities:
+        - Define technical architecture for platform services
+        - Drive engineering best practices
+        - Mentor senior engineers
+    profile:
+      path: profiles/backend.json
+      summary: Platform/reliability profile with one stale web role that should stay out
+    phase1_expectations:
+      expected_role_family: platform
+      expected_seniority: staff
+    selection_expectations:
+      experience_expectations:
+        - type: must_include
+          value: Staff Platform Engineer @ RelayOps
+        - type: must_include
+          value: Senior SRE @ ComputeDock
+        - type: must_not_include
+          value: Web Developer @ Campus Labs
+      project_expectations:
+        - type: must_include
+          value: Developer Provisioning Platform
+        - type: acceptable_alternative
+          value: Incident Command Simulator
+          alternative_group: platform_breadth_support
+      bullet_expectations:
+        - type: must_include
+          value: Terraform modules
+          match_mode: fuzzy
+        - type: must_include
+          value: mean time to recovery
+          match_mode: fuzzy
+        - type: acceptable_alternative
+          value: Reduced cloud spend by 18%
+          match_mode: fuzzy
+          alternative_group: breadth_outcome
+        - type: must_not_include
+          value: WordPress sites
+          match_mode: fuzzy
+      skill_expectations:
+        - type: must_include
+          value: Terraform
+        - type: must_include
+          value: Kubernetes
+        - type: must_include
+          value: AWS
+        - type: acceptable_alternative
+          value: Incident Response
+          alternative_group: ops_depth
+        - type: must_not_include
+          value: WordPress
+      min_selection_relevance: 0.62
+      min_diversity_balance: 0.60
+
+  - case_id: GOLD-LE-006-entry-level
+    description: Entry-level frontend role should select most recent education/projects over very old experience
+    pack_type: selection
+    job_description:
+      raw_text: |
+        Junior Frontend Engineer
+        
+        Requirements:
+        - HTML, CSS, JavaScript
+        - React fundamentals
+        - Experience with version control
+        - Eagerness to learn
+        
+        Responsibilities:
+        - Build frontend components
+        - Learn best practices
+    profile:
+      path: profiles/frontend_modern.json
+      summary: Recent junior-level profile with very old jQuery work that should be heavily penalized
+    phase1_expectations:
+      expected_role_family: frontend
+      expected_seniority: junior
+    selection_expectations:
+      experience_expectations:
+        - type: must_include
+          value: Senior Frontend Engineer @ TechFlow
+          reason: Most recent and relevant frontend work
+        - type: must_not_include
+          value: Junior Web Dev @ OldCorp
+          reason: Very old, irrelevant work from 8+ years ago
+      project_expectations:
+        - type: must_include
+          value: E-commerce Redesign
+        - type: must_not_include
+          value: Legacy Site Update
+      bullet_expectations:
+        - type: must_include
+          value: React
+          match_mode: fuzzy
+        - type: must_include
+          value: TypeScript
+          match_mode: fuzzy
+        - type: must_not_include
+          value: jQuery
+          match_mode: fuzzy
+      skill_expectations:
+        - type: must_include
+          value: React
+        - type: must_include
+          value: TypeScript
+        - type: must_not_include
+          value: jQuery
+      min_selection_relevance: 0.55
+      min_diversity_balance: 0.50
+
+  - case_id: GOLD-PROJ-007-project-heavy
+    description: Project-heavy profile should surface relevant projects and suppress redundant ones
+    pack_type: selection
+    job_description:
+      raw_text: |
+        Senior Frontend Engineer
+        
+        Requirements:
+        - React and TypeScript
+        - E-commerce experience
+        - Performance optimization
+        
+        Responsibilities:
+        - Build frontend features
+        - Optimize performance
+    profile:
+      path: profiles/frontend_modern.json
+      summary: Profile with 2 strong projects, one should be kept, one should be suppressed
+    phase1_expectations:
+      expected_role_family: frontend
+      expected_seniority: senior
+    selection_expectations:
+      experience_expectations:
+        - type: must_include
+          value: Senior Frontend Engineer @ TechFlow
+        - type: must_include
+          value: Frontend Developer @ WebAgency
+      project_expectations:
+        - type: must_include
+          value: E-commerce Redesign
+          reason: Strong matching project with relevant metrics
+        - type: must_not_include
+          value: Legacy Site Update
+          reason: Redundant with frontend narrative, no modern tech
+      bullet_expectations:
+        - type: must_include
+          value: conversion by 15%
+          match_mode: fuzzy
+        - type: must_include
+          value: Lighthouse score
+          match_mode: fuzzy
+        - type: must_not_include
+          value: HTML
+          match_mode: fuzzy
+      skill_expectations:
+        - type: must_include
+          value: React
+        - type: must_include
+          value: TypeScript
+        - type: must_not_include
+          value: jQuery
+      min_selection_relevance: 0.65
+      min_diversity_balance: 0.55
+
+  - case_id: GOLD-STALE-008-stale-experience-leakage
+    description: Strong backend profile with stale experience should NOT let old work leak into selection
+    pack_type: selection
+    job_description:
+      raw_text: |
+        Backend Engineer - Python Focus
+        
+        Requirements:
+        - Python and FastAPI
+        - REST APIs
+        - AWS
+        
+        Responsibilities:
+        - Build backend services
+    profile:
+      path: profiles/mixed_experience.json
+      summary: Profile with 4 years of stale experience that should be excluded
+    phase1_expectations:
+      expected_role_family: backend
+      expected_seniority: senior
+    selection_expectations:
+      experience_expectations:
+        - type: must_include
+          value: Backend Engineer @ SignalStack
+        - type: must_include
+          value: Platform Engineer @ LedgerLoop
+        - type: must_not_include
+          value: QA Analyst @ TestWorks
+          reason: 12-year-old work not relevant to modern backend role
+        - type: must_not_include
+          value: Java Developer @ LegacyBank
+          reason: 9-year-old Java work not relevant to Python role
+      project_expectations:
+        - type: must_include
+          value: Billing API Migration
+        - type: must_not_include
+          value: Android Retail App
+      bullet_expectations:
+        - type: must_include
+          value: FastAPI
+          match_mode: fuzzy
+        - type: must_not_include
+          value: Struts monolith
+          match_mode: fuzzy
+        - type: must_not_include
+          value: manual test scripts
+          match_mode: fuzzy
+      skill_expectations:
+        - type: must_include
+          value: Python
+        - type: must_include
+          value: FastAPI
+        - type: must_not_include
+          value: Java
+      min_selection_relevance: 0.60
+      min_diversity_balance: 0.50
+
+  - case_id: GOLD-WEAK-009-strong-skills-weak-fit
+    description: Profile with strong skills but weak project fit should still select right experiences
+    pack_type: selection
+    job_description:
+      raw_text: |
+        Senior Backend Engineer
+        
+        Requirements:
+        - Python
+        - Kubernetes
+        - AWS
+        - Microservices
+        
+        Responsibilities:
+        - Design distributed systems
+    profile:
+      path: profiles/senior_backend.json
+      summary: Strong backend skills but project evidence is mixed
+    phase1_expectations:
+      expected_role_family: backend
+      expected_seniority: senior
+    selection_expectations:
+      experience_expectations:
+        - type: must_include
+          value: Principal Backend Engineer @ Atlas Platform
+          reason: Core backend experience
+        - type: must_include
+          value: Senior Software Engineer @ StreamForge
+          reason: Secondary backend evidence
+      project_expectations:
+        - type: must_include
+          value: Multi-Region Event Pipeline
+          reason: Strong distributed systems evidence
+        - type: must_not_include
+          value: Brand Refresh Microsite
+          reason: Frontend project dilutes backend focus
+      bullet_expectations:
+        - type: must_include
+          value: microservices platform
+          match_mode: fuzzy
+        - type: must_include
+          value: distributed job orchestration
+          match_mode: fuzzy
+      skill_expectations:
+        - type: must_include
+          value: Python
+        - type: must_include
+          value: Kafka
+        - type: must_not_include
+          value: jQuery
+      min_selection_relevance: 0.65
+      min_diversity_balance: 0.55
+
+  - case_id: GOLD-GAP-010-gap-fill-project-surfaces
+    description: When experience doesn't cover key requirement, project should fill the gap
+    pack_type: selection
+    job_description:
+      raw_text: |
+        Platform Engineer
+        
+        Requirements:
+        - Terraform automation
+        - Developer experience tools
+        - AWS
+        - Self-service infrastructure
+        
+        Responsibilities:
+        - Build developer platform
+        - Enable self-service
+    profile:
+      path: profiles/backend.json
+      summary: Platform profile where project can fill gaps in experience coverage
+    phase1_expectations:
+      expected_role_family: platform
+      expected_seniority: senior
+    selection_expectations:
+      experience_expectations:
+        - type: must_include
+          value: Staff Platform Engineer @ RelayOps
+        - type: must_include
+          value: Senior SRE @ ComputeDock
+      project_expectations:
+        - type: must_include
+          value: Developer Provisioning Platform
+          reason: Project fills self-service infrastructure gap
+        - type: acceptable_alternative
+          value: Incident Command Simulator
+          alternative_group: platform_evidence
+      bullet_expectations:
+        - type: must_include
+          value: self-service provisioning
+          match_mode: fuzzy
+        - type: must_include
+          value: Terraform
+          match_mode: fuzzy
+        - type: must_include
+          value: policy guardrails
+          match_mode: fuzzy
+      skill_expectations:
+        - type: must_include
+          value: Terraform
+        - type: must_include
+          value: Kubernetes
+        - type: must_include
+          value: AWS
+      min_selection_relevance: 0.62
+      min_diversity_balance: 0.55
+
+  - case_id: GOLD-COMP-011-one-page-compression
+    description: One-page compression - should keep strategically important evidence even with tight limits
+    pack_type: selection
+    job_description:
+      raw_text: |
+        Senior Backend Engineer
+        
+        Requirements:
+        - Python and Go
+        - Distributed systems
+        - AWS
+        - Kafka
+        - Microservices
+        
+        Responsibilities:
+        - Design scalable services
+    profile:
+      path: profiles/senior_backend.json
+      summary: 3-experience profile requiring intelligent compression to one page
+    phase1_expectations:
+      expected_role_family: backend
+      expected_seniority: senior
+    selection_expectations:
+      experience_expectations:
+        - type: must_include
+          value: Principal Backend Engineer @ Atlas Platform
+        - type: must_include
+          value: Senior Software Engineer @ StreamForge
+        - type: must_not_include
+          value: Frontend Developer @ PixelCraft
+      project_expectations:
+        - type: must_include
+          value: Multi-Region Event Pipeline
+        - type: must_not_include
+          value: Brand Refresh Microsite
+      bullet_expectations:
+        - type: must_include
+          value: 150 million events
+          match_mode: fuzzy
+        - type: must_include
+          value: failure recovery time
+          match_mode: fuzzy
+        - type: must_include
+          value: p95 latency
+          match_mode: fuzzy
+        - type: must_not_include
+          value: jQuery
+      skill_expectations:
+        - type: must_include
+          value: Python
+        - type: must_include
+          value: Go
+        - type: must_include
+          value: Kafka
+        - type: must_not_include
+          value: jQuery
+      min_selection_relevance: 0.65
+      min_bullet_count: 3
+      min_diversity_balance: 0.50

@@ -1,0 +1,723 @@
+{
+  "id": "master.alex-morgan",
+  "personal_profile": {
+    "id": "person.alex-morgan",
+    "item_type": "personal_profile",
+    "full_name": "Alex Morgan",
+    "headline": "Sr Software Engineer",
+    "summary": "Full-stack software engineer with experience building customer-facing web products, backend platform services, and internal delivery workflows for growing SaaS teams.",
+    "email": "alex.morgan@example.com",
+    "phone": "+1 206 555 0147",
+    "location": "Seattle, WA",
+    "linkedin_url": "https://www.linkedin.com/in/alexmorgan",
+    "github_url": "https://github.com/alexmorgan",
+    "website_url": "https://alexmorgan.dev",
+    "role_type": "individual_contributor",
+    "seniority_level": "senior",
+    "source_links": [
+      {
+        "source_type": "linkedin",
+        "source_id": "source.linkedin.alex-morgan",
+        "source_url": "https://www.linkedin.com/in/alexmorgan",
+        "note": "Primary public profile"
+      }
+    ],
+    "canonical_tags": [
+      "full-stack",
+      "platform",
+      "saas"
+    ],
+    "domain_tags": [
+      "FE",
+      "BE",
+      "saas"
+    ],
+    "verified_status": "self_reported",
+    "evidence_strength": "moderate",
+    "rewrite_allowed": true
+  },
+  "experience": [
+    {
+      "id": "exp.northstar-tech",
+      "item_type": "experience",
+      "organization": "Northstar Tech",
+      "title": "Sr Software Engineer",
+      "employment_type": "full_time",
+      "role_type": "individual_contributor",
+      "seniority_level": "senior",
+      "location": "Seattle, WA",
+      "start_date": {
+        "raw_value": "2022-04"
+      },
+      "end_date": null,
+      "current": true,
+      "bullets": [
+        {
+          "id": "bullet.northstar-checkout",
+          "item_type": "bullet",
+          "text": "CHANGED BULLET: Led the major checkout redesign that increased conversions by 25%.",
+          "impact_level": "high",
+          "tools": [
+            "React",
+            "TypeScript",
+            "Node",
+            "Postgres"
+          ],
+          "metrics": [
+            {
+              "id": "metric.northstar-conversion-lift",
+              "label": "trial_to_paid_conversion_lift",
+              "value": 18,
+              "unit": "percent",
+              "context": "Compared to the prior checkout flow baseline"
+            }
+          ],
+          "source_links": [
+            {
+              "source_type": "resume",
+              "source_id": "source.resume.2025",
+              "source_url": "https://example.com/source/resume-2025.pdf",
+              "excerpt": "Redesigned self-serve checkout flow"
+            }
+          ],
+          "canonical_tags": [
+            "conversion",
+            "checkout"
+          ],
+          "domain_tags": [
+            "FE",
+            "saas",
+            "growth"
+          ],
+          "verified_status": "corroborated",
+          "evidence_strength": "strong",
+          "impact_score": 0.88,
+          "recency_score": 0.95,
+          "rewrite_allowed": true
+        },
+        {
+          "id": "bullet.northstar-release-quality",
+          "item_type": "bullet",
+          "text": "Introduced shared release checklists and lightweight ownership guidelines across FE and BE teams, making weekly releases more predictable.",
+          "impact_level": "medium",
+          "tools": [
+            "GitHub Actions",
+            "Terraform"
+          ],
+          "metrics": [],
+          "source_links": [
+            {
+              "source_type": "interview_notes",
+              "source_id": "source.interview.release-process",
+              "source_url": "https://example.com/source/interview-release-process",
+              "note": "Process improvements described in manager interview"
+            }
+          ],
+          "canonical_tags": [
+            "delivery",
+            "leadership"
+          ],
+          "domain_tags": [
+            "frontend",
+            "backend",
+            "platform"
+          ],
+          "verified_status": "self_reported",
+          "evidence_strength": "moderate",
+          "impact_score": 0.61,
+          "recency_score": 0.9,
+          "rewrite_allowed": true
+        }
+      ],
+      "tools": [
+        "TypeScript",
+        "React",
+        "Node",
+        "Postgres",
+        "AWS"
+      ],
+      "metrics": [
+        {
+          "id": "metric.northstar-team-scope",
+          "label": "engineering_team_scope",
+          "value": 3,
+          "unit": "squads",
+          "context": "Worked across product, growth, and platform squads"
+        }
+      ],
+      "source_links": [
+        {
+          "source_type": "linkedin",
+          "source_id": "source.linkedin.northstar-role",
+          "source_url": "https://www.linkedin.com/in/alexmorgan",
+          "note": "Current role summary"
+        }
+      ],
+      "canonical_tags": [
+        "full-stack",
+        "delivery"
+      ],
+      "domain_tags": [
+        "FE",
+        "BE",
+        "cloud"
+      ],
+      "verified_status": "corroborated",
+      "evidence_strength": "strong",
+      "impact_score": 0.82,
+      "recency_score": 0.97,
+      "rewrite_allowed": true
+    },
+    {
+      "id": "exp.harbor-cloud",
+      "item_type": "experience",
+      "organization": "Harbor Cloud",
+      "title": "Software Engineer",
+      "employment_type": "full_time",
+      "role_type": "individual_contributor",
+      "seniority_level": "mid",
+      "location": "Remote",
+      "start_date": {
+        "raw_value": "2019-07"
+      },
+      "end_date": {
+        "raw_value": "2022-03"
+      },
+      "current": false,
+      "bullets": [
+        {
+          "id": "bullet.harbor-api-latency",
+          "item_type": "bullet",
+          "text": "Refactored a Node-based ingestion service and query paths, reducing p95 API latency from 780 ms to 420 ms for high-volume reporting endpoints.",
+          "impact_level": "high",
+          "tools": [
+            "Node",
+            "TypeScript",
+            "Postgres",
+            "Redis"
+          ],
+          "metrics": [
+            {
+              "id": "metric.harbor-latency-before",
+              "label": "p95_api_latency_before",
+              "value": 780,
+              "unit": "ms"
+            },
+            {
+              "id": "metric.harbor-latency-after",
+              "label": "p95_api_latency_after",
+              "value": 420,
+              "unit": "ms"
+            }
+          ],
+          "source_links": [
+            {
+              "source_type": "project_doc",
+              "source_id": "source.harbor.perf-doc",
+              "source_url": "https://example.com/source/harbor-perf-doc",
+              "excerpt": "Reduced p95 latency through ingestion refactor"
+            }
+          ],
+          "canonical_tags": [
+            "performance",
+            "api"
+          ],
+          "domain_tags": [
+            "BE",
+            "cloud",
+            "data"
+          ],
+          "verified_status": "verified",
+          "evidence_strength": "verified",
+          "impact_score": 0.86,
+          "recency_score": 0.58,
+          "rewrite_allowed": true
+        },
+        {
+          "id": "bullet.harbor-mentoring",
+          "item_type": "bullet",
+          "text": "Mentored two newer engineers on code review habits and deployment basics while helping document service ownership expectations.",
+          "impact_level": "medium",
+          "tools": [
+            "GitHub",
+            "AWS"
+          ],
+          "metrics": [
+            {
+              "id": "metric.harbor-mentees",
+              "label": "engineers_mentored",
+              "value": 2,
+              "unit": "people"
+            }
+          ],
+          "source_links": [
+            {
+              "source_type": "interview_notes",
+              "source_id": "source.interview.harbor-mentoring",
+              "source_url": "https://example.com/source/harbor-mentoring-notes",
+              "note": "Mentoring examples from retrospective notes"
+            }
+          ],
+          "canonical_tags": [
+            "mentoring",
+            "team-health"
+          ],
+          "domain_tags": [
+            "backend",
+            "platform"
+          ],
+          "verified_status": "self_reported",
+          "evidence_strength": "moderate",
+          "impact_score": 0.49,
+          "recency_score": 0.46,
+          "rewrite_allowed": true
+        }
+      ],
+      "tools": [
+        "Node",
+        "TypeScript",
+        "Postgres",
+        "Redis",
+        "AWS"
+      ],
+      "metrics": [],
+      "source_links": [
+        {
+          "source_type": "resume",
+          "source_id": "source.resume.2022",
+          "source_url": "https://example.com/source/resume-2022.pdf",
+          "note": "Historical role summary"
+        }
+      ],
+      "canonical_tags": [
+        "backend",
+        "platform"
+      ],
+      "domain_tags": [
+        "BE",
+        "cloud"
+      ],
+      "verified_status": "corroborated",
+      "evidence_strength": "strong",
+      "impact_score": 0.73,
+      "recency_score": 0.55,
+      "rewrite_allowed": true
+    }
+  ],
+  "projects": [
+    {
+      "id": "project.design-system-rollout",
+      "item_type": "project",
+      "name": "Design System Rollout",
+      "role": "FE Lead",
+      "role_type": "lead",
+      "seniority_level": "senior",
+      "start_date": {
+        "raw_value": "2023-01"
+      },
+      "end_date": {
+        "raw_value": "2023-09"
+      },
+      "summary": "Cross-team effort to standardize shared UI components and reduce duplicated frontend patterns.",
+      "bullets": [
+        {
+          "id": "bullet.project-design-system-adoption",
+          "item_type": "bullet",
+          "text": "Led adoption of a shared component library across three product surfaces, cutting duplicated UI implementation work during new feature delivery.",
+          "impact_level": "medium",
+          "tools": [
+            "React",
+            "TypeScript",
+            "Storybook"
+          ],
+          "metrics": [
+            {
+              "id": "metric.project-design-system-surfaces",
+              "label": "product_surfaces_adopted",
+              "value": 3,
+              "unit": "surfaces"
+            }
+          ],
+          "source_links": [
+            {
+              "source_type": "project_doc",
+              "source_id": "source.project.design-system",
+              "source_url": "https://example.com/source/design-system-rollout",
+              "excerpt": "Shared component library adoption plan"
+            }
+          ],
+          "canonical_tags": [
+            "design-system",
+            "frontend"
+          ],
+          "domain_tags": [
+            "FE",
+            "ui"
+          ],
+          "verified_status": "corroborated",
+          "evidence_strength": "strong",
+          "impact_score": 0.69,
+          "recency_score": 0.84,
+          "rewrite_allowed": true
+        }
+      ],
+      "tools": [
+        "React",
+        "TypeScript",
+        "Storybook"
+      ],
+      "metrics": [],
+      "link_url": "https://example.com/projects/design-system-rollout",
+      "source_links": [
+        {
+          "source_type": "portfolio",
+          "source_id": "source.portfolio.design-system",
+          "source_url": "https://alexmorgan.dev/projects/design-system-rollout"
+        }
+      ],
+      "canonical_tags": [
+        "frontend",
+        "leadership"
+      ],
+      "domain_tags": [
+        "FE",
+        "saas"
+      ],
+      "verified_status": "corroborated",
+      "evidence_strength": "strong",
+      "impact_score": 0.71,
+      "recency_score": 0.83,
+      "rewrite_allowed": true
+    },
+    {
+      "id": "project.cloud-cost-guardrails",
+      "item_type": "project",
+      "name": "Cloud Cost Guardrails",
+      "role": "Backend Engineer",
+      "role_type": "individual_contributor",
+      "seniority_level": "senior",
+      "start_date": {
+        "raw_value": "2024-02"
+      },
+      "end_date": {
+        "raw_value": "2024-06"
+      },
+      "summary": "Internal tooling work to surface unusual spend patterns and reduce noisy manual reviews.",
+      "bullets": [
+        {
+          "id": "bullet.project-cost-alerting",
+          "item_type": "bullet",
+          "text": "Built scheduled cloud spend alerts and budget summaries for engineering managers, reducing manual weekly cost review time by about 4 hours.",
+          "impact_level": "medium",
+          "tools": [
+            "Python",
+            "AWS",
+            "Postgres"
+          ],
+          "metrics": [
+            {
+              "id": "metric.project-cost-review-hours",
+              "label": "manual_review_time_saved",
+              "value": 4,
+              "unit": "hours_per_week"
+            }
+          ],
+          "source_links": [
+            {
+              "source_type": "project_doc",
+              "source_id": "source.project.cost-guardrails",
+              "source_url": "https://example.com/source/cloud-cost-guardrails"
+            }
+          ],
+          "canonical_tags": [
+            "cost-optimization",
+            "internal-tooling"
+          ],
+          "domain_tags": [
+            "BE",
+            "cloud",
+            "platform"
+          ],
+          "verified_status": "self_reported",
+          "evidence_strength": "moderate",
+          "impact_score": 0.57,
+          "recency_score": 0.89,
+          "rewrite_allowed": true
+        }
+      ],
+      "tools": [
+        "Python",
+        "AWS",
+        "Postgres"
+      ],
+      "metrics": [],
+      "link_url": "https://example.com/projects/cloud-cost-guardrails",
+      "source_links": [
+        {
+          "source_type": "portfolio",
+          "source_id": "source.portfolio.cost-guardrails",
+          "source_url": "https://alexmorgan.dev/projects/cloud-cost-guardrails"
+        }
+      ],
+      "canonical_tags": [
+        "backend",
+        "cloud"
+      ],
+      "domain_tags": [
+        "BE",
+        "cloud"
+      ],
+      "verified_status": "self_reported",
+      "evidence_strength": "moderate",
+      "impact_score": 0.59,
+      "recency_score": 0.88,
+      "rewrite_allowed": true
+    }
+  ],
+  "education": [
+    {
+      "id": "edu.university-washington",
+      "item_type": "education",
+      "institution": "University of Washington",
+      "degree": "B.S.",
+      "field_of_study": "Informatics",
+      "location": "Seattle, WA",
+      "start_date": {
+        "raw_value": "2015-09"
+      },
+      "end_date": {
+        "raw_value": "2019-06"
+      },
+      "bullets": [
+        {
+          "id": "bullet.edu-capstone",
+          "item_type": "bullet",
+          "text": "Completed a capstone focused on accessible web application design with a small student engineering team.",
+          "impact_level": "low",
+          "tools": [
+            "JavaScript",
+            "HTML",
+            "CSS"
+          ],
+          "metrics": [],
+          "source_links": [
+            {
+              "source_type": "other",
+              "source_id": "source.edu.capstone",
+              "source_url": "https://example.com/source/uw-capstone"
+            }
+          ],
+          "canonical_tags": [
+            "education",
+            "accessibility"
+          ],
+          "domain_tags": [
+            "frontend",
+            "ui"
+          ],
+          "verified_status": "self_reported",
+          "evidence_strength": "weak",
+          "impact_score": 0.25,
+          "recency_score": 0.2,
+          "rewrite_allowed": true
+        }
+      ],
+      "honors": [
+        "Dean's List"
+      ],
+      "source_links": [
+        {
+          "source_type": "resume",
+          "source_id": "source.resume.education",
+          "source_url": "https://example.com/source/resume-education"
+        }
+      ],
+      "canonical_tags": [
+        "education"
+      ],
+      "domain_tags": [
+        "frontend"
+      ],
+      "verified_status": "self_reported",
+      "evidence_strength": "moderate",
+      "rewrite_allowed": true
+    }
+  ],
+  "certifications": [
+    {
+      "id": "cert.aws-solutions-architect",
+      "item_type": "certification",
+      "name": "AWS Certified Solutions Architect - Associate",
+      "issuer": "Amazon Web Services",
+      "issue_date": {
+        "raw_value": "2023-11"
+      },
+      "expiration_date": {
+        "raw_value": "2026-11"
+      },
+      "credential_id": "AWS-ASA-48291",
+      "credential_url": "https://www.credly.com/badges/example-aws-asa",
+      "source_links": [
+        {
+          "source_type": "certification_record",
+          "source_id": "source.cert.aws-asa",
+          "source_url": "https://www.credly.com/badges/example-aws-asa"
+        }
+      ],
+      "canonical_tags": [
+        "aws",
+        "cloud"
+      ],
+      "domain_tags": [
+        "cloud",
+        "backend"
+      ],
+      "verified_status": "verified",
+      "evidence_strength": "verified",
+      "rewrite_allowed": false
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill.javascript",
+      "item_type": "skill",
+      "name": "JavaScript",
+      "category": "frontend",
+      "tools": [
+        "React",
+        "TypeScript"
+      ],
+      "metrics": [],
+      "role_type": "individual_contributor",
+      "seniority_level": "senior",
+      "recency_score": 0.94,
+      "source_links": [
+        {
+          "source_type": "resume",
+          "source_id": "source.resume.skills-js",
+          "source_url": "https://example.com/source/resume-skills"
+        }
+      ],
+      "canonical_tags": [
+        "frontend"
+      ],
+      "domain_tags": [
+        "frontend",
+        "ui"
+      ],
+      "verified_status": "corroborated",
+      "evidence_strength": "strong",
+      "rewrite_allowed": true
+    },
+    {
+      "id": "skill.react",
+      "item_type": "skill",
+      "name": "React",
+      "category": "frontend",
+      "tools": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "metrics": [],
+      "role_type": "individual_contributor",
+      "seniority_level": "senior",
+      "recency_score": 0.92,
+      "source_links": [],
+      "canonical_tags": [
+        "frontend",
+        "ui"
+      ],
+      "domain_tags": [
+        "frontend",
+        "saas"
+      ],
+      "verified_status": "corroborated",
+      "evidence_strength": "strong",
+      "rewrite_allowed": true
+    },
+    {
+      "id": "skill.nodejs",
+      "item_type": "skill",
+      "name": "Node.js",
+      "category": "backend",
+      "tools": [
+        "TypeScript",
+        "PostgreSQL"
+      ],
+      "metrics": [],
+      "role_type": "individual_contributor",
+      "seniority_level": "senior",
+      "recency_score": 0.88,
+      "source_links": [],
+      "canonical_tags": [
+        "backend",
+        "api"
+      ],
+      "domain_tags": [
+        "backend",
+        "cloud"
+      ],
+      "verified_status": "corroborated",
+      "evidence_strength": "strong",
+      "rewrite_allowed": true
+    },
+    {
+      "id": "skill.postgresql",
+      "item_type": "skill",
+      "name": "PostgreSQL",
+      "category": "backend",
+      "tools": [
+        "Node.js",
+        "Python"
+      ],
+      "metrics": [],
+      "role_type": "individual_contributor",
+      "seniority_level": "mid",
+      "recency_score": 0.8,
+      "source_links": [],
+      "canonical_tags": [
+        "backend",
+        "data"
+      ],
+      "domain_tags": [
+        "backend",
+        "data"
+      ],
+      "verified_status": "corroborated",
+      "evidence_strength": "strong",
+      "rewrite_allowed": true
+    },
+    {
+      "id": "skill.aws",
+      "item_type": "skill",
+      "name": "AWS",
+      "category": "cloud",
+      "tools": [
+        "Terraform",
+        "Python"
+      ],
+      "metrics": [],
+      "role_type": "individual_contributor",
+      "seniority_level": "senior",
+      "recency_score": 0.83,
+      "source_links": [
+        {
+          "source_type": "certification_record",
+          "source_id": "source.cert.aws-asa-skill",
+          "source_url": "https://www.credly.com/badges/example-aws-asa"
+        }
+      ],
+      "canonical_tags": [
+        "cloud",
+        "platform"
+      ],
+      "domain_tags": [
+        "cloud",
+        "backend"
+      ],
+      "verified_status": "verified",
+      "evidence_strength": "verified",
+      "rewrite_allowed": true
+    }
+  ]
+}

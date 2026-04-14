@@ -1,266 +1,130 @@
-# Resume Optimizer
+# ResumeAI
 
-This repository started at `Phase 0` and now includes a working backend slice through the Phase 6 verification gate.
+ResumeAI is an AI-powered resume generation system that creates ATS-optimized resumes from your master profile and job descriptions. It uses a sophisticated multi-phase pipeline to analyze your experience, rank evidence, generate content, and verify factual accuracy before rendering to PDF.
 
-Phase 0 establishes the source-truth layer for a future AI Resume Optimizer. The only goal at this stage is to define, normalize, validate, and load a canonical master profile safely before any generation pipeline exists.
+## 🏗️ Project Architecture (Monorepo)
 
-## What The Backend Includes
+The project has been restructured into a monorepo for better separation of concerns and maintainability:
 
-- A strict Pydantic v2 schema for the master profile in `src/resume_optimizer/models.py`
-- Deterministic normalization utilities in `src/resume_optimizer/normalizers.py`
-- Integrity validation utilities in `src/resume_optimizer/validators.py`
-- Minimal file-based loader helpers in `src/resume_optimizer/loaders.py`
-- A realistic seed profile in `data/master_profile.example.json`
-- Phase 1 job-analysis parsing and normalization contracts
-- Phase 2 evidence extraction, normalization, scoring, explainability, and FastAPI integration
-- Phase 3 payload assembly, structural planning, strict JSON generation, rewrite safeguards, and fallback validation
-- A repeatable Phase 2 evaluation harness in `src/resume_optimizer/phase2_eval.py`
+- **`apps/backend/`**: FastAPI backend application.
+- **`apps/frontend/`**: React + Vite + TypeScript frontend.
+- **`packages/resume_core/`**: Shared core logic, models, and resume optimization pipeline (`resume_optimizer` package).
+- **`data/`**: Storage for master profiles (`master_profile.json`), example data, and reports.
+- **`docs/`**: Comprehensive technical documentation, runbooks, and phase-specific details.
+- **`archive/`**: Legacy code and internal phase documentation (safe to ignore for daily development).
 
-## run this project
+---
+
+## 🛠️ The "Problem" Solved
+
+Moving to a monorepo structure often creates "ModuleNotFoundError" issues because packages are nested deep in the directory tree. 
+
+**ResumeAI solves this with:**
+1.  **`start_backend.py`**: A unified entry point that automatically injects the correct paths (`apps/backend` and `packages/resume_core/src`) into the Python environment.
+2.  **`pyproject.toml`**: A central configuration for dependencies and package discovery.
+3.  **Automated Path Injection**: No need to manually set `PYTHONPATH` in most cases when using the provided scripts.
+
+---
+
+## 🚀 How to Run the Project
+
+### Prerequisites
+- **Python 3.11+**
+- **Node.js 18+** (with npm)
+- **MiKTeX** (Optional, for LaTeX PDF generation)
+  - Recommended path: `C:\Users\Alexa\AppData\Local\Programs\MiKTeX\`
+
+---
+
+### Step 1: Initial Setup (One-Time)
+
+#### 1. Backend Setup
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -e .
-pip install uvicorn
-export MASTER_PROFILE_PATH=data/master_profile.example.json
-export GEMINI_API_KEY=your_key_here
-uvicorn backend.app.main:app --reload --host 127.0.0.1 --port 8000
+# From the project root
+python -m venv .venv
+.venv\Scripts\activate  # Windows
+# source .venv/bin/activate  # Unix/macOS
 
-cd frontend
+# Install in editable mode (installs all dependencies)
+pip install -e .
+```
+
+#### 2. Frontend Setup
+```bash
+cd apps/frontend
 npm install
+cd ../..
+```
+
+#### 3. Environment Configuration
+Copy `.env.example` to `.env` and add your Gemini API key:
+```bash
+copy .env.example .env
+```
+Edit `.env`:
+```env
+MASTER_PROFILE_PATH=data/master_profile.json
+AI_PROVIDER=gemini
+AI_MODEL=gemini-1.5-flash-latest
+GEMINI_API_KEY=your_actual_api_key_here
+```
+
+---
+
+### Step 2: Running the Servers
+
+You need **two terminal windows** open (or use the `run_all.bat` script).
+
+#### Terminal 1: Backend
+```bash
+# From project root, with .venv activated
+python start_backend.py
+```
+- **Runs on**: [http://127.0.0.1:8000](http://127.0.0.1:8000)
+- **API Docs**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+- **Health Check**: [http://127.0.0.1:8000/api/health](http://127.0.0.1:8000/api/health)
+
+#### Terminal 2: Frontend
+```bash
+cd apps/frontend
 npm run dev
 ```
+- **Runs on**: [http://localhost:5173](http://localhost:5173)
 
+---
 
-
-## What Is Not Included Yet
-
-- Frontend
-- Authentication, payments, dashboards, or user accounts
-- Docker, CI, or deployment infrastructure
-
-## Why Phase 0 Matters
-
-Later resume-generation phases will only be reliable if they operate on a stable internal source of truth. Phase 0 exists to prevent schema drift, inconsistent labels, weak data hygiene, and ad hoc parsing logic from leaking into downstream ranking or generation work.
-
-## Setup
-
-Python: `3.11+`
-
-Install dependencies:
-
-```bash
-pip install -e .
+### ⚡ Quick Start (Windows)
+Double-click `run_all.bat` (if created) or run these commands in a single batch script to launch both:
+```batch
+@echo off
+start cmd /k "python start_backend.py"
+start cmd /k "cd apps/frontend && npm run dev"
 ```
 
-If your environment blocks global installs, use a virtual environment first.
+---
 
-Test dependencies:
+## 🔍 Verification & Diagnostics
 
-```bash
-pip install -e .[test]
-```
+Once running, you can verify your setup:
+1.  **Backend Health**: Visit `http://127.0.0.1:8000/api/health`. It checks if your profile is loaded and if the AI provider is correctly configured.
+2.  **AI Diagnostics**: Visit `http://127.0.0.1:8000/api/diagnostics/ai` to see specific AI configuration status.
+3.  **Tests**:
+    - **Backend**: `pytest` from the root.
+    - **Frontend**: `npm test` inside `apps/frontend`.
 
-## Load The Example Profile
+## 📂 Key Directories
+- `apps/backend/backend/app/api/routes/`: API endpoint definitions.
+- `packages/resume_core/src/resume_optimizer/`: The "brain" of the system.
+- `data/master_profile.json`: Your source-of-truth career data.
+- `apps/frontend/src/pages/`: Main application views.
 
-```python
-from pathlib import Path
+---
 
-from resume_optimizer.loaders import (
-    load_and_normalize_master_profile,
-    load_validate_and_normalize,
-)
+## 🛠️ Troubleshooting
 
-profile = load_and_normalize_master_profile(
-    Path("data/master_profile.example.json"),
-)
-
-validated_profile, report = load_validate_and_normalize(
-    Path("data/master_profile.example.json"),
-)
-
-print(profile.personal_profile.full_name)
-print(report.valid)
-print(report.summary)
-```
-
-## Repository Shape
-
-```text
-src/resume_optimizer/
-  config.py
-  constants.py
-  loaders.py
-  models.py
-  normalizers.py
-  services/
-    phase2_service.py
-    phase3_service.py
-  phase2_eval.py
-  validators.py
-
-data/
-  master_profile.example.json
-```
-
-## Run Phase 2 Evaluation
-
-Run the full eval matrix:
-
-```bash
-PYTHONPATH=src python3 scripts/run_phase2_eval.py --today 2026-04-06
-```
-
-Run one golden case:
-
-```bash
-PYTHONPATH=src python3 scripts/run_phase2_eval.py --case backend_golden --today 2026-04-06
-```
-
-Emit JSON for tooling:
-
-```bash
-PYTHONPATH=src python3 scripts/run_phase2_eval.py --json --today 2026-04-06
-```
-
-Phase 2 eval fixtures live under `backend/app/tests/fixtures/phase2_eval/`:
-
-- `eval_cases.json` is the checked-in manifest
-- `profiles/` contains source profile fixtures
-- `jobs/` contains normalized job-analysis fixtures
-
-The runner validates that pack before evaluation starts and fails early if the manifest or any referenced files are missing or malformed.
-
-To add a new Phase 2 eval case:
-
-1. Add or reuse a profile fixture under `backend/app/tests/fixtures/phase2_eval/profiles/`.
-2. Add a normalized job-analysis JSON under `backend/app/tests/fixtures/phase2_eval/jobs/`.
-3. Add the case and explicit expectations to `backend/app/tests/fixtures/phase2_eval/eval_cases.json`.
-4. Re-run the Phase 2 eval command and tighten expectations only after reviewing the real output.
-
-## Phase 3-6 Flow
-
-The current backend path is:
-
-1. Phase 3 generation builds structured resume content from selected evidence.
-2. Phase 6 verification validates the generated summary, bullets, and skills before rendering.
-3. Phase 5 deterministic rendering consumes the verified content only.
-
-Phase 3 still runs as the generation step between Phase 2 ranking/selection and Phase 6 verification:
-
-1. `Phase3Service.run(...)` validates upstream artifacts and assembles a compact generation payload.
-2. `plan_phase3_sections(...)` builds a deterministic structural plan for ordering, omissions, and density.
-3. `Phase3ContentGenerationService` calls the model for strict JSON only.
-4. `phase3_output_validation` applies conservative fallback when the model output is incomplete or structurally unsafe.
-5. The backend returns a `Phase3ServiceResult` containing:
-   - the validated request artifact
-   - the assembled generation payload
-   - the section plan
-   - the final structured Phase 3 result
-   - the validation/fallback report
-
-FastAPI exposes the public handoff at `POST /api/generate-resume-structure`.
-
-## Phase 6 Verification
-
-Phase 6 is now the mandatory safety gate:
-
-- deterministic validators catch unsupported factual drift
-- the dedicated summary verifier checks high-risk summary claims at claim level
-- semantic verification runs by default for summaries and rewritten bullets
-- the decision engine maps issues into `pass`, `pass_with_warnings`, `repair_and_pass`, `regenerate_target`, or `fail_closed`
-- conservative fallback repair replaces unsafe content downstream when safe repair exists
-- verification audit artifacts are persisted for real runs by default
-
-Developer documentation:
-
-- [Phase 6 Verification](docs/phase6_verification.md)
-
-Preferred local regression entrypoint:
-
-```bash
-PYTHONPATH=.:src python3 backend/app/scripts/run_phase6_eval.py
-```
-
-## Phase 7 Foundation
-
-Phase 7 now has a real backend evaluation harness in `backend/app/evaluation/`.
-
-- contracts and concrete implementations for a real pipeline runner, artifact store, case loader, scorer, and report writer
-- typed schemas for evaluation cases, expected outputs, actual outputs, artifact manifests, run summaries, and scoring summaries
-- reserved fixture packs under `fixtures/evaluation/`
-- reserved run output root under `outputs/evaluation_runs/`
-
-Preferred local real-runner entrypoint:
-
-```bash
-PYTHONPATH=.:src python3 backend/app/scripts/run_real_evaluation.py --case-file <case.json> --use-live-llm false --enable-render false
-```
-
-## Phase 7 Workflow
-
-Phase 7 is now integrated into the normal engineering workflow through `scripts/run_phase7.py` and matching `make` targets.
-
-Modes are intentionally separated:
-
-- `ci-safe`: deterministic quality checks plus backend dry-run smoke artifacts only
-- `local-full`: same non-live split as CI-safe, but intended for broader local inspection
-- `live`: real live-model evaluation for packs that depend on parsing/generation/verification quality
-
-Confidence model:
-
-- `quality`: contributes to gating confidence
-- `smoke`: validates execution/artifact plumbing only and is not evidence of live product quality
-- `skip`: intentionally not run in this mode, usually because live access is disabled
-
-Local developer commands:
-
-```bash
-PYTHONPATH=.:src python3 scripts/run_phase7.py run_selection_eval --mode local-full
-PYTHONPATH=.:src python3 scripts/run_phase7.py run_all_phase7 --mode local-full
-PYTHONPATH=.:src python3 scripts/run_phase7.py run_jd_eval --mode live
-PYTHONPATH=.:src python3 scripts/run_phase7.py run_e2e_eval --mode live --enable-render true
-PYTHONPATH=.:src python3 scripts/run_phase7.py run_red_team_eval --mode live
-```
-
-Equivalent `make` targets:
-
-```bash
-make run_selection_eval PHASE7_MODE=local-full
-make run_all_phase7 PHASE7_MODE=ci-safe
-make run_jd_eval PHASE7_MODE=live
-make run_e2e_eval PHASE7_MODE=live PHASE7_RENDER=true
-make run_red_team_eval PHASE7_MODE=live
-```
-
-CI-safe command:
-
-```bash
-PYTHONPATH=.:src python3 scripts/run_phase7.py run_all_phase7 --mode ci-safe
-```
-
-Artifacts are written under `outputs/phase7_workflow/<command>/<mode>/` and include:
-
-- pack summaries for deterministic runners
-- backend aggregate JSON and markdown reports
-- `command.stdout.log` and `command.stderr.log` for backend real-runner invocations
-- suite-level `suite_summary.json` and `suite_summary.md`
-
-Live-access requirements:
-
-- `jd_parse` requires live model access
-- `end_to_end` quality evaluation requires live model access
-- `red_team` quality evaluation requires live model access
-- `selection` is deterministic and CI-safe
-
-If a CI-safe run is green, that means deterministic selection quality did not regress and the backend evaluation paths still produced inspectable artifacts. It does not mean live generation quality has been proven.
-
-Phase 2 selection model:
-
-- Atomic evidence is scored first, then experiences/projects are re-aggregated into a resume-level decision set.
-- Final retained item scores are calibrated from post-selection utility, so chosen support items are measured by strategic resume value, not only by isolated keyword overlap.
-- Projects are only shown when they add unique proof, close gaps left by supporting experiences, or materially strengthen the final narrative.
-
-Architecture details:
-
-- [Phase 7 Evaluation Foundation](docs/phase7_evaluation_foundation.md)
+| Issue | Solution |
+| :--- | :--- |
+| `ModuleNotFoundError: No module named 'resume_optimizer'` | Always run the backend using `python start_backend.py` from the root. |
+| `pdflatex` not found | Ensure MiKTeX is installed or check the path in `start_backend.py`. |
+| API key errors | Ensure `GEMINI_API_KEY` is set in `.env` and that the file is in the root. |
+| Port 8000 in use | Kill the process or change the port in `start_backend.py`. |

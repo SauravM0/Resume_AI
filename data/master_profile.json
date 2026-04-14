@@ -1,7 +1,7 @@
 {
-  "id": "profile.default",
+  "id": "profile.sample",
   "personal_profile": {
-    "id": "personal.default",
+    "id": "personal.sample",
     "item_type": "personal_profile",
     "source_links": [],
     "canonical_tags": [],
@@ -9,20 +9,384 @@
     "verified_status": "unverified",
     "evidence_strength": "weak",
     "rewrite_allowed": true,
-    "full_name": "saurav madake",
-    "headline": "saurav",
-    "summary": "Hi \nI'm Saurav, a 2026 batch student. I'm applying for the Software Engineering Rorole and am very excited about it. \n\n\nSince you're there, could you let me know if there's anything specific I should focus on for the application, if possible can u help for referral.",
-    "email": "sauravmadake890@gmail.com",
-    "phone": "9172027838",
-    "location": "pune",
-    "linkedin_url": "https://www.linkedin.com/in/sauravmadake/",
-    "github_url": "https://github.com/SauravM0",
-    "role_type": "individual_contributor"
+    "full_name": "Alex Developer",
+    "headline": "Senior Full Stack Developer",
+    "summary": "Passionate full stack developer with 5+ years of experience building scalable applications.",
+    "email": "alex.developer@example.com",
+    "phone": "+1-555-0123",
+    "location": "San Francisco, CA",
+    "linkedin_url": "https://linkedin.com/in/alexdeveloper",
+    "github_url": "https://github.com/alexdeveloper",
+    "role_type": "individual_contributor",
+    "seniority_level": "senior"
   },
-  "experience": [],
-  "projects": [],
-  "education": [],
+  "experience": [
+    {
+      "id": "exp.1",
+      "item_type": "experience",
+      "source_links": [],
+      "canonical_tags": [],
+      "domain_tags": [],
+      "verified_status": "unverified",
+      "evidence_strength": "weak",
+      "rewrite_allowed": true,
+      "organization": "WebStack Corp",
+      "title": "Full Stack Developer",
+      "start_date": {
+        "raw_value": "2020-06",
+        "normalized_value": "2020-06",
+        "precision": "month",
+        "year": 2020,
+        "month": 6
+      },
+      "current": true,
+      "bullets": [
+        {
+          "id": "exp.1.b1",
+          "item_type": "bullet",
+          "source_links": [],
+          "canonical_tags": [],
+          "domain_tags": [],
+          "verified_status": "unverified",
+          "evidence_strength": "weak",
+          "rewrite_allowed": true,
+          "text": "Developed end-to-end features using React and Node.js",
+          "impact_level": "medium",
+          "tools": [],
+          "metrics": []
+        },
+        {
+          "id": "exp.1.b2",
+          "item_type": "bullet",
+          "source_links": [],
+          "canonical_tags": [],
+          "domain_tags": [],
+          "verified_status": "unverified",
+          "evidence_strength": "weak",
+          "rewrite_allowed": true,
+          "text": "Built real-time collaboration features with WebSockets",
+          "impact_level": "medium",
+          "tools": [],
+          "metrics": []
+        },
+        {
+          "id": "exp.1.b3",
+          "item_type": "bullet",
+          "source_links": [],
+          "canonical_tags": [],
+          "domain_tags": [],
+          "verified_status": "unverified",
+          "evidence_strength": "weak",
+          "rewrite_allowed": true,
+          "text": "Migrated monolith to microservices on AWS",
+          "impact_level": "medium",
+          "tools": [],
+          "metrics": []
+        }
+      ],
+      "tools": [
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "AWS"
+      ],
+      "metrics": []
+    },
+    {
+      "id": "exp.2",
+      "item_type": "experience",
+      "source_links": [],
+      "canonical_tags": [],
+      "domain_tags": [],
+      "verified_status": "unverified",
+      "evidence_strength": "weak",
+      "rewrite_allowed": true,
+      "organization": "Digital Agency",
+      "title": "Junior Developer",
+      "start_date": {
+        "raw_value": "2018-01",
+        "normalized_value": "2018-01",
+        "precision": "month",
+        "year": 2018,
+        "month": 1
+      },
+      "end_date": {
+        "raw_value": "2020-05",
+        "normalized_value": "2020-05",
+        "precision": "month",
+        "year": 2020,
+        "month": 5
+      },
+      "current": false,
+      "bullets": [
+        {
+          "id": "exp.2.b1",
+          "item_type": "bullet",
+          "source_links": [],
+          "canonical_tags": [],
+          "domain_tags": [],
+          "verified_status": "unverified",
+          "evidence_strength": "weak",
+          "rewrite_allowed": true,
+          "text": "Built 20+ client websites using modern JavaScript",
+          "impact_level": "medium",
+          "tools": [],
+          "metrics": []
+        },
+        {
+          "id": "exp.2.b2",
+          "item_type": "bullet",
+          "source_links": [],
+          "canonical_tags": [],
+          "domain_tags": [],
+          "verified_status": "unverified",
+          "evidence_strength": "weak",
+          "rewrite_allowed": true,
+          "text": "Maintained WordPress and custom PHP solutions",
+          "impact_level": "medium",
+          "tools": [],
+          "metrics": []
+        }
+      ],
+      "tools": [
+        "JavaScript",
+        "PHP",
+        "WordPress",
+        "MySQL"
+      ],
+      "metrics": []
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj.1",
+      "item_type": "project",
+      "source_links": [],
+      "canonical_tags": [],
+      "domain_tags": [],
+      "verified_status": "unverified",
+      "evidence_strength": "weak",
+      "rewrite_allowed": true,
+      "name": "Task Management App",
+      "bullets": [
+        {
+          "id": "proj.1.b1",
+          "item_type": "bullet",
+          "source_links": [],
+          "canonical_tags": [],
+          "domain_tags": [],
+          "verified_status": "unverified",
+          "evidence_strength": "weak",
+          "rewrite_allowed": true,
+          "text": "Built MERN stack application with real-time updates",
+          "impact_level": "medium",
+          "tools": [],
+          "metrics": []
+        },
+        {
+          "id": "proj.1.b2",
+          "item_type": "bullet",
+          "source_links": [],
+          "canonical_tags": [],
+          "domain_tags": [],
+          "verified_status": "unverified",
+          "evidence_strength": "weak",
+          "rewrite_allowed": true,
+          "text": "Implemented drag-and-drop kanban board functionality",
+          "impact_level": "medium",
+          "tools": [],
+          "metrics": []
+        }
+      ],
+      "tools": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Socket.io"
+      ],
+      "metrics": []
+    },
+    {
+      "id": "proj.2",
+      "item_type": "project",
+      "source_links": [],
+      "canonical_tags": [],
+      "domain_tags": [],
+      "verified_status": "unverified",
+      "evidence_strength": "weak",
+      "rewrite_allowed": true,
+      "name": "E-commerce API",
+      "bullets": [
+        {
+          "id": "proj.2.b1",
+          "item_type": "bullet",
+          "source_links": [],
+          "canonical_tags": [],
+          "domain_tags": [],
+          "verified_status": "unverified",
+          "evidence_strength": "weak",
+          "rewrite_allowed": true,
+          "text": "Designed RESTful API with Express and PostgreSQL",
+          "impact_level": "medium",
+          "tools": [],
+          "metrics": []
+        },
+        {
+          "id": "proj.2.b2",
+          "item_type": "bullet",
+          "source_links": [],
+          "canonical_tags": [],
+          "domain_tags": [],
+          "verified_status": "unverified",
+          "evidence_strength": "weak",
+          "rewrite_allowed": true,
+          "text": "Integrated Stripe and SendGrid for payments and emails",
+          "impact_level": "medium",
+          "tools": [],
+          "metrics": []
+        }
+      ],
+      "tools": [
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "Stripe"
+      ],
+      "metrics": []
+    }
+  ],
+  "education": [
+    {
+      "id": "edu.1",
+      "item_type": "education",
+      "source_links": [],
+      "canonical_tags": [],
+      "domain_tags": [],
+      "verified_status": "unverified",
+      "evidence_strength": "weak",
+      "rewrite_allowed": true,
+      "institution": "University of Technology",
+      "degree": "Bachelor of Science",
+      "field_of_study": "Computer Science",
+      "bullets": [],
+      "honors": []
+    }
+  ],
   "certifications": [],
   "awards": [],
-  "skills": []
+  "skills": [
+    {
+      "id": "skill.1",
+      "item_type": "skill",
+      "source_links": [],
+      "canonical_tags": [],
+      "domain_tags": [],
+      "verified_status": "unverified",
+      "evidence_strength": "weak",
+      "rewrite_allowed": true,
+      "name": "JavaScript",
+      "category": "Languages",
+      "tools": [],
+      "metrics": []
+    },
+    {
+      "id": "skill.2",
+      "item_type": "skill",
+      "source_links": [],
+      "canonical_tags": [],
+      "domain_tags": [],
+      "verified_status": "unverified",
+      "evidence_strength": "weak",
+      "rewrite_allowed": true,
+      "name": "TypeScript",
+      "category": "Languages",
+      "tools": [],
+      "metrics": []
+    },
+    {
+      "id": "skill.3",
+      "item_type": "skill",
+      "source_links": [],
+      "canonical_tags": [],
+      "domain_tags": [],
+      "verified_status": "unverified",
+      "evidence_strength": "weak",
+      "rewrite_allowed": true,
+      "name": "React",
+      "category": "Frontend",
+      "tools": [],
+      "metrics": []
+    },
+    {
+      "id": "skill.4",
+      "item_type": "skill",
+      "source_links": [],
+      "canonical_tags": [],
+      "domain_tags": [],
+      "verified_status": "unverified",
+      "evidence_strength": "weak",
+      "rewrite_allowed": true,
+      "name": "Node.js",
+      "category": "Backend",
+      "tools": [],
+      "metrics": []
+    },
+    {
+      "id": "skill.5",
+      "item_type": "skill",
+      "source_links": [],
+      "canonical_tags": [],
+      "domain_tags": [],
+      "verified_status": "unverified",
+      "evidence_strength": "weak",
+      "rewrite_allowed": true,
+      "name": "Express",
+      "category": "Backend",
+      "tools": [],
+      "metrics": []
+    },
+    {
+      "id": "skill.6",
+      "item_type": "skill",
+      "source_links": [],
+      "canonical_tags": [],
+      "domain_tags": [],
+      "verified_status": "unverified",
+      "evidence_strength": "weak",
+      "rewrite_allowed": true,
+      "name": "MongoDB",
+      "category": "Databases",
+      "tools": [],
+      "metrics": []
+    },
+    {
+      "id": "skill.7",
+      "item_type": "skill",
+      "source_links": [],
+      "canonical_tags": [],
+      "domain_tags": [],
+      "verified_status": "unverified",
+      "evidence_strength": "weak",
+      "rewrite_allowed": true,
+      "name": "PostgreSQL",
+      "category": "Databases",
+      "tools": [],
+      "metrics": []
+    },
+    {
+      "id": "skill.8",
+      "item_type": "skill",
+      "source_links": [],
+      "canonical_tags": [],
+      "domain_tags": [],
+      "verified_status": "unverified",
+      "evidence_strength": "weak",
+      "rewrite_allowed": true,
+      "name": "AWS",
+      "category": "Cloud",
+      "tools": [],
+      "metrics": []
+    }
+  ]
 }
